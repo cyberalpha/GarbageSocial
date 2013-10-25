@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="content">
+	<name>googleDirections</name>
+	<author>kksou</author>
+	<creationDate>Nov 2011</creationDate>
+	<copyright>(C) kksou.com. All Rights Reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>support@kksou.com</authorEmail>
+	<authorUrl>www.kksou.com/php-gtk2/</authorUrl>
+	<version>2.5.12</version>
+	<description>This plugin allows you to include one or more driving or walking directions provided by Google Maps right inside your content item or article.</description>
+	<files>
+		<filename plugin="googleDirections">googleDirections.php</filename>
+		<filename>googleDirections.ver</filename>
+		<filename>googleDirections.lib.php</filename>
+		<filename>googleDirections.css</filename>
+	</files>
+
+	<config>
+			<fields name="params">
+				<fieldset name="basic">
+
+				<field name="api_key" type="text"
+					description="Google Maps API key"
+					label="Google Maps API key"
+					size="48"
+				/>
+
+				<field name="width" type="text"
+					label="Default width"
+					default="400"
+					description="Default width for the Google Maps"
+					size="4"
+				/>
+
+				<field name="height" type="text"
+					label="Default height"
+					description="Default height for the Google Maps"
+					default="480"
+					size="4"
+				/>
+
+				<field name="zoom" type="text"
+					label="Default zoom"
+					default="15"
+					description="Default zoom level for the Google Maps"
+					size="2"
+				/>
+
+				<field name="dir_width" type="text"
+					label="Default directions width"
+					default="275"
+					description="Default width for the directions"
+					size="4"
+				/>
+
+				<field name="header_map" type="text"
+					label="Label for Map"
+					default="Map"
+					description="Label to be displayed above the map"
+					size="48"
+				/>
+
+				<field name="header_dir" type="text"
+					label="Label for Directions"
+					default="Directions"
+					description="Label to be displayed above the Directions"
+					size="48"
+				/>
+
+				<field name="map_on_right"
+					type="radio"
+					default="0"
+					description="Display the map on right and directions on left"
+					label="Display Map on Right">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+
+				</fieldset>
+			</fields>
+		</config>
+
+</extension>

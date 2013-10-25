@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>Donations meter</name>
+	<author>Anousone Rabounthunh</author>
+	<creationDate>18-June-2012</creationDate>
+	<copyright>http://www.laoapps.com</copyright>
+	<license>http://www.gnu.org/licenseses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>touya.ra@gmail.com</authorEmail>
+	<authorUrl>http://www.laoapps.com</authorUrl>
+	<version>1.0</version>
+	<description>MOD_DONATEMETER_REMEMBER_TO_EDIT_MODULE_SETTINGS</description>	
+	<!-- supported languages -->
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_donatemeter.ini</language>
+		<language tag="lo-LA">language/lo-LA/lo-LA.mod_donatemeter.ini</language>
+	</languages>
+	<!--PARAMS-->
+	<params>
+		<param name="sandboxmode" type="radio" default="0" label="MOD_DONATEMETER_SANDBOXMODE_LABEL" description="MOD_DONATEMETER_SANDBOXMODE_DESC">
+			<option value="0">MOD_DONATEMETER_SANDBOXMODE_NO_OPTION</option>
+			<option value="1">MOD_DONATEMETER_SANDBOXMODE_YES_OPTION</option>
+		</param>
+		<!--Interface-->
+		<param name="meterinterface" type="radio" default="0" label="MOD_DONATEMETER_METERINTERFACE_LABEL" description="MOD_DONATEMETER_METERINTERFACE_DESC">
+			<option value="0">MOD_DONATEMETER_METERINTERFACE_PIG_OPTION</option>
+			<option value="1">MOD_DONATEMETER_METERINTERFACE_NORMAL_METER_OPTION</option>
+		</param>
+		<!--PAYPAL API INFORMATION-->
+		<param name="paypalapiuser" type="textarea" rows="2" cols="30" default="" label="MOD_DONATEMETER_PAYPALAPIUSER_LABEL" description="MOD_DONATEMETER_PAYPALAPIUSER_DESC" />
+		<param name="paypalapipassword" type="textarea" rows="2" cols="30"  default="" label="MOD_DONATEMETER_PAYPALAPIPASSWORD_LABEL" description="MOD_DONATEMETER_PAYPALAPIPASSWORD_DESC" />
+		<param name="paypalapisignature" type="textarea" rows="2" cols="30"  default="" label="MOD_DONATEMETER_PAYPALAPISIGNATURE_LABEL" description="MOD_DONATEMETER_PAYPALAPISIGNATURE_DESC" />
+		<!--CUSTOM  HTML PAYPAL BUTTON -->
+		<param name="customhtml" type="textarea" rows="10" cols="30"  default="" label="MOD_DONATEMETER_CUSTOMHTML_LABEL" description="MOD_DONATEMETER_CUSTOMHTML_DESC" />		
+		<param name="goal1" type="text" default="1000" label="MOD_DONATEMETER_GOAL1_LABEL" description="MOD_DONATEMETER_GOAL1_DESC" />
+		<param name="current1" type="text" default="0" label="MOD_DONATEMETER_CURRENT1_LABEL" description="MOD_DONATEMETER_CURRENT1_DESC" />
+		<param name="currency1" type="text" default="$" label="MOD_DONATEMETER_CURRENCY1_LABEL" description="MOD_DONATEMETER_CURRENCY1_DESC" />				 		
+		<param name="height1" type="text" default="116" label="MOD_DONATEMETER_HEIGHT1_LABEL" description="MOD_DONATEMETER_HEIGHT1_DESC" />						
+		<param name="width1" type="text" default="150" label="MOD_DONATEMETER_WIDTH1_LABEL" description="MOD_DONATEMETER_WIDTH1_DESC" />		
+		<param name="moduleclass_sfx" type="text" default="donatemeter" label="MOD_DONATEMETER_MODULECLASS_LABEL" description="MOD_DONATEMETER_MODULECLASS_DESC" />		
+		
+		<param name="ourgoal" type="text" default="Our goal:" label="MOD_DONATEMETER_OURGOAL_LABEL" description="MOD_DONATEMETER_OURGOAL_DESC" />		
+		<param name="wehave" type="text" default="We have:" label="MOD_DONATEMETER_WEHAVE_LABEL" description="MOD_DONATEMETER_WEHAVE_DESC" />		
+		<param name="weneed" type="text" default="We need:" label="MOD_DONATEMETER_WENEED_LABEL" description="MOD_DONATEMETER_WENEED_DESC" />		
+		
+		
+	</params>
+	
+	<files>
+         <filename module="mod_donatemeter">mod_donatemeter.php</filename>
+		 <filename>helper.php</filename>
+		 <filename>index.html</filename>
+		 <filename>language/index.html</filename>
+		 <filename>language/en-GB/index.html</filename>
+		 <filename>language/lo-LA/index.html</filename>
+         <filename>smile-pig2.gif</filename>
+		 <filename>normal-meter.gif</filename>                                   
+     </files>
+</install>

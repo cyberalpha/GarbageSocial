@@ -1,0 +1,38 @@
+===================================================
+  Changelog for SobiPro SP-GeoMap Module Application
+===================================================
+ * @version: $Id: changelog.txt 2170 2012-01-19 11:15:01Z Sigrid Suski $
+ * @author
+ * Name: Sigrid Suski & Radek Suski, Sigsiu.NET GmbH
+ * Email: sobi[at]sigsiu.net
+ * Url: http://www.Sigsiu.NET
+ * ===================================================
+ * @copyright Copyright (C) 2006 - 2012 Sigsiu.NET GmbH (http://www.sigsiu.net). All rights reserved.
+ * @license see http://www.gnu.org/licenses/gpl.html GNU/GPL Version 3.
+ * You can use, redistribute this file and/or modify it under the terms of the GNU General Public License version 3
+ * ===================================================
+ * $Date: 2012-01-19 12:15:01 +0100 (Do, 19 Jan 2012) $
+===================================================
+
+===================================================
+ * Legend
+===================================================
+   (*) - Security Fix
+   (#) - Bug Fix
+   (+) - Addition
+   (-) - Removed
+   (!) - Change
+===================================================
+
+-------------------
+  0.5.1 (January 19, 2012)
+-------------------
+	(+) French language (thanks to Eric Lamy)
+	(+) Swedish language (thanks to JOKR Solutions)
+	(#) Parameters to ignore - wrong request method
+	(#) Google map not displayed when there are no search results (Issue #582)
+	(#) GeoMap module entries Info Window not showing on Joomla! 1.5 (Issue #587)
+
+-------------------
+  0.5.0 - first public release
+-------------------

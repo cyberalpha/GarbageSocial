@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0" method="upgrade">
+    <name>SobiPro GeoMap Module</name>
+    <creationDate>19 January 2012</creationDate>
+    <author>Sigsiu.NET GmbH</author>
+    <authorEmail>sobi[at]sigsiu.net</authorEmail>
+    <authorUrl>http://www.Sigsiu.NET</authorUrl>
+    <copyright>Copyright (C) 2006-2011 Sigsiu.NET GmbH</copyright>
+    <license>GNU General Public License v3</license>
+    <version>0.5.1</version>
+    <description>MOD_SOBIPRO_GMAP_XML_DESCRIPTION</description>
+    <svn>$Revision: 2170 $</svn>
+    <SobiPro>
+        <requirements>
+            <core version="1.0.0.1900"/>
+            <field>geomap_field</field>
+        </requirements>
+    </SobiPro>
+    <files>
+        <filename module="mod_sobipro_geomap">mod_sobipro_geomap.php</filename>
+        <filename>spelements.php</filename>
+        <filename>spform.php</filename>
+        <filename>changelog.txt</filename>
+        <filename>index.html</filename>
+        <folder>install</folder>
+    </files>
+    <languages>
+        <language tag="en-GB">languages/en-GB.mod_sobipro_geomap.ini</language>
+        <language tag="en-GB">languages/en-GB.mod_sobipro_geomap.sys.ini</language>
+		<language tag="de-DE">languages/de-DE.mod_sobipro_geomap.ini</language>
+		<language tag="de-DE">languages/de-DE.mod_sobipro_geomap.sys.ini</language>
+		<language tag="pl-PL">languages/pl-PL.mod_sobipro_geomap.ini</language>
+		<language tag="pl-PL">languages/pl-PL.mod_sobipro_geomap.sys.ini</language>
+		<language tag="sv-SE">languages/sv-SE.mod_sobipro_geomap.ini</language>
+		<language tag="sv-SE">languages/sv-SE.mod_sobipro_geomap.sys.ini</language>
+		<language tag="fr-FR">languages/fr-FR.mod_sobipro_geomap.ini</language>
+		<language tag="fr-FR">languages/fr-FR.mod_sobipro_geomap.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic" addfieldpath="/modules/mod_sobipro_geomap/">
+                <field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix"
+                       description="PARAMMODULECLASSSUFFIX"/>
+                <field name="SOBI_SELECT_SECTION" type="spform" msg="SOBI_SELECT_SECTION_EXPL"/>
+                <field name="sid" type="spform"/>
+                <field name="mapWidth" type="text" default="300" label="SOBI_GMAP_MOD_MAP_WIDTH" size="5"/>
+                <field name="mapHeight" type="text" default="300" label="SOBI_GMAP_MOD_MAP_HEIGHT" size="5"/>
+                <field name="zoomLevel" type="text" default="1" label="SOBI_GMAP_MOD_MAP_ZOOM" size="5"/>
+                <field name="startLatitude" type="text" default="49" label="SOBI_GMAP_MOD_MAP_START_LATITUDE" size="5"/>
+                <field name="startLongitude" type="text" default="5" label="SOBI_GMAP_MOD_MAP_START_LONGITUDE" size="5"/>
+                <field name="tplFile" type="spform"/>
+                <field name="availableViews" type="checkboxes" default="" label="SOBI_GMAP_MOD_AVAILABLE_VIEWS" >
+                    <option value="roadmap">SOBI_GMAP_MOD_AVAILABLE_VIEWS_ROADMAP</option>
+                    <option value="satellite">SOBI_GMAP_MOD_AVAILABLE_VIEWS_SATELLITE</option>
+                </field>
+                <field name="defaultView" type="list" default="0" label="SOBI_GMAP_MOD_DEFAULT_VIEW">
+                    <option value="roadmap">SOBI_GMAP_MOD_AVAILABLE_VIEWS_ROADMAP</option>
+                    <option value="satellite">SOBI_GMAP_MOD_AVAILABLE_VIEWS_SATELLITE</option>
+                </field>
+                <field name="mapOptions" type="checkboxes" default="" label="SOBI_GMAP_MOD_MAP_OPTIONS">
+                    <option value="panControl">SOBI_GMAP_MOD_MAP_OPTIONS_PAN_CONTROL</option>
+                    <option value="mapTypeControl">SOBI_GMAP_MOD_MAP_OPTIONS_MAP_TYPE_CONTROL</option>
+                    <option value="streetViewControl">SOBI_GMAP_MOD_MAP_OPTIONS_STREET_VIEW_CONTROL</option>
+                    <option value="zoomControl">SOBI_GMAP_MOD_MAP_OPTIONS_ZOOM_CONTROL</option>
+                    <option value="scaleControl">SOBI_GMAP_MOD_MAP_OPTIONS_SCALE_CONTROL</option>
+                    <option value="overviewMapControl">SOBI_GMAP_MOD_MAP_OPTIONS_OVERVIEW_MAP_CONTROL</option>
+                </field>
+                <field name="ignoredParams" type="textarea" default="" label="SOBI_GMAP_MOD_IGNORED_PARAMS" cols="40" rows="5" />
+            </fieldset>
+        </fields>
+    </config>
+    <params addpath="/modules/mod_sobipro_geomap/">
+        <param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix"
+               description="PARAMMODULECLASSSUFFIX"/>
+        <param name="SOBI_SELECT_SECTION" type="spelements" msg="SOBI_SELECT_SECTION_EXPL"/>
+        <!-- <param name="cid" type="spsection" msg="SOBI_SELECT_CATEGORY_EXPL" /> -->
+        <param name="sid" type="spelements"/>
+        <param name="mapWidth" type="text" default="300" label="SOBI_GMAP_MOD_MAP_WIDTH" size="5"/>
+        <param name="mapHeight" type="text" default="300" label="SOBI_GMAP_MOD_MAP_HEIGHT" size="5"/>
+        <param name="zoomLevel" type="text" default="1" label="SOBI_GMAP_MOD_MAP_ZOOM" size="5"/>
+        <param name="startLatitude" type="text" default="49" label="SOBI_GMAP_MOD_MAP_START_LATITUDE" size="5"/>
+        <param name="startLongitude" type="text" default="5" label="SOBI_GMAP_MOD_MAP_START_LONGITUDE" size="5"/>
+        <param name="tplFile" type="spelements"/>
+        <param name="availableViews" type="spelements"/>
+        <param name="defaultView" type="list" default="0" label="SOBI_GMAP_MOD_DEFAULT_VIEW">
+            <option value="roadmap">SOBI_GMAP_MOD_AVAILABLE_VIEWS_ROADMAP</option>
+            <option value="satellite">SOBI_GMAP_MOD_AVAILABLE_VIEWS_SATELLITE</option>
+        </param>
+        <param name="mapOptions" type="spelements"/>
+        <param name="ignoredParams" type="textarea" default="" label="SOBI_GMAP_MOD_IGNORED_PARAMS" cols="40" rows="5" />
+    </params>
+</install>

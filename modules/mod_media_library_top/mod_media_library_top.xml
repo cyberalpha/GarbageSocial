@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="1.6.0" client="site" method="upgrade">
+	<name>MediaLibrary Top10 free</name>
+	<author>OrdaSoft - Andrey Kvasnevskiy</author>
+	<creationDate>April 2009</creationDate>
+	<copyright>(C) 2009 OrdaSoft - Andrey Kvasnevskiy</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>akbet@mail.ru</authorEmail>
+	<authorUrl>www.joomlawebserver.com</authorUrl>
+	<version>1.6 free</version>
+	<description>Displays top media items from the MediaLibrary component.
+                 You can choose the type and number of media items to display.
+    </description>
+	<files>
+		<filename module="mod_media_library_top">mod_media_library_top.php</filename>
+		<filename module="index">index.html</filename>
+	</files>
+    
+    <config> 
+	    <fields name="params">
+		    <fieldset name="basic">
+            <field name="sort_by_top" type="list" default="0" label="Sort By" description="Display Top by...">
+            <option value="0">Hits</option>
+            <option value="1">Date</option>
+            <option value="2">Rating</option>
+            </field>
+            
+            <field name="only_published" type="radio" default="1" label="Only Include Published" description="Only Include Published Media? Set to No if you want to include all media on database Published and not">
+            <option value="0">Show All</option>
+            <option value="1">Only Published</option>
+            </field>
+            
+            <field name="covers" type="radio" default="0" label="Cover Images" description="Show/Hide Covers">
+            <option value="0">Hide</option>
+            <option value="1">Show</option>
+            </field>
+            
+            <field name="cover_height" type="text" default="50" label="Cover Height" description="The height to display media covers in px. Widths are auto calculated to keep aspect ratio." />
+            
+            <field name="extras" type="radio" default="1" label="Show Hits" description="Show/Hide Hits">
+            <option value="0">Hide</option>
+            <option value="1">Show</option>
+            </field>
+                        
+            <field name="ranking" type="radio" default="0" label="Ranking" description="Show/Hide Ranking">
+            <option value="0">Hide</option>
+            <option value="1">Show</option>
+            </field>
+            <field name="@spacer" type="spacer" default="" label="" description="" />    
+    </fieldset>
+    <fieldset name="advanced">
+            <field name="books" type="text" default="1" label="Number of top books" description="Number of top books. Zero means no books to display" />
+            <field name="games" type="text" default="1" label="Number of top games" description="Number of top games. Zero means no games to display" />  
+            <field name="musics" type="text" default="1" label="Number of top music items" description="Number of top music items. Zero means no music to display" />  
+            <field name="videos" type="text" default="1" label="Number of top video items" description="Number of top video items. Zero means no video to display" />  
+    </fieldset>
+</fields>
+</config>
+</extension>

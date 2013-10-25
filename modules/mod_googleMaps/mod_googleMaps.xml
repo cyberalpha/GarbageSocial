@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+	type="module"
+	version="2.5"
+	client="site"
+	method="upgrade">
+  <name>googleMaps</name>
+  <author>kksou</author>
+  <creationDate>April 2009</creationDate>
+  <copyright>(C) kksou.com. All Rights Reserved.</copyright>
+  <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+  <authorEmail>support@kksou.com</authorEmail>
+  <authorUrl>www.kksou.com/php-gtk2/</authorUrl>
+  <version>2.5</version>
+  <description>This module allows you to include one or more google maps right inside your content item or article.</description>
+  <files>
+    <filename module="mod_googleMaps">mod_googleMaps.php</filename>
+	<filename>helper.php</filename>
+	<filename>index.html</filename>
+	<filename>tmpl/default.php</filename>
+	<filename>tmpl/index.html</filename>
+  </files>
+
+    <config>
+		<fields name="params">
+			<fieldset name="Basic">
+
+
+				<field name="moduleclass_sfx" type="text"
+					label="Module Class Suffix"
+					default=""
+					description="A suffix to be applied to the css class of the module (table.moduletable), this allows individual module styling"
+				/>
+
+				<field name="content" type="textarea"
+					label="Content"
+					cols="48" rows="20" 
+					default=""
+					filter="raw"
+					description="use the googleMaps plugin to embed Google Maps"
+				/>
+
+		</fieldset>
+
+		</fields>
+	</config>
+</extension>

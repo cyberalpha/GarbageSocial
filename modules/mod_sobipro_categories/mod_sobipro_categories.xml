@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="module" client="site" method="upgrade">
+	<name>Sobipro Categories</name>
+	<creationDate>September 2011</creationDate>
+
+	<author>Extly.com</author>
+	<authorEmail>support@extly.com</authorEmail>
+	<authorUrl>http://www.extly.com</authorUrl>
+	<copyright>Copyright (C) 2007 - 2012 Prieco, S.A. All rights reserved.</copyright>
+	<license>GNU/GPLv3 www.gnu.org/licenses/gpl-3.0.html</license>
+
+	<version>2.7.0</version>
+	<description>A module to show a list of direct categories.</description>
+	<files>
+		<filename module="mod_sobipro_categories">mod_sobipro_categories.php</filename>
+		<filename module="mod_sobipro_categories">helper.php</filename>
+		<filename module="mod_sobipro_categories">index.html</filename>
+		<filename module="mod_sobipro_categories">stats.php</filename>        
+		<folder>tmpl</folder>
+	</files>
+	<params>
+		<param name="parentid" type="sql" default="" label="Section" description="Parent section of categories to be shown." 
+			   size="7"
+			   query="SELECT id, CONCAT(name, ' (', id, ')') name FROM #__sobipro_object WHERE oType='section' AND state=1 ORDER BY name"
+			   key_field="id" value_field="name"
+				/>
+
+		<param name="categorymode" type="list" default="1" label="Category List Mode - End Level" description="Mode to show category lists" >
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+		</param>	
+
+		<param name="sorder" type="list" default="0" label="Order" description="Select the list order">
+			<option value="0">Default - no order</option>			
+			<option value="1">Alphabetically</option>
+			<option value="4">Alphabetically (nid)</option>
+			<option value="2">Id</option>
+			<option value="3">Counter Desc</option>
+			<option value="5">Position</option>
+			<option value="6">Random</option>
+		</param>		
+		<param name="scounter" type="list" default="0" label="Show Counter" description="Show counter of each category">
+			<option value="0">No</option>            
+			<option value="1">Hits</option>
+			<option value="2">Entries</option>
+		</param>	
+
+		<param name="hide_empty" type="list" default="0" label="Hide Empty Categories" description="Flag to only show categories with entries.">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>		
+	</params>
+	<params group="advanced">
+		<param name="categorystartlevel" type="list" default="1" label="Category List Mode - Start Level" description="Mode to show category lists - valid for Joomla Search only." >
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+		</param>
+
+		<param name="scitemid" type="menuitem" default="" label="Menu" description="Menu to be forced in each category link">
+			<option value="">-- None --</option>
+		</param>
+
+		<param name="count" type="text" default="100" label="Count" description="The number of items to display (default is 100)" />
+
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+        
+		<param name="cache" type="list" default="0" label="Caching" description="Select whether to cache the content of this module">
+			<option value="1">Use global</option>
+			<option value="0">No caching</option>
+		</param>
+		<param name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
+
+		<param name="debug" type="list" default="0" label="Debug" description="Show query">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>		
+	</params>
+	
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="parentid" type="sql" default="" label="Section" description="Parent section of categories to be shown." 
+					   size="7"
+					   query="SELECT id, CONCAT(name, ' (', id, ')') name FROM #__sobipro_object WHERE oType='section' AND state=1 ORDER BY name"
+					   key_field="id" value_field="name"
+					   multiple="true"
+				/>
+
+
+				<field name="categorymode" type="list" default="1" label="Category List Mode - End Level" description="Mode to show category lists" >
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+				</field>
+
+				<field name="sorder" type="list" default="0" label="Order" description="Select the list order">
+					<option value="0">Default - no order</option>			
+					<option value="1">Alphabetically</option>
+					<option value="4">Alphabetically (nid)</option>
+					<option value="2">Id</option>
+					<option value="3">Counter Desc</option>                    
+					<option value="5">Position</option>
+					<option value="6">Random</option>
+				</field>				
+				<field name="scounter" type="list" default="0" label="Show Counter" description="Show counter of each category">
+					<option value="0">No</option>            
+					<option value="1">Hits</option>
+					<option value="2">Entries</option>
+				</field>
+                
+				<field name="hide_empty" type="list" default="0" label="Hide Empty Categories" description="Flag to only show categories with entries.">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>		                
+			</fieldset>
+			<fieldset name="advanced">
+
+				<field name="categorystartlevel" type="list" default="1" label="Category List Mode - Start Level" description="Mode to show category lists - valid for Joomla Search only." >
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+				</field>
+
+				<field name="scitemid" type="menuitem" default="" label="Menu" description="Menu to be forced in each category link">
+					<option value="">-- None --</option>
+				</field>
+
+				<field name="count" type="text" default="5" label="Count" description="The number of items to display (default is 100)" />
+
+				<field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+				
+				<field name="cache" type="list" default="1" label="Caching" description="Select whether to cache the content of this module">
+					<option value="1">Use global</option>
+					<option value="0">No caching</option>
+				</field>
+				<field name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />				
+				<field name="debug" type="list" default="0" label="Debug" description="Show query">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>		
+
+			</fieldset>
+		</fields>
+	</config>	
+	
+</install>

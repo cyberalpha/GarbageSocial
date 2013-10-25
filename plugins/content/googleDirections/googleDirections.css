@@ -1,0 +1,14 @@
+table.googleDirections td {
+    font-family: Verdana, Arial, sans serif;
+    font-size: 11px;
+    margin: 2px;
+}
+
+table.googleDirections th {
+    background-color:#EEEEEE;
+}
+
+table.googleDirections img {
+    color: #000000;
+}
+

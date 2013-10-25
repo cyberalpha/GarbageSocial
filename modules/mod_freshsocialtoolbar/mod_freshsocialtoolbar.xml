@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<extension
+	type="module"
+	version="2.5.0"
+	client="site"
+	method="upgrade">
+	<name>Fresh Social Toolbar</name>
+	<author>Fresh Extension http://www.FreshExtension.com</author>
+	<creationDate>October 2012</creationDate>
+	<copyright>Fresh Extension http://www.FreshExtension.com</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>support@freshextension.zendesk.com</authorEmail>
+	<authorUrl>Fresh Extension http://www.FreshExtension.com</authorUrl>
+	<version>1.0</version>
+	<description>
+<![CDATA[
+<h1 style="font-size:15px; color:green">Fresh Social Toolbar</h1>
+Fresh Social Toolbar allows your site to socialize in an elegant way! 
+Enjoy this module and please visit us for more extensions! <br/><br/>
+<a href="http://www.FreshExtension.com" style="font-size:15px;" target="_blank">Visit Fresh Extension</a>
+<div style="text-align:center;" margin-top:10px;"><img src="../modules/mod_freshsocialtoolbar/assets/images/freshlogo.png"></div>
+<p>
+]]>		
+	</description>
+		<languages>
+            	<language tag="en-GB">en-GB.mod_freshsocialtoolbar.ini</language>
+				<language tag="en-GB">en-GB.mod_freshsocialtoolbar.sys.ini</language>
+		</languages>
+	<files>
+		<filename module="mod_freshsocialtoolbar">mod_freshsocialtoolbar.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl</folder>
+		<folder>assets</folder>
+	</files>
+	<config>
+		<!-- add element for color picker -->
+		<fields name="params" addfieldpath="/modules/mod_freshsocialtoolbar/assets/elements">
+			<!-- basic settings -->
+			<fieldset name="basic" label="MOD_FRESHSOCIALTOOLBAR_FIELDSETLABEL_BASICSETTINGS">
+				<field name="loadjquery" type="radio"  default="0" label="MOD_FRESHSOCIALTOOLBAR_FIELD_JQUERYLOAD" description="MOD_FRESHSOCIALTOOLBAR_FIELD_JQUERYLOAD_DESC">
+					<option value="0">MOD_FRESHSOCIALTOOLBAR_NO</option>
+					<option value="1">MOD_FRESHSOCIALTOOLBAR_YES</option>
+				</field>
+				<field name="direction" type="list"  default="right" label="MOD_FRESHSOCIALTOOLBAR_FIELD_DIRECTION" description="MOD_FRESHSOCIALTOOLBAR_FIELD_DIRECTION_DESC">
+					<option value="top">MOD_FRESHSOCIALTOOLBAR_TB</option>
+					<option value="bottom">MOD_FRESHSOCIALTOOLBAR_BT</option>
+					<option value="left">MOD_FRESHSOCIALTOOLBAR_LR</option>
+					<option value="right">MOD_FRESHSOCIALTOOLBAR_RL</option>
+				</field>
+				<field name="toolbaropen" type="list" default="1" label="MOD_FRESHSOCIALTOOLBAR_FIELD_TOOLBAROPEN" description="MOD_FRESHSOCIALTOOLBAR_FIELD_TOOLBAROPEN_DESC">
+					<option value="1">MOD_FRESHSOCIALTOOLBAR_OPEN</option>
+					<option value="0">MOD_FRESHSOCIALTOOLBAR_CLOSED</option>
+				</field>
+				<field name="bordertype" type="list"  default="1" label="MOD_FRESHSOCIALTOOLBAR_FIELD_BORDERTYPE" description="MOD_FRESHSOCIALTOOLBAR_FIELD_BORDERTYPE_DESC">
+					<option value="1">MOD_FRESHSOCIALTOOLBAR_ORANGE</option>
+					<option value="2">MOD_FRESHSOCIALTOOLBAR_BLUE</option>
+					<option value="3">MOD_FRESHSOCIALTOOLBAR_GREEN</option>
+					<option value="4">MOD_FRESHSOCIALTOOLBAR_YELLOW</option>
+					<option value="5">MOD_FRESHSOCIALTOOLBAR_RED</option>
+				</field>
+				<field name="toolbarheight" type="text" size="10" default="386" label="MOD_FRESHSOCIALTOOLBAR_FIELD_HEIGHT" description="MOD_FRESHSOCIALTOOLBAR_FIELD_HEIGHT_DESC" />
+				<field name="topdistance" type="text" size="10" default="10" label="MOD_FRESHSOCIALTOOLBAR_FIELD_TOPDISTANCE" description="MOD_FRESHSOCIALTOOLBAR_FIELD_TOPDISTANCE_DESC" />				
+			</fieldset>
+			<!-- end of basic settings -->
+			<!-- other settings -->
+			<fieldset name="MOD_FRESHSOCIALTOOLBAR_FIELDSETLABEL_SHOWSETTINGS" label="MOD_FRESHSOCIALTOOLBAR_FIELDSETLABEL_SHOWSETTINGS">
+				<field name="showfb" type="radio"  default="1" label="MOD_FRESHSOCIALTOOLBAR_FIELD_SHOWFB" description="MOD_FRESHSOCIALTOOLBAR_FIELD_SHOWFB_DESC">
+					<option value="1">MOD_FRESHSOCIALTOOLBAR_YES</option>
+					<option value="0">MOD_FRESHSOCIALTOOLBAR_NO</option>
+				</field>
+			<field name="faceurl" type="text" size="40" default="" label="MOD_FRESHSOCIALTOOLBAR_FIELD_FACEURL" description="MOD_FRESHSOCIALTOOLBAR_FIELD_FACEURL_DESC" />				
+				<field name="showtw" type="radio"  default="1" label="MOD_FRESHSOCIALTOOLBAR_FIELD_SHOWTW" description="MOD_FRESHSOCIALTOOLBAR_FIELD_SHOWTW_DESC">
+					<option value="1">MOD_FRESHSOCIALTOOLBAR_YES</option>
+					<option value="0">MOD_FRESHSOCIALTOOLBAR_NO</option>
+				</field>
+				<field name="showtwf" type="radio"  default="1" label="MOD_FRESHSOCIALTOOLBAR_FIELD_SHOWTWF" description="MOD_FRESHSOCIALTOOLBAR_FIELD_SHOWTWF_DESC">
+					<option value="1">MOD_FRESHSOCIALTOOLBAR_YES</option>
+					<option value="0">MOD_FRESHSOCIALTOOLBAR_NO</option>
+				</field>
+				<field name="showtwname" type="radio"  default="0" label="MOD_FRESHSOCIALTOOLBAR_FIELD_SHOWTWNAME" description="MOD_FRESHSOCIALTOOLBAR_FIELD_SHOWTWNAME_DESC">
+					<option value="1">MOD_FRESHSOCIALTOOLBAR_YES</option>
+					<option value="0">MOD_FRESHSOCIALTOOLBAR_NO</option>
+				</field>
+				<field name="twname" type="text" size="40" default="twitteraccount" label="MOD_FRESHSOCIALTOOLBAR_FIELD_TWRELATED" description="MOD_FRESHSOCIALTOOLBAR_FIELD_TWRELATED_DESC" />
+				<field name="twlang" type="text" size="40" default="en" label="MOD_FRESHSOCIALTOOLBAR_FIELD_TWRTEXT" description="MOD_FRESHSOCIALTOOLBAR_FIELD_TWRTEXT_DESC" />
+				<field name="twurl" type="text" size="40" default="" label="MOD_FRESHSOCIALTOOLBAR_FIELD_TWURL" description="MOD_FRESHSOCIALTOOLBAR_FIELD_TWURL_DESC" />
+				<field name="tweettext" type="text" size="40" default="" label="MOD_FRESHSOCIALTOOLBAR_FIELD_TWEETEXT" description="MOD_FRESHSOCIALTOOLBAR_FIELD_TWEETEXT_DESC" />
+				<field name="showg" type="radio"  default="1" label="MOD_FRESHSOCIALTOOLBAR_FIELD_SHOWG" description="MOD_FRESHSOCIALTOOLBAR_FIELD_SHOWG_DESC">
+					<option value="1">MOD_FRESHSOCIALTOOLBAR_YES</option>
+					<option value="0">MOD_FRESHSOCIALTOOLBAR_NO</option>
+				</field>
+				<field name="showpin" type="radio"  default="1" label="MOD_FRESHSOCIALTOOLBAR_FIELD_SHOWPIN" description="MOD_FRESHSOCIALTOOLBAR_FIELD_SHOWPIN_DESC">
+					<option value="1">MOD_FRESHSOCIALTOOLBAR_YES</option>
+					<option value="0">MOD_FRESHSOCIALTOOLBAR_NO</option>
+				</field>
+				<field name="showlinkedin" type="radio"  default="1" label="MOD_FRESHSOCIALTOOLBAR_FIELD_SHOWLE" description="MOD_FRESHSOCIALTOOLBAR_FIELD_SHOWLE_DESC">
+					<option value="1">MOD_FRESHSOCIALTOOLBAR_YES</option>
+					<option value="0">MOD_FRESHSOCIALTOOLBAR_NO</option>
+				</field>
+				<field name="linkedintype" type="radio"  default="1" label="MOD_FRESHSOCIALTOOLBAR_FIELD_LTYPE" description="MOD_FRESHSOCIALTOOLBAR_FIELD_LTYPE_DESC">
+					<option value="0">MOD_FRESHSOCIALTOOLBAR_LIKE</option>
+					<option value="1">MOD_FRESHSOCIALTOOLBAR_FOLLOW</option>
+				</field>
+				<field name="lcid" type="text" size="40" default="123456" label="MOD_FRESHSOCIALTOOLBAR_FIELD_LINEDINCOMPID" description="MOD_FRESHSOCIALTOOLBAR_FIELD_LINEDINCOMPID_DESC" />
+				<field name="showutube" type="radio"  default="1" label="MOD_FRESHSOCIALTOOLBAR_FIELD_SHOWUTUBE" description="MOD_FRESHSOCIALTOOLBAR_FIELD_SHOWUTUBE_DESC">
+					<option value="1">MOD_FRESHSOCIALTOOLBAR_YES</option>
+					<option value="0">MOD_FRESHSOCIALTOOLBAR_NO</option>
+				</field>
+				<field name="youtubeid" type="text" size="40" default="" label="MOD_FRESHSOCIALTOOLBAR_FIELD_UTUBEID" description="MOD_FRESHSOCIALTOOLBAR_FIELD_UTUBEID_DESC" />
+				<field name="showrss" type="radio"  default="1" label="MOD_FRESHSOCIALTOOLBAR_FIELD_SHOWRSS" description="MOD_FRESHSOCIALTOOLBAR_FIELD_SHOWRSS_DESC">
+					<option value="1">MOD_FRESHSOCIALTOOLBAR_YES</option>
+					<option value="0">MOD_FRESHSOCIALTOOLBAR_NO</option>
+				</field>
+				<field name="rssurl" type="text" size="40" default="http://" label="MOD_FRESHSOCIALTOOLBAR_FIELD_RSS" description="MOD_FRESHSOCIALTOOLBAR_FIELD_RSS_DESC" />
+				</fieldset>
+			<!-- end of other settings -->
+		</fields>
+		<!-- end of all fields -->
+	</config>
+</extension>

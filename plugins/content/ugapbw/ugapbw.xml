@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<extension version="2.5" type="plugin" group="content" method="upgrade">
+    <name>Content - Ultimate Google AdSense Plugin By Internet Partner</name>
+    <author>WebSoftSerbia.com</author>
+    <creationDate>October 2011</creationDate>
+    <copyright>Copyright (C) 2011 Internet Partner Agency. All rights reserved.</copyright>
+    <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+    <authorEmail>office@internetpartner.info</authorEmail>
+    <authorUrl>http://internetpartner.info</authorUrl>
+    <version>1.2</version>
+    <description><![CDATA[
+	<h1>Ultimate Google AdSense Plugin By Internet Partner</h1>
+	Ultimage Google AdSense Plugin By Internet Partner</a> is a plugin which adds a Google AdSense on your web page.
+	<br> More then that, you can set it up to prevent click on your own Google AdSense advertisements with IP Block.<br>
+	<br /> <a href="http://internetpartner.info" target="_blank" >More information on internetpartner.info </a>  <br />
+	<img src='/plugins/content/ugapbw/logo.png' /><br /> <br />  <br />    
+	]]></description>
+    <files>
+      <filename plugin="ugapbw">ugapbw.php</filename>
+		<filename>index.html</filename>
+		<filename>logo.png</filename>			
+    </files>
+	<config>
+		<fields name="params">
+	
+			<fieldset name="top" label='Top Ad'>		
+				<field 
+					name="topEnabled" 
+					type="radio" 
+					default="1" 
+					label="Enable Top Ad" 
+					description="Display AdSense in the view 'article'." >
+				  		<option value="1">Yes</option>
+				   	<option value="0">No</option></field>
+				<field 
+					name="topPublisherId" 
+					type="text" 
+					default="" 
+					size="40" 
+					label="Publisher ID" 
+					description="Enter Publisher ID from AdSense Code. It is an alphanumerical string like ca-pub-xxxxxxxxxxxxxxxx." />
+				<field 
+					name="topName" 
+					type="text" 
+					default="" 
+					size="40" 
+					label="Name of AdSense unit" 
+					description="Enter the name of AdSense unit" />
+				<field 
+					name="topSlot" 
+					type="text" 
+					default="" 
+					size="40" 
+					label="Slot number" 
+					description="Enter the slot number from AdSense Code. It is a numerical string like 54656789." />					
+				<field 
+					name="topEmptyLine" 
+					type="radio" 
+					default="no" 
+					label="Add empty line" 
+					description="Add empty line below and above Google AdSense Top Ads" >
+				   	<option value="yes">Yes</option>
+				   	<option value="no">No</option></field>
+				<field 
+					name="topTitle" 
+					type="list" 
+					default="" 
+					label="Add AdSense Title" 
+					description="Add AdSense Title above Google ad" >
+						<option value="">No Title</option>
+						<option value="Ads">Ads</option>	
+						<option value="Advertisement">Advertisement</option>
+						<option value="Sponsored links">Sponsored links</option></field>
+				<field 
+					name="topFormat" 
+					type="list" 
+					default="468x15_0ads_al" 
+					label="Top AdSense Size" 
+					description="Choose the ad format and size that you would like to display on your page.">
+						<option value="">Recommended formats</option>
+						<option value="300x250_as"> 300 x 250 Medium rectangle </option> 					 
+						<option value="336x280_as"> 336 x 280 Large Rectangle </option>
+						<option value="728x90_as"> 728 x 90 Leaderboard </option>					
+						<option value="160x600_as"> 160 x 600 Wide Skyscraper </option> 
+						<option value="320x20_as"> 320 x 50 Mobile Banner </option> 
+						
+						<option value="">Other - Horizontal</option> 				
+						<option value="468x60_as"> 468 x 60 Banner </option> 
+						<option value="234x60_as"> 234 x 60 Half Banner </option> 
+											
+						<option value="">Other - Vertical</option> 	
+						<option value="120x600_as"> 120 x 600 Skyscraper </option> 
+						<option value="120x240_as"> 120 x 240 Vertical Banner </option> 
+						<option value="300x600_as"> 300 x 600 Large Skyscraper </option>
+					
+						<option value="">Other - Square</option>
+						<option value="250x250_as"> 250 x 250 Square </option> 
+						<option value="200x200_as"> 200 x 200 Small Square </option>
+						<option value="180x150_as"> 180 x 150 Small Rectangle </option>
+						<option value="125x125_as"> 125 x 125 Button </option>
+				
+						<option value="">Link units</option>
+						<option value="728x15_0ads_al">728 x 15</option>
+						<option value="468x15_0ads_al">468 x 15</option>
+						<option value="200x90_0ads_al">200 x 90</option>
+						<option value="180x90_0ads_al">180 x 90</option>
+						<option value="160x90_0ads_al">160 x 90</option>
+						<option value="120x90_0ads_al">120 x 90</option></field>
+				<field 
+					name="topStyle" 
+					type="text" 
+					default="" 
+					size="40" 
+					label="Top ad style" 
+					description="Top div ad style" />	
+				<field 
+					name="topClass" 
+					type="text" 
+					default="" 
+					size="40" 
+					label="Top ad class" 
+					description="Top div ad class" />
+				<field 
+					name="topShow" 
+					type="list" 
+					default="" 
+					label="Show on" 
+					description="Show on every page or only with tag">
+						<option value="every_page">On every page</option> 					 
+						<option value="only_with_tag">Only with tag</option></field>																
+			</fieldset>
+		
+			<fieldset name="middle" label='Middle Ad'>
+				<field 
+					name="middleEnabled" 
+					type="radio" 
+					default="1" 
+					label="Enable Middle Ad" 
+					description="Display AdSense in the middle view 'article'." >
+				   	<option value="1">Yes</option>
+				   	<option value="0">No</option>
+				</field>				
+				<field 
+					name="middlePublisherId" 
+					type="text" 
+					default="" 
+					size="40" 
+					label="Publisher ID" 
+					description="Enter Publisher ID from AdSense Code. It is an alphanumerical string like ca-pub-xxxxxxxxxxxxxxxx." />
+				<field 
+					name="middleName" 
+					type="text" 
+					default="" 
+					size="40" 
+					label="Name of AdSense unit" 
+					description="Enter the name of AdSense unit" />
+				<field 
+					name="middleSlot" 
+					type="text" 
+					default="" 
+					size="40" 
+					label="Slot number" 
+					description="Enter the slot number from AdSense Code. It is a numerical string like 54656789." />
+				<field 
+					name="middleEmptyLine" 
+					type="radio" 
+					default="no" 
+					label="Add empty line" 
+					description="Add empty line below and above Google AdSense Middle Ads" >
+				   	<option value="yes">Yes</option>
+				   	<option value="no">No</option></field>
+				<field 
+					name="middleTitle" 
+					type="list" 
+					default="" 
+					label="Add AdSense Title" 
+					description="Add AdSense Title above Google ad" >
+						<option value="">No Title</option>
+						<option value="Ads">Ads</option>	
+						<option value="Advertisement">Advertisement</option>
+						<option value="Sponsored links">Sponsored links</option></field>
+				<field 
+					name="middleFormat" 
+					type="list" 
+					default="336x280_as" 
+					label="Top AdSense Size" 
+					description="Choose the ad format and size that you would like to display in middle of your page.">			
+						<option value="">Recommended formats</option>
+						<option value="300x250_as"> 300 x 250 Medium rectangle </option> 					 
+						<option value="336x280_as"> 336 x 280 Large Rectangle </option>
+						<option value="728x90_as"> 728 x 90 Leaderboard </option>					
+						<option value="160x600_as"> 160 x 600 Wide Skyscraper </option> 
+						<option value="320x20_as"> 320 x 50 Mobile Banner </option> 
+						
+						<option value="">Other - Horizontal</option> 				
+						<option value="468x60_as"> 468 x 60 Banner </option> 
+						<option value="234x60_as"> 234 x 60 Half Banner </option> 
+											
+						<option value="">Other - Vertical</option> 	
+						<option value="120x600_as"> 120 x 600 Skyscraper </option> 
+						<option value="120x240_as"> 120 x 240 Vertical Banner </option> 
+						<option value="300x600_as"> 300 x 600 Large Skyscraper </option>
+					
+						<option value="">Other - Square</option>
+						<option value="250x250_as"> 250 x 250 Square </option> 
+						<option value="200x200_as"> 200 x 200 Small Square </option>
+						<option value="180x150_as"> 180 x 150 Small Rectangle </option>
+						<option value="125x125_as"> 125 x 125 Button </option>
+				
+						<option value="">Link units</option>
+						<option value="728x15_0ads_al">728 x 15</option>
+						<option value="468x15_0ads_al">468 x 15</option>
+						<option value="200x90_0ads_al">200 x 90</option>
+						<option value="180x90_0ads_al">180 x 90</option>
+						<option value="160x90_0ads_al">160 x 90</option>
+						<option value="120x90_0ads_al">120 x 90</option></field>
+				<field 
+					name="middleStyle" 
+					type="text" 
+					default="" 
+					size="40" 
+					label="Middle ad style" 
+					description="Middle div ad style" />	
+				<field 
+					name="middleClass" 
+					type="text" 
+					default="" 
+					size="40" 
+					label="Middle ad class" 
+					description="Middle div ad class" />
+				<field 
+					name="middleShow" 
+					type="list" 
+					default="" 
+					label="Show on" 
+					description="Show on every page or only with tag">
+						<option value="every_page">On every page</option> 					 
+						<option value="only_with_tag">Only with tag</option></field>																		
+			</fieldset>
+		
+			<fieldset name="bottom" label='Bottom Ad'>
+				<field 
+					name="bottomEnabled" 
+					type="radio" 
+					default="1" 
+					label="Enable Bottom Ad" 
+					description="Display AdSense in the bottom view 'article'." >
+						<option value="1">Yes</option>
+						<option value="0">No</option></field>
+				<field 
+					name="bottomPublisherId" 
+					type="text" 
+					default="" 
+					size="40" 
+					label="Publisher ID" 
+					description="Enter Publisher ID from AdSense Code. It is an alphanumerical string like ca-pub-xxxxxxxxxxxxxxxx." />
+				<field 
+					name="bottomName" 
+					type="text" 
+					default="" 
+					size="40" 
+					label="Name of AdSense unit" 
+					description="Enter the name of AdSense unit" />
+				<field 
+					name="bottomSlot" 
+					type="text" 
+					default="" 
+					size="40" 
+					label="Slot number" 
+					description="Enter the slot number from AdSense Code. It is a numerical string like 54656789." />					
+				<field 
+					name="bottomEmptyLine" 
+					type="radio" 
+					default="no" 
+					label="Add empty line" 
+					description="Add empty lines below and above Google AdSense Bottom Ads" >
+				   	<option value="yes">Yes</option>
+				   	<option value="no">No</option></field>
+				<field 
+					name="bottomTitle" 
+					type="list" 
+					default="" 
+					label="Add AdSense Title" 
+					description="Add AdSense Title above Google ad" >
+						<option value="">No Title</option>
+						<option value="Ads">Ads</option>	
+						<option value="Advertisement">Advertisement</option>
+						<option value="Sponsored links">Sponsored links</option></field>				
+				<field 
+					name="bottomFormat" 
+					type="list" 
+					default="468x15_0ads_al" 
+					label="AdSense Size" 
+					description="Choose the ad format and size that you would like to display in bootom your page.">
+						<option value="">Recommended formats</option>
+						<option value="300x250_as"> 300 x 250 Medium rectangle </option> 					 
+						<option value="336x280_as"> 336 x 280 Large Rectangle </option>
+						<option value="728x90_as"> 728 x 90 Leaderboard </option>					
+						<option value="160x600_as"> 160 x 600 Wide Skyscraper </option> 
+						<option value="320x20_as"> 320 x 50 Mobile Banner </option> 
+						
+						<option value="">Other - Horizontal</option> 				
+						<option value="468x60_as"> 468 x 60 Banner </option> 
+						<option value="234x60_as"> 234 x 60 Half Banner </option> 
+											
+						<option value="">Other - Vertical</option> 	
+						<option value="120x600_as"> 120 x 600 Skyscraper </option> 
+						<option value="120x240_as"> 120 x 240 Vertical Banner </option> 
+						<option value="300x600_as"> 300 x 600 Large Skyscraper </option>
+					
+						<option value="">Other - Square</option>
+						<option value="250x250_as"> 250 x 250 Square </option> 
+						<option value="200x200_as"> 200 x 200 Small Square </option>
+						<option value="180x150_as"> 180 x 150 Small Rectangle </option>
+						<option value="125x125_as"> 125 x 125 Button </option>
+				
+						<option value="">Link units</option>
+						<option value="728x15_0ads_al">728 x 15</option>
+						<option value="468x15_0ads_al">468 x 15</option>
+						<option value="200x90_0ads_al">200 x 90</option>
+						<option value="180x90_0ads_al">180 x 90</option>
+						<option value="160x90_0ads_al">160 x 90</option>
+						<option value="120x90_0ads_al">120 x 90</option></field>						
+				<field 
+					name="bottomStyle" 
+					type="text" 
+					default="" 
+					size="40" 
+					label="Bottom style" 
+					description="Bottom div style" />	
+				<field 
+					name="middleClass" 
+					type="text" 
+					default="" 
+					size="40" 
+					label="Middle ad class" 
+					description="Middle div ad class" />								
+				<field 
+					name="bottomShow" 
+					type="list" 
+					default="" 
+					label="Show on" 
+					description="Show on every page or only with tag">
+						<option value="every_page">On every page</option> 					 
+						<option value="only_with_tag">Only with tag</option></field>										
+			</fieldset>
+
+			<fieldset name="exclude" label="Exclude AdSense in specific Categories or Articles">
+				<field 
+					name="excludeArticles" 
+					type="text" 
+					default="" 
+					size="40" 					
+					label="Exclude AdSense in specific Articles" 
+					description="Enter Articles ID you would like to block. Devide the IDs by comma." />
+				<field 
+					name="excludeCats" 
+					type="text" 
+					default="" 
+					size="40" 					
+					label="Exclude AdSense in specific Categories" 
+					description="Enter Categories ID you would like to block. Devide the IDs by comma." />
+			</fieldset>	
+		
+			<fieldset name="blockip" label="Block specific IP">
+				<field 
+					name="blockedIPs" 
+					type="textarea" 
+					default="" 
+					label="Blocked IPs" 
+					description="Enter an IP number that you would like to block. Devide the addresses by comma." cols="30" rows="8" />
+				<field 
+					name="altMessage" 
+					type="textarea" 
+					default="" 
+					label="Message on blocked IP" 
+					description="Enter a message to show when blocked IPs try to load the page."  cols="30" rows="8"/>
+			</fieldset>		
+		</fields>
+	</config>
+</extension>

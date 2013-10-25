@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="2.5" client="site" method="upgrade">
+    <name>TTw latitude-longitude</name>
+    <author>Tonis</author>
+	<creationDate>8.2.2012</creationDate>
+	<copyright>Copyright (C) 2012. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>info@ttwebs.sk</authorEmail>
+	<authorUrl>www.ttwebs.sk</authorUrl>
+    <version>1.0</version>
+    <description>Module for displaying latitute and longnitute of a current place on the map.</description>
+    <files>
+        <filename>mod_lat_lon.xml</filename>
+        <filename module="mod_lat_lon">mod_lat_lon.php</filename>
+        <filename>index.html</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+		<filename>js/scripts.js</filename>
+		<filename>js/index.html</filename>
+    </files>
+	
+	
+		<params>
+				<param name="latlon_pre" type="textarea" rows="5" cols="30" label="Pre text" />
+				<param name="latlon_post" type="textarea" rows="5" cols="30" label="Post text" />
+				<param type="spacer" />
+				<param name="latlon_width" type="text" default="100%" label="Width of the map" description="Default map width. For exmaple: relative-'100%'; absolute-'150px'" />
+				<param name="latlon_height" type="text" default="200px" label="Height of the map" description="Default map height. For exmaple: relative-'100%'; absolute-'150px'" />
+				<param name="latlon_lat_lab" type="text" default="Latitude" label="Latitude label" />
+				<param name="latlon_lon_lab" type="text" default="Longitude" label="Longitude label" />
+				<param name="moduleclass_sfx" type="text" label="Module Class Suffix" description="Module Class Suffix for individual css styling" />
+		</params>
+
+	
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="latlon_pre" type="textarea" label="Pre text" />
+				<field name="latlon_post" type="textarea" label="Post text" />
+				<field type="spacer" />
+				<field name="latlon_width" type="text" default="100%" label="Width of the map" description="Default map width. For exmaple: relative-'100%'; absolute-'150px'" />
+				<field name="latlon_height" type="text" default="200px" label="Height of the map" description="Default map height. For exmaple: relative-'100%'; absolute-'150px'" />
+				<field name="latlon_lat_lab" type="text" default="Latitude" label="Latitude label" />
+				<field name="latlon_lon_lab" type="text" default="Longitude" label="Longitude label" />
+			</fieldset>	
+			<fieldset name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field
+					name="moduleclass_sfx"
+					type="text"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field
+					name="cache"
+					type="list"
+					default="1"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC">
+					<option	value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field
+					name="cache_time"
+					type="text"
+					default="900"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+				<field
+					name="cachemode"
+					type="hidden"
+					default="itemid">
+					<option	value="itemid"></option>
+				</field>
+			</fieldset>
+		</fields>
+    </config>
+</install>

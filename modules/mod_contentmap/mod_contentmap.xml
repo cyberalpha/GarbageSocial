@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="1.7" method="upgrade" client="site">
+	<name>mod_contentmap</name>
+	<creationDate>13/02/2012</creationDate>
+	<author>Open Source Solutions SLU</author>
+	<authorEmail>info@opensourcesolutions.es</authorEmail>
+	<authorUrl>http://www.opensourcesolutions.es/</authorUrl>
+	<copyright>Open Source Solutions SLU</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<version>1.2.10</version>
+	<description>MOD_CONTENTMAP_DESCRIPTION</description> <!-- Used in Module Manager > New > Select a Module Type. Translation in modules/mod_contentmap/language/xx-XX/xx-XX.mod_contentmap.ini -->
+
+	<files>
+		<filename module="mod_contentmap">mod_contentmap.php</filename>
+		<filename>mod_contentmap.xml</filename>
+		<filename>index.html</filename>
+		<folder>language</folder>
+		<folder>sql</folder>
+		<folder>tmpl</folder>
+	</files>
+
+	<install>
+		<sql><file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file></sql>
+	</install>
+
+	<config>
+		<fields name="params" addfieldpath="/libraries/contentmap/models/fields">
+
+			<fieldset name="basic">
+				<field type="langloader"/>
+				<field type="wizard" icon="exclamation-16.png" text="CONTENTMAP_NO_DATA" url="index.php?option=com_contentmap"/>
+				<field type="transchecker"/>
+				<field type="register"/>
+
+				<field type="ossheader" default="CONTENTMAP_MAP_LAYOUT" icon="map-16.png"/>
+				<field name="map_width" type="text" size="6" label="CONTENTMAP_WIDTH" description="CONTENTMAP_MAPWIDTH_DSC" default="100" required="true"/>
+				<field name="map_width_unit" type="list" label="CONTENTMAP_UNITS_LBL" default="%">
+					<option value="px">CONTENTMAP_PIXELS</option>
+					<option value="%">CONTENTMAP_PERCENT</option>
+				</field>
+				<field name="map_height" type="text" size="6" label="CONTENTMAP_HEIGHT" description="CONTENTMAP_MAPHEIGHT_DSC" default="400" required="true"/>
+				<field name="zoom" type="list" label="CONTENTMAP_ZOOM_LBL" description="CONTENTMAP_ZOOM_DSC" default="0">
+					<option value="0">CONTENTMAP_AUTOMATIC</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+					<option value="15">15</option>
+					<option value="16">16</option>
+					<option value="17">17</option>
+					<option value="18">18</option>
+					<option value="19">19</option>
+					<option value="20">20</option>
+					<option value="21">21</option>
+				</field>
+				<field name="center" type="text" label="CONTENTMAP_CENTER_LBL" description="CONTENTMAP_CENTER_DSC" />
+
+				<field name="map_type" type="list" label="CONTENTMAP_MAPTYPE_LBL" default="ROADMAP">
+					<option value="ROADMAP">CONTENTMAP_MAPTYPE_ROADMAP</option>
+					<option value="SATELLITE">CONTENTMAP_MAPTYPE_SATELLITE</option>
+					<option value="HYBRID">CONTENTMAP_MAPTYPE_HYBRID</option>
+					<option value="TERRAIN">CONTENTMAP_MAPTYPE_TERRAIN</option>
+				</field>
+
+				<field type="ossheader" default="CONTENTMAP_MARKERS_OPTIONS" icon="marker-16.png"/>
+				<field name="markers_icon" type="filelist" label="CONTENTMAP_MARKERS_ICON_LBL" description="CONTENTMAP_MARKERS_ICON_DSC" default="" hide_none="true" directory="media/contentmap/markers/icons" filter="\.png$" exclude="" stripext="" />
+				<field name="markers_action" type="list" label="CONTENTMAP_MARKERS_ACTION_LBL" description="CONTENTMAP_MARKERS_ACTION_DSC" default="infowindow">
+					<option value="infowindow">CONTENTMAP_MARKERS_ACTION_BALLOON</option>
+					<option value="redirect">CONTENTMAP_MARKERS_ACTION_REDIRECT</option>
+				</field>
+				<field name="cluster" type="list" label="CONTENTMAP_MARKERS_CLUSTER_LBL" description="CONTENTMAP_MARKERS_CLUSTER_DSC" default="1">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field type="ossheader" default="CONTENTMAP_INFOWINDOWS" icon="infowindow-16.png"/>
+				<field name="infowindow_event" type="list" default="click" label="CONTENTMAP_INFOWINDOW_ACTION_LBL" description="CONTENTMAP_INFOWINDOW_ACTION_DSC">
+					<option value="click">CONTENTMAP_INFOWINDOW_ACTION_CLICK</option>
+					<option value="mouseover">CONTENTMAP_INFOWINDOW_ACTION_MOUSEOVER</option>
+					<option value="never">JDISABLED</option>
+				</field>
+				<!-- Infowindow maxWidth doesn't work as expected -->
+				<field name="infowindow_width" type="text" size="26" label="CONTENTMAP_WIDTH" description="CONTENTMAP_INFOWINDOWWIDTH_DSC" default="400"/>
+
+				<field name="show_title" type="list" default="1" label="JGLOBAL_SHOW_TITLE_LABEL" description="JGLOBAL_SHOW_TITLE_DESC">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="link_titles" type="list" default="1" label="JGLOBAL_LINKED_TITLES_LABEL" description="JGLOBAL_LINKED_TITLES_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="link_target" type="list" label="CONTENTMAP_INFOWINDOW_TARGET_LBL" description="CONTENTMAP_INFOWINDOW_TARGET_DSC" default="_self">
+					<option value="_self">CONTENTMAP_TARGET_SELF</option>
+					<option value="_blank">CONTENTMAP_TARGET_BLANK</option>
+					<option value="_parent">CONTENTMAP_TARGET_PARENT</option>
+					<option value="_top">CONTENTMAP_TARGET_TOP</option>
+				</field>
+				<field name="show_image" type="list" default="1" label="CONTENTMAP_INFOWINDOW_SHOWIMAGE_LBL" description="CONTENTMAP_INFOWINDOW_SHOWIMAGE_DSC">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="show_created_by_alias" type="list" default="0" label="CONTENTMAP_INFOWINDOW_SHOWALIAS_LBL">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="show_created" type="list" default="0" label="CONTENTMAP_INFOWINDOW_SHOWDATE_LBL">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="show_intro" type="list" default="1" label="JGLOBAL_SHOW_INTRO_LABEL">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="introtext_size" type="text" size="6" label="CONTENTMAP_INFOWINDOW_TEXT_SIZE_LBL" description="CONTENTMAP_INFOWINDOW_TEXT_SIZE_DSC" default="300" />
+
+
+				<!--			<fieldset name="filtering" label="CONTENTMAP_FILTERING_OPTIONS_LBL"> -->
+				<field type="ossheader" default="CONTENTMAP_FILTERING_OPTIONS_LBL" icon="filter-16.png"/>
+
+				<field name="featured" type="list" default="0,1" label="CONTENTMAP_FEATURED_ARTICLES_LBL" description="CONTENTMAP_FEATURED_ARTICLES_DSC">
+					<option value="0,1">CONTENTMAP_ALL_ARTICLES</option>
+					<option value="1">CONTENTMAP_FEATURED_ARTICLES</option>
+					<option value="0">CONTENTMAP_UNFEATURED_ARTICLES</option>
+				</field>
+				<field type="spacer" hr="true" />
+				<field name="category_filter_type" type="list" default="0" label="CONTENTMAP_FILTERINGTYPE_LBL" description="CONTENTMAP_FILTERINGTYPE_DSC">
+					<option value="IN">CONTENTMAP_INCLUSIVE</option>
+					<option value="NOT IN">CONTENTMAP_EXCLUSIVE</option>
+					<option value="0">JDISABLED</option>
+				</field>
+				<field name="catid" type="category" extension="com_content" multiple="true" size="5" label="JCATEGORIES" description="CONTENTMAP_SELECT_ITEMS_DSC">
+				</field>
+				<field type="spacer" hr="true" />
+				<field name="author_filtering_type" type="list" default="0" label="CONTENTMAP_FILTERINGTYPE_LBL" description="CONTENTMAP_FILTERINGTYPE_DSC">
+					<option value="IN">CONTENTMAP_INCLUSIVE</option>
+					<option value="NOT IN">CONTENTMAP_EXCLUSIVE</option>
+					<option value="0">JDISABLED</option>
+				</field>
+				<field name="created_by" type="sql" multiple="true" size="5" label="CONTENTMAP_AUTHORS_LBL" description="CONTENTMAP_SELECT_ITEMS_DSC"
+					query="select id, name, username from #__users where id IN (select distinct(created_by) from #__content) order by name ASC"
+					key_field="id" value_field="name">
+				</field>
+			</fieldset>
+
+			<fieldset name="advanced">
+				<field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field name="css" type="filelist" label="CONTENTMAP_ALT_CSS_LBL" description="CONTENTMAP_ALT_CSS_DSC" default="default.php" hide_none="true" directory="libraries/contentmap/css" filter="\.php$" exclude="" stripext="true"/>
+				<field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field name="api_key" type="text" label="CONTENTMAP_API_KEY_LBL" description="CONTENTMAP_API_KEY_DSC" size="26"/>
+				<field type="ossheader" default="CONTENTMAP_DATASOURCE_WARNING" icon="database-16.png" helpurl="http://www.opensourcesolutions.es/en/docs/19-contentmap-documentation/28-how-to-create-a-custom-data-source.html"/>
+				<field name="data_source" type="list" label="CONTENTMAP_DATASOURCE_LBL" default="0">
+					<option value="0">CONTENTMAP_JOOMLA_ARTICLES</option>
+					<option value="joomlausers">CONTENTMAP_JOOMLA_USERS</option>
+					<!-- <option value="smf">CONTENTMAP_CONNECTOR_SMF</option> -->
+					<option value="1">CONTENTMAP_CONNECTOR</option>
+				</field>
+				<field name="data_url" type="text" label="CONTENTMAP_CONNECTOR_URL_LBL" description="CONTENTMAP_CONNECTOR_URL_DSC" default="http://forum.joomla.it/libraries/contentmap/json/smf.php"/>
+
+			</fieldset>
+
+		</fields>
+	</config>
+
+</extension>

@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+	type="module"
+	version="1.7"
+	client="site"
+	method="upgrade">
+	<name>mod_st42_paypal</name>
+	<author>Kohl Patrick(Studio 42)</author>
+	<creationDate>Aout 2012</creationDate>
+	<copyright>Copyright (C) 2012 Studio 42. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see http://www.gnu.org/licenses/gpl-2.0.html</license>
+	<authorEmail>contact@st42.fr</authorEmail>
+	<authorUrl>http://www.st42.fr</authorUrl>
+	<version>1.0.0</version>
+	<description>MOD_ST42_PAYPAL_XML_DESCRIPTION</description>
+	<files>
+		<filename module="mod_st42_paypal">mod_st42_paypal.php</filename>
+		<folder>tmpl/</folder>
+		<filename>index.html</filename>
+		<filename>mod_st42_paypal.xml</filename>
+	</files>
+	<languages>
+		<language tag="fr-FR">fr-FR.mod_st42_paypal.ini</language>
+		<language tag="fr-FR">fr-FR.mod_st42_paypal.sys.ini</language>
+		<language tag="en-GB">en-GB.mod_st42_paypal.ini</language>
+		<language tag="en-GB">en-GB.mod_st42_paypal.sys.ini</language>
+		<language tag="de-DE">de-DE.mod_st42_paypal.ini</language>
+		<language tag="de-DE">de-DE.mod_st42_paypal.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/administrator/components/com_content/models/fields/modal">
+				<field name="currency_code" type="list" default="USD" label="MOD_ST42_PAYPAL_CUR" description="MOD_ST42_PAYPAL_CUR_DESC">
+					<option value="AUD">MOD_ST42_PAYPAL_CUR_AUD</option>
+					<option value="BRL">MOD_ST42_PAYPAL_CUR_BRL</option>
+					<option value="CAD">MOD_ST42_PAYPAL_CUR_CAD</option>
+					<option value="CZK">MOD_ST42_PAYPAL_CUR_CZK</option>
+					<option value="DKK">MOD_ST42_PAYPAL_CUR_DKK</option>
+					<option value="EUR">MOD_ST42_PAYPAL_CUR_EUR</option>
+					<option value="HKD">MOD_ST42_PAYPAL_CUR_HKD</option>
+					<option value="HUF">MOD_ST42_PAYPAL_CUR_HUF</option>
+					<option value="ILS">MOD_ST42_PAYPAL_CUR_ILS</option>
+					<option value="JPY">MOD_ST42_PAYPAL_CUR_JPY</option>
+					<option value="MYR">MOD_ST42_PAYPAL_CUR_MYR</option>
+					<option value="MXN">MOD_ST42_PAYPAL_CUR_MXN</option>
+					<option value="NOK">MOD_ST42_PAYPAL_CUR_NOK</option>
+					<option value="NZD">MOD_ST42_PAYPAL_CUR_NZD</option>
+					<option value="PHP">MOD_ST42_PAYPAL_CUR_PHP</option>
+					<option value="PLN">MOD_ST42_PAYPAL_CUR_PLN</option>
+					<option value="GBP">MOD_ST42_PAYPAL_CUR_GBP</option>
+					<option value="SGD">MOD_ST42_PAYPAL_CUR_SGD</option>
+					<option value="SEK">MOD_ST42_PAYPAL_CUR_SEK</option>
+					<option value="CHF">MOD_ST42_PAYPAL_CUR_CHF</option>
+					<option value="TWD">MOD_ST42_PAYPAL_CUR_TWD</option>
+					<option value="THB">MOD_ST42_PAYPAL_CUR_THB</option>
+					<option value="TRY">MOD_ST42_PAYPAL_CUR_TRY</option>
+					<option value="USD">MOD_ST42_PAYPAL_CUR_USD</option>
+				</field>
+				<field name="show_currency" type="radio" default="0" label="MOD_ST42_PAYPAL_SHOW_CURRENCY" description="MOD_ST42_PAYPAL_SHOW_CURRENCY_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="amount" type="text" default="10" label="MOD_ST42_PAYPAL_AMOUNT" description="MOD_ST42_PAYPAL_AMOUNT_DESC" />
+				<field name="show_amount" type="radio" default="0" label="MOD_ST42_PAYPAL_AMOUNT_SHOW" description="MOD_ST42_PAYPAL_AMOUNT_SHOW_DESC">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+					<option value="2">MOD_ST42_PAYPAL_AMOUNT_SHOW_INPUT</option>
+				</field>
+
+				<field name="country" type="list" default="US" label="MOD_ST42_PAYPAL_COUNTRY" description="MOD_ST42_PAYPAL_COUNTRY_DESC">
+					<option value="0">JOPTION_USE_DEFAULT</option>
+					<option value="US">United States</option>
+					<option value="AL">Albania</option>
+					<option value="DZ">Algeria</option>
+					<option value="AD">Andorra</option>
+					<option value="AO">Angola</option>
+					<option value="AI">Anguilla</option>
+					<option value="AG">Antigua and Barbuda</option>
+					<option value="AR">Argentina</option>
+					<option value="AM">Armenia</option>
+					<option value="AW">Aruba</option>
+					<option value="AU">Australia</option>
+					<option value="AT">Austria</option>
+					<option value="AZ">Azerbaijan Republic</option>
+					<option value="BS">Bahamas</option>
+					<option value="BH">Bahrain</option>
+					<option value="BB">Barbados</option>
+					<option value="BE">Belgium</option>
+					<option value="BZ">Belize</option>
+					<option value="BJ">Benin</option>
+					<option value="BM">Bermuda</option>
+					<option value="BT">Bhutan</option>
+					<option value="BO">Bolivia</option>
+					<option value="BA">Bosnia and Herzegovina</option>
+					<option value="BW">Botswana</option>
+					<option value="BR">Brazil</option>
+					<option value="VG">British Virgin Islands</option>
+					<option value="BN">Brunei</option>
+					<option value="BG">Bulgaria</option>
+					<option value="BF">Burkina Faso</option>
+					<option value="BI">Burundi</option>
+					<option value="KH">Cambodia</option>
+					<option value="CA">Canada</option>
+					<option value="CV">Cape Verde</option>
+					<option value="KY">Cayman Islands</option>
+					<option value="TD">Chad</option>
+					<option value="CL">Chile</option>
+					<option value="C2">China</option>
+					<option value="CO">Colombia</option>
+					<option value="KM">Comoros</option>
+					<option value="CK">Cook Islands</option>
+					<option value="CR">Costa Rica</option>
+					<option value="HR">Croatia</option>
+					<option value="CY">Cyprus</option>
+					<option value="CZ">Czech Republic</option>
+					<option value="CD">Democratic Republic of the Congo</option>
+					<option value="DK">Denmark</option>
+					<option value="DJ">Djibouti</option>
+					<option value="DM">Dominica</option>
+					<option value="DO">Dominican Republic</option>
+					<option value="EC">Ecuador</option>
+					<option value="SV">El Salvador</option>
+					<option value="ER">Eritrea</option>
+					<option value="EE">Estonia</option>
+					<option value="ET">Ethiopia</option>
+					<option value="FK">Falkland Islands</option>
+					<option value="FO">Faroe Islands</option>
+					<option value="FM">Federated States of Micronesia</option>
+					<option value="FJ">Fiji</option>
+					<option value="FI">Finland</option>
+					<option value="FR">France</option>
+					<option value="GF">French Guiana</option>
+					<option value="PF">French Polynesia</option>
+					<option value="GA">Gabon Republic</option>
+					<option value="GM">Gambia</option>
+					<option value="DE">Germany</option>
+					<option value="GI">Gibraltar</option>
+					<option value="GR">Greece</option>
+					<option value="GL">Greenland</option>
+					<option value="GD">Grenada</option>
+					<option value="GP">Guadeloupe</option>
+					<option value="GT">Guatemala</option>
+					<option value="GN">Guinea</option>
+					<option value="GW">Guinea Bissau</option>
+					<option value="GY">Guyana</option>
+					<option value="HN">Honduras</option>
+					<option value="HK">Hong Kong</option>
+					<option value="HU">Hungary</option>
+					<option value="IS">Iceland</option>
+					<option value="IN">India</option>
+					<option value="ID">Indonesia</option>
+					<option value="IE">Ireland</option>
+					<option value="IL">Israel</option>
+					<option value="IT">Italy</option>
+					<option value="JM">Jamaica</option>
+					<option value="JP">Japan</option>
+					<option value="JO">Jordan</option>
+					<option value="KZ">Kazakhstan</option>
+					<option value="KE">Kenya</option>
+					<option value="KI">Kiribati</option>
+					<option value="KW">Kuwait</option>
+					<option value="KG">Kyrgyzstan</option>
+					<option value="LA">Laos</option>
+					<option value="LV">Latvia</option>
+					<option value="LS">Lesotho</option>
+					<option value="LI">Liechtenstein</option>
+					<option value="LT">Lithuania</option>
+					<option value="LU">Luxembourg</option>
+					<option value="MG">Madagascar</option>
+					<option value="MW">Malawi</option>
+					<option value="MY">Malaysia</option>
+					<option value="MV">Maldives</option>
+					<option value="ML">Mali</option>
+					<option value="MT">Malta</option>
+					<option value="MH">Marshall Islands</option>
+					<option value="MQ">Martinique</option>
+					<option value="MR">Mauritania</option>
+					<option value="MU">Mauritius</option>
+					<option value="YT">Mayotte</option>
+					<option value="MX">Mexico</option>
+					<option value="MN">Mongolia</option>
+					<option value="MS">Montserrat</option>
+					<option value="MA">Morocco</option>
+					<option value="MZ">Mozambique</option>
+					<option value="NA">Namibia</option>
+					<option value="NR">Nauru</option>
+					<option value="NP">Nepal</option>
+					<option value="NL">Netherlands</option>
+					<option value="AN">Netherlands Antilles</option>
+					<option value="NC">New Caledonia</option>
+					<option value="NZ">New Zealand</option>
+					<option value="NI">Nicaragua</option>
+					<option value="NE">Niger</option>
+					<option value="NU">Niue</option>
+					<option value="NF">Norfolk Island</option>
+					<option value="NO">Norway</option>
+					<option value="OM">Oman</option>
+					<option value="PW">Palau</option>
+					<option value="PA">Panama</option>
+					<option value="PG">Papua New Guinea</option>
+					<option value="PE">Peru</option>
+					<option value="PH">Philippines</option>
+					<option value="PN">Pitcairn Islands</option>
+					<option value="PL">Poland</option>
+					<option value="PT">Portugal</option>
+					<option value="QA">Qatar</option>
+					<option value="CG">Republic of the Congo</option>
+					<option value="RE">Reunion</option>
+					<option value="RO">Romania</option>
+					<option value="RU">Russia</option>
+					<option value="RW">Rwanda</option>
+					<option value="VC">Saint Vincent and the Grenadines</option>
+					<option value="WS">Samoa</option>
+					<option value="SM">San Marino</option>
+					<option value="ST">Sao Tome and Principe</option>
+					<option value="SA">Saudi Arabia</option>
+					<option value="SN">Senegal</option>
+					<option value="SC">Seychelles</option>
+					<option value="SL">Sierra Leone</option>
+					<option value="SG">Singapore</option>
+					<option value="SK">Slovakia</option>
+					<option value="SI">Slovenia</option>
+					<option value="SB">Solomon Islands</option>
+					<option value="SO">Somalia</option>
+					<option value="ZA">South Africa</option>
+					<option value="KR">South Korea</option>
+					<option value="ES">Spain</option>
+					<option value="LK">Sri Lanka</option>
+					<option value="SH">St. Helena</option>
+					<option value="KN">St. Kitts and Nevis</option>
+					<option value="LC">St. Lucia</option>
+					<option value="PM">St. Pierre and Miquelon</option>
+					<option value="SR">Suriname</option>
+					<option value="SJ">Svalbard and Jan Mayen Islands</option>
+					<option value="SZ">Swaziland</option>
+					<option value="SE">Sweden</option>
+					<option value="CH">Switzerland</option>
+					<option value="TW">Taiwan</option>
+					<option value="TJ">Tajikistan</option>
+					<option value="TZ">Tanzania</option>
+					<option value="TH">Thailand</option>
+					<option value="TG">Togo</option>
+					<option value="TO">Tonga</option>
+					<option value="TT">Trinidad and Tobago</option>
+					<option value="TN">Tunisia</option>
+					<option value="TR">Turkey</option>
+					<option value="TM">Turkmenistan</option>
+					<option value="TC">Turks and Caicos Islands</option>
+					<option value="TV">Tuvalu</option>
+					<option value="UG">Uganda</option>
+					<option value="UA">Ukraine</option>
+					<option value="AE">United Arab Emirates</option>
+					<option value="GB">United Kingdom</option>
+					<option value="UY">Uruguay</option>
+					<option value="VU">Vanuatu</option>
+					<option value="VA">Vatican City State</option>
+					<option value="VE">Venezuela</option>
+					<option value="VN">Vietnam</option>
+					<option value="WF">Wallis and Futuna Islands</option>
+					<option value="YE">Yemen</option>
+					<option value="ZM">Zambia</option>		
+				</field>
+				<field name="return_url_id" type="modal_article"
+					label="MOD_ST42_PAYPAL_RETURN_URL"  description="MOD_ST42_PAYPAL_RETURN_URL_DESC" 
+					required="false" default="0" />
+				<field name="cancel_url_id" type="modal_article"
+					label="MOD_ST42_PAYPAL_CANCEL_URL"  description="MOD_ST42_PAYPAL_CANCEL_URL_DESC" 
+					required="false" default="0" />
+				<field name="@spacer" type="spacer" default="" label="" description="" />
+				<field name="business" type="text" default="" required="true" label="MOD_ST42_PAYPAL_ID" description="MOD_ST42_PAYPAL_ID_DESC" />
+				<field name="item_name" type="text" default="" label="MOD_ST42_PAYPAL_ITEM_NAME" description="MOD_ST42_PAYPAL_ITEM_NAME_DESC" />
+				<field name="btn_cc" type="list" default="" label="MOD_ST42_PAYPAL_SHOW_CREDITCARD" description="MOD_ST42_PAYPAL_SHOW_CREDITCARD_DESC" >
+					<option value="">JHIDE</option>
+					<option value="CC">JSHOW</option>
+				</field>
+				<field name="btn_size" type="list" default="" label="MOD_ST42_PAYPAL_BTN_SIZE" description="MOD_ST42_PAYPAL_BTN_SIZE_DESC" >
+					<option value="SM">MOD_ST42_PAYPAL_BTN_SIZE_SMALL</option>
+					<option value="LG">MOD_ST42_PAYPAL_BTN_SIZE_LARGE</option>
+				</field>
+				<field name="@spacer" type="spacer" default="" label="" description="" />
+				<field
+					name="header_text"
+					type="textarea"
+					filter="safehtml"
+					rows="3"
+					cols="40"
+					label="MOD_ST42_PAYPAL_HEADER"
+					description="MOD_ST42_PAYPAL_HEADER_DESC" />
+
+				<field
+					name="footer_text"
+					type="textarea"
+					filter="safehtml"
+					rows="3"
+					cols="40"
+					label="MOD_ST42_PAYPAL_FOOTER"
+					description="MOD_ST42_PAYPAL_FOOTER_DESC" />
+				<field name="display_link" default="1" type="list" label="MOD_ST42_PAYPAL_BACKLINK" description="MOD_ST42_PAYPAL_BACKLINK_DESC">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+			</fieldset>
+			<fieldset
+				name="advanced">
+
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+
+				<field
+					name="moduleclass_sfx"
+					type="text"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+
+				<field
+					name="cache"
+					type="list"
+					default="1"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC">
+					<option
+						value="1">JGLOBAL_USE_GLOBAL</option>
+					<option
+						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field
+					name="cache_time"
+					type="text"
+					default="900"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+				<field
+					name="cachemode"
+					type="hidden"
+					default="static">
+					<option
+						value="static"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

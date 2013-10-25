@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
+<install type="module" version="1.5.0" method="upgrade">
+	<name>SobiPro Entries Module</name>
+	<creationDate>9 August 2011</creationDate>
+	<author>Sigsiu.NET GmbH</author>
+	<authorEmail>sobi[at]sigsiu.net</authorEmail>
+	<authorUrl>http://www.Sigsiu.NET</authorUrl>
+	<copyright>Copyright (C) 2006-2011 Sigsiu.NET GmbH</copyright>
+	<license>GNU General Public License v3</license>
+	<version>1.0</version>
+	<description>MOD_SOBIPRO_ENTRIES_XML_DESCRIPTION</description>
+	<svn>$Revision: 1796 $</svn>
+	<SobiPro>
+	  <requirements>
+	    <core version="1.0.0.1753"/>
+	  </requirements> 	
+	</SobiPro>
+	<files>
+		<filename module="mod_sobipro_entries">mod_sobipro_entries.php</filename>
+		<filename>helper.php</filename>
+		<filename>spelements.php</filename>
+		<filename>spform.php</filename>
+		<filename>view.php</filename>
+		<filename>changelog.txt</filename>
+		<filename>index.html</filename>
+		<filename>tmpl/default.xsl</filename>
+		<filename>tmpl/index.html</filename>
+	</files>
+	
+	<languages>
+		<language tag="en-GB">languages/en-GB.mod_sobipro_entries.ini</language>
+		<language tag="en-GB">languages/en-GB.mod_sobipro_entries.sys.ini</language>
+		<language tag="de-DE">languages/de-DE.mod_sobipro_entries.ini</language>
+		<language tag="de-DE">languages/de-DE.mod_sobipro_entries.sys.ini</language>
+		<language tag="pl-PL">languages/pl-PL.mod_sobipro_entries.ini</language>
+		<language tag="pl-PL">languages/pl-PL.mod_sobipro_entries.sys.ini</language>
+		<language tag="sv-SE">languages/sv-SE.mod_sobipro_entries.ini</language>
+		<language tag="sv-SE">languages/sv-SE.mod_sobipro_entries.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/modules/mod_sobipro_entries/">
+				<field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+				<field name="SOBI_SELECT_SECTION" type="spform" msg="SOBI_SELECT_SECTION_EXPL" />
+				<field name="sid" type="spform" />
+				<field name="spOrder" type="spform" />
+				<field name="fieldOrder" type="text" default="" label="SOBI_ORDER_BY_FIELD" size="50" />
+				<field name="entriesLimit" type="text" default="5" label="SOBI_ENTRIES_LIMIT" size="5" />
+				<field name="tplFile" type="spform" />
+				<field name="cssFiles" type="textarea" default="" label="SOBI_MOD_CSS_FILES" cols="40" rows="3" />
+				<field name="jsFiles" type="textarea" default="" label="SOBI_MOD_JS_FILES" cols="40" rows="3" />
+				<field name="xmlDeb" type="list" default="0" label="SOBI_XML_DEB">
+					<option value="1">YES</option>
+					<option value="0">NO</option>
+				</field>				
+			</fieldset>
+		</fields>
+	</config>
+	<params addpath="/modules/mod_sobipro_entries/">
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+		<param name="SOBI_SELECT_SECTION" type="spelements" msg="SOBI_SELECT_SECTION_EXPL" />
+		<!-- <param name="cid" type="spsection" msg="SOBI_SELECT_CATEGORY_EXPL" /> -->
+		<param name="sid" type="spelements" />
+		<param name="spOrder" type="spelements" />
+		<param name="fieldOrder" type="text" default="" label="SOBI_ORDER_BY_FIELD" size="50" />
+		<param name="entriesLimit" type="text" default="5" label="SOBI_ENTRIES_LIMIT" size="5" />
+		<param name="tplFile" type="spelements" />
+		<param name="cssFiles" type="textarea" default="" label="SOBI_MOD_CSS_FILES" cols="40" rows="3" />
+		<param name="jsFiles" type="textarea" default="" label="SOBI_MOD_JS_FILES" cols="40" rows="3" />
+		<param name="xmlDeb" type="list" default="0" label="SOBI_XML_DEB">
+			<option value="1">YES</option>
+			<option value="0">NO</option>
+		</param>				
+	</params>
+</install>

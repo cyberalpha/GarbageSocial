@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="2.0" type="language" core="1">
+	<name>Español (formal internacional)</name>
+	<tag>es-ES</tag>
+	<version>2.0.12</version>
+	<creationDate>12 Septiembre 2011</creationDate>
+	<author>Webempresa</author>
+	<authorEmail>info@webempresa.com</authorEmail>
+	<copyright>Copyright Webempresa 2011. Todos los derechos reservados</copyright>
+	<license>Licencia GNU/GPL Versión 2 o superior - http://www.gnu.org/licenses/gpl-2.0.html</license>
+	<description>Español (formal internacional) paquete de idioma para JCE 2.0.12</description>
+	<site folder="language/es-ES">
+		
+			<!-- // Optional plugin language files
+			<file>es-ES.com_jce_caption.ini</file> 
+			<file>es-ES.com_jce_emotions.ini</file>
+			<file>es-ES.com_jce_filemanager.ini</file>
+			<file>es-ES.com_jce_fullpage.ini</file>
+			<file>es-ES.com_jce_iframe.ini</file>
+			<file>es-ES.com_jce_mediamanager.ini</file>
+			<file>es-ES.com_jce_mediamanager.ini</file>
+			<file>es-ES.com_jce_templatemanager.ini</file>
+			// -->
+	</site>
+	<libraries folder="/components/com_jce/editor/libraries">
+		<file>xml/config/profiles.xml</file>
+		<file>js/editor.js</file>
+	</libraries>
+	<models folder="administrator/components/com_jce/models">
+		<file>editor.php</file>
+		<file>cpanel.php</file>
+	</models>
+	<views folder="administrator/components/com_jce/views">
+		<file>cpanel/tmpl/default.php</file>
+	</views>
+	<tinymce folder="components/com_jce/editor/tiny_mce">
+		<file>langs/es.js</file>
+		<file>langs/es_dlg.js</file>
+		<file>themes/advanced/langs/es.js</file>
+		<file>themes/advanced/langs/es_dlg.js</file>
+		<file>plugins/article/langs/es_dlg.js</file>
+		<file>plugins/browser/langs/es_dlg.js</file>
+		<file>plugins/imgmanager/langs/es_dlg.js</file>
+		<file>plugins/link/langs/es_dlg.js</file>
+		<file>plugins/searchreplace/langs/es_dlg.js</file>
+		<file>plugins/style/langs/es_dlg.js</file>
+		<file>plugins/table/langs/es_dlg.js</file>
+		<file>plugins/xhtmlxtras/langs/es_dlg.js</file>
+			<!-- // Optional plugin language files
+			<file>plugins/caption/langs/es.js</file>
+			<file>plugins/emotions/langs/es_dlg.js</file>
+			<file>plugins/filemanager/langs/es_dlg.js</file>
+			<file>plugins/fullpage/langs/es_dlg.js</file>
+			<file>plugins/iframe/langs/es.js</file>
+			<file>plugins/iframe/langs/es_dlg.js</file>
+			<file>plugins/mediamanager/langs/es_dlg.js</file>
+			<file>plugins/templatemanager/langs/es.js</file>
+			<file>plugins/templatemanager/langs/es_dlg.js</file>
+			// -->
+	</tinymce>
+	<administration folder="administrator/language/es-ES">
+		<file>es-ES.com_jce.ini</file>
+		<file>es-ES.com_jce.menu.ini</file>
+		<file>es-ES.com_jce.sys.ini</file>
+		<file>es-ES.plg_editors_jce.ini</file>
+		<file>es-ES.plg_editors_jce.sys.ini</file>
+	</administration>
+</install>

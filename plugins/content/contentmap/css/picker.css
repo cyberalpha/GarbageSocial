@@ -1,0 +1,18 @@
+.contentmap_picker {
+	margin: 0;
+	border: none;
+}
+
+.contentmap_message {
+	border: 1px solid silver;
+	padding: 5px;
+	margin: 5px 0;
+}
+
+.contentmap_red {
+	background: #ffa0a0;
+}
+
+.contentmap_yellow {
+	background: #ffffcc;
+}

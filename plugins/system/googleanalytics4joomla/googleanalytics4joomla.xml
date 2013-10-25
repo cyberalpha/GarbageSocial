@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="plugin" group="system">
+	<name>System - Google Analytics 4 Joomla LITE</name>
+	<author>Martijn van Vreeden</author>
+	<creationDate>Febrero 2011</creationDate>
+	<copyright>Copyright (C) 2011 Analytics For Joomla. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>info@analyticsforjoomla.com</authorEmail>
+	<authorUrl>www.analyticsforjoomla.com</authorUrl>
+	<version>1.0</version>
+	<description>
+	    	  <![CDATA[
+			  <style type="text/css" media="all"><!--#extension_container {padding:0px 0px 4px 0px;}h1 {clear:both;margin:0px 0px 12px 0px;padding:0px 0px 1px 0px;color:#C64934;font-size:17px;border-bottom:1px dotted #505050;}h2 {clear:both;font-size:17px;}.title {margin:4px 0px;font-size:12px;font-weight:bold;}.red {color:#C64934;}#extension_container ul {margin:4px 16px;padding:0px;list-style:square;}#extension_container ul li {margin:2px;padding:0px;}#jw_ext_logo {float:right;background:#fff;border:0px solid #ccc;padding:2px;margin:0px 0px 2px 8px;}a.active,a.focus {outline:0;}--></style><div id="extension_container"><h1><a target="_blank" title="Visite Analytics para Joomla!" href="http://www.analyticsforjoomla.com?utm_medium=client">Con Plugin de Google Analytics [para Joomla! 1.7.x]</a></h1>Puede añadir automáticamente el código de seguimiento necesario para su sitio web, sin tener que intervenir en el código de su plantilla.<br/><h2>Características principales</h2><ul><li>No precisa conocimiento de HTML o de código</li><li>Seguimiento de subdominios y  de varios dominios</li></ul><br/>Por favor visite <a href="http://www.analyticsforjoomla.com?utm_medium=client">Analytics para Joomla</a> y descargue la última versión.<br/><br/>Para preguntas o asistencia, por favor visita nuestra <a href="http://www.analyticsforjoomla.com/google-analytics-free-version/?utm_medium=client">sección de documentación</a>.<br/><br/>Si te gusta este plugin, por favor, vota en el <a href="http://extensions.joomla.org/extensions/site-management/site-analytics/16009">Joomla Extensions Directory</a>!</div><br /><div>Traducido por Webempresa - Septiembre 2011</div>	  
+			  ]]>
+			  </description>
+	<files>
+		<filename plugin="googleanalytics4joomla">googleanalytics4joomla.php</filename>
+	</files>
+	<config>
+		<fields name="params" >
+			<fieldset name="basic">
+
+				<field name="ua_id" type="text" default="" label="ID Analytics" description="Este es el ID de Propiedad Web proporcionado por Google. El formato es: UA-XXXXXXX-X" />
+				<field name="tracking_mode" type="list" default="0" label="Modo de seguimiento" description="Seleccione el tipo de seguimiento que desea aplicar">
+        	<option value="0">Seguimiento Dominio Único</option>
+        	<option value="1">Seguimiento Subdominio</option>
+        	<option value="2">Seguimiento Multi-dominio</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="content">
+	<name>googleMaps</name>
+	<author>kksou</author>
+	<creationDate>May 2009</creationDate>
+	<copyright>(C) kksou.com. All Rights Reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>support@kksou.com</authorEmail>
+	<authorUrl>www.kksou.com/php-gtk2/</authorUrl>
+	<version>2.5.19</version>
+	<description>This plugin allows you to include one or more google maps right inside your content item or article.</description>
+	<files>
+		<filename plugin="googleMaps">googleMaps.php</filename>
+		<filename>googleMaps.ver</filename>
+		<filename>googleMaps.lib.php</filename>
+		<filename>googleMaps.util.php</filename>
+	</files>
+
+	<config>
+			<fields name="params">
+				<fieldset name="basic">
+
+				<field name="api_key" type="text"
+					description="Google Maps API key"
+					label="Google Maps API key"
+					size="48"
+				/>
+
+				<field name="width" type="text"
+					label="Default width"
+					default="640"
+					description="Default width for the Google Maps"
+					size="4"
+				/>
+
+				<field name="height" type="text"
+					label="Default height"
+					description="Default height for the Google Maps"
+					default="480"
+					size="4"
+				/>
+
+				<field name="zoom" type="text"
+					label="Default zoom"
+					description="Default zoom level for the Google Maps"
+					default="15"
+					size="2"
+				/>
+
+				</fieldset>
+			</fields>
+		</config>
+
+</extension>

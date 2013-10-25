@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5.3" client="site" method="upgrade">
+	<name>Vinaora Cu3er 3D Slideshow</name>
+	<author>VINAORA</author>
+	<creationDate>March 2012</creationDate>
+	<copyright>Copyright (C) 2010-2012 VINAORA. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>info@vinaora.com</authorEmail>
+	<authorUrl>http://vinaora.com</authorUrl>
+	<version>2.5.3</version>
+	<description>MOD_VINAORA_CU3ER_3D_SLIDESHOW_DESC</description>
+	<files>
+		<filename module="mod_vinaora_cu3er_3d_slideshow">mod_vinaora_cu3er_3d_slideshow.php</filename>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<folder>fields</folder>
+		<folder>helper</folder>
+		<folder>tmpl</folder>
+	</files>
+	<media folder="media" destination="mod_vinaora_cu3er_3d_slideshow">
+		<filename>index.html</filename>
+		<filename>intro.html</filename>
+		<folder>config</folder>
+		<folder>css</folder>
+		<folder>flash</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+	</media>
+	<languages>
+		<language tag="en-GB">language/en-GB.mod_vinaora_cu3er_3d_slideshow.ini</language>
+		<language tag="en-GB">language/en-GB.mod_vinaora_cu3er_3d_slideshow.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params" addfieldpath="/modules/mod_vinaora_cu3er_3d_slideshow/fields" >
+			<fieldset name="basic">
+				<field name="lastedit" type="lastedit" label="MOD_VC3S_FIELD_LAST_EDIT" ></field>
+				<field name="config_custom" type="filelist" default="-1" label="MOD_VC3S_FIELD_CONFIG_CUSTOM" description="MOD_VC3S_FIELD_CONFIG_CUSTOM_DESC" directory="media/mod_vinaora_cu3er_3d_slideshow/config/custom" filter="[^\s]+(?i)(\.xml(\.php)?)$" exclude="" stripext="" hide_none="0" hide_default="1" ></field>
+				<field type="spacer" name="spacer10" class="text" hr="true"/>
+				<field name="slide_panel_width" type="text" default="" label="MOD_VC3S_FIELD_SLIDE_PANEL_WIDTH" description="MOD_VC3S_FIELD_SLIDE_PANEL_WIDTH_DESC" ></field>
+				<field name="slide_panel_height" type="text" default="" label="MOD_VC3S_FIELD_SLIDE_PANEL_HEIGHT" description="MOD_VC3S_FIELD_SLIDE_PANEL_HEIGHT_DESC" ></field>
+				<field name="slide_panel_horizontal_align" type="list" default="left" label="MOD_VC3S_FIELD_SLIDE_PANEL_HORIZONTAL_ALIGN" description="MOD_VC3S_FIELD_SLIDE_PANEL_HORIZONTAL_ALIGN_DESC" >
+					<option value="left">MOD_VC3S_FIELD_OPTION_LEFT</option>
+					<option value="center">MOD_VC3S_FIELD_OPTION_CENTER</option>
+					<option value="right">MOD_VC3S_FIELD_OPTION_RIGHT</option>
+				</field>
+				<field name="slide_panel_vertical_align" type="list" default="top" label="MOD_VC3S_FIELD_SLIDE_PANEL_VERTICAL_ALIGN" description="MOD_VC3S_FIELD_SLIDE_PANEL_VERTICAL_ALIGN_DESC" >
+					<option value="top">MOD_VC3S_FIELD_OPTION_TOP</option>
+					<option value="center">MOD_VC3S_FIELD_OPTION_CENTER</option>
+					<option value="bottom">MOD_VC3S_FIELD_OPTION_BOTTOM</option>
+				</field>
+				<field name="ui_visibility_time" type="text" default="3" label="MOD_VC3S_FIELD_SLIDE_UI_VISIBILITY_TIME" description="MOD_VC3S_FIELD_SLIDE_UI_VISIBILITY_TIME_DESC" ></field>
+				<field type="spacer" name="spacer11" class="text" hr="true"/>
+				<field name="border_width" type="text" default="0" label="MOD_VC3S_FIELD_BORDER_WIDTH" description="MOD_VC3S_FIELD_BORDER_WIDTH_DESC" />
+				<field name="border_color" type="colorpicker" default="#000000" label="MOD_VC3S_FIELD_BORDER_COLOR" description="MOD_VC3S_FIELD_BORDER_COLOR_DESC" />
+				<field name="border_style" type="list" default="solid" label="MOD_VC3S_FIELD_BORDER_STYLE" description="MOD_VC3S_FIELD_BORDER_STYLE_DESC">
+					<option value="none">MOD_VC3S_FIELD_OPTION_BORDER_STYLE_NONE</option>
+					<option value="dotted">MOD_VC3S_FIELD_OPTION_BORDER_STYLE_DOTTED</option>
+					<option value="dashed">MOD_VC3S_FIELD_OPTION_BORDER_STYLE_DASHED</option>
+					<option value="solid">MOD_VC3S_FIELD_OPTION_BORDER_STYLE_SOLID</option>
+					<option value="double">MOD_VC3S_FIELD_OPTION_BORDER_STYLE_DOUBLE</option>
+				</field>
+				<field name="border_rounded" type="radio" default="1" label="MOD_VC3S_FIELD_BORDER_ROUNDED" description="MOD_VC3S_FIELD_BORDER_ROUNDED_DESC">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="border_shadow" type="radio" default="1" label="MOD_VC3S_FIELD_BORDER_SHADOW" description="MOD_VC3S_FIELD_BORDER_SHADOW_DESC">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="footer" type="filelist" label="MOD_VC3S_FIELD_FOOTER" description="MOD_VC3S_FIELD_FOOTER_DESC" directory="media/mod_vinaora_cu3er_3d_slideshow/images/footer/" filter="[^\s]+\.(?i)(png|gif|jpg|bmp)$" exclude="" stripext="1" hide_none="0" hide_default="1" />
+				<!-- SLIDE -->
+				<field type="spacer" name="spacer12" class="text" hr="true"/>
+				<field name="slide_dir" type="folderlist" default="-1" label="MOD_VC3S_FIELD_SLIDE_DIRECTORY" description="MOD_VC3S_FIELD_SLIDE_DIRECTORY_DESC" directory="images" filter="" exclude="" hide_none="0" hide_default="1" ></field>
+				<field name="slide_url" type="textarea" default="" label="MOD_VC3S_FIELD_SLIDE_URL" description="MOD_VC3S_FIELD_SLIDE_URL_DESC" rows="5" cols="30" ></field>
+				<field name="slide_link" type="textarea" default="" label="MOD_VC3S_FIELD_SLIDE_LINK" description="MOD_VC3S_FIELD_SLIDE_LINK_DESC" rows="5" cols="30" ></field>
+				<field name="slide_link_target" type="textarea" default="" label="MOD_VC3S_FIELD_SLIDE_LINK_TARGET" description="MOD_VC3S_FIELD_SLIDE_LINK_TARGET_DESC" rows="5" cols="30" ></field>
+				<field name="slide_description_heading" type="textarea" default="" label="MOD_VC3S_FIELD_SLIDE_DESCRIPTION_HEADING" description="MOD_VC3S_FIELD_SLIDE_DESCRIPTION_HEADING_DESC" rows="5" cols="30" ></field>
+				<field name="slide_description_paragraph" type="textarea" default="" label="MOD_VC3S_FIELD_SLIDE_DESCRIPTION_PARAGRAPH" description="MOD_VC3S_FIELD_SLIDE_DESCRIPTION_PARAGRAPH_DESC" rows="5" cols="30" ></field>
+				<field name="slide_description_link" type="textarea" default="" label="MOD_VC3S_FIELD_SLIDE_DESCRIPTION_LINK" description="MOD_VC3S_FIELD_SLIDE_DESCRIPTION_LINK_DESC" rows="5" cols="30" ></field>
+				<field name="slide_description_link_target" type="textarea" default="" label="MOD_VC3S_FIELD_SLIDE_DESCRIPTION_LINK_TARGET" description="MOD_VC3S_FIELD_SLIDE_DESCRIPTION_LINK_TARGET_DESC" rows="5" cols="30" ></field>
+
+			</fieldset>
+			<fieldset name="transition">
+				<!-- TRANSITION -->
+				<field name="transition_type" type="list" default="auto" label="MOD_VC3S_FIELD_TRANSITION_TYPE" description="MOD_VC3S_FIELD_TRANSITION_TYPE_DESC" >
+					<option value="none">MOD_VC3S_FIELD_OPTION_TRANSITION_TYPE_NONE</option>
+					<option value="auto">MOD_VC3S_FIELD_OPTION_TRANSITION_TYPE_AUTO</option>
+					<option value="first">MOD_VC3S_FIELD_OPTION_TRANSITION_TYPE_FIRST</option>
+					<option value="custom">MOD_VC3S_FIELD_OPTION_TRANSITION_TYPE_CUSTOM</option>
+				</field>
+				<field name="transition_num" type="text" default="" label="MOD_VC3S_FIELD_TRANSITION_NUM" description="MOD_VC3S_FIELD_TRANSITION_NUM_DESC" size="50" ></field>
+				<field name="transition_slicing" type="text" default="" label="MOD_VC3S_FIELD_TRANSITION_SLICING" description="MOD_VC3S_FIELD_TRANSITION_SLICING_DESC" size="50" ></field>
+				<field name="transition_direction" type="text" default="" label="MOD_VC3S_FIELD_TRANSITION_DIRECTION" description="MOD_VC3S_FIELD_TRANSITION_DIRECTION_DESC" size="50" ></field>
+				<field name="transition_duration" type="text" default="" label="MOD_VC3S_FIELD_TRANSITION_DURATION" description="MOD_VC3S_FIELD_TRANSITION_DURATION_DESC" size="50" ></field>
+				<field name="transition_delay" type="text" default="" label="MOD_VC3S_FIELD_TRANSITION_DELAY" description="MOD_VC3S_FIELD_TRANSITION_DELAY_DESC" size="50" ></field>
+				<field name="transition_shader" type="text" default="" label="MOD_VC3S_FIELD_TRANSITION_SHADER" description="MOD_VC3S_FIELD_TRANSITION_SHADER_DESC" size="50" ></field>
+				<field name="transition_light_position" type="text" default="" label="MOD_VC3S_FIELD_TRANSITION_LIGHT_POSITION" description="MOD_VC3S_FIELD_TRANSITION_LIGHT_POSITION_DESC" size="50" ></field>
+				<field name="transition_cube_color" type="colorpicker" default="#333333" cellwidth="7" cellheight="10" top="20" left="-30" label="MOD_VC3S_FIELD_TRANSITION_CUBER_COLOR" description="MOD_VC3S_FIELD_TRANSITION_CUBER_COLOR_DESC" />
+				<field name="transition_z_multiplier" type="text" default="" label="MOD_VC3S_FIELD_TRANSITION_Z_MULTIPLIER" description="MOD_VC3S_FIELD_TRANSITION_Z_MULTIPLIER_DESC" size="50" ></field>
+			</fieldset>
+
+			<!-- DESCRIPTION -->
+			<fieldset name="description">
+				<field name="enable_description_box" type="radio" default="1" label="MOD_VC3S_FIELD_ENABLE_DESCRIPTION_BOX" description="MOD_VC3S_FIELD_ENABLE_DESCRIPTION_BOX_DESC" >
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="swffont" type="filelist" default="-1" label="MOD_VC3S_FIELD_DESCRIPTION_SWFFONT" description="MOD_VC3S_FIELD_DESCRIPTION_SWFFONT_DESC" directory="media/mod_vinaora_cu3er_3d_slideshow/flash/fonts" filter="[^\s]+\.(?i)(swf)$" exclude="" stripext="" hide_none="0" hide_default="1" ></field>
+				<field name="description_round_corners" type="text" default="0, 0, 0, 0" label="MOD_VC3S_FIELD_DESCRIPTION_ROUND_CORNERS" description="MOD_VC3S_FIELD_DESCRIPTION_ROUND_CORNERS_DESC" size="50" ></field>
+				<field name="description_heading_font" type="text" default="Georgia" label="MOD_VC3S_FIELD_DESCRIPTION_HEADING_FONT" description="MOD_VC3S_FIELD_DESCRIPTION_HEADING_FONT_DESC" size="50" ></field>
+				<field name="description_heading_text_size" type="text" default="18" label="MOD_VC3S_FIELD_DESCRIPTION_HEADING_TEXT_SIZE" description="MOD_VC3S_FIELD_DESCRIPTION_HEADING_TEXT_SIZE_DESC" size="50" ></field>
+				<field name="description_heading_text_color" type="colorpicker" default="#000000" cellwidth="7" cellheight="10" top="20" left="-30" label="MOD_VC3S_FIELD_DESCRIPTION_HEADING_TEXT_COLOR" description="MOD_VC3S_FIELD_DESCRIPTION_HEADING_TEXT_COLOR_DESC" />
+				<field name="description_heading_text_align" type="list" default="left" label="MOD_VC3S_FIELD_DESCRIPTION_HEADING_TEXT_ALIGN" description="MOD_VC3S_FIELD_DESCRIPTION_HEADING_TEXT_ALIGN_DESC" >
+					<option value="left">MOD_VC3S_FIELD_OPTION_LEFT</option>
+					<option value="center">MOD_VC3S_FIELD_OPTION_CENTER</option>
+					<option value="right">MOD_VC3S_FIELD_OPTION_RIGHT</option>
+				</field>
+				<field name="description_heading_text_margin" type="text" default="10 , 25 , 0 , 25" label="MOD_VC3S_FIELD_DESCRIPTION_HEADING_TEXT_MARGIN" description="MOD_VC3S_FIELD_DESCRIPTION_HEADING_TEXT_MARGIN_DESC" size="50" ></field>
+				<field name="description_heading_text_leading" type="text" default="0" label="MOD_VC3S_FIELD_DESCRIPTION_HEADING_TEXT_LEADING" description="MOD_VC3S_FIELD_DESCRIPTION_HEADING_TEXT_LEADING_DESC" size="50" ></field>
+				<field name="description_heading_text_letterSpacing" type="text" default="0" label="MOD_VC3S_FIELD_DESCRIPTION_HEADING_TEXT_LETTERSPACING" description="MOD_VC3S_FIELD_DESCRIPTION_HEADING_TEXT_LETTERSPACING_DESC" size="50" ></field>
+
+				<field name="description_paragraph_font" type="text" default="Arial" label="MOD_VC3S_FIELD_DESCRIPTION_PARAGRAPH_FONT" description="MOD_VC3S_FIELD_DESCRIPTION_PARAGRAPH_FONT_DESC" size="50" ></field>
+				<field name="description_paragraph_text_size" type="text" default="12" label="MOD_VC3S_FIELD_DESCRIPTION_PARAGRAPH_TEXT_SIZE" description="MOD_VC3S_FIELD_DESCRIPTION_PARAGRAPH_TEXT_SIZE_DESC" size="50" ></field>
+				<field name="description_paragraph_text_color" type="colorpicker" default="#000000" cellwidth="7" cellheight="10" top="20" left="-30" label="MOD_VC3S_FIELD_DESCRIPTION_PARAGRAPH_TEXT_COLOR" description="MOD_VC3S_FIELD_DESCRIPTION_PARAGRAPH_TEXT_COLOR_DESC" />
+				<field name="description_paragraph_text_align" type="list" default="left" label="MOD_VC3S_FIELD_DESCRIPTION_PARAGRAPH_TEXT_ALIGN" description="MOD_VC3S_FIELD_DESCRIPTION_PARAGRAPH_TEXT_ALIGN_DESC" >
+					<option value="left">MOD_VC3S_FIELD_OPTION_LEFT</option>
+					<option value="center">MOD_VC3S_FIELD_OPTION_CENTER</option>
+					<option value="right">MOD_VC3S_FIELD_OPTION_RIGHT</option>
+				</field>
+				<field name="description_paragraph_text_margin" type="text" default="5, 25, 0, 25" label="MOD_VC3S_FIELD_DESCRIPTION_PARAGRAPH_TEXT_MARGIN" description="MOD_VC3S_FIELD_DESCRIPTION_PARAGRAPH_TEXT_MARGIN_DESC" size="50" ></field>
+				<field name="description_paragraph_text_leading" type="text" default="0" label="MOD_VC3S_FIELD_DESCRIPTION_PARAGRAPH_TEXT_LEADING" description="MOD_VC3S_FIELD_DESCRIPTION_PARAGRAPH_TEXT_LEADING_DESC" size="50" ></field>
+				<field name="description_paragraph_text_letterSpacing" type="text" default="0" label="MOD_VC3S_FIELD_DESCRIPTION_PARAGRAPH_TEXT_LETTERSPACING" description="MOD_VC3S_FIELD_DESCRIPTION_PARAGRAPH_TEXT_LETTERSPACING_DESC" size="50" ></field>
+
+			</fieldset>
+
+			<!-- BUTTONS AND SYMBOLS -->
+			<fieldset name="buttons_and_symbols">
+
+				<!-- AUTO PLAY -->
+				<field name="enable_auto_play" type="radio" default="1" label="MOD_VC3S_FIELD_ENABLE_AUTO_PLAY" description="MOD_VC3S_FIELD_ENABLE_AUTO_PLAY_DESC" >
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="auto_play_symbol" type="list" default="circular" label="MOD_VC3S_FIELD_AUTO_PLAY_SYMBOL" description="MOD_VC3S_FIELD_AUTO_PLAY_SYMBOL_DESC" >
+					<option value="linear">MOD_VC3S_OPTION_SYMBOL_LINEAR</option>
+					<option value="circular">MOD_VC3S_OPTION_SYMBOL_CIRCULAR</option>
+				</field>
+				<field name="auto_play_time_defaults" type="text" default="5" label="MOD_VC3S_FIELD_AUTO_PLAY_TIME_DEFAULTS" description="MOD_VC3S_FIELD_AUTO_PLAY_TIME_DEFAULTS_DESC" ></field>
+
+				<!-- PRELOADER -->
+				<field name="enable_preloader" type="radio" default="1" label="MOD_VC3S_FIELD_ENABLE_PRELOADER" description="MOD_VC3S_FIELD_ENABLE_PRELOADER_DESC" >
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="preloader_symbol" type="list" default="circular" label="MOD_VC3S_FIELD_PRELOADER_SYMBOL" description="MOD_VC3S_FIELD_PRELOADER_SYMBOL_DESC" >
+					<option value="linear">MOD_VC3S_OPTION_SYMBOL_LINEAR</option>
+					<option value="circular">MOD_VC3S_OPTION_SYMBOL_CIRCULAR</option>
+				</field>
+
+				<!-- PREVIOUS BUTTON -->
+				<field name="enable_prev_button" type="radio" default="1" label="MOD_VC3S_FIELD_ENABLE_PREV_BUTTON" description="MOD_VC3S_FIELD_ENABLE_PREV_BUTTON_DESC" >
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="prev_button_round_corners" type="text" default="0, 0, 0, 0" label="MOD_VC3S_FIELD_PREV_BUTTON_ROUND_CORNERS" description="MOD_VC3S_FIELD_PREV_BUTTON_ROUND_CORNERS_DESC" ></field>
+
+				<!-- PREVIOUS SYMBOL -->
+				<field name="enable_prev_symbol" type="radio" default="1" label="MOD_VC3S_FIELD_ENABLE_PREV_SYMBOL" description="MOD_VC3S_FIELD_ENABLE_PREV_SYMBOL_DESC" >
+					<option value="1">JYEs</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="prev_symbol_type" type="list" default="3" label="MOD_VC3S_FIELD_PREV_SYMBOL_TYPE" description="MOD_VC3S_FIELD_PREV_SYMBOL_TYPE_DESC" >
+					<option value="1">MOD_VC3S_OPTION_SYMBOL_TYPE_01</option>
+					<option value="2">MOD_VC3S_OPTION_SYMBOL_TYPE_02</option>
+					<option value="3">MOD_VC3S_OPTION_SYMBOL_TYPE_03</option>
+					<option value="4">MOD_VC3S_OPTION_SYMBOL_TYPE_04</option>
+					<option value="5">MOD_VC3S_OPTION_SYMBOL_TYPE_05</option>
+					<option value="6">MOD_VC3S_OPTION_SYMBOL_TYPE_06</option>
+					<option value="7">MOD_VC3S_OPTION_SYMBOL_TYPE_07</option>
+					<option value="8">MOD_VC3S_OPTION_SYMBOL_TYPE_08</option>
+					<option value="9">MOD_VC3S_OPTION_SYMBOL_TYPE_09</option>
+					<option value="10">MOD_VC3S_OPTION_SYMBOL_TYPE_10</option>
+				</field>
+
+				<!-- NEXT BUTTON -->
+				<field name="enable_next_button" type="radio" default="1" label="MOD_VC3S_FIELD_ENABLE_NEXT_BUTTON" description="MOD_VC3S_FIELD_ENABLE_NEXT_BUTTON_DESC" >
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="next_button_round_corners" type="text" default="0, 0, 0, 0" label="MOD_VC3S_FIELD_NEXT_BUTTON_ROUND_CORNERS" description="MOD_VC3S_FIELD_NEXT_BUTTON_ROUND_CORNERS_DESC" ></field>
+
+				<!-- NEXT SYMBOL -->
+				<field name="enable_next_symbol" type="radio" default="1" label="MOD_VC3S_FIELD_ENABLE_NEXT_SYMBOL" description="MOD_VC3S_FIELD_ENABLE_NEXT_SYMBOL_DESC" >
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="next_symbol_type" type="list" default="3" label="MOD_VC3S_FIELD_NEXT_SYMBOL_TYPE" description="MOD_VC3S_FIELD_NEXT_SYMBOL_TYPE_DESC" >
+					<option value="1">MOD_VC3S_OPTION_SYMBOL_TYPE_01</option>
+					<option value="2">MOD_VC3S_OPTION_SYMBOL_TYPE_02</option>
+					<option value="3">MOD_VC3S_OPTION_SYMBOL_TYPE_03</option>
+					<option value="4">MOD_VC3S_OPTION_SYMBOL_TYPE_04</option>
+					<option value="5">MOD_VC3S_OPTION_SYMBOL_TYPE_05</option>
+					<option value="6">MOD_VC3S_OPTION_SYMBOL_TYPE_06</option>
+					<option value="7">MOD_VC3S_OPTION_SYMBOL_TYPE_07</option>
+					<option value="8">MOD_VC3S_OPTION_SYMBOL_TYPE_08</option>
+					<option value="9">MOD_VC3S_OPTION_SYMBOL_TYPE_09</option>
+					<option value="10">MOD_VC3S_OPTION_SYMBOL_TYPE_10</option>
+				</field>
+			</fieldset>
+
+			<!-- DESCRIPTION -->
+			<fieldset name="debug">
+				<!-- DEBUG -->
+				<field name="enable_debug" type="radio" default="0" label="MOD_VC3S_FIELD_ENABLE_DEBUG" description="MOD_VC3S_FIELD_ENABLE_DEBUG_DESC" >
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="debug_x" type="text" default="5" label="MOD_VC3S_FIELD_DEBUG_X" description="MOD_VC3S_FIELD_DEBUG_X_DESC" ></field>
+				<field name="debug_y" type="text" default="5" label="MOD_VC3S_FIELD_DEBUG_Y" description="MOD_VC3S_FIELD_DEBUG_Y_DESC" ></field>
+
+			</fieldset>
+
+			<fieldset name="advanced">
+				<field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field name="moduleclass_sfx" type="text" size="40" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+				<field name="cachemode" type="hidden" default="static">
+					<option value="static"></option>
+				</field>
+				<field type="spacer" name="spacer61" class="text" hr="true"/>
+				<field name="swfobject_source" type="list" default="local" label="MOD_VC3S_FIELD_SWFOBJECT_SOURCE" description="MOD_VC3S_FIELD_SWFOBJECT_SOURCE_DESC">
+					<option value="local">MOD_VC3S_OPTION_SWFOBJECT_SOURCE_LOCAL</option>
+					<option value="google">MOD_VC3S_OPTION_SWFOBJECT_SOURCE_GOOGLE</option>
+					<option value="0">JNONE</option>
+				</field>
+				<field name="swfobject_version" type="folderlist" default="2.2" directory="/media/mod_vinaora_cu3er_3d_slideshow/js/swfobject/" filter="" exclude="" stripext="" hide_none="1" hide_default="1" label="MOD_VC3S_FIELD_SWFOBJECT_VERSION" description="MOD_VC3S_FIELD_SWFOBJECT_VERSION_DESC" />
+				<field name="flash_wmode" type="list" default="transparent" label="MOD_VC3S_FIELD_FLASH_WMODE" description="MOD_VC3S_FIELD_FLASH_WMODE_DESC" >
+					<option value="window">MOD_VC3S_OPTION_FLASH_WINDOW</option>
+					<option value="opaque">MOD_VC3S_OPTION_FLASH_OPAQUE</option>
+					<option value="transparent">MOD_VC3S_OPTION_FLASH_TRANSPARENT</option>
+				</field>
+			</fieldset>
+
+			<fieldset name="extra">
+
+				<!-- DESCRIPTION BOX -->
+				<field type="spacer" name="spacer71" class="text" label="MOD_VC3S_SPACER_TWEEN_DESCRIPTION_BOX"/>
+				<field name="description_time" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_TIME" description="MOD_VC3S_FIELD_TWEEN_TIME_DESC" size="50" ></field>
+				<field name="description_delay" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_DELAY" description="MOD_VC3S_FIELD_TWEEN_DELAY_DESC" size="50" ></field>
+				<field name="description_x" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_X" description="MOD_VC3S_FIELD_TWEEN_X_DESC" size="50" ></field>
+				<field name="description_y" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_Y" description="MOD_VC3S_FIELD_TWEEN_Y_DESC" size="50" ></field>
+				<field name="description_width" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_WIDTH" description="MOD_VC3S_FIELD_TWEEN_WIDTH_DESC" size="50" ></field>
+				<field name="description_height" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_HEIGHT" description="MOD_VC3S_FIELD_TWEEN_HEIGHT_DESC" size="50" ></field>
+				<field name="description_rotation" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_ROTATION" description="MOD_VC3S_FIELD_TWEEN_ROTATION_DESC" size="50" ></field>
+				<field name="description_alpha" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_ALPHA" description="MOD_VC3S_FIELD_TWEEN_ALPHA_DESC" size="50" ></field>
+				<field name="description_tint" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_TINT" description="MOD_VC3S_FIELD_TWEEN_TINT_DESC" size="50" ></field>
+				<field name="description_scaleX" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_SCALEX" description="MOD_VC3S_FIELD_TWEEN_SCALEX_DESC" size="50" ></field>
+				<field name="description_scaleY" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_SCALEY" description="MOD_VC3S_FIELD_TWEEN_SCALEY_DESC" size="50" ></field>
+
+				<!-- AUTO PLAY -->
+				<field type="spacer" name="spacer72" class="text" label="MOD_VC3S_SPACER_TWEEN_AUTO_PLAY"/>
+				<field name="auto_play_time" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_TIME" description="MOD_VC3S_FIELD_TWEEN_TIME_DESC" size="50" ></field>
+				<field name="auto_play_delay" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_DELAY" description="MOD_VC3S_FIELD_TWEEN_DELAY_DESC" size="50" ></field>
+				<field name="auto_play_x" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_X" description="MOD_VC3S_FIELD_TWEEN_X_DESC" size="50" ></field>
+				<field name="auto_play_y" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_Y" description="MOD_VC3S_FIELD_TWEEN_Y_DESC" size="50" ></field>
+				<field name="auto_play_width" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_WIDTH" description="MOD_VC3S_FIELD_TWEEN_WIDTH_DESC" size="50" ></field>
+				<field name="auto_play_height" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_HEIGHT" description="MOD_VC3S_FIELD_TWEEN_HEIGHT_DESC" size="50" ></field>
+				<field name="auto_play_rotation" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_ROTATION" description="MOD_VC3S_FIELD_TWEEN_ROTATION_DESC" size="50" ></field>
+				<field name="auto_play_alpha" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_ALPHA" description="MOD_VC3S_FIELD_TWEEN_ALPHA_DESC" size="50" ></field>
+				<field name="auto_play_tint" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_TINT" description="MOD_VC3S_FIELD_TWEEN_TINT_DESC" size="50" ></field>
+				<field name="auto_play_scaleX" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_SCALEX" description="MOD_VC3S_FIELD_TWEEN_SCALEX_DESC" size="50" ></field>
+				<field name="auto_play_scaleY" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_SCALEY" description="MOD_VC3S_FIELD_TWEEN_SCALEY_DESC" size="50" ></field>
+
+				<!-- PRELOADER -->
+				<field type="spacer" name="spacer73" class="text" label="MOD_VC3S_SPACER_TWEEN_PRELOADER"/>
+				<field name="preloader_time" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_TIME" description="MOD_VC3S_FIELD_TWEEN_TIME_DESC" size="50" ></field>
+				<field name="preloader_delay" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_DELAY" description="" size="50" ></field>
+				<field name="preloader_x" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_X" description="MOD_VC3S_FIELD_TWEEN_X_DESC" size="50" ></field>
+				<field name="preloader_y" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_Y" description="MOD_VC3S_FIELD_TWEEN_Y_DESC" size="50" ></field>
+				<field name="preloader_width" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_WIDTH" description="MOD_VC3S_FIELD_TWEEN_WIDTH_DESC" size="50" ></field>
+				<field name="preloader_height" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_HEIGHT" description="MOD_VC3S_FIELD_TWEEN_HEIGHT_DESC" size="50" ></field>
+				<field name="preloader_rotation" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_ROTATION" description="MOD_VC3S_FIELD_TWEEN_ROTATION_DESC" size="50" ></field>
+				<field name="preloader_alpha" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_ALPHA" description="MOD_VC3S_FIELD_TWEEN_ALPHA_DESC" size="50" ></field>
+				<field name="preloader_tint" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_TINT" description="MOD_VC3S_FIELD_TWEEN_TINT_DESC" size="50" ></field>
+				<field name="preloader_scaleX" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_SCALEX" description="MOD_VC3S_FIELD_TWEEN_SCALEX_DESC" size="50" ></field>
+				<field name="preloader_scaleY" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_SCALEY" description="MOD_VC3S_FIELD_TWEEN_SCALEY_DESC" size="50" ></field>
+
+				<!-- PREVIOUS BUTTON -->
+				<field type="spacer" name="spacer74" class="text" label="MOD_VC3S_SPACER_TWEEN_PREVIOUS_BUTTON"/>
+				<field name="prev_button_time" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_TIME" description="MOD_VC3S_FIELD_TWEEN_TIME_DESC" size="50" ></field>
+				<field name="prev_button_delay" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_DELAY" description="MOD_VC3S_FIELD_TWEEN_DELAY_DESC" size="50" ></field>
+				<field name="prev_button_x" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_X" description="MOD_VC3S_FIELD_TWEEN_X_DESC" size="50" ></field>
+				<field name="prev_button_y" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_Y" description="MOD_VC3S_FIELD_TWEEN_Y_DESC" size="50" ></field>
+				<field name="prev_button_width" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_WIDTH" description="MOD_VC3S_FIELD_TWEEN_WIDTH_DESC" size="50" ></field>
+				<field name="prev_button_height" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_HEIGHT" description="MOD_VC3S_FIELD_TWEEN_HEIGHT_DESC" size="50" ></field>
+				<field name="prev_button_rotation" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_ROTATION" description="MOD_VC3S_FIELD_TWEEN_ROTATION_DESC" size="50" ></field>
+				<field name="prev_button_alpha" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_ALPHA" description="MOD_VC3S_FIELD_TWEEN_ALPHA_DESC" size="50" ></field>
+				<field name="prev_button_tint" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_TINT" description="MOD_VC3S_FIELD_TWEEN_TINT_DESC" size="50" ></field>
+				<field name="prev_button_scaleX" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_SCALEX" description="MOD_VC3S_FIELD_TWEEN_SCALEX_DESC" size="50" ></field>
+				<field name="prev_button_scaleY" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_SCALEY" description="MOD_VC3S_FIELD_TWEEN_SCALEY_DESC" size="50" ></field>
+
+				<!-- PREVIOUS SYMBOL -->
+				<field type="spacer" name="spacer75" class="text" label="MOD_VC3S_SPACER_TWEEN_PREVIOUS_SYMBOL"/>
+				<field name="prev_symbol_time" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_TIME" description="MOD_VC3S_FIELD_TWEEN_TIME_DESC" size="50" ></field>
+				<field name="prev_symbol_delay" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_DELAY" description="MOD_VC3S_FIELD_TWEEN_DELAY_DESC" size="50" ></field>
+				<field name="prev_symbol_x" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_X" description="MOD_VC3S_FIELD_TWEEN_X_DESC" size="50" ></field>
+				<field name="prev_symbol_y" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_Y" description="MOD_VC3S_FIELD_TWEEN_Y_DESC" size="50" ></field>
+				<field name="prev_symbol_width" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_WIDTH" description="MOD_VC3S_FIELD_TWEEN_WIDTH_DESC" size="50" ></field>
+				<field name="prev_symbol_height" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_HEIGHT" description="MOD_VC3S_FIELD_TWEEN_HEIGHT_DESC" size="50" ></field>
+				<field name="prev_symbol_rotation" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_ROTATION" description="MOD_VC3S_FIELD_TWEEN_ROTATION_DESC" size="50" ></field>
+				<field name="prev_symbol_alpha" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_ALPHA" description="MOD_VC3S_FIELD_TWEEN_ALPHA_DESC" size="50" ></field>
+				<field name="prev_symbol_tint" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_TINT" description="MOD_VC3S_FIELD_TWEEN_TINT_DESC" size="50" ></field>
+				<field name="prev_symbol_scaleX" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_SCALEX" description="MOD_VC3S_FIELD_TWEEN_SCALEX_DESC" size="50" ></field>
+				<field name="prev_symbol_scaleY" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_SCALEY" description="MOD_VC3S_FIELD_TWEEN_SCALEY_DESC" size="50" ></field>
+
+				<!-- NEXT BUTTON -->
+				<field type="spacer" name="spacer76" class="text" label="MOD_VC3S_SPACER_TWEEN_NEXT_BUTTON"/>
+				<field name="next_button_time" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_TIME" description="MOD_VC3S_FIELD_TWEEN_TIME_DESC" size="50" ></field>
+				<field name="next_button_delay" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_DELAY" description="MOD_VC3S_FIELD_TWEEN_DELAY_DESC" size="50" ></field>
+				<field name="next_button_x" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_X" description="MOD_VC3S_FIELD_TWEEN_X_DESC" size="50" ></field>
+				<field name="next_button_y" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_Y" description="MOD_VC3S_FIELD_TWEEN_Y_DESC" size="50" ></field>
+				<field name="next_button_width" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_WIDTH" description="MOD_VC3S_FIELD_TWEEN_WIDTH_DESC" size="50" ></field>
+				<field name="next_button_height" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_HEIGHT" description="MOD_VC3S_FIELD_TWEEN_HEIGHT_DESC" size="50" ></field>
+				<field name="next_button_rotation" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_ROTATION" description="MOD_VC3S_FIELD_TWEEN_ROTATION_DESC" size="50" ></field>
+				<field name="next_button_alpha" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_ALPHA" description="MOD_VC3S_FIELD_TWEEN_ALPHA_DESC" size="50" ></field>
+				<field name="next_button_tint" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_TINT" description="MOD_VC3S_FIELD_TWEEN_TINT_DESC" size="50" ></field>
+				<field name="next_button_scaleX" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_SCALEX" description="MOD_VC3S_FIELD_TWEEN_SCALEX_DESC" size="50" ></field>
+				<field name="next_button_scaleY" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_SCALEY" description="MOD_VC3S_FIELD_TWEEN_SCALEY_DESC" size="50" ></field>
+
+				<!-- NEXT SYMBOL -->
+				<field type="spacer" name="spacer77" class="text" label="MOD_VC3S_SPACER_TWEEN_NEXT_SYMBOL"/>
+				<field name="next_symbol_time" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_TIME" description="MOD_VC3S_FIELD_TWEEN_TIME_DESC" size="50" ></field>
+				<field name="next_symbol_delay" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_DELAY" description="" size="50" ></field>
+				<field name="next_symbol_x" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_X" description="MOD_VC3S_FIELD_TWEEN_X_DESC" size="50" ></field>
+				<field name="next_symbol_y" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_Y" description="MOD_VC3S_FIELD_TWEEN_Y_DESC" size="50" ></field>
+				<field name="next_symbol_width" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_WIDTH" description="MOD_VC3S_FIELD_TWEEN_WIDTH_DESC" size="50" ></field>
+				<field name="next_symbol_height" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_HEIGHT" description="MOD_VC3S_FIELD_TWEEN_HEIGHT_DESC" size="50" ></field>
+				<field name="next_symbol_rotation" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_ROTATION" description="MOD_VC3S_FIELD_TWEEN_ROTATION_DESC" size="50" ></field>
+				<field name="next_symbol_alpha" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_ALPHA" description="MOD_VC3S_FIELD_TWEEN_ALPHA_DESC" size="50" ></field>
+				<field name="next_symbol_tint" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_TINT" description="MOD_VC3S_FIELD_TWEEN_TINT_DESC" size="50" ></field>
+				<field name="next_symbol_scaleX" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_SCALEX" description="MOD_VC3S_FIELD_TWEEN_SCALEX_DESC" size="50" ></field>
+				<field name="next_symbol_scaleY" type="text" default="" label="MOD_VC3S_FIELD_TWEEN_SCALEY" description="MOD_VC3S_FIELD_TWEEN_SCALEY_DESC" size="50" ></field>
+
+			</fieldset>
+		</fields>
+	</config>
+</extension>

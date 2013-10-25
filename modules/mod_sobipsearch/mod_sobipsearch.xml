@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.0.0" client="site" method="upgrade">
+    <name>SobiPro Search in Selected Section</name>
+    <author>Prieco S.A.</author>
+    <creationDate>November 2011</creationDate>
+    <copyright>Copyright (C) 2011 Prieco S.A. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <authorEmail>support@prieco.com</authorEmail>
+    <authorUrl>www.prieco.com</authorUrl>
+    <version>2.1.3</version>
+    <description>This module will display a search box and section select to search.</description>
+    <files>
+        <filename module="mod_sobipsearch">mod_sobipsearch.php</filename>
+        <filename>helper.php</filename>
+        <folder>tmpl</folder>
+        <folder>js</folder>
+    </files>
+
+    <languages>
+    </languages>
+
+    <params>
+        <param name="listofsections" type="text" default="" label="List of Sections IDs" description="List of sections to restrict the displayed options." />
+        <param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+        <param name="@spacer" type="spacer" default="" label="" description="" />
+        <param name="width" type="text" default="20" label="Box Width" description="Size of the search text box in characters" />
+        <param name="text" type="text" default="" label="Text" description="PARAMTEXT" />
+        <param name="@spacer" type="spacer" default="" label="" description="" />
+        <param name="button" type="radio" default="1" label="Search Button" description="Display a Search Button">
+            <option value="">No</option>
+            <option value="1">Yes</option>
+        </param>
+        <param name="button_pos" type="list" default="right" label="Button Position" description="Position of the button relative to the search box">
+            <option value="right">Right</option>
+            <option value="left">Left</option>
+            <option value="top">Top</option>
+            <option value="bottom">Bottom</option>
+        </param>
+        <param name="imagebutton" type="radio" default="" label="Search button as image" description="Use an image as button">
+            <option value="">No</option>
+            <option value="1">Yes</option>
+        </param>
+        <param name="button_text" type="text" default="" label="Button Text" description="PARAMBUTTONTEXT" />
+        <param name="@spacer" type="spacer" default="" label="" description="" />
+        <param name="set_itemid" type="text" default="" label="Set Itemid" description="PARAMSETITEMID" />
+        <param name="autocomplete" type="radio" default="1" label="Autocomplete" description="Add SobiPro autocompletion (only available for 1-Section mode).">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </param>
+    </params>
+    <params group="advanced">
+        <param name="cache" type="list" default="1" label="Caching" description="Select whether to cache the content of this module">
+            <option value="1">Use global</option>
+            <option value="0">No caching</option>
+        </param>
+        <param name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
+        <param name="includejs" type="radio" default="1" label="Include JQuery" description="It's not necessary if the module is loaded in a page with SobiPro component JS files already loaded, or if they are already loaded by a previous module instance.">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </param>
+        <param name="inputid" type="text" default="sobipSearchBox" label="Input Id" description="#id of the search box, to enable more than module instance in the same page." />
+    </params>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="listofsections" type="text" default="" label="List of Sections IDs" description="List of sections to restrict the displayed options." />
+                <field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+                <field name="@spacer" type="spacer" default="" label="" description="" />
+                <field name="width" type="text" default="20" label="Box Width" description="Size of the search text box in characters" />
+                <field name="text" type="text" default="" label="Text" description="PARAMTEXT" />
+                <field name="@spacer" type="spacer" default="" label="" description="" />
+                <field name="button" type="radio" default="1" label="Search Button" description="Display a Search Button">
+                    <option value="">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="button_pos" type="list" default="right" label="Button Position" description="Position of the button relative to the search box">
+                    <option value="right">Right</option>
+                    <option value="left">Left</option>
+                    <option value="top">Top</option>
+                    <option value="bottom">Bottom</option>
+                </field>
+                <field name="imagebutton" type="radio" default="" label="Search button as image" description="Use an image as button">
+                    <option value="">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="button_text" type="text" default="" label="Button Text" description="PARAMBUTTONTEXT" />
+                <field name="@spacer" type="spacer" default="" label="" description="" />
+                <field name="set_itemid" type="text" default="" label="Set Itemid" description="PARAMSETITEMID" />
+                <field name="autocomplete" type="radio" default="1" label="Autocomplete" description="Add SobiPro autocompletion (only available for 1-Section mode).">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+            </fieldset>
+            <fieldset name="advanced">
+                <field name="cache" type="list" default="1" label="Caching" description="Select whether to cache the content of this module">
+                    <option value="1">Use global</option>
+                    <option value="0">No caching</option>
+                </field>
+                <field name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
+                <field name="includejs" type="radio" default="1" label="Include JQuery" description="It's not necessary if the module is loaded in a page with SobiPro component JS files already loaded, or if they are already loaded by a previous module instance.">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="inputid" type="text" default="sobipSearchBox" label="Input Id" description="#id of the search box, to enable more than module instance in the same page." />
+            </fieldset>
+        </fields>
+    </config>
+</install>

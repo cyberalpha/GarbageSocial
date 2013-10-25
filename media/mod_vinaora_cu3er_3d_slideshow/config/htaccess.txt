@@ -1,0 +1,8 @@
+## Allow access to config xml files
+
+<Files ~ "\.xml$">
+	Order allow,deny
+	Allow from all
+</Files>
+
+## End of allow access to config xml files

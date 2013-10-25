@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="1.6.0" client="site" method="upgrade">
+	<name>OSDonate</name>
+	<author>Nick Savov from OsTraining.com</author>
+	<creationDate>January 2011</creationDate>
+	<copyright>(C) 2011 OsTraining.com</copyright>
+	<license>GNU/GPL http://www.gnu.org/copyleft/gpl.html</license>
+	<authorEmail>nick@ostraining.com</authorEmail>
+	<authorUrl>http://www.ostraining.com</authorUrl>
+	<version>1.0.1</version>
+	<description>PLUGIN_DESC</description>
+	
+	<languages>
+		<language tag="en-GB">en-GB.mod_osdonate.ini</language>
+	</languages>
+	
+    <files>
+        <filename module="mod_osdonate">mod_osdonate.php</filename>
+        <filename>index.html</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+    </files>
+    
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="moduleclass_sfx" type="text" default="" label="MODULE_CLASS_SUFFIX_LABEL" description="MODULE_CLASS_SUFFIX_DESC" />
+				<field name="open_new_window" type="radio" default="1" label="OPEN_IN_NEW_WINDOW_LABEL" description="OPEN_IN_NEW_WINDOW_DESC">
+					<option value="1">JYES</option>
+					<option value="0">JN0</option>
+				</field>
+				
+				<field name="return" type="text" size="64" default="http://www.mysite.com/anypage.html" label="SUCCESS_RETURN_PAGE_LABEL" description="SUCCESS_RETURN_PAGE_DESC" />
+				<field name="cancel_return" type="text" size="64" default="http://www.mysite.com/anypage2.html" label="CANCEL_RETURN_PAGE_LABEL" description="CANCEL_RETURN_PAGE_DESC" />
+				<field name="image_url" type="text" size="64" default="http://www.mysite.com/pathto/logo" label="COMPANY_LOGO_LABEL" description="COMPANY_LOGO_DESC" />
+				<field name="pp_image" type="text"  size="64" default="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" label="PAYPAL_BUTTON_IMAGE_LABEL" description="PAYPAL_BUTTON_IMAGE_DESC" />
+				
+				<field name="show_text" type="radio" default="1" label="SHOW_INTRO_TEXT_LABEL" description="SHOW_INTRO_TEXT_DESC">
+					<option value="1">JYES</option>
+					<option value="0">JN0</option>
+				</field>
+				<field name="intro_text" type="textarea" rows="3" cols="35" default="Please consider supporting our efforts." label="INTRO_TEXT_LABEL" description="INTRO_TEXT_DESC" />
+						
+				<field name="business" type="text" size="32" default="email@website.com" label="PAYPAL_CREDENTIALS_LABEL" description="PAYPAL_CREDENTIALS_DESC" />
+				<field name="item_name" type="text" size="64" default="Donate to website.com" label="PAYPAL_DONATION_DESCRIPTION_LABEL" description="PAYPAL_DONATION_DESCRIPTION_DESC" />
+				<field name="currencies" type="text" size="64" maxlength="100" default="USD,EUR,GBP,CHF,AUD,HKD,CAD,JPY,NZD,SGD,SEK,DKK,PLN,NONONOK,HUF,CZK,ILS,MXN" label="CURRENCIES_LABEL" description="CURRENCIES_DESC" />
+				<field name="locale" type="list" default="en_US" label="PAYPAL_LANGUAGE_LABEL" description="PAYPAL_LANGUAGE_DESC">
+					<option value="en_US">en_US</option>
+					<option value="it_IT">it_IT</option>
+					<option value="de_DE">de_DE</option>
+					<option value="fr_FR">fr_FR</option>
+					<option value="es_ES">es_ES</option>
+				</field>
+				
+				<field name="show_amount" type="radio" default="1" label="SHOW_AMOUNT_FIELD_LABEL" description="SHOW_AMOUNT_FIELD_DESC">
+					<option value="1">JYES</option>
+					<option value="0">JN0</option>
+				</field>
+				<field name="amount" type="text" size="5" default="" label="AMOUNT_LABEL" description="AMOUNT_DESC" />
+			</fieldset>
+			
+			<fieldset name="sticky_hover" label="STICKY_HOVER_OPTIONS">
+				<field name="use_sticky_hover" type="radio" default="1" label="USE_STICKY_HOVER_LABEL" description="USE_STICKY_HOVER_DESC">
+					<option value="1">JYES</option>
+					<option value="0">JN0</option>
+				</field>
+
+				<field name="horizontal_reference_side" type="radio" default="right" label="HORIZONTAL_REFERENCE_SIDE_LABEL" description="HORIZONTAL_REFERENCE_SIDE_DESC">
+					<option value="right">RIGHT</option>
+					<option value="left">LEFT</option>
+				</field>
+				<field name="horizontal_distance" type="text" size="5" default="0" label="HORIZONTAL_DISTANCE_LABEL" description="HORIZONTAL_DISTANCE_DESC" />		
+
+				<field name="vertical_reference_side" type="radio" default="bottom" label="VERTICAL_REFERENCE_SIDE_LABEL" description="VERTICAL_REFERENCE_SIDE_DESC">
+					<option value="bottom">BOTTOM</option>
+					<option value="top">TOP</option>
+				</field>
+				<field name="vertical_distance" type="text" size="5" default="0" label="VERTICAL_DISTANCE_LABEL" description="VERTICAL_DISTANCE_DESC" />
+				
+				<field name="font_color" type="text" size="16" default="" label="FONT_COLOR_LABEL" description="FONT_COLOR_DESC" />
+				
+				<field name="width_of_sticky_hover" type="text" size="5" default="200" label="WIDTH_LABEL" description="WIDTH_DESCRIPTION" />	
+			</fieldset>
+			
+			<fieldset name="affiliate" label="AFFILIATE_OPTIONS">
+				<field name="show_powered_by" type="radio" default="1" label="SHOW_POWERED_BY_LABEL" description="SHOW_POWERED_BY_DESC">
+					<option value="1">JYES</option>
+					<option value="0">JN0</option>
+				</field>
+				<field name="affiliate_id" type="text" size="5" default="" label="Affiliate ID #" description="AFFILIATE_ID_DESC" />
+				<field name="weblink" type="text" size="32" default="" label="WEBLINK_LABEL" description="WEBLINK_DESC" />
+			</fieldset>
+			
+		</fields>
+    </config>
+
+  
+</extension>
