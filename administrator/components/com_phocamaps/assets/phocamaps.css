@@ -1,0 +1,164 @@
+div.icon-48-info {
+	background: url('images/icon-48-info.png') no-repeat left;
+}
+div.icon-48-phoca {
+	background: url('images/icon-48-phoca.png') no-repeat left;
+}
+div.icon-48-phocamaps {
+	background: url('images/icon-48-phocamaps.png') no-repeat left;
+}
+div.icon-48-map {
+	background: url('images/icon-48-map.png') no-repeat left;
+}
+div.icon-48-marker {
+	background: url('images/icon-48-marker.png') no-repeat left;
+}
+
+div.icon-48-icon {
+	background: url('images/icon-48-icon.png') no-repeat left;
+}
+
+div.icon-48-dm {
+	background: url('images/icon-48-dm.png') no-repeat left;
+}
+div.icon-48-wm {
+	background: url('images/icon-48-wm.png') no-repeat left;
+}
+div.icon-48-fm {
+	background: url('images/icon-48-fm.png') no-repeat left;
+}
+div.icon-48-bl {
+	background: url('images/icon-48-bl.png') no-repeat left;
+}
+div.icon-48-wl {
+	background: url('images/icon-48-wl.png') no-repeat left;
+}
+
+
+span.icon-32-email {
+	background: url('images/icon-32-email.png') no-repeat left;
+}
+span.icon-32-emailsave {
+	background: url('images/icon-32-emailsave.png') no-repeat left;
+}
+span.icon-32-pdf {
+	background: url('images/icon-32-pdf.png') no-repeat left;
+}
+span.icon-32-pdf-dis {
+	background: url('images/icon-32-pdf-dis.png') no-repeat left;
+}
+span.icon-32-multiple {
+	background: url('images/icon-32-multiple.png') no-repeat left;
+}
+span.icon-32-settings {
+	background: url('images/icon-32-settings.png') no-repeat left;
+}
+
+
+
+a img, img {border:0px;text-decoration:none;}
+
+.p-noscript {
+	text-align:	center;
+	background:	#ffcc00;
+	padding:	10px;
+}
+
+#phocamaps .p-add-address {
+	margin-top: 10px;
+}
+
+.license {
+	text-align:justify;
+	font-size: 9px;
+}
+
+.phoca-adminform {
+	background-color: #fff;
+	border: solid 1px #d5d5d5;
+	padding:10px;
+}
+
+/*form*/
+input.pmreadonly {
+	background: #f0f0ee;
+	color: #777;
+}
+
+input.pmreadonly:focus,
+input.pmreadonly:hover
+	{
+	background: #f0f0ee;
+	color: #777;
+}
+
+.p-add-address {
+	margin-top: 10px;
+}
+
+#pg-update {
+	margin-top:25px;
+	margin-bottom: 15px;
+}
+#pg-install a,
+#pg-upgrade a,
+#pg-update a {
+	display: 			inline-block; 
+	padding:			15px 30px 15px 50px;
+	font-size: 			23px;   
+	text-decoration: 	none;
+	box-shadow: 		0 1px 2px rgba(0,0,0,0.6);
+	-moz-box-shadow: 	0 1px 2px rgba(0,0,0,0.6);
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.6);
+	border-radius: 			5px;
+	-moz-border-radius: 	5px; 
+	-webkit-border-radius: 	5px;
+	border-bottom: 		1px solid rgba(0,0,0,0.25);
+	position: 			relative;
+	cursor: 			pointer;
+	text-shadow: 		0 -1px 1px rgba(0,0,0,0.25);
+	font-weight: 		bold;
+	color: 				#fff;
+	background-color: 	#6699cc;
+}
+#pg-install a:hover,
+#pg-upgrade a:hover,
+#pg-update a:hover {
+	background-color: 	#4080BF;
+}
+#pg-install a {
+	width: 6em;
+	background: 		url('images/btn.png') repeat-x, url('images/bg-install.png') 10px center no-repeat #6699cc;
+}
+#pg-install a:hover {
+	width: 6em;
+	background: 		url('images/btn.png') repeat-x, url('images/bg-install.png') 10px center no-repeat #4080BF;
+}
+#pg-update a {
+	display: block;
+	width: 10em;
+	background: 		url('images/btn.png') repeat-x, url('images/bg-upgrade.png') 10px center no-repeat #6699cc;
+}
+#pg-update a:hover {
+	display: block;
+	width: 10em;
+	background: 		url('images/btn.png') repeat-x, url('images/bg-upgrade.png') 10px center no-repeat #4080BF;
+}
+#pg-upgrade a {
+	width: 6em;
+	background: 		url('images/btn.png') repeat-x, url('images/bg-upgrade.png') 10px center no-repeat #6699cc;
+}
+#pg-upgrade a:hover {
+	width: 6em;
+	background: 		url('images/btn.png') repeat-x, url('images/bg-upgrade.png') 10px center no-repeat #4080BF;
+}
+
+.phoca-adminform {
+	background-color: #fff;
+	border: solid 1px #d5d5d5;
+	padding:10px;
+	color: #777;
+}
+.cpanel-right {
+	color: #777;
+}

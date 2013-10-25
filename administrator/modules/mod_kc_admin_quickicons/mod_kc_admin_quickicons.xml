@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="module" client="administrator" method="upgrade">
+	<name>KC Admin QuickIcons</name>
+	<author>Laurelle Keashly</author>
+	<creationDate>Diciembre 2010 - Actualizada Marzo 2011</creationDate>
+	<copyright>Copyright (C) 2011 Keashly.ca Consulting. Todos los derechos reservados.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>info@keashly.ca</authorEmail>
+	<authorUrl>www.keashly.net</authorUrl>
+	<version>2.0.1 Beta</version>
+	<description>MOD_KC_ADMIN_QUICKICONS_XML_DESCRIPTION</description>
+	<files>
+        <filename module="mod_kc_admin_quickicons">mod_kc_admin_quickicons.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>css/kc_admin_quickicons.css</filename>
+        <filename>css/index.html</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/default_button.php</filename>
+        <filename>tmpl/index.html</filename>
+	</files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.mod_kc_admin_quickicons.ini</language>
+		<language tag="en-GB">en-GB/en-GB.mod_kc_admin_quickicons.sys.ini</language>
+		<language tag="es-ES">es-ES/es-ES.mod_kc_admin_quickicons.ini</language>
+		<language tag="es-ES">es-ES/es-ES.mod_kc_admin_quickicons.sys.ini</language>
+	</languages>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="spacer" type="spacer" default="" label="KC_LINK1" description="" />
+				<field name="label1" type="text" default="Clear Cache" label="KC_TEXT_LABEL" description="KC_TEXTL_DESC" />
+				<field name="link1" type="text" default="index.php?option=com_cache" label="KC_LINK_LABEL" description="KC_LINK_DESC" />
+				<field name="icon1" type="ImageList" default="icon-48-clear.png" label="KC_ICON_LABEL" description="KC_ICON_DESC" directory="/administrator/templates/bluestork/images/header" hide_default="1" />
+				<field name="custom1" type="radio" default="0" label="KC_CUSTOM_LABEL" description="KC_CUSTOM_DESC">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field name="path1" type="text" default="" label="KC_PATH_LABEL" description="KC_PATH_DESC" />
+				<field name="c_icon1" type="text" default="" label="KC_C_ICON_LABEL" description="KC_C_ICON_DESC" />
+
+				<field name="spacer2" type="spacer" default="" label="KC_LINK2" description="" />
+				<field name="label2" type="text" default="" label="KC_TEXT_LABEL" description="KC_TEXTL_DESC" />
+				<field name="link2" type="text" default="index.php?option=" label="KC_LINK_LABEL" description="KC_LINK_DESC" />
+				<field name="icon2" type="imagelist" default="0" label="KC_ICON_LABEL" description="KC_ICON_DESC" directory="/administrator/templates/bluestork/images/header" hide_default="true" />
+				<field name="custom2" type="radio" default="0" label="KC_CUSTOM_LABEL" description="KC_CUSTOM_DESC">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field name="path2" type="text" default="" label="KC_PATH_LABEL" description="KC_PATH_DESC" />
+				<field name="c_icon2" type="text" default="" label="KC_C_ICON_LABEL" description="KC_C_ICON_DESC" />
+
+				<field name="spacer3" type="spacer" default="" label="KC_LINK3" description="" />
+				<field name="label3" type="text" default="" label="KC_TEXT_LABEL" description="KC_TEXTL_DESC" />
+				<field name="link3" type="text" default="index.php?option=" label="KC_LINK_LABEL" description="KC_LINK_DESC" />
+				<field name="icon3" type="imagelist" default="0" label="KC_ICON_LABEL" description="KC_ICON_DESC" directory="/administrator/templates/bluestork/images/header" hide_default="true" />
+				<field name="custom3" type="radio" default="0" label="KC_CUSTOM_LABEL" description="KC_CUSTOM_DESC">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field name="path3" type="text" default="" label="KC_PATH_LABEL" description="KC_PATH_DESC" />
+				<field name="c_icon3" type="text" default="" label="KC_C_ICON_LABEL" description="KC_C_ICON_DESC" />
+
+				<field name="spacer4" type="spacer" default="" label="KC_LINK4" description="" />
+				<field name="label4" type="text" default="" label="KC_TEXT_LABEL" description="KC_TEXTL_DESC" />
+				<field name="link4" type="text" default="index.php?option=" label="KC_LINK_LABEL" description="KC_LINK_DESC" />
+				<field name="icon4" type="imagelist" default="0" label="KC_ICON_LABEL" description="KC_ICON_DESC" directory="/administrator/templates/bluestork/images/header" hide_default="true" />
+				<field name="custom4" type="radio" default="0" label="KC_CUSTOM_LABEL" description="KC_CUSTOM_DESC">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field name="path4" type="text" default="" label="KC_PATH_LABEL" description="KC_PATH_DESC" />
+				<field name="c_icon4" type="text" default="" label="KC_C_ICON_LABEL" description="KC_C_ICON_DESC" />
+
+				<field name="spacer5" type="spacer" default="" label="KC_LINK5" description="" />
+				<field name="label5" type="text" default="" label="KC_TEXT_LABEL" description="KC_TEXTL_DESC" />
+				<field name="link5" type="text" default="index.php?option=" label="KC_LINK_LABEL" description="KC_LINK_DESC" />
+				<field name="icon5" type="imagelist" default="0" label="KC_ICON_LABEL" description="KC_ICON_DESC" directory="/administrator/templates/bluestork/images/header" hide_default="true" />
+				<field name="custom5" type="radio" default="0" label="KC_CUSTOM_LABEL" description="KC_CUSTOM_DESC">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field name="path5" type="text" default="" label="KC_PATH_LABEL" description="KC_PATH_DESC" />
+				<field name="c_icon5" type="text" default="" label="KC_C_ICON_LABEL" description="KC_C_ICON_DESC" />
+
+				<field name="spacer6" type="spacer" default="" label="KC_LINK6" description="" />
+				<field name="label6" type="text" default="" label="KC_TEXT_LABEL" description="KC_TEXTL_DESC" />
+				<field name="link6" type="text" default="index.php?option=" label="KC_LINK_LABEL" description="KC_LINK_DESC" />
+				<field name="icon6" type="imagelist" default="0" label="KC_ICON_LABEL" description="KC_ICON_DESC" directory="/administrator/templates/bluestork/images/header" hide_default="true" />
+				<field name="custom6" type="radio" default="0" label="KC_CUSTOM_LABEL" description="KC_CUSTOM_DESC">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field name="path6" type="text" default="" label="KC_PATH_LABEL" description="KC_PATH_DESC" />
+				<field name="c_icon6" type="text" default="" label="KC_C_ICON_LABEL" description="KC_C_ICON_DESC" />
+
+				<field name="spacer7" type="spacer" default="" label="KC_LINK7" description="" />
+				<field name="label7" type="text" default="" label="KC_TEXT_LABEL" description="KC_TEXTL_DESC" />
+				<field name="link7" type="text" default="index.php?option=" label="KC_LINK_LABEL" description="KC_LINK_DESC" />
+				<field name="icon7" type="imagelist" default="0" label="KC_ICON_LABEL" description="KC_ICON_DESC" directory="/administrator/templates/bluestork/images/header" hide_default="true" />
+				<field name="custom7" type="radio" default="0" label="KC_CUSTOM_LABEL" description="KC_CUSTOM_DESC">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field name="path7" type="text" default="" label="KC_PATH_LABEL" description="KC_PATH_DESC" />
+				<field name="c_icon7" type="text" default="" label="KC_C_ICON_LABEL" description="KC_C_ICON_DESC" />
+
+				<field name="spacer8" type="spacer" default="" label="KC_LINK8" description="" />
+				<field name="label8" type="text" default="" label="KC_TEXT_LABEL" description="KC_TEXTL_DESC" />
+				<field name="link8" type="text" default="index.php?option=" label="KC_LINK_LABEL" description="KC_LINK_DESC" />
+				<field name="icon8" type="imagelist" default="0" label="KC_ICON_LABEL" description="KC_ICON_DESC" directory="/administrator/templates/bluestork/images/header" hide_default="true" />
+				<field name="custom8" type="radio" default="0" label="KC_CUSTOM_LABEL" description="KC_CUSTOM_DESC">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field name="path8" type="text" default="" label="KC_PATH_LABEL" description="KC_PATH_DESC" />
+				<field name="c_icon8" type="text" default="" label="KC_C_ICON_LABEL" description="KC_C_ICON_DESC" />
+
+				<field name="spacer9" type="spacer" default="" label="KC_LINK9" description="" />
+				<field name="label9" type="text" default="" label="KC_TEXT_LABEL" description="KC_TEXTL_DESC" />
+				<field name="link9" type="text" default="index.php?option=" label="KC_LINK_LABEL" description="KC_LINK_DESC" />
+				<field name="icon9" type="imagelist" default="0" label="KC_ICON_LABEL" description="KC_ICON_DESC" directory="/administrator/templates/bluestork/images/header" hide_default="true" />
+				<field name="custom9" type="radio" default="0" label="KC_CUSTOM_LABEL" description="KC_CUSTOM_DESC">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field name="path9" type="text" default="" label="KC_PATH_LABEL" description="KC_PATH_DESC" />
+				<field name="c_icon9" type="text" default="" label="KC_C_ICON_LABEL" description="KC_C_ICON_DESC" />
+
+				<field name="spacer10" type="spacer" default="" label="KC_LINK10" description="" />
+				<field name="label10" type="text" default="" label="KC_TEXT_LABEL" description="KC_TEXTL_DESC" />
+				<field name="link10" type="text" default="index.php?option=" label="KC_LINK_LABEL" description="KC_LINK_DESC" />
+				<field name="icon10" type="imagelist" default="0" label="KC_ICON_LABEL" description="KC_ICON_DESC" directory="/administrator/templates/bluestork/images/header" hide_default="true" />
+				<field name="custom10" type="radio" default="0" label="KC_CUSTOM_LABEL" description="KC_CUSTOM_DESC">
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field name="path10" type="text" default="" label="KC_PATH_LABEL" description="KC_PATH_DESC" />
+				<field name="c_icon10" type="text" default="" label="KC_C_ICON_LABEL" description="KC_C_ICON_DESC" />
+
+			</fieldset>
+
+			<fieldset name="advanced">
+				<field
+					name="moduleclass_sfx"
+					type="text"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+
+				<field
+					name="cache"
+					type="list"
+					default="1"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC">
+					<option
+						value="1">JGLOBAL_USE_GLOBAL</option>
+					<option
+						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field
+					name="cache_time"
+					type="text"
+					default="900"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+			</fieldset>
+		</fields>
+	</config>
+	
+	<!-- Extension Update Specification -->
+	<updateservers>
+		<server
+			type="extension"
+			priority="1"
+			name="Keashly.ca Consulting Updates">http://www.keashly.net/updates/kc_admin_quickicons.xml</server>
+	</updateservers>
+</extension>

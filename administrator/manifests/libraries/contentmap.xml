@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="library" version="1.7" method="upgrade">
+	<name>ContentMap</name>
+	<creationDate>13/02/2012</creationDate>
+	<author>Open Source Solutions SLU</author>
+	<authorEmail>info@opensourcesolutions.es</authorEmail>
+	<authorUrl>http://www.opensourcesolutions.es/</authorUrl>
+	<copyright>Open Source Solutions SLU</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<version>1.2.10</version>
+	<libraryname>contentmap</libraryname>
+
+	<files>
+		<folder>css</folder>
+		<folder>js</folder>
+		<folder>json</folder>
+		<folder>language</folder>
+		<folder>models</folder>
+		<folder>smartloader</folder>
+	</files>
+
+	<media destination="contentmap" folder="media">
+		<filename>index.html</filename>
+		<folder>images</folder>
+		<folder>markers</folder>
+	</media>
+
+</extension>

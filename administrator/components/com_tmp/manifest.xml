@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="2.5.0" method="upgrade">
+	<name>com_tmp</name>
+	<creationDate>03/17/2012</creationDate>
+	<author>ZooTemplate.com</author>
+	<copyright>ZooTemplate</copyright>
+	<authorEmail>support@zootemplate.com</authorEmail>
+	<authorUrl>www.zootemplate.com</authorUrl>
+	<version>2.5.0</version>
+	<description><![CDATA[<h1>ZT Zizia - The cool template for Hotel </h1><span>Thank you very much for using our services.<br />Please visit <a href="http://www.zootemplate.com/forums">ZooTemplate community</a> for any further support.</span>]]></description>
+	<installfile>install.php</installfile>
+  	<uninstallfile>uninstall.php</uninstallfile>
+	
+	<files folder="components/com_tmp">		
+		<filename>index.html</filename>		
+	</files>
+	
+	<administration>		
+		<files folder="administrator/components/com_tmp">		
+			<filename>index.html</filename>		
+		</files>
+	</administration>				
+	
+	<plugins>
+		<plugin plugin="plg_ztools" group="system" />
+	</plugins>
+	
+	<templates>
+  		<template template="zt_zizia" />
+  	</templates>
+</extension>

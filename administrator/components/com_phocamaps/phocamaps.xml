@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension method="upgrade" type="component" version="2.5.0">
+	<name>com_phocamaps</name>
+	<author>Jan Pavelka (www.phoca.cz)</author>
+	<creationDate>21/11/2012</creationDate>
+	<authorEmail></authorEmail>
+	<authorUrl>www.phoca.cz</authorUrl>
+	<copyright>Jan Pavelka</copyright>
+	<license>GNU/GPL</license>
+	<version>2.0.6</version>
+	<description>Phoca Maps</description>
+
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">install.sql</file>
+		</sql>
+	</install>
+
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">uninstall.sql</file>
+		</sql>
+	</uninstall>
+
+	<installfile>install.phocamaps.php</installfile>
+
+	<uninstallfile>uninstall.phocamaps.php</uninstallfile>
+
+	<files folder="site">
+		<filename>controller.php</filename>
+		<filename>index.html</filename>
+		<filename>phocamaps.php</filename>
+		<filename>router.php</filename>
+		<folder>assets</folder>
+		<folder>helpers</folder>
+		<folder>models</folder>
+		<folder>views</folder>
+	</files>
+
+	<languages>
+		<language tag="en-GB" client="site">language/en-GB/en-GB.com_phocamaps.ini</language>
+		<language tag="en-GB" client="site">language/en-GB/en-GB.com_phocamaps.sys.ini</language>
+	</languages>
+
+	<administration>
+		<menu img="components/com_phocamaps/assets/images/icon-16-pmap-menu.png" link="option=com_phocamaps">COM_PHOCAMAPS</menu>
+		<submenu>
+			<menu img="components/com_phocamaps/assets/images/icon-16-pmap-menu-cp.png" alt="COM_PHOCAMAPS_CONTROLPANEL" view="phocamapscp" link="option=com_phocamaps">COM_PHOCAMAPS_CONTROLPANEL</menu>
+			<menu img="components/com_phocamaps/assets/images/icon-16-pmap-menu-map.png" alt="COM_PHOCAMAPS_MAPS" view="phocamapsmaps" link="option=com_phocamaps&amp;view=phocamapsmaps">COM_PHOCAMAPS_MAPS</menu>
+			<menu img="components/com_phocamaps/assets/images/icon-16-pmap-menu-marker.png" alt="COM_PHOCAMAPS_MARKERS" view="phocamapsmarkers" link="option=com_phocamaps&amp;view=phocamapsmarkers">COM_PHOCAMAPS_MARKERS</menu>
+			<menu img="components/com_phocamaps/assets/images/icon-16-pmap-menu-icon.png" alt="COM_PHOCAMAPS_ICONS" view="phocamapsicons" link="option=com_phocamaps&amp;view=phocamapsicons">COM_PHOCAMAPS_ICONS</menu>
+			<menu img="components/com_phocamaps/assets/images/icon-16-pmap-menu-info.png" alt="COM_PHOCAMAPS_INFO" view="phocamapsinfo" link="option=com_phocamaps&amp;view=phocamapsinfo">COM_PHOCAMAPS_INFO</menu>
+		</submenu>
+
+		<files folder="admin">
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>index.html</filename>
+			<filename>install.bak.sql</filename>
+			<filename>install.phocamaps.php</filename>
+			<filename>install.sql</filename>
+			<filename>phocamaps.php</filename>
+			<filename>phocamaps.xml</filename>
+			<filename>uninstall.phocamaps.php</filename>
+			<filename>uninstall.sql</filename>
+			<folder>assets</folder>
+			<folder>controllers</folder>
+			<folder>help</folder>
+			<folder>helpers</folder>
+			<folder>models</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+		</files>
+
+		<languages>
+			<language tag="en-GB">language/en-GB/en-GB.com_phocamaps.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_phocamaps.sys.ini</language>
+		</languages>
+
+	</administration>
+</extension>

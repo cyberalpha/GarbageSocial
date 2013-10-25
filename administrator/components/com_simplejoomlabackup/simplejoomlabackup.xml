@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="component" version="2.5" method="upgrade">
+	<name>SimpleJoomlaBackup</name>
+	<creationDate>Agosto 2012</creationDate>
+	<author>Ribamar FS</author>
+	<authorEmail>ribafs@gmail.com</authorEmail>
+	<authorUrl>http://ribafs.org</authorUrl>
+	<copyright>Copyright (C) 2012 Ribamar FS. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<version>1.2</version>
+	<description>Simple Joomla Backup</description>
+
+	<media destination="com_simplejoomlabackup" folder="media">
+		<filename>index.html</filename>
+		<folder>images</folder>
+	</media>
+
+	<administration>
+		<menu img="../media/com_simplejoomlabackup/images/simplejoomlabackup.png">JOOMLABACKUP</menu>
+		<files folder="admin">
+			<filename>admin.simplejoomlabackup.php</filename>
+			<filename>index.html</filename>
+			<filename>readme.html</filename>
+			<filename>leiame.html</filename>
+		</files>
+
+		<languages>
+			<language tag="pt-BR">language/pt-BR/pt-BR.com_simplejoomlabackup.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_simplejoomlabackup.ini</language>
+		</languages>
+
+	</administration>
+</extension>
+

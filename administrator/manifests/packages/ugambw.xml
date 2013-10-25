@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="2.5" method="upgrade">
+   <name>Ultimate Google AdSense by Internet Partner</name>
+	<packagename>ugambw</packagename>     
+   <author>InternetPartner.info</author>
+	<creationDate>Februar, 2012</creationDate>
+	<authorEmail>office@internetpartner.info</authorEmail>
+	<authorUrl>http://internetpartner.info</authorUrl>
+	<version>1.2</version>
+	<files>
+		<file type="module" client="site" id="en">mod_ugambw_v1.2.zip</file>
+		<file type="plugin" client="content" id="en">plg_ugapbw_v1.2.zip</file>
+	</files>
+</extension>

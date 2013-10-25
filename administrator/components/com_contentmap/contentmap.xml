@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="1.7.0" method="upgrade">
+	<name>COM_CONTENTMAP</name>
+	<creationDate>13/02/2012</creationDate>
+	<author>Open Source Solutions SLU</author>
+	<authorEmail>info@opensourcesolutions.es</authorEmail>
+	<authorUrl>http://www.opensourcesolutions.es/</authorUrl>
+	<copyright>Open Source Solutions SLU</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html</license>
+	<version>1.2.10</version>
+	<description>COM_CONTENTMAP_DESCRIPTION</description>
+
+	<files folder="site">
+		<filename>index.html</filename>
+		<filename>contentmap.php</filename>
+		<filename>controller.php</filename>
+		<folder>views</folder>
+	</files>
+
+	<administration>
+		<menu img="../media/contentmap/images/map-16.png">COM_CONTENTMAP_MENU</menu>
+		<files folder="admin">
+			<filename>index.html</filename>
+			<filename>contentmap.php</filename>
+			<folder>css</folder>
+			<folder>language</folder>
+		</files>
+	</administration>
+
+	<scriptfile>install.php</scriptfile>
+
+	<updateservers>
+		<server type="extension" priority="1" name="ContentMap update site"><![CDATA[http://www.opensourcesolutions.es/download/contentmap.xml]]></server>
+	</updateservers>
+
+	<chain>
+		<extension directory="extras" name="lib_contentmap" type="LIBRARY" />
+		<extension directory="extras" name="mod_contentmap" type="MODULE" />
+		<extension directory="extras" name="plg_contentmap" type="PLUGIN" />
+	</chain>
+
+</extension>

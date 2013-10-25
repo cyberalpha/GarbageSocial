@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<SobiProApp>
+  <id>mod_sobipro_geomap</id>
+  <type>module</type>
+  <name>SobiPro GeoMap Module</name>
+  <uninstall>cms.base.installer:remove</uninstall>
+</SobiProApp>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+
+
+
+
+
+	<meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8"><title>Leiame</title>
+	
+	<meta name="GENERATOR" content="OpenOffice.org 3.2  (Linux)">
+	<meta name="CREATED" content="0;0">
+	<meta name="CHANGEDBY" content="Ribamar FS">
+	<meta name="CHANGED" content="20101018;9351100">
+	<meta name="CHANGEDBY" content="Ribamar FS"></head><body dir="ltr" lang="pt-BR">
+<p style="margin-bottom: 0cm;"><br>
+</p>
+<p style="margin-bottom: 0cm;" align="center"><font size="5"><b>Simple Joomla Backup - Backup de Portais  Joomla<br>
+</b></font></p>
+<p style="margin-bottom: 0cm;">Bom para instalar seu portal em outro
+computador ou em um servidor web. Também é útil para gerar backup do seu portal.<br><br>Proporciona rapidez, agilidade e conforto consequente
+nas operações de backup e migração de portais Joomla.<br>Ele é
+rápido, pois escolhi uma classe interna do próprio PHP para
+compactar (ZipArchive).<br>
+<br><b>Usando o </b><small><font size="5"><small><b>Simple Joomla Backup</b></small></font></small><b>:</b><br><br>-
+Instale o componente com_simplejoomlabackup<br>- Clique em Componentes - simplejoomlabackup<br>- Clique no botão Start<br>- Aguarde e
+faça o download<br>- Então Instale em qualquer computador com
+suporte a Joomla ou no seu próprio computador com outro nome.<br></p>
+<p style="margin-bottom: 0cm;">Agora para restaurar basta:</p>
+<p style="margin-bottom: 0cm;">- Criar o banco e importar o .sql para ele<br>
+</p>
+<p style="margin-bottom: 0cm;"><big>- Descompactar o arquivo .zip criando uma pasta no documentRoot<br>
+</big></p>
+<p style="margin-bottom: 0cm;"><big>- Editar o configuration.php e ajustar os dados do banco, $log_path e $tmp_path;
+</big></p>
+<p style="margin-bottom: 0cm;">Agora pode chamar no navegador.</p><br>
+<p style="margin-bottom: 0cm; font-weight: bold;">Como usar o Instalador do Joomla para restaurar seu backup</p>
+
+
+
+<p style="margin-bottom: 0cm; font-weight: bold;"><span style="font-weight: normal;">- Descompacte o arquivo .zip gerado pelo Simple Joomla Backup<br>
+</span><br>
+<span style="font-weight: normal;">- Faça o download do Joomla 2.5 da mesma versão do seu site<br>
+- Descompacte o Joomla<br>
+- Acesse a pasta descompactada e copie a sub-pasta "installation" para o raiz da pasta do backup</span><br>
+</p>
+
+<p style="margin-bottom: 0cm;">- Renomeie o arquivo .sql do backup para joomla.sql<br>
+- Copie joomla.sql sobrescrevendo o existente para a pasta installation/sql/mysql</p>
+
+<p style="margin-bottom: 0cm;">- Delete ou renomeie o arquivo configuration.php da pasta do backup<br>
+- Compacte novamente a pasta do backup e agora poderá restaurar seu backup usando o instalador do Joomla</p>
+<p style="margin-bottom: 0cm;"><br>
+</p>
+<p style="margin-bottom: 0cm;"><span style="font-weight: bold;">Em caso de Falha no Backup</span><br>
+</p>
+<p style="margin-bottom: 0cm;">Se por algum motivo o Simple Joomla Backup falhar na criação do backup, as duas melhores alternativas que conheço são:&lt;br&gt;<br>
+- Akeeba Backup - https://www.akeebabackup.com/download/akeeba-backup.html<br>
+&nbsp; A configuração necessária é:<br>
+&nbsp;&nbsp;&nbsp; Componentes - Akeeba Backup - Configuration<br>
+&nbsp;&nbsp;&nbsp; Archiver engine - ZIP Format<br>
+- A outra alternativa é um backup manual, que não dá muito trabalho:<br>
+&nbsp;&nbsp;&nbsp; Acesse o gerenciador de arquivos do cpanel<br>
+&nbsp;&nbsp;&nbsp; Selecione a pasta do seu site<br>
+&nbsp;&nbsp;&nbsp; Clique em Compress<br>
+&nbsp;&nbsp;&nbsp; Faça o download do arquivo gerado<br>
+&nbsp;&nbsp;&nbsp; Acesse o phpMyAdmin<br>
+&nbsp;&nbsp;&nbsp; Selecione o banco do seu site<br>
+&nbsp;&nbsp;&nbsp; Exporte o banco no formato default (.sql) e faça o download<br>
+- Restaurando o backup manual<br>
+&nbsp;&nbsp;&nbsp; Idealmente um backup é restaurado em um site novo<br>
+&nbsp;&nbsp;&nbsp; Apenas acesse o cpanel e descompacte o zip dos arquivos numa nova pasta<br>
+&nbsp;&nbsp;&nbsp; Crie um novo banco e acesse o phpmyadmin para importar o script que gerou inicialmente<br>
+&nbsp;&nbsp;&nbsp; Faça os devidos ajustes no configuration.php, se necessário<br>
+<br>
+<h2>Erros</h2>
+Caso apareça este erro ou algo parecido:<br>
+Fatal error: Out of memory (allocated 273154048) (tried to allocate 200046879 bytes)<br>
+Precisará aumentar o memory_limit do seu PHP. Geralmente precisa pedir suporte ao pessoal do servidor.<br>
+
+<span style="font-weight: bold;"></span></p>
+<p style="margin-bottom: 0cm;"><b>Sob a Licença</b><br>GPL2
+<a href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html">http://www.gnu.org/licenses/old-licenses/gpl-2.0.html</a>.<br><br><br>Ribamar
+FS - 06/04/2012 - <a href="http://ribafs.org/">http://ribafs.org</a><br><br></p>
+
+
+</body></html>

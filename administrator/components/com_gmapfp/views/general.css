@@ -1,0 +1,6 @@
+/* -- General styles ------------------------------ */
+
+.gmapfp td input, .gmapfp td label {
+	float:		none !important;
+	display:	inline !important;
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="1.7">
+<name>googleDirections Package</name>
+<packagename>googleDirections</packagename>
+<version>2.5.12</version>
+<author>kksou</author>
+<creationDate>Feb 2012</creationDate>
+<copyright>(C) kksou.com. All Rights Reserved.</copyright>
+<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+<authorEmail>support@kksou.com</authorEmail>
+<authorUrl>www.kksou.com/php-gtk2/</authorUrl>
+<packager>kksou</packager>
+<packagerurl>http://www.kksou.com/php-gtk2/</packagerurl>
+<description>package to install the following plugins: googleMaps and googleDirections plugins</description>
+<update>http://www.updateurl.com/update</update>
+<files folder="packages">
+	<file type="plugin" id="googleMaps" client="site">googleMaps_v2.5.19.zip</file>
+	<file type="plugin" id="googleDirections" client="site">googleDirections_v2.5.12.zip</file>
+</files>
+</extension>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<SobiProApp>
+  <id>es-ES</id>
+  <type>language</type>
+  <name>Spanish (Formal International)</name>
+  <installLog>
+    <files>
+      <file>/administrator/language/es-ES/es-ES.com_sobipro.ini</file>
+      <file>/administrator/language/es-ES/es-ES.com_sobipro.sys.ini</file>
+      <file>/administrator/language/es-ES/es-ES.com_sobipro.js.ini</file>
+      <file>/administrator/language/es-ES/es-ES.com_sobipro.about.ini</file>
+      <file>/language/es-ES/es-ES.com_sobipro.ini</file>
+      <file>/language/es-ES/es-ES.com_sobipro.err.ini</file>
+      <file>/language/es-ES/es-ES.com_sobipro.js.ini</file>
+    </files>
+  </installLog>
+</SobiProApp>

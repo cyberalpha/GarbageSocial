@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SobiProApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://xml.sigsiu.net/SobiPro/application.xsd">
+  <name>Calendar Field</name>
+  <id>calendar_field</id>
+  <authorName>Sigsiu.NET GmbH</authorName>
+  <authorEmail>sobi@sigsiu.net</authorEmail>
+  <authorUrl>http://www.Sigsiu.NET/</authorUrl>
+  <copyright>Copyright (C) 2009-2012 Sigsiu.NET GmbH</copyright>
+  <license>GNU General Public License v3</license>
+  <creationDate>2012-05-29</creationDate>
+  <fieldType typeId="calendar" fieldGroup="free_single_simple_data">Calendar</fieldType>
+  <version>0.9.2</version>
+  <description>0.9.2</description>
+  <language folder="Languages">
+    <file lang="en_GB">en-GB.SpApp.calendar.ini</file>
+    <file lang="bg_BG">bg-BG.SpApp.calendar.ini</file>
+    <file lang="da_DK">da-DK.SpApp.calendar.ini</file>
+    <file lang="de_DE">de-DE.SpApp.calendar.ini</file>
+    <file lang="el_GR">el-GR.SpApp.calendar.ini</file>
+    <file lang="es_ES">es-ES.SpApp.calendar.ini</file>
+    <file lang="fi_FI">fi-FI.SpApp.calendar.ini</file>
+    <file lang="fr_FR">fr-FR.SpApp.calendar.ini</file>
+    <file lang="hu_HU">hu-HU.SpApp.calendar.ini</file>
+    <file lang="nl_NL">nl-NL.SpApp.calendar.ini</file>
+    <file lang="pl_PL">pl-PL.SpApp.calendar.ini</file>
+    <file lang="ru_RU">ru-RU.SpApp.calendar.ini</file>
+    <file lang="sv_SE">sv-SE.SpApp.calendar.ini</file>
+    <file lang="tr_TR">tr-TR.SpApp.calendar.ini</file>
+    <file lang="zh_CN">zh-CN.SpApp.calendar.ini</file>
+  </language>
+  <files path="adm:field">
+    <folder>Adm/</folder>
+  </files>
+  <files path="js:">
+    <file>timepicker.js</file>
+    <file>timepicker-uncompressed.js</file>
+    <file>calendar.js</file>
+    <file>calendar_search.js</file>
+  </files>
+  <files path="css:">
+    <file>timepicker.css</file>
+  </files>
+  <files path="fields:">
+    <file>calendar.php</file>
+  </files>
+  <files path="fields:adm">
+    <folder>FieldAdm/</folder>
+  </files>
+  <files path="config:">
+    <file>date_formats.ini</file>
+  </files>
+  <requirements>
+    <core version="1.0.6"/>
+  </requirements>
+  <installLog>
+    <modified/>
+    <files>
+      <file>/var/www/SocialGarbage/administrator/components/com_sobipro/field/edit/calendar.ini</file>
+      <file>/var/www/SocialGarbage/administrator/components/com_sobipro/field/edit/calendar.php</file>
+      <file>/var/www/SocialGarbage/components/com_sobipro/lib/js/timepicker.js</file>
+      <file>/var/www/SocialGarbage/components/com_sobipro/lib/js/timepicker-uncompressed.js</file>
+      <file>/var/www/SocialGarbage/components/com_sobipro/lib/js/calendar.js</file>
+      <file>/var/www/SocialGarbage/components/com_sobipro/lib/js/calendar_search.js</file>
+      <file>/var/www/SocialGarbage/media/sobipro/css/timepicker.css</file>
+      <file>/var/www/SocialGarbage/components/com_sobipro/opt/fields/calendar.php</file>
+      <file>/var/www/SocialGarbage/components/com_sobipro/opt/fields/adm/calendar.php</file>
+      <file>/var/www/SocialGarbage/components/com_sobipro/etc/date_formats.ini</file>
+      <file>/var/www/SocialGarbage/language/en-GB/en-GB.SpApp.calendar.ini</file>
+      <file>/var/www/SocialGarbage/language/da-DK/da-DK.SpApp.calendar.ini</file>
+      <file>/var/www/SocialGarbage/language/de-DE/de-DE.SpApp.calendar.ini</file>
+      <file>/var/www/SocialGarbage/language/el-GR/el-GR.SpApp.calendar.ini</file>
+      <file>/var/www/SocialGarbage/language/es-ES/es-ES.SpApp.calendar.ini</file>
+      <file>/var/www/SocialGarbage/language/fr-FR/fr-FR.SpApp.calendar.ini</file>
+      <file>/var/www/SocialGarbage/language/hu-HU/hu-HU.SpApp.calendar.ini</file>
+      <file>/var/www/SocialGarbage/language/nl-NL/nl-NL.SpApp.calendar.ini</file>
+      <file>/var/www/SocialGarbage/language/pl-PL/pl-PL.SpApp.calendar.ini</file>
+      <file>/var/www/SocialGarbage/language/ru-RU/ru-RU.SpApp.calendar.ini</file>
+      <file>/var/www/SocialGarbage/language/sv-SE/sv-SE.SpApp.calendar.ini</file>
+      <file>/var/www/SocialGarbage/language/tr-TR/tr-TR.SpApp.calendar.ini</file>
+      <file>/var/www/SocialGarbage/language/zh-CN/zh-CN.SpApp.calendar.ini</file>
+    </files>
+    <field>calendar</field>
+  </installLog>
+</SobiProApp>

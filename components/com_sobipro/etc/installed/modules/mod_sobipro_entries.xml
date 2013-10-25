@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<SobiProApp>
+  <id>mod_sobipro_entries</id>
+  <type>module</type>
+  <name>SobiPro Entries Module</name>
+  <uninstall>cms.base.installer:remove</uninstall>
+</SobiProApp>

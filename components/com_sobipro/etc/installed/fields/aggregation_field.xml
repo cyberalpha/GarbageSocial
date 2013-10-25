@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SobiProApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://xml.sigsiu.net/SobiPro/application.xsd">
+  <name>Aggregation Field</name>
+  <id>aggregation_field</id>
+  <authorName>Sigsiu.NET GmbH</authorName>
+  <authorEmail>sobi@sigsiu.net</authorEmail>
+  <authorUrl>http://www.Sigsiu.NET/</authorUrl>
+  <copyright>Copyright (C) 2009-2011 Sigsiu.NET GmbH</copyright>
+  <license>GNU General Public License v3</license>
+  <creationDate>2011-08-16</creationDate>
+  <fieldType typeId="aggregation" fieldGroup="predefined_multi_data_multi_choice">Aggregation Field</fieldType>
+  <version>1.0</version>
+  <description>
+  </description>
+  <language>
+    <file lang="en_GB">en-GB.SpApp.aggregation.ini</file>
+    <file lang="de_DE">de-DE.SpApp.aggregation.ini</file>
+    <file lang="pl_PL">pl-PL.SpApp.aggregation.ini</file>
+    <file lang="sv_SE">sv-SE.SpApp.aggregation.ini</file>
+  </language>
+  <files path="adm:field">
+    <folder>Adm/</folder>
+  </files>
+  <files path="templates:default.listing.">
+    <file>tag.xsl</file>
+  </files>
+  <files path="front:opt.listing.">
+    <file>tag.php</file>
+  </files>
+  <files path="js:">
+    <file>tagsinput.js</file>
+  </files>
+  <files path="css:">
+    <file>tagsinput.css</file>
+  </files>
+  <files path="fields:">
+    <file>aggregation.php</file>
+  </files>
+  <requirements>
+    <core version="1.0.0.1749"/>
+    <field>chbxgroup</field>
+  </requirements>
+  <installLog>
+    <modified/>
+    <files>
+      <file>/var/www/SocialGarbage/administrator/components/com_sobipro/field/edit/aggregation.ini</file>
+      <file>/var/www/SocialGarbage/administrator/components/com_sobipro/field/edit/aggregation.php</file>
+      <file>/var/www/SocialGarbage/components/com_sobipro/usr/templates/default/listing/tag.xsl</file>
+      <file>/var/www/SocialGarbage/components/com_sobipro/opt/listing/tag.php</file>
+      <file>/var/www/SocialGarbage/components/com_sobipro/lib/js/tagsinput.js</file>
+      <file>/var/www/SocialGarbage/media/sobipro/css/tagsinput.css</file>
+      <file>/var/www/SocialGarbage/components/com_sobipro/opt/fields/aggregation.php</file>
+      <file>/var/www/SocialGarbage/language/en-GB/en-GB.SpApp.aggregation.ini</file>
+      <file>/var/www/SocialGarbage/language/de-DE/de-DE.SpApp.aggregation.ini</file>
+      <file>/var/www/SocialGarbage/language/pl-PL/pl-PL.SpApp.aggregation.ini</file>
+      <file>/var/www/SocialGarbage/language/sv-SE/sv-SE.SpApp.aggregation.ini</file>
+    </files>
+    <field>aggregation</field>
+  </installLog>
+</SobiProApp>

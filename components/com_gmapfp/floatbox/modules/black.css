@@ -1,0 +1,56 @@
+/* Floatbox v3.54.1 */
+
+/* overlay color */
+#fbOverlay.fb_black { background-color: #000; }
+
+/* outerBorder and main floatbox color */
+#fbBox.fb_black {
+	border-color: #888;
+	background-color: #000;
+}
+
+/* animated 'loading' graphic */
+#fbBox #fbBoxLoader.fb_black { background-image: url(../graphics/loader_black.gif); }
+
+/* innerBorder color */
+#fbBox #fbMainDiv.fb_black { border-color: #ccc; }
+
+/* resize button graphic in the top left corner */
+#fbBox #fbResizer.fb_black { background-image: url(../graphics/resizer_black.gif); }
+
+/* resize dragger in the lower right corner */
+#fbBox #fbDragger.fb_black { background-image: url(../graphics/dragger_black.gif); }
+
+/* on-mouse-over upper nav graphics */
+#fbBox #fbOverlayPrev.fb_black { background-image: url(../graphics/overlayPrev_black.gif); }
+#fbBox #fbOverlayNext.fb_black { background-image: url(../graphics/overlayNext_black.gif); }
+
+/* new window background image */
+#fbBox #fbNewWindowLink.fb_black a {
+	background-image: url(../graphics/newWindow_black.png);
+	_background-image: url(../graphics/newWindow_black.gif);
+}
+
+/* 'image x of y', indexLinks & newWindowLink color */
+#fbBox #fbIndexLinks.fb_black, #fbBox #fbIndexLinks.fb_black a:link, #fbBox #fbIndexLinks.fb_black a:visited,
+#fbBox #fbNewWindowLink.fb_black a:link, #fbBox #fbNewWindowLink.fb_black a:visited,
+#fbBox #fbItemNumber.fb_black { color: #aaa; }
+
+/* captions, infoLink, printLink, indexLinks:hover & newWindowLink:hover color */
+#fbBox #fbCaptionDiv.fb_black, #fbBox #fbCaption2Div.fb_black,
+#fbBox #fbtlWidgetDiv.fb_black a:link, #fbBox #fbtlWidgetDiv.fb_black a:visited,
+#fbBox #fbtrWidgetDiv.fb_black a:link, #fbBox #fbtrWidgetDiv.fb_black a:visited,
+#fbBox #fbblWidgetDiv.fb_black a:link, #fbBox #fbblWidgetDiv.fb_black a:visited,
+#fbBox #fbbrWidgetDiv.fb_black a:link, #fbBox #fbbrWidgetDiv.fb_black a:visited,
+#fbBox #fbIndexLinks.fb_black a:hover, #fbBox #fbNewWindowLink.fb_black a:hover { color: #d7d7d7; }
+
+/* lower nav graphics */
+#fbBox #fbPrev.fb_black { background-image: url(../graphics/prev_black.gif); }
+#fbBox #fbNext.fb_black { background-image: url(../graphics/next_black.gif); }
+
+/* 'play' and 'pause' graphics */
+#fbBox #fbPlay.fb_black { background-image: url(../graphics/play_black.gif); }
+#fbBox #fbPause.fb_black { background-image: url(../graphics/pause_black.gif); }
+
+/* 'close' graphic */
+#fbBox #fbClose.fb_black { background-image: url(../graphics/close_black.gif); }

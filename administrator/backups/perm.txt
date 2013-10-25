@@ -1,0 +1,13 @@
+administrator/components/com_xcloner-backupandrestore|0755|4096|F
+/var/www/SocialGarbage|0777|4096|D
+robots.txt|0777|865|F
+privacidad.html|0777|1571|F
+Index.html~|0777|164|F
+configuration.php|0444|2089|F
+README.txt|0777|4244|F
+index.php|0777|1319|F
+web.config.txt|0777|1715|F
+htaccess.txt|0777|3118|F
+Index.html|0777|164|F
+LICENSE.txt|0777|17816|F
+configuration.php-dist|0777|1804|F
