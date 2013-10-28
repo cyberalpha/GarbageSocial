@@ -175,7 +175,7 @@ class AkeebaModelStatistics extends FOFModel
 
 		$record = AEPlatform::getInstance()->get_statistics($id);
 
-		JLoader::import('joomla.utilities.date');
+		jimport('joomla.utilities.date');
 
 		$statusClass="";
 		switch($record['status'])
@@ -290,7 +290,7 @@ class AkeebaModelStatistics extends FOFModel
 		$aeconfig = AEFactory::getConfiguration();
 
 		$status = true;
-		JLoader::import('joomla.filesystem.file');
+		jimport('joomla.filesystem.file');
 		foreach($allFiles as $filename)
 		{
 			$new_status = JFile::delete($filename);
@@ -312,7 +312,7 @@ class AkeebaModelStatistics extends FOFModel
 		if( empty($this->_pagination) )
 		{
 			// Import the pagination library
-			JLoader::import('joomla.html.pagination');
+			jimport('joomla.html.pagination');
 
 			// Prepare pagination values
 			$total = AEPlatform::getInstance()->get_statistics_count($filters);

@@ -23,18 +23,15 @@ if(defined('PHP_VERSION')) {
 }
 
 // Old PHP version detected. EJECT! EJECT! EJECT!
-if(!version_compare($version, '5.3.0', '>='))
+if(!version_compare($version, '5.2.0', '>='))
 {
-	return JError::raise(E_ERROR, 500, 'PHP versions 4.x, 5.0, 5.1 and 5.2 are no longer supported by Akeeba Backup.<br/><br/>The version of PHP used on your site is obsolete and contains known security vulenrabilities. Moreover, it is missing features required by Akeeba Backup to work properly or at all. Please ask your host to upgrade your server to the latest PHP 5.3 release. Thank you!');
+	return JError::raise(E_ERROR, 500, 'PHP 4.x, 5.0 and 5.1 is no longer supported by Akeeba Backup.','The version of PHP used on your site is obsolete and contains known security vulenrabilities. Moreover, it is missing features required by Akeeba Backup to work properly or at all. Please ask your host to upgrade your server to the latest PHP 5.2 or 5.3 release. Thank you!');
 }
 
-JLoader::import('joomla.application.component.model');
+jimport('joomla.application.component.model');
 
 // Load FOF
 include_once JPATH_SITE.'/libraries/fof/include.php';
-if (!defined('FOF_INCLUDED') || !class_exists('FOFForm', true))
-{
-	JError::raiseError ('500', 'Your Akeeba Backup installation is broken; please re-install. Alternatively, extract the installation archive and copy the fof directory inside your site\'s libraries directory.');
-}
+if(!defined('FOF_INCLUDED')) JError::raiseError ('500', 'Your Akeeba Backup installation is broken; please re-install. Alternatively, extract the installation archive and copy the fof directory inside your site\'s libraries directory.');
 
 FOFDispatcher::getTmpInstance('com_akeeba')->dispatch();

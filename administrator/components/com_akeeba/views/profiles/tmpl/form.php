@@ -9,7 +9,7 @@
 defined('_JEXEC') or die();
 
 // Include tooltip support
-JLoader::import('joomla.html.html');
+jimport('joomla.html.html');
 JHtml::_('behavior.framework');
 JHTML::_('behavior.tooltip');
 

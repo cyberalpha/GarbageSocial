@@ -37,10 +37,7 @@ abstract class AEAbstractDump extends AEAbstractPart
 
 	/** @var string The database driver to use */
 	protected $driver = '';
-
-	/** @var boolean Should I post process quoted values */
-	protected $postProcessValues = false;
-
+	
 	// **********************************************************************
 	// File handling fields
 	// **********************************************************************
@@ -68,7 +65,7 @@ abstract class AEAbstractDump extends AEAbstractPart
 
 	/** @var string Relative path of how the file should be saved in the archive */
 	protected $saveAsName = '';
-
+	
 	// **********************************************************************
 	// Protected fields (data handling)
 	// **********************************************************************
@@ -105,7 +102,7 @@ abstract class AEAbstractDump extends AEAbstractPart
 
 	/** @var int Dump part's maximum size */
 	protected $partSize = 0;
-
+	
 	/**
 	 * Find where to store the backup files
 	 * @param $partNumber int The SQL part number, default is 0 (.sql)
@@ -130,7 +127,7 @@ abstract class AEAbstractDump extends AEAbstractPart
 				$baseName = $baseName.'.s'.sprintf('%02u', $partNumber);
 			}
 		}
-
+		
 		if(empty($this->installerSettings)) {
 			// Fetch the installer settings
 			$this->installerSettings = (object)array(
@@ -193,14 +190,14 @@ abstract class AEAbstractDump extends AEAbstractPart
 
 	/**
 	 * Populates the table arrays with the information for the db entities to backup
-	 *
+	 * 
 	 * @return null
 	 */
 	protected abstract function getTablesToBackup();
-
+	
 	/**
 	 * Runs a step of the database dump
-	 *
+	 * 
 	 * @return null
 	 */
 	protected abstract function stepDatabaseDump();
@@ -276,7 +273,7 @@ abstract class AEAbstractDump extends AEAbstractPart
 		// Finally, mark ourselves "prepared".
 		$this->setState('prepared');
 	}
-
+	
 	/**
 	 * Implements the _run() abstract method
 	 */
@@ -358,11 +355,11 @@ abstract class AEAbstractDump extends AEAbstractPart
 		}
 
 		$this->stepDatabaseDump();
-
+		
 		$null = null;
 		$this->writeline($null);
 	}
-
+	
 	/**
 	 * Implements the _finalize() abstract method
 	 *
@@ -429,7 +426,7 @@ abstract class AEAbstractDump extends AEAbstractPart
 			$this->setState('finished');
 		}
 	}
-
+	
 /**
 	 * Creates a new dump part
 	 */
@@ -467,8 +464,8 @@ abstract class AEAbstractDump extends AEAbstractPart
 
 	/**
 	 * Creates a new dump part, but only if required to do so
-	 *
-	 * @return type
+	 * 
+	 * @return type 
 	 */
 	protected function createNewPartIfRequired()
 	{
@@ -488,8 +485,8 @@ abstract class AEAbstractDump extends AEAbstractPart
 			return $this->getNextDumpPart();
 		}
 		return true;
-	}
-
+	}	
+	
 	/**
 	 * Returns a table's abstract name (replacing the prefix with the magic #__ string)
 	 *
@@ -567,7 +564,7 @@ abstract class AEAbstractDump extends AEAbstractPart
 	 * @return boolean TRUE is saving to the file succeeded
 	 */
 	protected function writeline(&$fileData) {
-		if(!is_resource($this->fp))
+		if(!$this->fp)
 		{
 			$this->fp = @fopen($this->tempFile, 'a');
 			if($this->fp === false)
@@ -609,11 +606,7 @@ abstract class AEAbstractDump extends AEAbstractPart
 	public function closeFile()
 	{
 		AEUtilLogger::WriteLog(_AE_LOG_DEBUG, "Closing SQL dump file.");
-		if (is_resource($this->fp))
-		{
-			@fclose($this->fp);
-			$this->fp = null;
-		}
+		if(is_resource($this->fp)) @fclose($this->fp);
 	}
 
 	/**
@@ -657,79 +650,14 @@ abstract class AEAbstractDump extends AEAbstractPart
 			case '_prepare':
 				return $this->_prepare();
 				break;
-
+			
 			case '_run':
 				return $this->_run();
 				break;
-
+			
 			case '_finalize':
 				return $this->_finalize();
 				break;
 		}
-	}
-
-	/**
-	 * Post process a quoted value before it's written to the database dump.
-	 * So far it's only required for SQL Server which has a problem escaping
-	 * newline characters...
-	 *
-	 * @param   string  $value  The quoted value to post-process
-	 * 
-	 * @return  string
-	 */
-	protected function postProcessQuotedValue($value)
-	{
-		return $value;
-	}
-
-	/**
-	 * Returns a preamble for the data dump portion of the SQL backup. This is
-	 * used to output commands before the first INSERT INTO statement for a
-	 * table when outputting a plain SQL file.
-	 *
-	 * Practical use: the SET IDENTITY_INSERT sometable ON required for SQL Server
-	 *
-	 * @param   string   $tableAbstract  Abstract name of the table, e.g. #__foobar
-	 * @param   string   $tableName      Real name of the table, e.g. abc_foobar
-	 * @param   integer  $maxRange       Row count on this table
-	 *
-	 * @return  string   The SQL commands you want to be written in the dump file
-	 */
-	protected function getDataDumpPreamble($tableAbstract, $tableName, $maxRange)
-	{
-		return '';
-	}
-
-	/**
-	 * Returns an epilogue for the data dump portion of the SQL backup. This is
-	 * used to output commands after the last INSERT INTO statement for a
-	 * table when outputting a plain SQL file.
-	 *
-	 * Practical use: the SET IDENTITY_INSERT sometable OFF required for SQL Server
-	 *
-	 * @param   string   $tableAbstract  Abstract name of the table, e.g. #__foobar
-	 * @param   string   $tableName      Real name of the table, e.g. abc_foobar
-	 * @param   integer  $maxRange       Row count on this table
-	 *
-	 * @return  string   The SQL commands you want to be written in the dump file
-	 */
-	protected function getDataDumpEpilogue($tableAbstract, $tableName, $maxRange)
-	{
-		return '';
-	}
-
-	/**
-	 * Return a list of field names for the INSERT INTO statements. This is only
-	 * required for Microsoft SQL Server because without it the SET IDENTITY_INSERT
-	 * has no effect.
-	 *
-	 * @param   array    $fieldNames   A list of field names in array format
-	 * @param   integer  $numOfFields  The number of fields we should be dumping
-	 *
-	 * @return  string
-	 */
-	protected function getFieldListSQL($fieldNames, $numOfFields)
-	{
-		return '';
 	}
 }

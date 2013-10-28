@@ -1,0 +1,49 @@
+/* CSS Document */
+
+div.moduletable div {
+zoom: 1;
+}
+
+div.moduletable2 div {
+zoom: 1;
+}
+
+#leftcol {
+margin-left: -14px;
+}
+
+
+#hornav ul li a {display:inline-block;float:left;}
+
+#hornav ul li ul {
+margin-left: -20px;
+}
+
+#hornav ul li ul ul {
+   margin: -30px 0 0 10.3em;
+}
+
+#hornav ul li{
+margin:0px -20px 0px 0px ;
+}
+
+#hornav ul li ul {clear:both; top:36px; margin-top: 0px;}
+
+#hornav ul li li {
+margin-bottom: 0px;
+}
+
+#content_wrapper {
+width: 930px;
+padding-left: 0px;
+}
+
+.moduletable3 {
+margin: 0px 10px 0px 10px;		
+}
+
+
+
+#hornav ul li li a {margin-top:0px;}
+#hornav ul li ul {margin-top: 0px;}
+

@@ -14,26 +14,37 @@ defined('_JEXEC') or die();
  * Folder bowser controller
  *
  */
-class AkeebaControllerFtpbrowser extends AkeebaControllerDefault
+class AkeebaControllerFtpbrowser extends FOFController
 {
+	public function  __construct($config = array()) {
+		parent::__construct($config);
+		// Access check, Joomla! 1.6 style.
+		$user = JFactory::getUser();
+		if (!$user->authorise('akeeba.configure', 'com_akeeba')) {
+			$this->setRedirect('index.php?option=com_akeeba');
+			return JError::raiseWarning(403, JText::_('JERROR_ALERTNOAUTHOR'));
+			$this->redirect();
+		}
+	}
+	
 	public function execute($task)
 	{
 		$task = 'browse';
 		parent::execute($task);
 	}
-
+	
 	public function browse($cachable = false, $urlparams = false)
 	{
 		$model = $this->getThisModel();
 
 		// Grab the data and push them to the model
-		$model->host =		$this->input->get('host', '', 'string');
-		$model->port =		$this->input->get('port', 21, 'int');
-		$model->passive =	$this->input->get('passive', 1, 'int');
-		$model->ssl =		$this->input->get('ssl', 0, 'int');
-		$model->username =	$this->input->get('username', '', 'none', 2);
-		$model->password =	$this->input->get('password', '', 'none', 2);
-		$model->directory =	$this->input->get('directory', '', 'none', 2);
+		$model->host =		FOFInput::getString('host', '', $this->input);
+		$model->port =		FOFInput::getInt('port', 21, $this->input);
+		$model->passive =	FOFInput::getInt('passive', 1, $this->input);
+		$model->ssl =		FOFInput::getInt('ssl', 0, $this->input);
+		$model->username =	FOFInput::getVar('username', '', $this->input);
+		$model->password =	FOFInput::getVar('password', '', $this->input);
+		$model->directory =	FOFInput::getVar('directory', '', $this->input);
 
 		$ret = $model->doBrowse();
 

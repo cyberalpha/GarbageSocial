@@ -15,7 +15,7 @@ defined('AKEEBAENGINE') or die();
  * 
  * Based on Joomla! Platform 11.2
  */
-class AEDriverSqlazure extends AEDriverSqlsrv
+class JDatabaseSqlazure extends AEDriverSqlsrv
 {
 	/**
 	 * The name of the database driver.

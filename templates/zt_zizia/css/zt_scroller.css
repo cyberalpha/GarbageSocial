@@ -1,0 +1,37 @@
+/*------------------------------------------------------------------------
+* Copyright (c) 2008-2012 ZooTemplate. All Rights Reserved.
+* @license - Copyrighted Commercial Software
+* Author: ZooTemplate
+* Websites:  http://www.zootemplate.com
+-------------------------------------------------------------------------*/
+.zt_scroller{position:relative;display:table;}
+.scroller-slider { display:block; overflow: hidden;padding:5px 0; margin: 0 50px;}
+.scroller-slider > ul {display:block;float: left;}
+.scroller-slider > ul > li{padding:0;background:none;overflow:visible !important;}
+
+.scroller-slider div.catpanel  {display:table;}
+.scroller-slider div.catpanel > div {display:inline-block;}
+.scroller-slider div.catpanel > div > a{display:block;}
+.scroller-slider div.catpanel > div > a.img{padding: 5px;border:1px solid #ddd;box-shadow: 0 0 5px #ccc;display: table; margin:auto;}
+.scroller-slider div.catpanel > div > span.img{padding: 5px;border:1px solid #ddd;box-shadow: 0 0 5px #ccc; display: table; margin:auto;}
+.scroller-slider div.catpanel > div > a.img:hover{opacity:0.9; border: 1px solid #b7b7b7;}
+.scroller-slider div.catpanel > div > span.img:hover{opacity:0.9; border: 1px solid #b7b7b7;}
+.scroller-slider div.catpanel > div > a.title{margin:10px 0; font-size:120%;font-family:Tahoma;display: none;}
+.scroller-slider div.catpanel > div.block p {margin: 0;}
+
+div.pagenave { display: block;width:100%;position: absolute; margin: 0 50px;top: 25%!important;}
+div.pagenave > button{
+    height:48px;width:48px;display:block;border:none;cursor:pointer;padding:0;
+    background:url(../images/zt_scoller/nav.png) no-repeat;
+}
+div.pagenave > .next { background-position: right 0; float:right; margin-right: -50px;}
+div.pagenave > .next:hover{background-position: right -50px;}
+div.pagenave > .next:active{background-position: right -100px;}
+
+div.pagenave >.prev { background-position:  0 0; float:left; margin-left: -50px;}
+div.pagenave > .prev:hover{background-position: 0 -50px;}
+div.pagenave > .prev:active{background-position: 0 -100px;}
+
+
+div.control { display: block; float: left;position: absolute; bottom: 1px;left: 1px; z-index: 9;}
+div.control span {float: left;width: 10px;height: 10px;border: #dfdfdf solid 1px;margin-right: 3px;font-size: 11px;padding: 0 0 3px 3px;cursor: pointer;}

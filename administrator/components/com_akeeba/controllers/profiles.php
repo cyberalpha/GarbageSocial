@@ -13,11 +13,17 @@ defined('_JEXEC') or die();
  * Controller class for Profiles Administration page
  *
  */
-class AkeebaControllerProfiles extends AkeebaControllerDefault
+class AkeebaControllerProfiles extends FOFController
 {
 	public function  __construct($config = array()) {
 		parent::__construct($config);
-
+		// Access check, Joomla! 1.6 style.
+		$user = JFactory::getUser();
+		if (!$user->authorise('core.admin', 'com_akeeba')) {
+			$this->setRedirect('index.php?option=com_akeeba');
+			return JError::raiseWarning(403, JText::_('JERROR_ALERTNOAUTHOR'));
+			$this->redirect();
+		}
 		$base_path = JPATH_COMPONENT_ADMINISTRATOR.'/plugins';
 		$model_path = $base_path.'/models';
 		$view_path = $base_path.'/views';

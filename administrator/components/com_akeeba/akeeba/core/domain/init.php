@@ -41,14 +41,12 @@ class AECoreDomainInit extends AEAbstractPart
 	{
 		// Load parameters (description and comment)
 		$jpskey = '';
-		$angiekey = '';
 		if(!empty($this->_parametersArray))
 		{
 			$params = $this->_parametersArray;
 			if( isset($params['description']) ) $this->description = $params['description'];
 			if( isset($params['comment']) ) $this->comment = $params['comment'];
 			if( isset($params['jpskey']) ) $jpskey = $params['jpskey'];
-			if( isset($params['angiekey']) ) $angiekey = $params['angiekey'];
 		}
 
 		// Load configuration
@@ -59,7 +57,6 @@ class AECoreDomainInit extends AEAbstractPart
 		$registry->set('volatile.step_counter', 0);
 		$registry->set('volatile.operation_counter', 0);
 		if(!empty($jpskey)) $registry->set('engine.archiver.jps.key', $jpskey);
-		if(!empty($angiekey)) $registry->set('engine.installer.angie.key', $angiekey);
 
 		// Initialize temporary storage
 		AEUtilTempvars::reset();
@@ -71,7 +68,7 @@ class AECoreDomainInit extends AEAbstractPart
 		// Push the comment and description in temp vars for use in the installer phase
 		$registry->set('volatile.core.description', $this->description);
 		$registry->set('volatile.core.comment', $this->comment);
-
+		
 		// Apply the configuration overrides
 		$overrides = AEPlatform::getInstance()->configOverrides;
 		if(is_array($overrides) && @count($overrides)) {
@@ -166,7 +163,7 @@ class AECoreDomainInit extends AEAbstractPart
 			AEUtilLogger::WriteLog(_AE_LOG_INFO, "You probably do not have to worry about them, but you should be aware of them." );
 			AEUtilLogger::WriteLog(_AE_LOG_INFO, "--------------------------------------------------------------------------------");
 		}
-
+		
 		if(!version_compare(PHP_VERSION, '5.3.0', 'ge')) {
 			AEUtilLogger::WriteLog(_AE_LOG_WARNING, "You are using an outdated version of PHP. Akeeba Engine may not work properly. Please upgrade to PHP 5.3 or later.");
 		}
@@ -280,13 +277,13 @@ class AECoreDomainInit extends AEAbstractPart
 		if(($value&$level)==$level) $levels[]=$name;
 		return implode(' | ',$levels);
 	}
-
+	
 	public static function errordisplay()
 	{
 		if(!function_exists('ini_get')) {
 			return "Not applicable; host too restrictive";
 		}
-
+		
 		return ini_get('display_errors') ? 'on' : 'off';
 	}
 }

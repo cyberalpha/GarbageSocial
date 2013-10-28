@@ -1,0 +1,56 @@
+/*------------------------------------------------------------------------
+* Copyright (c) 2008-2012 ZooTemplate. All Rights Reserved.
+* @license - Copyrighted Commercial Software
+* Author: ZooTemplate
+* Websites:  http://www.zootemplate.com
+-------------------------------------------------------------------------*/
+
+html {
+	direction: rtl;
+}
+
+#zt-logo{
+	float: right;
+}
+#zt-logo .zt-logo{
+	margin:10px 20px 20px 0;
+}
+
+div.itemHeader span.itemDateCreated {float: right;}
+.rtl div.menusub_mega div.subarrowtop {right: 30px;}
+.rtl #menusys_mega li {float: right;}
+.rtl #menusys_mega {float: left;}
+.rtl #menusys_mega .megacol {float: right;}
+.rtl .menusys_mega .subwrapcenter > .megacol {}
+#menusys_mega .megacol ul li a span.no-image {padding: 0 30px 0 0;background-position: 100% 4px;}
+#menusys_mega .megacol ul li a:hover span.no-image,
+#menusys_mega .megacol ul li a:focus span.no-image,
+#menusys_mega .megacol ul li a:active span.no-image ,
+#menusys_mega .megacol ul  li a.active span.no-image ,
+#menusys_mega .megacol ul  li a.active:hover span.no-image ,
+#menusys_mega .megacol ul  li a.active:active span.no-image ,
+#menusys_mega .megacol ul  li a.active:focus span.no-image {background: url("../images/arrow-hover.png") no-repeat scroll right 4px transparent;}
+div.menusys_mega ul.mega-ul li.hasChild {background: url("../images/mega/arrowchild-rtl.png") no-repeat scroll 10% 7px transparent;}
+
+.rtl .home #zt-right-inner .latestnewsdate {float: right;margin-left: 15px;}
+div.latestnewsitems img{float:right !important;margin:0 0 0 20px !important;}
+#zt-user8 .latestnewsitems img {	margin: 0 0 0 5px !important;}
+.head ul.menu li {background-position: right 11px;padding-right: 15px;}
+
+ul li {background: url("../images/bullet.png") no-repeat scroll right 6px transparent; padding-right: 15px;}
+ul.latestnews li, 
+ul.mostread li{width:100%;float:left;padding: 0;background:url(../images/arrow.png) 200px 9px no-repeat;} 
+
+ul.latestnews li:hover, 
+ul.mostread li:hover{background:url(../images/arrow-hover.png) 200px 9px no-repeat;}
+
+ul.latestnews li a, 
+ul.mostread li a{width: 100%;background:url(../images/separate2.png) 75px bottom no-repeat;padding:5px 20px 5px 0;float:right;color:#f7f7f7;font-size:100%;line-height: 220%;}
+div.catItemImageBlock{float:right;margin:0 0 0 10px;}
+div.itemImageBlock{margin:10px 0 0 20px;float:right;}
+div.tagItemImageBlock{float:right;margin:0 0 0 20px;}
+.badge {	right: 190px;}
+#zt-headline .zt_scroller div.open {margin-right: 75px;}
+.zt-user {float: right !important;}
+#zt-copyright {float: right;	width: 600px;}
+#zt-social {	float: left;}

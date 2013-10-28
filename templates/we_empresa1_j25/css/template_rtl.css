@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+header .joomla-nav{
+	left: 0;
+}
+
+#position-0{
+	text-align: left;
+}
+
+#redes ul{
+	left:0;
+}
+
+.moduletable ul{
+	margin-right: 10px;
+	margin-left: 0;
+}
+
+#main ul.actions{
+	float: left;
+}
+
+#main .article-info dd{
+	float: right;
+}
+
+.create .fdia, .create .fmesanio{
+	float: right;
+}
+
+.create .fmesanio{
+	margin-left:0.5em;
+}
+
+#positions_8-11 .titulomodulo img{
+	float: right;
+	margin-left: 10px;
+}

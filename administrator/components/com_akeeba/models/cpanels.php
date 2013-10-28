@@ -15,31 +15,6 @@ defined('_JEXEC') or die();
  */
 class AkeebaModelCpanels extends FOFModel
 {
-	/** @var string The root of the database installation files */
-	private $dbFilesRoot = '/components/com_akeeba/sql/';
-
-	/** @var array If any of these tables is missing we run the install SQL file and ignore the $dbChecks array */
-	private $dbBaseCheck = array(
-		'tables' => array(
-			'ak_profiles', 'ak_stats',
-			'ak_storage',
-		),
-		'file' => 'install/mysql/install.sql'
-	);
-
-	/** @var array Database update checks */
-	private $dbChecks = array(
-		/**
-		array(
-			'table' => 'ak_something',
-			'field' => 'some_field',
-			'files' =>array(
-				'updates/mysql/x.y.z-2013-01-01.sql',
-			)
-		),
-		**/
-	);
-
 	/**
 	 * Get an array of icon definitions for the Control Panel
 	 *
@@ -87,7 +62,7 @@ class AkeebaModelCpanels extends FOFModel
 	public function getProfilesList()
 	{
 		$db = $this->getDbo();
-
+		
 		$query = $db->getQuery(true)
 			->select(array(
 				$db->qn('id'),
@@ -195,7 +170,7 @@ class AkeebaModelCpanels extends FOFModel
 		// During development we use symlinks and we don't wanna see that big fat warning
 		if(@is_link($parent)) return true;
 
-		JLoader::import('joomla.filesystem.folder');
+		jimport('joomla.filesystem.folder');
 
 		$result = true;
 
@@ -233,7 +208,7 @@ class AkeebaModelCpanels extends FOFModel
 		}
 
 		// Initialize variables
-		JLoader::import('joomla.client.helper');
+		jimport('joomla.client.helper');
 		$ftpOptions = JClientHelper::getCredentials('ftp');
 
 		// Check to make sure the path valid and clean
@@ -241,7 +216,7 @@ class AkeebaModelCpanels extends FOFModel
 
 		if ($ftpOptions['enabled'] == 1) {
 			// Connect the FTP client
-			JLoader::import('joomla.client.ftp');
+			jimport('joomla.client.ftp');
 			if(version_compare(JVERSION,'3.0','ge')) {
 				$ftp = JClientFTP::getInstance(
 					$ftpOptions['host'], $ftpOptions['port'], array(),
@@ -275,9 +250,9 @@ class AkeebaModelCpanels extends FOFModel
 	public function checkSettingsEncryption()
 	{
 		// Do we have a key file?
-		JLoader::import('joomla.filesystem.file');
+		jimport('joomla.filesystem.file');
 		$filename = JPATH_COMPONENT_ADMINISTRATOR.'/akeeba/serverkey.php';
-		if(JFile::exists($filename)) {
+		if(JFile::exists($filename)) {			
 			// We have a key file. Do we need to disable it?
 			if(AEPlatform::getInstance()->get_platform_configuration_option('useencryption', -1) == 0) {
 				// User asked us to disable encryption. Let's do it.
@@ -291,14 +266,14 @@ class AkeebaModelCpanels extends FOFModel
 			}
 		}
 	}
-
+	
 	private function disableSettingsEncryption()
 	{
 		// Load the server key file if necessary
-		JLoader::import('joomla.filesystem.file');
+		jimport('joomla.filesystem.file');
 		$filename = JPATH_COMPONENT_ADMINISTRATOR.'/akeeba/serverkey.php';
 		$key = AEUtilSecuresettings::getKey();
-
+		
 		// Loop all profiles and decrypt their settings
 		$profilesModel = FOFModel::getTmpInstance('Profiles','AkeebaModel');
 		$profiles = $profilesModel->getList(true);
@@ -312,18 +287,18 @@ class AkeebaModelCpanels extends FOFModel
 				->set($db->qn('configuration').' = '.$db->q($config))
 				->where($db->qn('id').' = '.	$db->q($id));
 			$db->setQuery($sql);
-			$db->execute();
+			$db->query();
 		}
-
+		
 		// Finally, remove the key file
 		JFile::delete($filename);
 	}
-
+	
 	private function enableSettingsEncryption()
 	{
 		$key = $this->createSettingsKey();
 		if(empty($key) || ($key==false)) return;
-
+		
 		// Loop all profiles and encrypt their settings
 		$profilesModel = FOFModel::getTmpInstance('Profiles','AkeebaModel');
 		$profiles = $profilesModel->getList(true);
@@ -337,36 +312,36 @@ class AkeebaModelCpanels extends FOFModel
 				->set($db->qn('configuration').' = '.$db->q($config))
 				->where($db->qn('id').' = '.	$db->q($id));
 			$db->setQuery($sql);
-			$db->execute();
+			$db->query();
 		}
 	}
-
+	
 	private function createSettingsKey()
 	{
-		JLoader::import('joomla.filesystem.file');
+		jimport('joomla.filesystem.file');
 		$seedA = md5( JFile::read(JPATH_ROOT.'/configuration.php') );
 		$seedB = md5( microtime() );
 		$seed = $seedA.$seedB;
-
+		
 		$md5 = md5($seed);
 		for($i = 0; $i < 1000; $i++) {
 			$md5 = md5( $md5 . md5(rand(0, 2147483647)) );
 		}
-
+		
 		$key = base64_encode( $md5 );
-
+		
 		$filecontents = "<?php defined('AKEEBAENGINE') or die(); define('AKEEBA_SERVERKEY', '$key'); ?>";
 		$filename = JPATH_COMPONENT_ADMINISTRATOR.'/akeeba/serverkey.php';
 
 		$result = JFile::write($filename, $filecontents);
-
+		
 		if(!$result) {
 			return false;
 		} else {
 			return base64_decode($key);
 		}
 	}
-
+	
 	/**
 	 * Update the cached live site's URL for the front-end backup feature (altbackup.php)
 	 * and the detected Joomla! libraries path
@@ -395,9 +370,9 @@ class AkeebaModelCpanels extends FOFModel
 			->where($db->qn('element').' = '.$db->q('com_akeeba'))
 			->where($db->qn('type').' = '.$db->q('component'));
 		$db->setQuery($sql);
-		$db->execute();
+		$db->query();
 	}
-
+	
 	public function needsDownloadID()
 	{
 		// Do I need a Download ID?
@@ -406,17 +381,17 @@ class AkeebaModelCpanels extends FOFModel
 		if(!$isPro) {
 			$ret = false;
 		} else {
-			JLoader::import('joomla.application.component.helper');
+			jimport('joomla.application.component.helper');
 			$dlid = AEUtilComconfig::getValue('update_dlid', '');
-			if(preg_match('/^([0-9]{1,}:)?[0-9a-f]{32}$/i', $dlid)) {
+			if(preg_match('/^[0-9a-f]{32}$/i', $dlid)) {
 				$ret = false;
 			}
 		}
 
 		// Deactivate update site for Akeeba Backup
-		JLoader::import('joomla.application.component.helper');
+		jimport('joomla.application.component.helper');
 		$component = JComponentHelper::getComponent('com_akeeba');
-
+		
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true)
 			->select('update_site_id')
@@ -424,21 +399,21 @@ class AkeebaModelCpanels extends FOFModel
 			->where($db->qn('extension_id').' = '.$db->q($component->id));
 		$db->setQuery($query);
 		$updateSite = $db->loadResult();
-
+		
 		if($updateSite) {
 			$query = $db->getQuery(true)
 				->delete($db->qn('#__update_sites'))
 				->where($db->qn('update_site_id').' = '.$db->q($updateSite));
 			$db->setQuery($query);
-			$db->execute();
-
+			$db->query();
+			
 			$query = $db->getQuery(true)
 				->delete($db->qn('#__update_sites_extensions'))
 				->where($db->qn('update_site_id').' = '.$db->q($updateSite));
 			$db->setQuery($query);
-			$db->execute();
+			$db->query();
 		}
-
+		
 		// Deactivate the update site for FOF
 		$query = $db->getQuery(true)
 			->select('update_site_id')
@@ -446,24 +421,24 @@ class AkeebaModelCpanels extends FOFModel
 			->where($db->qn('location').' = '.$db->q('http://cdn.akeebabackup.com/updates/libraries/fof'));
 		$db->setQuery($query);
 		$updateSite = $db->loadResult();
-
+		
 		if($updateSite) {
 			$query = $db->getQuery(true)
 				->delete($db->qn('#__update_sites'))
 				->where($db->qn('update_site_id').' = '.$db->q($updateSite));
 			$db->setQuery($query);
-			$db->execute();
-
+			$db->query();
+			
 			$query = $db->getQuery(true)
 				->delete($db->qn('#__update_sites_extensions'))
 				->where($db->qn('update_site_id').' = '.$db->q($updateSite));
 			$db->setQuery($query);
-			$db->execute();
+			$db->query();
 		}
-
+		
 		return $ret;
 	}
-
+	
 	/**
 	 * Makes sure that the Professional release can be updated using Joomla!'s
 	 * own update system. THIS IS AN AKEEBA ORIGINAL!
@@ -471,10 +446,10 @@ class AkeebaModelCpanels extends FOFModel
 	public function applyJoomlaExtensionUpdateChanges($isPro = -1)
 	{
 		$ret = true;
-
-		// Don't bother if this is not Joomla! 2.5+
-		if(!version_compare(JVERSION, '2.5.0', 'ge')) return $ret;
-
+		
+		// Don';'t bother if this is not Joomla! 1.7+
+		if(!version_compare(JVERSION, '1.7.0', 'ge')) return $ret;
+		
 		// Do we have Admin Tools Professional?
 		if($isPro === -1) {
 			$isPro = AKEEBA_PRO;
@@ -484,14 +459,14 @@ class AkeebaModelCpanels extends FOFModel
 		$action = 'none'; // What to do: none, update, create, delete
 		$purgeUpdates = false; // Should I purge existing updates?
 		$fetchUpdates = false; // Should I fetch new udpater
-
+		
 		// Init
 		$db = $this->getDbo();
-
+		
 		// Figure out the correct XML update stream URL
 		if($isPro) {
-			$update_url = 'https://www.akeebabackup.com/index.php?option=com_ars&view=update&task=stream&format=xml&id=2';
-			JLoader::import('joomla.application.component.helper');
+			$update_url = 'https://www.akeebabackup.com/index.php?option=com_ars&view=update&task=stream&format=xml&id=6';
+			jimport('joomla.application.component.helper');
 			$params = JComponentHelper::getParams('com_akeeba');
 			if(version_compare(JVERSION, '3.0', 'ge')) {
 				$dlid = $params->get('update_dlid','');
@@ -509,12 +484,12 @@ class AkeebaModelCpanels extends FOFModel
 				$url = '';
 			}
 		} else {
-			$url = 'https://www.akeebabackup.com/index.php?option=com_ars&view=update&task=stream&format=xml&id=1';
+			$url = 'http://cdn.akeebabackup.com/updates/atcore.xml';
 		}
-
+		
 		// Get the extension ID
 		$extensionID = JComponentHelper::getComponent('com_akeeba')->id;
-
+		
 		// Get the update site record
 		$query = $db->getQuery(true)
 			->select(array(
@@ -530,8 +505,8 @@ class AkeebaModelCpanels extends FOFModel
 			$db->qn('map').'.'.$db->qn('extension_id').' = '.$db->q($extensionID)
 		);
 		$db->setQuery($query);
-		$update_site = $db->loadObject();
-
+		$update_site = $db->loadObject();		
+		
 		// Decide on the course of action to take
 		if($url) {
 			if(!is_object($update_site)) {
@@ -551,13 +526,13 @@ class AkeebaModelCpanels extends FOFModel
 				$purgeUpdates = true;
 			}
 		}
-
+		
 		switch($action)
 		{
 			case 'none':
 				// No change
 				break;
-
+			
 			case 'create':
 			case 'update':
 				// Remove old update site
@@ -565,7 +540,7 @@ class AkeebaModelCpanels extends FOFModel
 					->delete($db->qn('#__update_sites'))
 					->where($db->qn('name') .' = '. $db->q('Akeeba Backup updates'));
 				$db->setQuery($query);
-				$db->execute();
+				$db->query();
 				// Create new update site
 				$oUpdateSite = (object)array(
 					'name'					=> 'Akeeba Backup updates',
@@ -582,7 +557,7 @@ class AkeebaModelCpanels extends FOFModel
 					->delete($db->qn('#__update_sites_extensions'))
 					->where($db->qn('extension_id') .' = '. $db->q($extensionID));
 				$db->setQuery($query);
-				$db->execute();
+				$db->query();
 				// Create new #__update_sites_extensions record
 				$oUpdateSitesExtensions = (object)array(
 					'update_site_id'		=> $usID,
@@ -590,127 +565,39 @@ class AkeebaModelCpanels extends FOFModel
 				);
 				$db->insertObject('#__update_sites_extensions', $oUpdateSitesExtensions);
 				break;
-
+			
 			case 'delete':
 				// Remove update sites
 				$query = $db->getQuery(true)
 					->delete($db->qn('#__update_sites'))
 					->where($db->qn('update_site_id') .' = '. $db->q($update_site->update_site_id));
 				$db->setQuery($query);
-				$db->execute();
+				$db->query();
 				// Delete existing #__update_sites_extensions records
 				$query = $db->getQuery(true)
 					->delete($db->qn('#__update_sites_extensions'))
 					->where($db->qn('extension_id') .' = '. $db->q($extensionID));
 				$db->setQuery($query);
-				$db->execute();
+				$db->query();
 				break;
 		}
-
+		
 		// Do I have to purge updates?
 		if($purgeUpdates) {
 			$query = $db->getQuery(true)
 				->delete($db->qn('#__updates'))
 				->where($db->qn('element').' = '.$db->q('com_akeeba'));
 			$db->setQuery($query);
-			$db->execute();
+			$db->query();
 		}
-
+		
 		// Do I have to fetch updates?
 		if($fetchUpdates) {
-			JLoader::import('joomla.update.update');
+			jimport('joomla.update.update');
 			$x = new JUpdater();
 			$x->findUpdates($extensionID);
 		}
-
+		
 		return $ret;
-	}
-
-	/**
-	 * Checks the database for missing / outdated tables using the $dbChecks
-	 * data and runs the appropriate SQL scripts if necessary.
-	 *
-	 * @return AkeebasubsModelCpanels
-	 */
-	public function checkAndFixDatabase()
-	{
-		$db = $this->getDbo();
-
-		// Initialise
-		$tableFields = array();
-		$sqlFiles = array();
-
-		// Get a listing of database tables known to Joomla!
-		$allTables = $db->getTableList();
-		$dbprefix = JFactory::getConfig()->get('dbprefix', '');
-
-		// Perform the base check. If any of these tables is missing we have to run the installation SQL file
-		if(!empty($this->dbBaseCheck)) {
-			foreach($this->dbBaseCheck['tables'] as $table)
-			{
-				$tableName = $dbprefix . $table;
-				$check = in_array($tableName, $allTables);
-				if (!$check) break;
-			}
-
-			if (!$check)
-			{
-				$sqlFiles[] = JPATH_ADMINISTRATOR . $this->dbFilesRoot . $this->dbBaseCheck['file'];
-			}
-		}
-
-		// If the base check was successful and we have further database checks run them
-		if (empty($sqlFiles) && !empty($this->dbChecks)) foreach($this->dbChecks as $dbCheck)
-		{
-			// Always check that the table exists
-			$tableName = $dbprefix . $dbCheck['table'];
-			$check = in_array($tableName, $allTables);
-
-			// If the table exists and we have a field, check that the field exists too
-			if (!empty($dbCheck['field']) && $check)
-			{
-				if (!array_key_exists($tableName, $tableFields))
-				{
-					$tableFields[$tableName] = $db->getTableColumns('#__' . $dbCheck['table'], true);
-				}
-
-				if (is_array($tableFields[$tableName]))
-				{
-					$check = array_key_exists($dbCheck['field'], $tableFields[$tableName]);
-				}
-				else
-				{
-					$check = false;
-				}
-			}
-
-			// Something's missing. Add the file to the list of SQL files to run
-			if (!$check)
-			{
-				foreach ($dbCheck['files'] as $file)
-				{
-					$sqlFiles[] = JPATH_ADMINISTRATOR . $this->dbFilesRoot . $file;
-				}
-			}
-		}
-
-		// If we have SQL files to run, well, RUN THEM!
-		if (!empty($sqlFiles))
-		{
-			JLoader::import('joomla.filesystem.file');
-			foreach($sqlFiles as $file)
-			{
-				$sql = JFile::read($file);
-				if($sql) {
-					$commands = explode(';', $sql);
-					foreach($commands as $query) {
-						$db->setQuery($query);
-						$db->execute();
-					}
-				}
-			}
-		}
-
-		return $this;
 	}
 }

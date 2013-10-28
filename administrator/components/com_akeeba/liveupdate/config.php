@@ -19,14 +19,14 @@ class LiveUpdateConfig extends LiveUpdateAbstractConfig
 			'extensionName'	=> 'com_akeeba',
 			'key'			=> 'liveupdate'
 		);
-
+	
 	function __construct()
 	{
 		$useSVNSource = AEPlatform::getInstance()->get_platform_configuration_option('usesvnsource', 0);
 
 		// Determine the appropriate update URL based on whether we're on Core or Professional edition
 		AEPlatform::getInstance()->load_version_defines();
-
+		
 		if(!$useSVNSource) {
 			$fname = 'http://nocdn.akeebabackup.com/updates/ab';
 			$fname .= (AKEEBA_PRO == 1) ? 'pro' : 'core';
@@ -36,24 +36,25 @@ class LiveUpdateConfig extends LiveUpdateAbstractConfig
 			$fname .= (AKEEBA_PRO == 1) ? 'pro' : 'core';
 			$fname .= 'svn.ini';
 		}
-
+		
 		$this->_updateURL = $fname;
-
+		
 		$this->_extensionTitle = 'Akeeba Backup '.(AKEEBA_PRO == 1 ? 'Professional' : 'Core');
 		$this->_requiresAuthorization = (AKEEBA_PRO == 1);
 		$this->_currentVersion = AKEEBA_VERSION;
 		$this->_currentReleaseDate = AKEEBA_DATE;
-
+		
 		parent::__construct();
-
+		
 		$this->_downloadID = AEPlatform::getInstance()->get_platform_configuration_option('update_dlid', '');
 		if(AKEEBA_PRO) {
 			$this->_minStability = AEPlatform::getInstance()->get_platform_configuration_option('minstability', 'stable');
 		} else {
+			// Make sure the freeloaders who bitch all the time only get the stable releases and stop busting my balls
 			$this->_minStability = 'stable';
 		}
 		$this->_cacerts = dirname(__FILE__).'/../akeeba/assets/cacert.pem';
-
+		
 		if(substr($this->_currentVersion,0,3) == 'svn') {
 			$this->_versionStrategy = 'newest';
 		}

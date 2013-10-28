@@ -216,20 +216,6 @@ class AEArchiverJpa extends AEAbstractArchiver
 	{
 		static $configuration;
 		
-		static $memLimit = null;
-		
-		if (is_null($memLimit))
-		{
-			$memLimit = ini_get("memory_limit");
-
-			if( (is_numeric($memLimit) && ($memLimit < 0)) || !is_numeric($memLimit) ) 
-			{
-				$memLimit = 0; // 1.2a3 -- Rare case with memory_limit < 0, e.g. -1Mb!
-			}
-
-			$memLimit = $this->_return_bytes( $memLimit );
-		}
-				
 		$isDir = false;
 		$isSymlink = false;
 		if(is_null($isVirtual)) $isVirtual = false;
@@ -301,11 +287,26 @@ class AEArchiverJpa extends AEAbstractArchiver
 			if ($isDir || $isSymlink) {
 				$compressionMethod = 0; // don't compress directories...
 			} else {
-				if (!$memLimit || ($fileSize >= _AKEEBA_COMPRESSION_THRESHOLD)) {
+				// Do we have plenty of memory left?
+				$memLimit = ini_get("memory_limit");
+				
+				if(strstr($memLimit, 'M')) {
+					$memLimit = (int)$memLimit * 1048576;
+				} elseif(strstr($totalRAM, 'K')) {
+					$memLimit = (int)$memLimit * 1024;
+				} elseif(strstr($memLimit, 'G')) {
+					$memLimit = (int)$memLimit * 1073741824;
+				} else {
+					$memLimit = (int)$memLimit;
+				}
+
+				if( is_numeric($memLimit) && ($memLimit < 0) ) $memLimit = ""; // 1.2a3 -- Rare case with memory_limit < 0, e.g. -1Mb!
+				if (($memLimit == "") || ($fileSize >= _AKEEBA_COMPRESSION_THRESHOLD)) {
 					// No memory limit, or over 1Mb files => always compress up to 1Mb files (otherwise it times out)
 					$compressionMethod = ($fileSize <= _AKEEBA_COMPRESSION_THRESHOLD) ? 1 : 0;
 				} elseif ( function_exists("memory_get_usage") ) {
 					// PHP can report memory usage, see if there's enough available memory; Joomla! alone eats about 5-6Mb! This code is called on files <= 1Mb
+					$memLimit = $this->_return_bytes( $memLimit );
 					$availableRAM = $memLimit - memory_get_usage();
 					$compressionMethod = (($availableRAM / 2.5) >= $fileSize) ? 1 : 0;
 				} else {

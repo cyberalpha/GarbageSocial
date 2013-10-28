@@ -22,7 +22,7 @@ class AkeebaViewFsfilter extends FOFViewHtml
 		$task = $model->getState('browse_task', 'normal');
 
 		// Add custom submenus
-		$toolbar = FOFToolbar::getAnInstance($this->input->get('option','com_foobar','cmd'), $this->config);
+		$toolbar = FOFToolbar::getAnInstance(FOFInput::getCmd('option','com_foobar',$this->input), $this->config);
 		$toolbar->appendLink(
 			JText::_('FILTERS_LABEL_NORMALVIEW'),
 			JURI::base().'index.php?option=com_akeeba&view=fsfilter&task=normal',

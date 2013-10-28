@@ -1,0 +1,126 @@
+/*------------------------------------------------------------------------
+* Copyright (c) 2008-2011 ZooTemplate. All Rights Reserved.
+* Author: ZooTemplate
+* Websites:  http://www.zootemplate.com
+-------------------------------------------------------------------------*/
+
+html {
+	direction: rtl;
+}
+ul li{
+	background:url(../images/rtl/icon-li-rtl.png) no-repeat 100% 10px;
+	padding:5px 20px 0 5px;
+}
+
+
+#zt-logo{
+	float:right;
+	margin:30px 0 10px 100px;
+}
+#menusys_mega .menusub_mega {
+	margin: 59px 0 0 1px;
+}
+#menusys_mega li{
+	float:right;
+}
+
+#menusys_mega .megacol ul li a span.no-image {
+    padding: 0 20px 0 0;
+	background: url("../images/rtl/icon-li-hover-rtl.png") no-repeat scroll 100% 50% transparent;
+}
+#menusys_mega .megacol ul li a:hover span.no-image,
+#menusys_mega .megacol ul li a:focus span.no-image,
+#menusys_mega .megacol ul li a:active span.no-image ,
+#menusys_mega .megacol ul  li a.active span.no-image ,
+#menusys_mega .megacol ul  li a.active:hover span.no-image ,
+#menusys_mega .megacol ul  li a.active:active span.no-image ,
+#menusys_mega .megacol ul  li a.active:focus span.no-image {
+	background: url("../images/rtl/icon-li-rtl.png") no-repeat scroll 100% 50% transparent;
+}
+
+
+#zt-userwrap2-inner .zt-box-left .text-say{
+	background:url(../images/rtl/bg-text-say-rtl.png) 0 0 no-repeat;
+	padding:20px 20px 33px;
+}
+#zt-userwrap2-inner .zt-box-left .text-say p{
+	background:url(../images/rtl/bg-text-say-p-rtl.png) 100% 0 no-repeat;
+	padding:0 40px 0 0;
+}
+#zt-userwrap2-inner .zt-box-left .user-say{
+	float:right;
+	background:url(../images/bg-user-say.png) 100% 0 no-repeat;
+	padding:0 40px 0 0;
+	margin:5px 30px 0 0;
+}
+
+
+div.latestnewsitems img{
+	float:right !important;
+	margin:0 0 0 20px !important;
+}
+
+#zt-userwrap4-inner .zt-box-left{ float:right;}
+#zt-userwrap4-inner .zt-box-right{ float:left;}
+#zt-userwrap4-inner .zt-box-left .email{
+	background:url(../images/email.png) 100% 0 no-repeat;
+	padding:0 40px 0 0;
+}
+#zt-userwrap4-inner .zt-box-right .zt-field input.inputbox{
+	float:right;
+}
+
+
+.title1 h3.moduletitle{ padding:0 30px 0 0; background:url(../images/rtl/bg-title-rtl.png) no-repeat right 0; }
+.title1 h3.moduletitle span{ background:url(../images/rtl/bg-title-rtl.png) no-repeat left -38px; float:left; padding:0 0 0 20px; }
+
+ul.menu li,
+ul.latestnews li, 
+ul.mostread li{
+	margin:0 5px 0 0;
+	background:url(../images/rtl/icon-li-rtl.png) 100% 7px no-repeat;
+} 
+ul.menu li a,
+ul.latestnews li a, 
+ul.mostread li a{
+	padding:5px 20px 5px 0;
+} 
+ul.menu li:hover,
+ul.latestnews li:hover, 
+ul.mostread li:hover{
+	background:url(../images/rtl/icon-li-hover-rtl.png) 100% 7px no-repeat;
+}
+
+div.catItemImageBlock{
+	float:right;
+	margin:0 0 0 10px;
+}
+div.itemImageBlock{
+	margin:10px 0 0 20px;
+	float:right;
+}
+div.tagItemImageBlock{
+	float:right;
+	margin:0 0 0 20px;
+}
+
+
+#ztbacktotop {
+	float: left;
+	width: 300px;
+	text-align:left;
+}
+#zt-copyright {
+	float: right;
+	width: 600px;
+	color:#fff;
+}
+#zt-footer-menu ul{
+	float:right;
+}
+#zt-footer-menu ul li{
+	float:right;
+	padding:0 0 0 15px;
+	margin:0 0 0 15px;
+	background:url("../images/bg-li-footer.png") no-repeat scroll 0 50% transparent
+}

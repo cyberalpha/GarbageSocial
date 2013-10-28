@@ -1,0 +1,33 @@
+/*																		
+#------------------------------------------------------------------------
+# Copyright (C) 2009-2011 Joomla51. All Rights Reserved.
+# License: Copyrighted Commercial Software
+# Website: http://www.joomla51.com.com
+# Support: support@joomla51.com   
+#------------------------------------------------------------------------
+*/
+
+div.moduletable div {
+zoom: 1;
+}
+
+div.moduletable2 div {
+zoom: 1;
+}
+
+.blog_more ul {zoom: 1;}
+
+.article_column { position: relative; }
+
+.cols1{display:block !important; width:100%;}
+.cols2{width:49%; overflow:hidden;}
+
+.article_row { zoom: 1; }
+
+.search {margin-left: -8px;}
+
+.sidecol_block ul.menu li, .sidecol_block ul li, .sidecol_block ul.sections li,
+.module ul.latestnews li, .module #mainlevel li, .module ul.mostread li, .module ul.blog_more li, #mainlevel-nav li {margin:0px !important;}
+
+
+

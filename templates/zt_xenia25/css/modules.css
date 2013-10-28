@@ -1,0 +1,19 @@
+/*------------------------------------------------------------------------
+* Copyright (c) 2008-2011 ZooTemplate. All Rights Reserved.
+* Author: ZooTemplate
+* Websites:  http://www.zootemplate.com
+-------------------------------------------------------------------------*/
+
+div.latestnewsitems{ width:100% !important; margin:0 0 20px; }
+div.latestnewsitems img{ padding:0; background:none; margin:0 20px 0 0; }
+div.latestnewsitems h4{ margin:0 0 10px; font-size:20px; font-weight:normal; }
+div.latestnewsitems h4 a{ color:#3f3f3f; }
+
+
+.lasted-featured .ztmodule{ padding:0; }
+.lasted-featured div.latestnewsitems{ width:195px !important; margin:0 32px 32px 0; }
+.lasted-featured div.last-item{ margin:0; }
+
+.lasted-featured div.latestnewsitems img{ padding:5px; float:left; background:#f7f8f8; border:1px solid #dbdbdb; margin:0 0 10px 0; }
+.lasted-featured div.latestnewsitems h4{ width:100%; margin:0 0 10px; font-size:18px; font-weight:normal; float:left; }
+.lasted-featured div.latestnewsitems h4 a{ color:#2599c9; }

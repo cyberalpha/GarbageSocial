@@ -1,0 +1,262 @@
+@charset "UTF-8";
+
+/*reseto de etiquetas*/
+*{    
+	margin: 0;
+    padding: 0;
+}
+
+body{
+    font-size: 100.01%;
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+	color: #717171;
+	background-color: #fff;
+	line-height: 1;
+}
+
+header,nav,section,footer,address{
+	display:block;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+:focus {
+	outline: 0;
+}
+
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*posiciones*/
+
+#main
+{
+    padding: 10px 0px 20px 0px;
+    position: relative;
+}
+
+#logo{
+	margin-top: 30px;
+	margin-bottom: 20px;
+	min-height: 60px;
+}
+
+#banner-0, #banner-1{
+	text-align: center;
+}
+
+header{
+	position: relative;
+}
+
+/*redes*/
+#position-0{
+	text-align: right;
+	padding: 20px 0 10px;
+	position: relative;
+}
+
+
+/*menu*/
+
+header .joomla-nav{
+	position: absolute;
+	right: 0;
+	bottom: 25px;
+}
+
+header .joomla-nav li, header .joomla-nav a{
+	float: left;
+}
+
+header .joomla-nav a:hover{
+	text-decoration: none;
+}
+
+header .joomla-nav li{
+	position: relative;
+}
+
+header .joomla-nav li ul li{
+	position:static;
+}
+
+header .joomla-nav li a{
+	text-decoration: none;
+	padding:12px 10px;
+	color: #fff;
+	display: block;
+}
+
+header .joomla-nav li ul {
+	display:none;
+	position:absolute;
+	text-align: center;
+	top: 100%;
+	left: 0;
+	min-width: 140px;
+	z-index: 999;
+}
+
+header .joomla-nav li ul li, header .joomla-nav li ul li a {
+	float:none;
+}
+
+header .joomla-nav li ul li a,header .joomla-nav li.parent ul a:hover{
+	margin: 4px;
+	padding: 6px;
+}
+
+
+header .joomla-nav a{
+	font-size: 1.3em;
+	font-family: 'Play', sans-serif;
+	margin-left: 3px;
+}
+
+
+/*redes*/
+
+#position-redes{
+	position: relative;
+}
+
+#redes ul{
+	position: absolute;
+	right: 0;
+	top: 6px;
+}
+
+#redes li{
+	float: left;
+	width: 26px;
+	height: 25px;
+	margin-left: 2px;
+}
+
+#redes li a{
+	background: url(../images/redessociales.png) no-repeat;
+	width: 26px;
+	height: 25px;
+	float: left;
+}
+
+#redes #twitter{
+	background-position: -55px 0;
+}
+
+#redes #twitter:hover{
+	background-position: -55px -25px;
+}
+
+#redes #facebook{
+	background-position: 0 0px;
+}
+
+#redes #facebook:hover{
+	background-position: 0 -25px;
+}
+
+#redes #youtube{
+	background-position: -82px 0;
+}
+
+#redes #youtube:hover{
+	background-position: -82px -25px;
+}
+
+#redes #rss{
+	background-position: -28px 0;
+}
+
+#redes #rss:hover{
+	background-position: -28px -25px;
+}
+
+/*columnas*/
+
+.cols-1
+{
+        display: block;
+        float: none !important;
+        margin: 0 !important;
+}
+
+.cols-2 .column-1
+{
+        width:46%;
+        float:left;
+}
+
+.cols-2 .column-2
+{
+        width:46%;
+        float:right;
+        margin:0
+}
+
+.cols-3 .column-1
+{
+        float:left;
+        width:29%;
+        padding:0px 5px;
+        margin-right:4%
+
+}
+.cols-3 .column-2
+{
+        float:left;
+        width:29%;
+        margin-left:0;
+        padding:0px 5px
+}
+.cols-3 .column-3
+{
+        float:right;
+        width:29%;
+        padding:0px 5px
+}
+
+.items-row
+{
+        overflow:hidden;
+        margin-bottom:10px !important;
+}
+
+.column-1,
+.column-2,
+.column-3
+{
+        padding:10px 5px
+}
+
+.column-2
+{
+        width:55%;
+        margin-left:40%;
+}
+
+.column-3
+{
+        width:30%
+}
+
+.blog-more
+{
+        padding:10px 5px
+}
+
+

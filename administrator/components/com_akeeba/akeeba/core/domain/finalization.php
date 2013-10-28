@@ -26,9 +26,9 @@ class AECoreDomainFinalization extends AEAbstractPart
 	private $backup_parts_index = -1;
 
 	private $update_stats = false;
-
+	
 	private $remote_files_killlist = null;
-
+	
 	// Used for percentage reporting
 	private $steps_total = 0;
 	private $steps_done = 0;
@@ -55,7 +55,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 			'apply_remote_quotas',
 			'mail_administrators',
 		);
-
+		
 		// Allow adding finalization action objects using the volatile.core.finalization.action_handlers array
 		$customHandlers = $configuration->get('volatile.core.finalization.action_handlers', null);
 		if(is_array($customHandlers) && !empty($customHandlers)) {
@@ -63,7 +63,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 				$this->action_handlers[] = $handler;
 			}
 		}
-
+		
 		// Do we have a custom action queue set in volatile.core.finalization.action_queue?
 		$customQueue = $configuration->get('volatile.core.finalization.action_queue', null);
 		if(is_array($customQueue) && !empty($customQueue)) {
@@ -83,7 +83,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 			}
 		}
 		AEUtilLogger::WriteLog(_AE_LOG_DEBUG, 'Finalization action queue: '.implode(', ',$this->action_queue));
-
+		
 		$this->steps_total = count($this->action_queue);
 		$this->steps_done = 0;
 		$this->substeps_total = 0;
@@ -134,7 +134,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 					}
 				}
 			}
-
+			
 			if($status === true)
 			{
 				$this->current_method = '';
@@ -151,7 +151,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 		if($finished) {
 			$this->setState('postrun');
 			$this->setStep('');
-			$this->setSubstep('');
+			$this->setSubstep('');	
 		}
 	}
 
@@ -185,7 +185,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 		if( !empty($email) )
 		{
 			AEUtilLogger::WriteLog(_AE_LOG_DEBUG, "Using pre-defined list of emails");
-			$emails = explode(',', $email);
+			$emails = array($email);
 		}
 		else
 		{
@@ -215,7 +215,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 			if(!empty($parts)) foreach($parts as $file) {
 				$parts_list .= "\t".basename($file)."\n";
 			}
-
+			
 			// Get the remote storage status
 			$remote_status = '';
 			$post_proc_engine = AEFactory::getConfiguration()->get('akeeba.advanced.proc_engine');
@@ -293,12 +293,12 @@ class AECoreDomainFinalization extends AEAbstractPart
 		$engine_name = $configuration->get('akeeba.advanced.proc_engine');
 		AEUtilLogger::WriteLog(_AE_LOG_DEBUG,"Loading post-processing engine object ($engine_name)");
 		$post_proc = AEFactory::getPostprocEngine($engine_name);
-
+		
 		// Initialize the archive part list if required
 		if(empty($this->backup_parts))
 		{
 			AEUtilLogger::WriteLog(_AE_LOG_INFO,'Initializing post-processing engine');
-
+			
 			// Initialize the flag for multistep post-processing of parts
 			$configuration->set('volatile.postproc.filename', null);
 			$configuration->set('volatile.postproc.directory', null);
@@ -389,10 +389,10 @@ class AECoreDomainFinalization extends AEAbstractPart
 		if($result === true) {
 			// Move the index forward if the part finished processing
 			$this->backup_parts_index++;
-
+			
 			// Mark substep done
 			$this->substeps_done++;
-
+			
 			// Break step after processing?
 			if($post_proc->break_after && !AEFactory::getConfiguration()->get('akeeba.tuning.nobreak.finalization',0)) $configuration->set('volatile.breakflag', true);
 
@@ -414,7 +414,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 					$this->propagateFromObject($statistics);
 				}
 			}
-
+			
 			// Are we past the end of the array (i.e. we're finished)?
 			if( $this->backup_parts_index >= count($this->backup_parts) )
 			{
@@ -440,7 +440,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 	{
 		$this->setStep('Updating statistics');
 		$this->setSubstep('');
-
+		
 		// Force a step break before updating stats (works around MySQL gone away issues)
 		// 3.2.5 : Added conditional break logic after the call to setStatistics()
 		/**
@@ -477,7 +477,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 
 		return true;
 	}
-
+	
 	private function update_filesizes()
 	{
 		$this->setStep('Updating file sizes');
@@ -493,7 +493,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 			$size = @filesize($file);
 			if($size !== false) $filesize += $size * 1.0;
 		}
-
+		
 		$data = array(
 			'total_size'	=> $filesize
 		);
@@ -544,7 +544,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 		if(count($validIDs))
 		{
 			foreach($validIDs as $id)
-			{
+			{	
 				$stat = AEPlatform::getInstance()->get_statistics($id);
 				try {
 					$backupstart = new DateTime($stat['backupstart']);
@@ -581,7 +581,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 		$killids = array();
 		$ret = array();
 		$leftover = array();
-
+		
 		// Do we need to apply maximum backup age quotas?
 		if($useDayQuotas) {
 			$killDatetime = new DateTime();
@@ -589,7 +589,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 			$killTS = $killDatetime->format('U');
 			foreach($allFiles as $file) {
 				if($file['id'] == $latestBackupId) continue;
-
+				
 				// Is this on a preserve day?
 				if($preserveDay > 0) {
 					if($preserveDay == $file['day']) {
@@ -688,7 +688,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 				$quotaFiles[] = $filename;
 			}
 		}
-
+		
 		// Update the statistics record with the removed remote files
 		if(!empty($killids)) foreach($killids as $id) {
 			$data = array('filesexist' => '0');
@@ -699,7 +699,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 		if(count($quotaFiles) > 0)
 		{
 			AEUtilLogger::WriteLog(_AE_LOG_DEBUG, "Applying quotas" );
-			JLoader::import('joomla.filesystem.file');
+			jimport('joomla.filesystem.file');
 			foreach($quotaFiles as $file)
 			{
 				if(!@AEPlatform::getInstance()->unlink($file))
@@ -722,7 +722,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 		$config = AEFactory::getConfiguration();
 		$enableRemote = $config->get('akeeba.quota.remote',0);
 		if(!$enableRemote) return true;
-
+		
 		// Get the list of files to kill
 		if(empty($this->remote_files_killlist)) {
 			AEUtilLogger::WriteLog(_AE_LOG_DEBUG,'Applying remote file quotas');
@@ -732,7 +732,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 				return true;
 			}
 		}
-
+		
 		// Remove the files
 		$timer = AEFactory::getTimer();
 		while($timer->getRunningTime() && count($this->remote_files_killlist))
@@ -747,7 +747,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 				AEUtilLogger::WriteLog(_AE_LOG_DEBUG,"Removal failed: ".$engine->getWarning());
 			}
 		}
-
+		
 		// Return false if we have more work to do or true if we're done
 		if(count($this->remote_files_killlist)) {
 			AEUtilLogger::WriteLog(_AE_LOG_DEBUG,"Remote file removal will continue in the next step");
@@ -757,7 +757,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 			return true;
 		}
 	}
-
+	
 	/**
 	 * Applies the size and count quotas
 	 * @return bool
@@ -766,14 +766,14 @@ class AECoreDomainFinalization extends AEAbstractPart
 	{
 		// Get all records with a remote filename
 		$allRecords = AEPlatform::getInstance()->get_valid_remote_records();
-
+		
 		// Bail out if no records found
 		if(empty($allRecords)) return array();
 
 		// Try to find the files to be deleted due to quota settings
 		$statistics = AEFactory::getStatistics();
 		$latestBackupId = $statistics->getId();
-
+		
 		// Filter out the current record
 		$temp = array();
 		foreach($allRecords as $item)
@@ -783,10 +783,10 @@ class AECoreDomainFinalization extends AEAbstractPart
 			$temp[] = $item;
 		}
 		$allRecords = $temp;
-
+		
 		// Bail out if only the current backup was included in the list
 		if(count($allRecords) == 0) return array();
-
+		
 		// Get quota values
 		$registry = AEFactory::getConfiguration();
 		$countQuota = $registry->get('akeeba.quota.count_quota');
@@ -800,12 +800,12 @@ class AECoreDomainFinalization extends AEAbstractPart
 		$leftover = array();
 		$ret = array();
 		$killids = array();
-
+		
 		if($useDayQuotas) {
 			$killDatetime = new DateTime();
 			$killDatetime->modify('-'.$daysQuota.($daysQuota == 1 ? ' day' : ' days'));
 			$killTS = $killDatetime->format('U');
-
+			
 			foreach($allRecords as $def) {
 				$backupstart = new DateTime($def['backupstart']);
 				$backupTS = $backupstart->format('U');
@@ -828,7 +828,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 
 			}
 		}
-
+		
 		// Do we need to apply count quotas?
 		if($useCountQuotas && ($countQuota >= 1) && !$useDayQuotas )
 		{
@@ -868,7 +868,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 
 		// Do we need to apply size quotas?
 		if( $useSizeQuotas && ($sizeQuota > 0) && (count($leftover) > 0) && !$useDayQuotas )
-		{
+		{			
 			AEUtilLogger::WriteLog(_AE_LOG_DEBUG, "Processing remote size quotas" );
 			// OK, let's start counting bytes!
 			$runningSize = 0;
@@ -896,26 +896,26 @@ class AECoreDomainFinalization extends AEAbstractPart
 				$quotaFiles[] = $filename;
 			}
 		}
-
+		
 		// Update the statistics record with the removed remote files
 		if(!empty($killids)) foreach($killids as $id) {
 			if(empty($id)) continue;
 			$data = array('remote_filename' => '');
 			AEPlatform::getInstance()->set_or_update_statistics($id, $data, $this);
 		}
-
+		
 		return $quotaFiles;
 	}
-
+	
 	private function get_remote_files($filename, $multipart)
 	{
 		$result = array();
-
+		
 		$extension = substr($filename, -3);
 		$base = substr($filename, 0, -4);
-
+		
 		$result[] = $filename;
-
+		
 		if($multipart > 1) {
 			for($i = 1; $i < $multipart; $i++)
 			{
@@ -923,10 +923,10 @@ class AECoreDomainFinalization extends AEAbstractPart
 				$result[] = $base.'.'.$newExt;
 			}
 		}
-
+		
 		return $result;
 	}
-
+	
 	/**
 	 * Keeps a maximum number of "obsolete" records
 	 */
@@ -948,7 +948,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 			->where($db->qn('status').' = '.$db->q('complete'))
 			->where($db->qn('filesexist').'='.$db->q('0'))
 			->order($db->qn('id').' DESC');
-
+		
 		$db->setQuery($query, $limit, 100000);
 		if(version_compare(JVERSION, '3.0', 'ge')) {
 			$array = $db->loadColumn();
@@ -970,7 +970,7 @@ class AECoreDomainFinalization extends AEAbstractPart
 		$db->setQuery($query);
 		$db->query();
 	}
-
+	
 	/**
 	 * Get the percentage of finalization steps done
 	 * @see backend/akeeba/abstract/AEAbstractPart#getProgress()
@@ -978,21 +978,21 @@ class AECoreDomainFinalization extends AEAbstractPart
 	public function getProgress()
 	{
 		if($this->steps_total <= 0) return 0;
-
+		
 		$overall = $this->steps_done / $this->steps_total;
 		$local = 0;
 		if($this->substeps_total > 0) {
 			$local = $this->substeps_done / $this->substeps_total;
 		}
-
+		
 		return $overall + ($local / $this->steps_total);
 	}
-
+	
 	public function relayStep($step)
 	{
 		$this->setStep($step);
 	}
-
+	
 	public function relaySubstep($substep)
 	{
 		$this->setSubstep($substep);

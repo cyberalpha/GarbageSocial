@@ -19,13 +19,13 @@ class AkeebaViewBackup extends FOFViewHtml
 	public function onAdd($tpl = null)
 	{
 		$model = $this->getModel();
-
+		
 		// Load the Status Helper
 		if(!class_exists('AkeebaHelperStatus')) JLoader::import('helpers.status', JPATH_COMPONENT_ADMINISTRATOR);
 		$helper = AkeebaHelperStatus::getInstance();
 
 		// Determine default description
-		JLoader::import('joomla.utilities.date');
+		jimport('joomla.utilities.date');
 		$jregistry = JFactory::getConfig();
 		if(version_compare(JVERSION, '3.0', 'ge')) {
 			$tzDefault = $jregistry->get('offset');
@@ -55,7 +55,7 @@ class AkeebaViewBackup extends FOFViewHtml
 		$isSTW = ($profile_data->description == 'Site Transfer Wizard (do not rename)') &&
 			!empty($returnurl);
 		$this->assign('isSTW', $isSTW);
-
+		
 		// Get the domain details from scripting facility
 		$aeconfig = AEFactory::getConfiguration();
 		$script = $aeconfig->get('akeeba.basic.backup_type','full');
@@ -75,7 +75,7 @@ class AkeebaViewBackup extends FOFViewHtml
 		// Get the maximum execution time and bias
 		$maxexec = $aeconfig->get('akeeba.tuning.max_exec_time',14) * 1000;
 		$bias = $aeconfig->get('akeeba.tuning.run_time_bias',75);
-
+		
 		// Check if the output directory is writable
 		$quirks = AEUtilQuirks::get_quirks();
 		$unwritableOutput = array_key_exists('001', $quirks);
@@ -101,29 +101,18 @@ class AkeebaViewBackup extends FOFViewHtml
 		{
 			$this->assign('showjpskey', 0);
 		}
-
-		if (AKEEBA_PRO)
-		{
-			$this->assign('showangiekey', 1);
-			$this->assign('angiekey', $aeconfig->get('engine.installer.angie.key', ''));
-		}
-		else
-		{
-			$this->assign('showangiekey', 0);
-			$this->assign('angiekey', '');
-		}
 		$this->assign('autostart', $model->getState('autostart'));
 
 		// Pass on profile info
 		$this->assign('profileid', $cpanelmodel->getProfileID()); // Active profile ID
 		$this->assign('profilelist', $cpanelmodel->getProfilesList()); // List of available profiles
-
+		
 		// Pass on state information pertaining to SRP
 		$this->assign('srpinfo',	$model->getState('srpinfo'));
 
 		// Add live help
 		AkeebaHelperIncludes::addHelp('backup');
-
+		
 		// Set the toolbar title
 		if($this->srpinfo['tag'] == 'restorepoint') {
 			$subtitle = JText::_('AKEEBASRP');

@@ -1,0 +1,80 @@
+/*
+Color rojo por defecto : e29025
+variacion : c07520
+variación2 = e8dec5
+*/
+
+a{
+	color: #e29025;
+}
+
+header .joomla-nav .selected a, header .joomla-nav .selected ul #current a{
+	background: #e29025;
+}
+
+header .joomla-nav a:hover,header .joomla-nav .selected  ul a:hover, header .joomla-nav .selected ul #current a:hover {
+	background:#e29025;
+}
+
+.create{
+	color: #e29025;
+}
+
+#main h1{
+	color: #e29025;
+}
+
+.button:hover, button:hover{
+	background: #e29025;
+	color: #fff;
+}
+
+.button2-left a:hover{
+	background: #e29025;
+	color: #fff;
+}
+
+.moduletable .titulomodulo,.moduletable_menu .titulomodulo {
+	-webkit-box-shadow: inset 0px 0px 2px #c07520; 
+	-moz-box-shadow: inset 0px 0px 2px #c07520; 
+	box-shadow: inset 0px 0px 2px #c07520;
+	
+	background: #e29025;
+}
+
+#positions_8-11 .moduletable .titulomodulo{
+	background: none;
+}
+
+#search .button:hover{
+	background: #e29025;
+}
+
+.moduletable_menu li a:hover, .moduletable_menu #current ul a:hover{
+	background: #e8dec5;
+	color: #e29025;
+	font-weight: bold;
+}
+
+.moduletable_menu #current a{
+	background: #e8dec5;
+	font-weight: bold;
+	color:#e29025;
+}
+
+
+.moduletable_menu #current ul a{
+	color: #e29025;
+	font-weight: normal;
+}
+
+.cajacontenido2{
+	background: #e29025;
+	color: #fff;
+}
+
+.contenedor.breadcrumbs_search{
+	border-top: 8px solid #e29025;
+	padding-top: 4px;
+}
+

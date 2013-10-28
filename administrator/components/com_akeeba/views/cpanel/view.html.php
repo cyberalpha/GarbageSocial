@@ -14,7 +14,7 @@ defined('_JEXEC') or die();
  *
  */
 class AkeebaViewCpanel extends FOFViewHtml
-{
+{	
 	protected function onBrowse($tpl = null) {
 		// Used in FOF 2.0, where this actually works as expected
 		$this->onAdd($tpl);
@@ -25,13 +25,10 @@ class AkeebaViewCpanel extends FOFViewHtml
 		// Used in FOF 1.x where the behaviour was kinda clunky
 		$model = $this->getModel();
 
-		/**
 		$selfhealModel = FOFModel::getTmpInstance('Selfheal','AkeebaModel');
 		$schemaok = $selfhealModel->healSchema();
-		**/
-		$schemaok = true;
-		$this->assign('schemaok', $schemaok);
-
+		$this->assign('schemaok', $schemaok);		
+		
 		$aeconfig = AEFactory::getConfiguration();
 
 		if($schemaok) {
@@ -42,9 +39,9 @@ class AkeebaViewCpanel extends FOFViewHtml
 
 			// Load the model
 			if(!class_exists('AkeebaModelStatistics')) JLoader::import('models.statistics', JPATH_COMPONENT_ADMINISTRATOR);
-
+			
 			$statmodel = new AkeebaModelStatistics();
-			//$model->applyJoomlaExtensionUpdateChanges();
+			//$needsDlid = !$model->applyJoomlaExtensionUpdateChanges();
 			$needsDlid = $model->needsDownloadID();
 
 			$this->assign('icondefs', $model->getIconDefinitions()); // Icon definitions
@@ -55,13 +52,13 @@ class AkeebaViewCpanel extends FOFViewHtml
 			$this->assign('statscell', $statmodel->getLatestBackupDetails() );
 
 			$this->assign('fixedpermissions', $model->fixMediaPermissions() ); // Fix media/com_akeeba permissions
-
+			
 			$this->assign('needsdlid', $needsDlid);
-
+			
 			// Add live help
 			AkeebaHelperIncludes::addHelp('cpanel');
 		}
-
+		
 		return $this->onDisplay($tpl);
 	}
 }

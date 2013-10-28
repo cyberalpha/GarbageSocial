@@ -19,10 +19,10 @@ class AECoreDomainInstaller extends AEAbstractPart
 
 	/** @var int Installer image file offset last read */
 	private $offset;
-
+	
 	/** @var int Percentage of process done */
 	private $progress = 0;
-
+	
 	/**
 	 * Public constructor
 	 * @return AECoreDomainInstaller
@@ -40,27 +40,19 @@ class AECoreDomainInstaller extends AEAbstractPart
 	function _prepare()
 	{
 		$archive = AEFactory::getArchiverEngine();
-
+		
 		// Add the backup description and comment in a README.html file in the
 		// installation directory. This makes it the first file in the archive.
 		if($this->installerSettings->readme) {
 			$data = $this->createReadme();
-			$archive->addVirtualFile('README.html', $this->installerSettings->installerroot, $data);
+			$archive->addVirtualFile('README.html',$this->installerSettings->installerroot, $data);
 		}
 
 		if($this->installerSettings->extrainfo) {
 			$data = $this->createExtrainfo();
-			$archive->addVirtualFile('extrainfo.ini', $this->installerSettings->installerroot, $data);
+			$archive->addVirtualFile('extrainfo.ini',$this->installerSettings->installerroot, $data);
 		}
-
-		if($this->installerSettings->password) {
-			$data = $this->createPasswordFile();
-			if (!empty($data))
-			{
-				$archive->addVirtualFile('password.php', $this->installerSettings->installerroot, $data);
-			}
-		}
-
+		
 		$this->progress = 0;
 
 		// Set our state to prepared
@@ -99,7 +91,7 @@ class AECoreDomainInstaller extends AEAbstractPart
 			AEUtilLogger::WriteLog(_AE_LOG_DEBUG, __CLASS__.":: archive is initialized");
 			$this->setState('finished');
 		}
-
+		
 		// Calculate percentage
 		$total_size = $ret['filesize'];
 		if($total_size > 0) {
@@ -132,7 +124,7 @@ class AECoreDomainInstaller extends AEAbstractPart
 		$lbl_version = AKEEBA_VERSION.' ('.AKEEBA_DATE.')';
 
 		$lbl_coreorpro = (AKEEBA_PRO == 1) ? 'Professional' : 'Core';
-
+		
 		$description = $config->get('volatile.core.description','');
 		$comment = $config->get('volatile.core.comment','');
 
@@ -161,39 +153,16 @@ class AECoreDomainInstaller extends AEAbstractPart
 </html>
 ENDHTML;
 	}
-
+	
 	private function createExtrainfo()
 	{
 		$abversion = AKEEBA_VERSION;
 		$host = AEPlatform::getInstance()->get_host();
-		$backupdate = gmdate('Y-m-d H:i:s');
-		$phpversion=PHP_VERSION;
 		$ret = <<<ENDINI
 ; Akeeba Backup $abversion - Extra information used during restoration
 host=$host
-backup_date=$backupdate
-akeeba_version=$abversion
-php_version=$phpversion
+
 ENDINI;
-		return $ret;
-	}
-
-	private function createPasswordFile()
-	{
-		$config = AEFactory::getConfiguration();
-		$ret = '';
-
-		$password = $config->get('engine.installer.angie.key', '');
-		if (empty($password))
-		{
-			return $ret;
-		}
-
-		$salt = $this->getRandomSalt(32);
-		$passhash = md5($password.$salt) . ':' . $salt;
-		$ret = "<?php\n";
-		$ret .= "define('AKEEBA_PASSHASH', '" . $passhash . "');\n";
-
 		return $ret;
 	}
 
@@ -201,29 +170,11 @@ ENDINI;
 	/**
 	 * Implements the progress calculation based on how much of the installer image
 	 * archive we have processed so far.
-	 *
+	 * 
 	 * @see backend/akeeba/abstract/AEAbstractPart#getProgress()
 	 */
 	public function getProgress()
 	{
 		return $this->progress;
-	}
-
-	private function getRandomSalt($length)
-	{
-		$salt = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-		$len = strlen($salt);
-		$makepass = '';
-
-		$stat = @stat(__FILE__);
-		if(empty($stat) || !is_array($stat)) $stat = array(php_uname());
-
-		mt_srand(crc32(microtime() . implode('|', $stat)));
-
-		for ($i = 0; $i < $length; $i ++) {
-			$makepass .= $salt[mt_rand(0, $len -1)];
-		}
-
-		return $makepass;
 	}
 }

@@ -18,13 +18,13 @@ defined('AKEEBAENGINE') or die();
 class AEUtilTempvars
 {
 	static $storageEngine = '';
-
+	
 	static public function getStorageEngine()
 	{
 		if(empty(self::$storageEngine)) self::setStorageEngine();
 		return self::$storageEngine;
 	}
-
+	
 	static public function setStorageEngine($engine = null)
 	{
 		if(empty($engine)) {
@@ -34,7 +34,7 @@ class AEUtilTempvars
 		}
 		self::$storageEngine = $engine;
 	}
-
+	
 	/**
 	 * Returns the fully qualified path to the storage file
 	 * @return unknown_type
@@ -76,27 +76,16 @@ class AEUtilTempvars
 					->delete($db->qn('#__ak_storage'))
 					->where($db->qn('tag').' = '.$db->q($dbtag));
 				$db->setQuery($sql);
-
-				try
-				{
-					$db->query();
-				}
-				catch (Exception $exc)
-				{
-					return false;
-				}
-
-				return true;
-
+				return $db->query();
 				break;
 		}
-
+		
 	}
 
 	public static function set(&$value, $tag = null)
 	{
 		$storage_filename = self::get_storage_filename($tag);
-
+		
 		switch(self::getStorageEngine()) {
 			case 'file':
 				// Remove old file (if exists)
@@ -113,7 +102,7 @@ class AEUtilTempvars
 
 				return true;
 				break;
-
+				
 			case 'db':
 				$db = AEFactory::getDatabase();
 
@@ -122,15 +111,8 @@ class AEUtilTempvars
 					->delete($db->qn('#__ak_storage'))
 					->where($db->qn('tag').' = '.$db->q($storage_filename));
 				$db->setQuery($sql);
-				try
-				{
-					$db->query();
-				}
-				catch (Exception $exc)
-				{
-					return false;
-				}
-
+				$db->query();
+				
 				// Add the new record
 				$sql = $db->getQuery(true)
 					->insert($db->qn('#__ak_storage'))
@@ -138,20 +120,9 @@ class AEUtilTempvars
 						$db->qn('tag'),
 						$db->qn('data'),
 					))->values($db->q($storage_filename).','.$db->q(self::encode($value)));
-
+				
 				$db->setQuery($sql);
-
-				try
-				{
-					$db->query();
-				}
-				catch (Exception $exc)
-				{
-					return false;
-				}
-
-				return true;
-
+				return $db->query();
 				break;
 		}
 	}
@@ -171,7 +142,7 @@ class AEUtilTempvars
 				unset($rawdata);
 				unset($header);
 				break;
-
+			
 			case 'db':
 				$db = AEFactory::getDatabase();
 				$sql = $db->getQuery(true)
@@ -182,7 +153,7 @@ class AEUtilTempvars
 				$data = $db->loadResult();
 				break;
 		}
-
+		
 		$ret = self::decode($data);
 		unset($data);
 		return $ret;

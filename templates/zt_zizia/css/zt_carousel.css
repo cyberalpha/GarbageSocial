@@ -1,0 +1,31 @@
+/*------------------------------------------------------------------------
+* Copyright (c) 2008-2012 ZooTemplate. All Rights Reserved.
+* @license - Copyrighted Commercial Software
+* Author: ZooTemplate
+* Websites:  http://www.zootemplate.com
+-------------------------------------------------------------------------*/
+.roundabout {
+}
+.roundabout-holder {list-style: none outside none;margin: 125px auto 0;}
+.roundabout-moveable-item {cursor: pointer !important;list-style: none;background:none;padding:0;}
+.roundabout-moveable-item img {width: 100%;}
+.roundabout-in-focus {cursor: auto;}
+.roundabout-description {display: block;width:98%;overflow: hidden;position: absolute;top:-90px;left: 5px;text-align: center;z-index: 102;}
+div.roundabout-moveable-inner{width:100%;position:relative;}
+li.roundabout-moveable-item div.roundabout-image{}
+
+li.roundabout-moveable-item:hover div.roundabout-description{}
+li.roundabout-moveable-item:hover p.caption > a{color:#ea5501; text-decoration: none;}
+
+li.roundabout-moveable-item .roundabout-shadow {overflow: hidden; position: relative;top: 5px;z-index: 100;}
+li.roundabout-moveable-item .roundabout-shadow img {position: relative;width: 100%;}
+li.roundabout-moveable-item div.roundabout-description{ display:none;}
+li.roundabout-moveable-item p.caption {font-size: 250% ;margin: -10px 6px 6px 6px;color: #e8e8e8;line-height: 40px;}
+li.roundabout-moveable-item p.caption > a{color:#e8e8e8;}
+
+.roundabout-in-focus div.roundabout-description {display: block !important;}
+.roundabout-moveable-item a img {display: block;}
+.roundabout-in-focus {cursor: auto;}
+#zt_carousel ul.pagenav {display:none;margin:0 auto ;}
+#zt_carousel ul.pagenav li{display:inline-block;width:13px;line-height:13px;height:13px;padding:0;margin:0 3px;cursor:pointer;background:url(../images/zt_carousel/pagenav.png) no-repeat 0 0;text-indent:-999em;}
+#zt_carousel ul.pagenav li.current{background-position: right top;}

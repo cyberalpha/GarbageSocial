@@ -16,19 +16,19 @@ if(!defined('DS')) {
 }
 
 /**
- * Joomla! 2.5 platform class
+ * Joomla! 2.5 platform class 
  */
 class AEPlatformJoomla25 extends AEPlatformAbstract
 {
 	/** @var int Platform class priority */
 	public $priority = 53;
-
+	
 	public $platformName = 'joomla25';
-
+		
 	/**
 	 * Performs heuristics to determine if this platform object is the ideal
 	 * candidate for the environment Akeeba Engine is running in.
-	 *
+	 * 
 	 * @return bool
 	 */
 	public function isThisPlatform()
@@ -44,7 +44,7 @@ class AEPlatformJoomla25 extends AEPlatformAbstract
 		$appExists = $appExists || class_exists('JCli');
 		$appExists = $appExists || class_exists('JApplicationCli');
 		if(!$appExists) return false;
-
+		
 		return version_compare(JVERSION, '2.5.0', 'ge');
 	}
 
@@ -91,7 +91,7 @@ class AEPlatformJoomla25 extends AEPlatformAbstract
 				if(function_exists('getcwd')) {
 					$root = getcwd();
 				}
-
+				
 				$app = JFactory::getApplication();
 				if( $app->isAdmin() )
 				{
@@ -185,7 +185,7 @@ class AEPlatformJoomla25 extends AEPlatformAbstract
 	 */
 	public function get_timestamp_database($date = 'now')
 	{
-		JLoader::import('joomla.utilities.date');
+		jimport('joomla.utilities.date');
 		$jdate = new JDate($date);
 		if(version_compare(JVERSION, '3.0', 'ge')) {
 			return $jdate->toSql();
@@ -202,7 +202,7 @@ class AEPlatformJoomla25 extends AEPlatformAbstract
 	 */
 	public function get_local_timestamp($format)
 	{
-		JLoader::import('joomla.utilities.date');
+		jimport('joomla.utilities.date');
 
 		$jregistry = JFactory::getConfig();
 		if(version_compare(JVERSION, '3.0', 'ge')) {
@@ -212,11 +212,11 @@ class AEPlatformJoomla25 extends AEPlatformAbstract
 		}
 		$user = JFactory::getUser();
 		$tz = $user->getParam('timezone', $tzDefault);
-
+		
 		$dateNow = new JDate('now', $tz);
 		return $dateNow->format($format, true);
 	}
-
+	
 
 	/**
 	 * Returns the current host name
@@ -244,7 +244,7 @@ class AEPlatformJoomla25 extends AEPlatformAbstract
 		}
 		return $oURI->getHost();
 	}
-
+	
 	public function get_site_name()
 	{
 		$jconfig = JFactory::getConfig();
@@ -292,13 +292,9 @@ class AEPlatformJoomla25 extends AEPlatformAbstract
 						return 'AEDriverPlatformJoomla';
 					}
 					break;
-
+				
 				case 'sqlsrv':
 				case 'sqlazure':
-					return 'AEDriverPlatformJoomla';
-					break;
-
-				case 'postgresql':
 					return 'AEDriverPlatformJoomla';
 					break;
 
@@ -324,10 +320,6 @@ class AEPlatformJoomla25 extends AEPlatformAbstract
 		elseif( strtolower(substr($driver, 0, 6)) == 'sqlazure' )
 		{
 			return 'AEDriverSqlazure';
-		}
-		elseif( strtolower(substr($driver, 0, 6)) == 'postgresql' )
-		{
-			return 'AEDriverPostgresql';
 		}
 
 		// If we're still here, we have to guesstimate the correct driver. All bets are off.
@@ -400,7 +392,7 @@ class AEPlatformJoomla25 extends AEPlatformAbstract
 		if(!defined('AKEEBA_VERSION')) define("AKEEBA_VERSION", "svn");
 		if(!defined('AKEEBA_PRO')) define('AKEEBA_PRO', false);
 		if(!defined('AKEEBA_DATE')) {
-			JLoader::import('joomla.utilities.date');
+			jimport('joomla.utilities.date');
 			$date = new JDate();
 			define( "AKEEBA_DATE", $date->format('Y-m-d') );
 		}
@@ -430,7 +422,7 @@ class AEPlatformJoomla25 extends AEPlatformAbstract
 		AEUtilLogger::WriteLog(_AE_LOG_INFO, "JPATH_ROOT         :" . JPATH_ROOT );
 		AEUtilLogger::WriteLog(_AE_LOG_INFO, "JPATH_CACHE        :" . JPATH_CACHE );
 		AEUtilLogger::WriteLog(_AE_LOG_INFO, "Computed root      :" . $this->get_site_root() );
-
+		
 		// Detect UNC paths and warn the user
 		if(DIRECTORY_SEPARATOR == '\\') {
 			if( (substr(JPATH_ROOT, 0, 2) == '\\\\') || (substr(JPATH_ROOT, 0, 2) == '//') ) {
@@ -486,7 +478,7 @@ class AEPlatformJoomla25 extends AEPlatformAbstract
 
 		return $mails;
 	}
-
+	
 	/**
 	 * Sends a very simple email using the platform's emailer facility
 	 * @param string $to
@@ -496,16 +488,16 @@ class AEPlatformJoomla25 extends AEPlatformAbstract
 	public function send_email($to, $subject, $body, $attachFile = null)
 	{
 		AEUtilLogger::WriteLog(_AE_LOG_DEBUG,"-- Fetching mailer object" );
-
+		
 		$mailer = AEPlatform::getInstance()->getMailer();
-
+		
 		if(!is_object($mailer)) {
 			AEUtilLogger::WriteLog(_AE_LOG_WARNING,"Could not send email to $to - Reason: Mailer object is not an object; please check your system settings");
 			return false;
 		}
-
+		
 		AEUtilLogger::WriteLog(_AE_LOG_DEBUG,"-- Creating email message");
-
+		
 		$recipient = array($to);
 		$mailer->addRecipient($recipient);
 		$mailer->setSubject($subject);
@@ -514,17 +506,17 @@ class AEPlatformJoomla25 extends AEPlatformAbstract
 		if(!empty($attachFile))
 		{
 			AEUtilLogger::WriteLog(_AE_LOG_WARNING, "-- Attaching $attachFile");
-
+			
 			if(!file_exists($attachFile) || !(is_file($attachFile) || is_link($attachFile))) {
 				AEUtilLogger::WriteLog(_AE_LOG_WARNING, "The file does not exist, or it's not a file; no email sent");
 				return false;
 			}
-
+			
 			if(!is_readable($attachFile)) {
 				AEUtilLogger::WriteLog(_AE_LOG_WARNING, "The file is not readable; no email sent");
 				return false;
 			}
-
+			
 			$filesize = @filesize($attachFile);
 			if($filesize) {
 				// Check that we have AT LEAST 2.5 times free RAM as the filesize (that's how much we'll need)
@@ -552,9 +544,9 @@ class AEPlatformJoomla25 extends AEPlatformAbstract
 				} else {
 					$usedRAM = memory_get_usage();
 				}
-
+				
 				$availableRAM = $totalRAM - $usedRAM;
-
+				
 				if($availableRAM < 2.5*$filesize) {
 					AEUtilLogger::WriteLog(_AE_LOG_WARNING, "The file is too big to be sent by email. Please use a smaller Part Size for Split Archives setting.");
 					AEUtilLogger::WriteLog(_AE_LOG_DEBUG, "Memory limit $totalRAM bytes -- Used memory $usedRAM bytes -- File size $filesize -- Attachment requires approx. ".(2.5*$filesize)." bytes");
@@ -563,10 +555,10 @@ class AEPlatformJoomla25 extends AEPlatformAbstract
 			} else {
 				AEUtilLogger::WriteLog(_AE_LOG_WARNING, "Your server fails to report the file size of $attachFile. If the backup crashes, please use a smaller Part Size for Split Archives setting");
 			}
-
+			
 			$mailer->addAttachment($attachFile);
 		}
-
+		
 		AEUtilLogger::WriteLog(_AE_LOG_DEBUG,"-- Sending message");
 
 		$result = $mailer->Send();
@@ -595,7 +587,7 @@ class AEPlatformJoomla25 extends AEPlatformAbstract
 	public function unlink($file)
 	{
 		if(function_exists('jimport')) {
-			JLoader::import('joomla.filesystem.file');
+			jimport('joomla.filesystem.file');
 			$result = JFile::delete($file);
 			if(!$result) $result = @unlink($file);
 		} else {
@@ -613,7 +605,7 @@ class AEPlatformJoomla25 extends AEPlatformAbstract
 	public function move($from, $to)
 	{
 		if(function_exists('jimport')) {
-			JLoader::import('joomla.filesystem.file');
+			jimport('joomla.filesystem.file');
 			$result = JFile::move($from, $to);
 			// JFile failed. Let's try rename()
 			if(!$result)
@@ -626,7 +618,7 @@ class AEPlatformJoomla25 extends AEPlatformAbstract
 				// Try copying with JFile. If it fails, use copy().
 				$result = JFile::copy($from, $to);
 				if(!$result) $result = @copy($from, $to);
-
+	
 				// If the copy succeeded, try deleting the original with JFile. If it fails, use unlink().
 				if($result)
 				{
@@ -646,7 +638,7 @@ class AEPlatformJoomla25 extends AEPlatformAbstract
 	protected function register_akeeba_engine_classes($path_prefix)
 	{
 		global $Akeeba_Class_Map;
-		JLoader::import('joomla.filesystem.folder');
+		jimport('joomla.filesystem.folder');
 		foreach($Akeeba_Class_Map as $class_prefix => $path_suffix)
 		{
 			// Bail out if there is such directory, so as not to have Joomla! throw errors

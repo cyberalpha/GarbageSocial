@@ -249,14 +249,12 @@ class AECoreDomainDb extends AEAbstractPart
 			$section = basename($definition['dumpFile']);
 			
 			$dboInstance = AEFactory::getDatabase($definition);
-			$type = $dboInstance->name;
 			$tech = $dboInstance->getDriverType();
 
 			if($blankOutPass) {
 				$this->databases_ini .= <<<ENDDEF
 [$section]
-dbtype = "$type"
-dbtech = "$tech"
+dbtype = "$tech"
 dbname = "{$definition['database']}"
 sqlfile = "{$definition['dumpFile']}"
 dbhost = "{$definition['host']}"
@@ -270,8 +268,7 @@ ENDDEF;
 			} else {
 				$this->databases_ini .= <<<ENDDEF
 [$section]
-dbtype = "$type"
-dbtech = "$tech"
+dbtype = "$tech"
 dbname = "{$definition['database']}"
 sqlfile = "{$definition['dumpFile']}"
 dbhost = "{$definition['host']}"

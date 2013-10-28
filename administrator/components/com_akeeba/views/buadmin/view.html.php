@@ -21,11 +21,11 @@ class AkeebaViewBuadmin extends FOFViewHtml
 	function  __construct($config = array()) {
 		parent::__construct($config);
 		$this->lists = new JObject();
-
+        
         $tmpl_path = JPATH_COMPONENT_ADMINISTRATOR.'/plugins/views/buadmin/tmpl';
 		$this->addTemplatePath($tmpl_path);
 	}
-
+	
 	public function onEdit($tpl = null)
 	{
 		$model = $this->getModel();
@@ -33,22 +33,22 @@ class AkeebaViewBuadmin extends FOFViewHtml
 		$record = AEPlatform::getInstance()->get_statistics($id);
 		$this->assign('record', $record);
 		$this->assign('record_id', $id);
-
+		
 		$this->setLayout('comment');
 	}
-
+    
 	public function onBrowse($tpl=null)
 	{
 		$session = JFactory::getSession();
 		$task = $session->get('buadmin.task', 'default', 'akeeba');
-
+		
 		if($task != 'restorepoint') $task = 'default';
 
 		$aeconfig = AEFactory::getConfiguration();
 
 		// Add custom submenus
 		if(AKEEBA_PRO) {
-			$toolbar = FOFToolbar::getAnInstance($this->input->get('option','com_foobar','cmd'), $this->config);
+			$toolbar = FOFToolbar::getAnInstance(FOFInput::getCmd('option','com_foobar',$this->input), $this->config);
 			$toolbar->appendLink(
 				JText::_('BUADMIN_LABEL_BACKUPS'),
 				JURI::base().'index.php?option=com_akeeba&view=buadmin&task=browse',
@@ -101,7 +101,7 @@ function confirmDownload(id, part)
 ENDSCRIPT;
 
 		$document = JFactory::getDocument();
-		$document->addScriptDeclaration($js);
+		$document->addScriptDeclaration($js);				
 
 		$hash = 'akeebabuadmin';
 
@@ -143,14 +143,14 @@ ENDSCRIPT;
 		} else {
 			AkeebaHelperIncludes::addHelp('buadmin');
 		}
-
+		
 		return true;
 	}
-
+	
 	private function _getFilters()
 	{
 		$filters = array();
-
+		
 		if($this->lists->fltDescription) {
 			$filters[] = array(
 				'field'			=> 'description',
@@ -173,11 +173,11 @@ ENDSCRIPT;
 				'value'			=> $this->lists->fltFrom,
 			);
 		} elseif($this->lists->fltTo) {
-			JLoader::import('joomla.utilities.date');
+			jimport('joomla.utilities.date');
 			$to = new JDate($this->lists->fltTo);
 			$toUnix = $to->toUnix();
 			$to = date('Y-m-d').' 23:59:59';
-
+			
 			$filters[] = array(
 				'field'			=> 'backupstart',
 				'operand'		=> '<=',
@@ -198,7 +198,7 @@ ENDSCRIPT;
 				'value'			=> (int)$this->lists->fltProfile
 			);
 		}
-
+		
 		$session = JFactory::getSession();
 		$task = $session->get('buadmin.task', 'browse', 'akeeba');
 		if($task == 'restorepoint') {
@@ -214,12 +214,12 @@ ENDSCRIPT;
 				'value'			=> 'restorepoint'
 			);
 		}
-
-
+		
+		
 		if(empty($filters)) $filters = null;
 		return $filters;
 	}
-
+	
 	private function _getOrdering()
 	{
 		$order = array(

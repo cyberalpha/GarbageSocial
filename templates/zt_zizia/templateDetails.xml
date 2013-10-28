@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/2.5/template-install.dtd">
+<extension version="2.5" type="template" method="upgrade">
+	<name>zt_zizia</name>
+	<creationDate>05/08/2012</creationDate>
+	<author>ZooTemplate.com</author>
+	<copyright>ZooTemplate</copyright>
+	<authorEmail>support@zootemplate.com</authorEmail>
+	<authorUrl>www.zootemplate.com</authorUrl>
+	<version>2.5.0</version>
+	<description><![CDATA[<h1>ZT Zizia - The cool template for Hotels and Reservations </h1><span>Thank you very much for using our services.<br />Please visit <a href="http://www.zootemplate.com" title="Joomla Templates">Joomla Templates</a> Club for any further support.</span>]]></description>
+	<files>
+		<filename>templateDetails.xml</filename>
+		<filename>template_thumbnail.png</filename>
+		<filename>index.php</filename>
+		<filename>index.html</filename>
+		<filename>favicon.ico</filename>
+		<filename>component.php</filename>
+
+		<folder>libs</folder>
+		<folder>zt_menus</folder>
+		<folder>js</folder>
+		<folder>images</folder>
+		<folder>html</folder>
+		<folder>css</folder>		
+	</files>
+	<positions>
+		<position>breadcrumb</position>
+		<position>banner</position>
+		<position>right</position>
+		<position>top</position>
+		<position>topmenu</position>
+		<position>login</position>
+		<position>inset</position>
+		<position>search</position>
+		<position>slideshow</position>
+		<position>highlight</position>
+		<position>headline</position>
+		<position>footer</position>
+		<position>col1</position>
+		<position>col2</position>
+		<position>col3</position>
+		<position>col4</position>
+		<position>col5</position>
+		<position>user1</position>
+		<position>user2</position>
+		<position>user3</position>
+		<position>user4</position>
+		<position>user5</position>
+		<position>user6</position>
+		<position>user7</position>
+		<position>user8</position>
+		<position>user9</position>
+		<position>user10</position>
+		<position>user11</position>
+		<position>user12</position>
+		<position>user13</position>
+		<position>user14</position>
+		<position>user15</position>
+		<position>user16</position>
+		<position>user17</position>
+		<position>user18</position>
+		<position>user19</position>
+		<position>muser1</position>
+		<position>muser2</position>
+		<position>msearch</position>
+		<position>mlogin</position>
+		<position>footer</position>
+		<position>syndicate</position>
+		<position>debug</position>
+	</positions>
+	
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.tpl_zt_zizia.ini</language>
+	</languages>	
+	
+	<config>
+		<fields name="params" addfieldpath="plugins/system/plg_ztools/plg_ztools/4backend/menu/element">
+			<fieldset name="TEMPLATE">
+				<field name="zt_font" type="list" default="3" label="FONT_SIZE" description="SELECT_FONT_SIZE">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+				</field>
+				<field name="zt_footer" type="radio" default="0" label="COPYRIGHT_TEMPLATE" description="COPYRIGHT_TEMPLATE_DESCRIPTION">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="zt_footer_text" type="text" size="50" label="" description="" default="Copyright (c) 2008 - 2012 Joomla Templates by ZooTemplate.Com" />
+				<field name="zt_fontfeature" type="radio" default="1" label="FONTS_FEATURE" description="FONTS_FEATURE_DESCRIPTION">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="zt_rtl" type="radio" default="0" label="RTL_LANGUAGES" description="RTL_LANGUAGES_DESCRIPTION">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="zt_mobile" type="radio" default="1" label="MOBILE_LAYOUT" description="MOBILE_LAYOUT_DESCRIPTION">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+			</fieldset>
+			<fieldset name="MENU">
+				<field name="menutype" type="menu" default="mainmenu" label="MENU_MODULE" description="MENU_TO_SHOW" />
+				<field name="zt_menustyle" type="list" default="mega" label="MENU_TYPE" description="MENU_TYPE">
+					<option value="mega">MegaMenu</option>
+				</field>
+				<field name="xdelay" type="text" size="50" default="350" label="Time Delay" description="Time delay before vanishing." />
+				<field name="xduration" type="text" size="50" default="350" label="Time duration" description="Time duration." />
+				<field name="xtransition" type="list" default="Fx.Transitions.Bounce.easeOut" label="Transition" description="Transition">
+					<option value="Fx.Transitions.linear">Linear</option>
+					<option value="Fx.Transitions.Quad.easeIn">Quad.easeIn</option>
+					<option value="Fx.Transitions.Quad.easeOut">Quad.easeOut</option>
+					<option value="Fx.Transitions.Quad.easeInOut">Quad.easeInOut</option>
+					<option value="Fx.Transitions.Cubic.easeIn">Cubic.easeIn</option>
+					<option value="Fx.Transitions.Cubic.easeOut">Cubic.easeOut</option>
+					<option value="Fx.Transitions.Cubic.easeInOut">Cubic.easeInOut</option>
+					<option value="Fx.Transitions.Quart.easeIn">Quart.easeIn</option>
+					<option value="Fx.Transitions.Quart.easeOut">Quart.easeOut</option>
+					<option value="Fx.Transitions.Quart.easeInOut">Quart.easeInOut</option>
+					<option value="Fx.Transitions.Quart.easeInOut">Quart.easeInOut</option>
+					<option value="Fx.Transitions.Quint.easeIn">Quint.easeIn</option>
+					<option value="Fx.Transitions.Quint.easeOut">Quint.easeOut</option>
+					<option value="Fx.Transitions.Quint.easeInOut">Quint.easeInOut</option>
+					<option value="Fx.Transitions.Expo.easeIn">Expo.easeIn</option>
+					<option value="Fx.Transitions.Expo.easeOut">Expo.easeOut</option>
+					<option value="Fx.Transitions.Expo.easeInOut">Expo.easeInOut</option>
+					<option value="Fx.Transitions.Circ.easeIn">Circ.easeIn</option>
+					<option value="Fx.Transitions.Circ.easeOut">Circ.easeOut</option>
+					<option value="Fx.Transitions.Circ.easeInOut">Circ.easeInOut</option>
+					<option value="Fx.Transitions.Sine.easeIn">Sine.easeIn</option>
+					<option value="Fx.Transitions.Sine.easeOut">Sine.easeOut</option>
+					<option value="Fx.Transitions.Sine.easeInOut">Sine.easeInOut</option>
+					<option value="Fx.Transitions.Back.easeIn">Back.easeIn</option>
+					<option value="Fx.Transitions.Back.easeOut">Back.easeOut</option>
+					<option value="Fx.Transitions.Back.easeInOut">Back.easeInOut</option>
+					<option value="Fx.Transitions.Bounce.easeIn">Bounce.easeIn</option>
+					<option value="Fx.Transitions.Bounce.easeOut">Bounce.easeOut</option>
+					<option value="Fx.Transitions.Bounce.easeInOut">Bounce.easeInOut</option>
+					<option value="Fx.Transitions.Elastic.easeIn">Elastic.easeIn</option>
+					<option value="Fx.Transitions.Elastic.easeOut">Elastic.easeOut</option>
+					<option value="Fx.Transitions.Elastic.easeInOut">Elastic.easeInOut</option>
+				</field>
+				<field name="fancy" type="radio" default="0" label="Use Fancy Menu" description="Use Fancy Menu">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="transition" type="list" default="Fx.Transitions.linear" label="Transition" description="Transition">
+					<option value="Fx.Transitions.linear">Linear</option>
+					<option value="Fx.Transitions.Quad.easeIn">Quad.easeIn</option>
+					<option value="Fx.Transitions.Quad.easeOut">Quad.easeOut</option>
+					<option value="Fx.Transitions.Quad.easeInOut">Quad.easeInOut</option>
+					<option value="Fx.Transitions.Cubic.easeIn">Cubic.easeIn</option>
+					<option value="Fx.Transitions.Cubic.easeOut">Cubic.easeOut</option>
+					<option value="Fx.Transitions.Cubic.easeInOut">Cubic.easeInOut</option>
+					<option value="Fx.Transitions.Quart.easeIn">Quart.easeIn</option>
+					<option value="Fx.Transitions.Quart.easeOut">Quart.easeOut</option>
+					<option value="Fx.Transitions.Quart.easeInOut">Quart.easeInOut</option>
+					<option value="Fx.Transitions.Quart.easeInOut">Quart.easeInOut</option>
+					<option value="Fx.Transitions.Quint.easeIn">Quint.easeIn</option>
+					<option value="Fx.Transitions.Quint.easeOut">Quint.easeOut</option>
+					<option value="Fx.Transitions.Quint.easeInOut">Quint.easeInOut</option>
+					<option value="Fx.Transitions.Expo.easeIn">Expo.easeIn</option>
+					<option value="Fx.Transitions.Expo.easeOut">Expo.easeOut</option>
+					<option value="Fx.Transitions.Expo.easeInOut">Expo.easeInOut</option>
+					<option value="Fx.Transitions.Circ.easeIn">Circ.easeIn</option>
+					<option value="Fx.Transitions.Circ.easeOut">Circ.easeOut</option>
+					<option value="Fx.Transitions.Circ.easeInOut">Circ.easeInOut</option>
+					<option value="Fx.Transitions.Sine.easeIn">Sine.easeIn</option>
+					<option value="Fx.Transitions.Sine.easeOut">Sine.easeOut</option>
+					<option value="Fx.Transitions.Sine.easeInOut">Sine.easeInOut</option>
+					<option value="Fx.Transitions.Back.easeIn">Back.easeIn</option>
+					<option value="Fx.Transitions.Back.easeOut">Back.easeOut</option>
+					<option value="Fx.Transitions.Back.easeInOut">Back.easeInOut</option>
+					<option value="Fx.Transitions.Bounce.easeIn">Bounce.easeIn</option>
+					<option value="Fx.Transitions.Bounce.easeOut">Bounce.easeOut</option>
+					<option value="Fx.Transitions.Bounce.easeInOut">Bounce.easeInOut</option>
+					<option value="Fx.Transitions.Elastic.easeIn">Elastic.easeIn</option>
+					<option value="Fx.Transitions.Elastic.easeOut">Elastic.easeOut</option>
+					<option value="Fx.Transitions.Elastic.easeInOut">Elastic.easeInOut</option>
+				</field>
+				<field name="duration" type="text" size="50" default="350" label="Duration" description="Duration" />
+			</fieldset>
+			<fieldset name="COMPRESS">
+				<field name="gzip_folder" type="text" size="50" default="zt-assets" label="GZIP_OPTIMIZE_FOLDER" description="GZIP_OPTIMIZE_FOLDER_DESC" />
+				<field name="gzip_merge" type="radio" default="1" label="ZT_MERGE" description="ZT_MERGE_DESC">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="gzip_optimize_css" type="radio" default="0" label="GZIP_OPTIMIZE_CSS" description="GZIP_OPTIMIZE_CSS_DESC">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="css-exclude" type="exlfiles" rows="5" cols="28" default="" label="GZIP_OPTIMIZE_EXCLUDE_CSS" description="GZIP_OPTIMIZE_EXCLUDE_CSS_DESC" />
+				<field name="gzip_optimize_js" type="radio" default="0" label="GZIP_OPTIMIZE_JS" description="GZIP_OPTIMIZE_JS_DESC">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="js-exclude" type="exlfiles" rows="5" cols="28" default="" label="GZIP_OPTIMIZE_EXCLUDE_JS" description="GZIP_OPTIMIZE_EXCLUDE_JS_DESC" />
+				<field name="gzip_optimize_html" type="radio" default="1" label="GZIP_OPTIMIZE_HTML" description="GZIP_OPTIMIZE_HTML_DESC">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+			</fieldset>
+			<fieldset name="ADVANCED">
+				<field name="zt_layout" type="list" default="lcr" label="LAYOUT ORDER" description="LAYOUT ORDER DESCRIPTION">
+					<option value="-lcr">Left - Content - Right</option>
+					<option value="-lrc">Left - Right - Content</option>
+					<option value="-clr">Content - Right - Left</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+
+</extension>

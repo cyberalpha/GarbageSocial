@@ -90,7 +90,7 @@ class AEArchiverZip extends AEAbstractArchiver {
 			
 			if(strstr($memLimit, 'M')) {
 				$memLimit = (int)$memLimit * 1048576;
-			} elseif(strstr($memLimit, 'K')) {
+			} elseif(strstr($totalRAM, 'K')) {
 				$memLimit = (int)$memLimit * 1024;
 			} elseif(strstr($memLimit, 'G')) {
 				$memLimit = (int)$memLimit * 1073741824;
@@ -244,8 +244,7 @@ class AEArchiverZip extends AEAbstractArchiver {
 	{
 		// 1. Get size of central directory
 		clearstatcache();
-                $cdOffset = @filesize( $this->_dataFileName );
-		$this->_totalDataSize += $cdOffset;
+		$this->_totalDataSize += @filesize( $this->_dataFileName );
 		$cdSize = @filesize( $this->_ctrlDirFileName );
 
 		// 2. Append Central Directory to data file and remove the CD temp file afterwards
@@ -359,7 +358,7 @@ class AEArchiverZip extends AEAbstractArchiver {
 		$this->_fwrite( $dataFP, pack('v', $this->_totalFileEntries) ); /* Total # of entries "on this disk". */
 		$this->_fwrite( $dataFP, pack('v', $this->_totalFileEntries) ); /* Total # of entries overall. */
 		$this->_fwrite( $dataFP, pack('V', $cdSize) ); /* Size of central directory. */
-		$this->_fwrite( $dataFP, pack('V', $cdOffset) ); /* Offset to start of central dir. */
+		$this->_fwrite( $dataFP, pack('V', $this->_totalDataSize) ); /* Offset to start of central dir. */
 		$sizeOfComment = $comment_length = function_exists('mb_strlen') ? mb_strlen($this->_comment, '8bit') : strlen($this->_comment);
 		// 2.0.b2 -- Write a ZIP file comment
 		$this->_fwrite( $dataFP, pack('v', $sizeOfComment) ); /* ZIP file comment length. */

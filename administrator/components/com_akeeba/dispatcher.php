@@ -13,7 +13,7 @@ class AkeebaDispatcher extends FOFDispatcher
 {
 	public function onBeforeDispatch() {
 		$result = parent::onBeforeDispatch();
-
+		
 		if($result) {
 			// Load Akeeba Strapper
 			include_once JPATH_ROOT.'/media/akeeba_strapper/strapper.php';
@@ -22,23 +22,14 @@ class AkeebaDispatcher extends FOFDispatcher
 			AkeebaStrapper::jQueryUI();
 			AkeebaStrapper::addJSfile('media://com_akeeba/js/gui-helpers.js');
 			AkeebaStrapper::addJSfile('media://com_akeeba/js/akeebaui.js');
-			jimport('joomla.filesystem.file');
-			if (JFile::exists(FOFTemplateUtils::parsePath('media://com_akeeba/plugins/js/akeebaui.js', true)))
-			{
-				AkeebaStrapper::addJSfile('media://com_akeeba/plugins/js/akeebaui.js');
-			}
+			AkeebaStrapper::addJSfile('media://com_akeeba/plugins/js/akeebaui.js');
 			AkeebaStrapper::addCSSfile('media://com_akeeba/theme/akeebaui.css');
 		}
-
+		
 		return $result;
 	}
-
+	
 	public function dispatch() {
-		if(!class_exists('AkeebaControllerDefault'))
-		{
-			require_once JPATH_ADMINISTRATOR.'/components/com_akeeba/controllers/default.php';
-		}
-
 		// Merge the language overrides
 		$paths = array(JPATH_ROOT, JPATH_ADMINISTRATOR);
 		$jlang = JFactory::getLanguage();
@@ -72,7 +63,7 @@ class AkeebaDispatcher extends FOFDispatcher
 		// Necessary defines for Akeeba Engine
 		if(!defined('AKEEBAENGINE')) {
 			define('AKEEBAENGINE', 1); // Required for accessing Akeeba Engine's factory class
-			define('AKEEBAROOT', dirname(__FILE__).'/akeeba');
+			define('AKEEBAROOT', dirname(__FILE__).'/akeeba'); 
 		}
 
 		// Setup Akeeba's ACLs, honoring laxed permissions in component's parameters, if set
@@ -119,27 +110,27 @@ class AkeebaDispatcher extends FOFDispatcher
 		// Handle Live Update requests
 		if(!class_exists('LiveUpdate')) {
 			require_once JPATH_ADMINISTRATOR.'/components/com_akeeba/liveupdate/liveupdate.php';
-			if(($this->input->get('view','', 'cmd') == 'liveupdate')) {
+			if((FOFInput::getCmd('view','',$this->input) == 'liveupdate')) {
 				LiveUpdate::handleRequest();
 				return true;
 			}
 		}
-
+		
 		// Look for controllers in the plugins folder
-		$option = $this->input->get('option','com_foobar', 'cmd');
-		$view = $this->input->get('view',$this->defaultView, 'cmd');
+		$option = FOFInput::getCmd('option','com_foobar',$this->input);
+		$view = FOFInput::getCmd('view',$this->defaultView, $this->input);
 		$c = FOFInflector::singularize($view);
 		$alt_path = JPATH_ADMINISTRATOR.'/components/'.$option.'/plugins/controllers/'.$c.'.php';
-
-		JLoader::import('joomla.filesystem.file');
+		
+		jimport('joomla.filesystem.file');
 		if(JFile::exists($alt_path))
 		{
 			// The requested controller exists and there you load it...
 			require_once($alt_path);
 		}
-
-		$this->input->set('view', $this->view);
-
+		
+		FOFInput::setVar('view', $this->view, $this->input);
+		
 		parent::dispatch();
 	}
 }

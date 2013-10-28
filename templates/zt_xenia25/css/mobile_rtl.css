@@ -1,0 +1,58 @@
+/*------------------------------------------------------------------------
+* Copyright (c) 2008-2011 ZooTemplate. All Rights Reserved.
+* Author: ZooTemplate
+* Websites:  http://www.zootemplate.com
+-------------------------------------------------------------------------*/
+
+html {
+	direction: rtl;
+}
+#zt-logo {
+    top: 10px;
+    right: 20px;
+	left: auto;
+    position: absolute;
+}
+#zt-toolbar-btn {
+    left: 15px;
+    top: 15px;
+	right: auto;
+    position: absolute;
+}
+.home-item {
+	padding: 0 10px 0 0;
+    float: right;
+}
+#drillcrumb {
+    float: right;
+    margin: 0 10px 0 0;
+}
+.drillmenu li a { /*menu links*/
+	padding: 0.7em 15px 0.7em 75px;
+}
+li.backcontroltitle {
+	padding: 0.5em 10px 0.5em 0;
+}
+
+li.backcontrol {
+	padding: 0.5em 10px 0.5em 0;
+}
+.drillmenu li .next-link {
+	right: auto;
+	left: 0;
+}
+.drillmenu li .next-link .next-title {
+	margin: 10px 0 0 10px;
+	float: left;
+	background: url(../zt_menus/zt_drillmenu/images/icons-white.png) no-repeat scroll -144px 50% #939393;
+}
+
+#zt-footer-right {
+    padding: 0 10px 0 45px;
+	text-align: right;
+}
+#pannel-top {
+	right: auto;
+	left: 10px;
+	top: 15px;
+}

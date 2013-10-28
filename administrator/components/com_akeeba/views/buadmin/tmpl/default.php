@@ -10,9 +10,8 @@
 // Protect from unauthorized access
 defined('_JEXEC') or die();
 
-JHtml::_('behavior.framework');
-JHtml::_('behavior.calendar');
-JHtml::_('behavior.modal');
+JHTML::_('behavior.framework');
+JHTML::_('behavior.calendar');
 
 // Filesize formatting function by eregon at msn dot com
 // Published at: http://www.php.net/manual/en/function.number-format.php
@@ -68,9 +67,9 @@ foreach($scripting['scripts'] as $key => $data)
 	<input type="hidden" name="boxchecked" id="boxchecked" value="0" />
 	<input type="hidden" name="task" id="task" value="default" />
 	<input type="hidden" name="filter_order" id="filter_order" value="<?php echo $this->lists->order ?>" />
-	<input type="hidden" name="filter_order_Dir" id="filter_order_Dir" value="<?php echo $this->lists->order_Dir ?>" />
+	<input type="hidden" name="filter_order_Dir" id="filter_order_Dir" value="<?php echo $this->lists->order_Dir ?>" />	
 	<input type="hidden" name="<?php echo JFactory::getSession()->getFormToken()?>" value="1" />
-
+	
 <?php if(version_compare(JVERSION, '3.0', 'ge')):
 
 // Construct the array of sorting fields
@@ -93,7 +92,7 @@ JHtml::_('formbehavior.chosen', 'select');
 			<button class="btn tip hasTooltip" type="submit" title="<?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?>"><i class="icon-search"></i></button>
 			<button class="btn tip hasTooltip" type="button" onclick="document.id('filter_title').value='';this.form.submit();" title="<?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?>"><i class="icon-remove"></i></button>
 		</div>
-
+		
 		<div class="filter-search btn-group pull-left hidden-phone">
 				<?php echo JHTML::_('calendar', $this->lists->fltFrom, 'from', 'from', '%Y-%m-%d', array('class' => 'input-small')); ?>
 		</div>
@@ -103,7 +102,7 @@ JHtml::_('formbehavior.chosen', 'select');
 		<div class="btn-group pull-left hidden-phone">
 			<button class="btn tip hasTooltip" type="buttin" onclick="this.form.submit(); return false;" title="<?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?>"><i class="icon-search"></i></button>
 		</div>
-
+		
 		<div class="btn-group pull-right">
 			<label for="limit" class="element-invisible"><?php echo JText::_('JFIELD_PLG_SEARCH_SEARCHLIMIT_DESC'); ?></label>
 			<?php echo $this->pagination->getLimitBox(); ?>
@@ -125,7 +124,7 @@ JHtml::_('formbehavior.chosen', 'select');
 		</div>
 	</div>
 <?php endif; ?>
-
+	
 <table class="table table-striped" id="itemsList">
 	<thead>
 		<tr>
@@ -217,7 +216,7 @@ JHtml::_('formbehavior.chosen', 'select');
 		$type = '&ndash;';
 	}
 
-	JLoader::import('joomla.utilities.date');
+	jimport('joomla.utilities.date');
 	$startTime = new JDate($record['backupstart']);
 	$endTime = new JDate($record['backupend']);
 
@@ -244,7 +243,7 @@ JHtml::_('formbehavior.chosen', 'select');
 	*/
 
 	$filename_col = '';
-
+	
 	if($record['remote_filename'] && (AKEEBA_PRO == 1) ) {
 		// If we have a remote filename we allow for remote file management in the Pro release
 		$remotemgmttext = JText::_('STATS_LABEL_REMOTEFILEMGMT');
@@ -258,7 +257,7 @@ ENDHTML;
 		if($record['meta'] != 'obsolete') {
 			$filename_col .= '<hr/>'.JText::_('REMOTEFILES_LBL_LOCALFILEHEADER');
 		}
-	} elseif(isset($record['remote_filename']) && empty($record['remote_filename']) && ($this->enginesPerProfile[$record['profile_id']] != 'none') && ($record['meta'] != 'obsolete') ) {
+	} elseif(empty($record['remote_filename']) && ($this->enginesPerProfile[$record['profile_id']] != 'none') && ($record['meta'] != 'obsolete') ) {
 		$postProcEngine = $this->enginesPerProfile[$record['profile_id']];
 		if(!empty($postProcEngine)) {
 			$filename_col .= '<a '
@@ -271,7 +270,7 @@ ENDHTML;
 			$filename_col .= '<hr/>'.JText::_('REMOTEFILES_LBL_LOCALFILEHEADER');
 		}
 	}
-
+	
 	if($record['meta'] == 'ok')
 	{
 		// Get the download links for downloads for completed, valid backups
@@ -308,7 +307,7 @@ ENDHTML;
 	{
 		$info_link = JHTML::_('tooltip', strip_tags($this->escape($record['comment'])) ) . '&ensp;';
 	}
-
+	
 	// Label class based on status
 	$status = JText::_('STATS_LABEL_STATUS_'.$record['meta']);
 	$statusClass = '';

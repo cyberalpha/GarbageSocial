@@ -9,8 +9,19 @@
 // Protect from unauthorized access
 defined('_JEXEC') or die();
 
-class AkeebaControllerPostsetup extends AkeebaControllerDefault
+class AkeebaControllerPostsetup extends FOFController
 {
+	public function  __construct($config = array()) {
+		parent::__construct($config);
+		// Access check, Joomla! 1.6 style.
+		$user = JFactory::getUser();
+		if (!$user->authorise('core.manage', 'com_akeeba') || !$user->authorise('akeeba.configure', 'com_akeeba')) {
+			$this->setRedirect('index.php?option=com_cpanel');
+			return JError::raiseWarning(403, JText::_('JERROR_ALERTNOAUTHOR'));
+			$this->redirect();
+		}
+	}
+	
 	public function execute($task)
 	{
 		if($task != 'save') {
@@ -18,28 +29,26 @@ class AkeebaControllerPostsetup extends AkeebaControllerDefault
 		}
 		parent::execute($task);
 	}
-
+	
 	public function save()
 	{
-		$enableSRP = $this->input->get('srp', 0, 'bool');
-		$enableAutoupdate = $this->input->get('autoupdate', 0, 'bool');
-		$enableBackuponupdate = $this->input->get('backuponupdate', 0, 'bool');
-		$runConfwiz = $this->input->get('confwiz', 0, 'bool');
-		$angieupgrade = $this->input->get('angieupgrade', 0, 'bool');
-		$minStability = $this->input->get('minstability', 'stable', 'cmd');
-		$acceptlicense = $this->input->get('acceptlicense', 0, 'bool');
-		$acceptsupport = $this->input->get('acceptsupport', 0, 'bool');
-		$acceptbackuptest = $this->input->get('acceptbackuptest', 0, 'bool');
-
+		$enableSRP = FOFInput::getBool('srp', 0, $this->input);
+		$enableAutoupdate = FOFInput::getBool('autoupdate', 0, $this->input);
+		$runConfwiz = FOFInput::getBool('confwiz', 0, $this->input);
+		$minStability = FOFInput::getCmd('minstability', 'stable', $this->input);
+		$acceptlicense = FOFInput::getBool('acceptlicense', 0, $this->input);
+		$acceptsupport = FOFInput::getBool('acceptsupport', 0, $this->input);
+		$acceptbackuptest = FOFInput::getBool('acceptbackuptest', 0, $this->input);
+		
 		if(!in_array($minStability, array('alpha','beta','rc','stable'))) {
 			$minStability = 'stable';
 		}
-
+		
 		// SRP is only supported on MySQL databases
 		if(!$this->isMySQL()) $enableSRP = false;
-
+		
 		$db = JFactory::getDBO();
-
+		
 		if($enableSRP) {
 			$query = $db->getQuery(true)
 				->update($db->qn('#__extensions'))
@@ -47,7 +56,7 @@ class AkeebaControllerPostsetup extends AkeebaControllerDefault
 				->where($db->qn('element').' = '.$db->q('srp'))
 				->where($db->qn('folder').' = '.$db->q('system'));
 			$db->setQuery($query);
-			$db->execute();
+			$db->query();
 		} else {
 			$query = $db->getQuery(true)
 				->update($db->qn('#__extensions'))
@@ -55,28 +64,9 @@ class AkeebaControllerPostsetup extends AkeebaControllerDefault
 				->where($db->qn('element').' = '.$db->q('srp'))
 				->where($db->qn('folder').' = '.$db->q('system'));
 			$db->setQuery($query);
-			$db->execute();
+			$db->query();
 		}
-
-		if ($enableBackuponupdate)
-		{
-			$query = $db->getQuery(true)
-				->update($db->qn('#__extensions'))
-				->set($db->qn('enabled').' = '.$db->q('1'))
-				->where($db->qn('element').' = '.$db->q('backuponupdate'))
-				->where($db->qn('folder').' = '.$db->q('system'));
-			$db->setQuery($query);
-			$db->execute();
-		} else {
-			$query = $db->getQuery(true)
-				->update($db->qn('#__extensions'))
-				->set($db->qn('enabled').' = '.$db->q('0'))
-				->where($db->qn('element').' = '.$db->q('backuponupdate'))
-				->where($db->qn('folder').' = '.$db->q('system'));
-			$db->setQuery($query);
-			$db->execute();
-		}
-
+		
 		if($enableAutoupdate) {
 			$query = $db->getQuery(true)
 				->update($db->qn('#__extensions'))
@@ -84,7 +74,7 @@ class AkeebaControllerPostsetup extends AkeebaControllerDefault
 				->where($db->qn('element').' = '.$db->q('oneclickaction'))
 				->where($db->qn('folder').' = '.$db->q('system'));
 			$db->setQuery($query);
-			$db->execute();
+			$db->query();
 
 			$query = $db->getQuery(true)
 				->update($db->qn('#__extensions'))
@@ -92,7 +82,7 @@ class AkeebaControllerPostsetup extends AkeebaControllerDefault
 				->where($db->qn('element').' = '.$db->q('akeebaupdatecheck'))
 				->where($db->qn('folder').' = '.$db->q('system'));
 			$db->setQuery($query);
-			$db->execute();
+			$db->query();
 		} else {
 			$query = $db->getQuery(true)
 				->update($db->qn('#__extensions'))
@@ -100,7 +90,7 @@ class AkeebaControllerPostsetup extends AkeebaControllerDefault
 				->where($db->qn('element').' = '.$db->q('oneclickaction'))
 				->where($db->qn('folder').' = '.$db->q('system'));
 			$db->setQuery($query);
-			$db->execute();
+			$db->query();
 
 			$query = $db->getQuery(true)
 				->update($db->qn('#__extensions'))
@@ -108,14 +98,9 @@ class AkeebaControllerPostsetup extends AkeebaControllerDefault
 				->where($db->qn('element').' = '.$db->q('akeebaupdatecheck'))
 				->where($db->qn('folder').' = '.$db->q('system'));
 			$db->setQuery($query);
-			$db->execute();
+			$db->query();
 		}
-
-		if ($angieupgrade)
-		{
-			$this->_angieUpgrade();
-		}
-
+		
 		// Update last version check and minstability. DO NOT USE JCOMPONENTHELPER!
 		$sql = $db->getQuery(true)
 			->select($db->qn('params'))
@@ -134,7 +119,7 @@ class AkeebaControllerPostsetup extends AkeebaControllerDefault
 		} else {
 			$params = new JParameter($rawparams);
 		}
-
+		
 		if($acceptlicense && $acceptsupport) {
 			$version = AKEEBA_VERSION;
 		} else {
@@ -146,14 +131,12 @@ class AkeebaControllerPostsetup extends AkeebaControllerDefault
 			$params->set('acceptlicense', $acceptlicense);
 			$params->set('acceptsupport', $acceptsupport);
 			$params->set('acceptbackuptest', $acceptbackuptest);
-			$params->set('angieupgrade', ($angieupgrade ? 1 : 0));
 		} else {
 			$params->setValue('lastversion', $version);
 			$params->setValue('minstability', $minStability);
 			$params->setValue('acceptlicense', $acceptlicense);
 			$params->setValue('acceptsupport', $acceptsupport);
 			$params->setValue('acceptbackuptest', $acceptbackuptest);
-			$params->setValue('angieupgrade', ($angieupgrade ? 1 : 0));
 		}
 
 		$data = $params->toString('JSON');
@@ -163,15 +146,15 @@ class AkeebaControllerPostsetup extends AkeebaControllerDefault
 			->where($db->qn('element').' = '.$db->q('com_akeeba'))
 			->where($db->qn('type').' = '.$db->q('component'));
 		$db->setQuery($sql);
-		$db->execute();
-
+		$db->query();
+		
 		// Even better, create the "akeeba.lastversion.php" file with this information
 		$fileData = "<"."?php\ndefined('_JEXEC') or die();\ndefine('AKEEBA_LASTVERSIONCHECK','".
 			$version."');";
-		JLoader::import('joomla.filesystem.file');
+		jimport('joomla.filesystem.file');
 		$fileName = JPATH_COMPONENT_ADMINISTRATOR.'/akeeba.lastversion.php';
 		JFile::write($fileName, $fileData);
-
+		
 		// Force reload the Live Update information
 		if($version != '0.0.0') {
 			$dummy = LiveUpdate::getUpdateInformation(true);
@@ -184,7 +167,7 @@ class AkeebaControllerPostsetup extends AkeebaControllerDefault
 		} else {
 			$url = 'index.php?option=com_akeeba&view=cpanel';
 		}
-
+		
 		if(!$acceptlicense) {
 			JFactory::getApplication()->enqueueMessage(JText::_('AKEEBA_POSTSETUP_ERR_ACCEPTLICENSE'), 'error');
 			$url = 'index.php?option=com_akeeba&view=postsetup';
@@ -197,43 +180,13 @@ class AkeebaControllerPostsetup extends AkeebaControllerDefault
 			JFactory::getApplication()->enqueueMessage(JText::_('AKEEBA_POSTSETUP_ERR_ACCEPTBACKUPTEST'), 'error');
 			$url = 'index.php?option=com_akeeba&view=postsetup';
 		}
-
+		
 		JFactory::getApplication()->redirect($url);
 	}
-
+	
 	private function isMySQL()
 	{
 		$db = JFactory::getDbo();
 		return strtolower(substr($db->name, 0, 5)) == 'mysql';
-	}
-
-	private function _angieUpgrade()
-	{
-		// Get all profiles
-		$model = FOFModel::getTmpInstance('Cpanels', 'AkeebaModel');
-		$db = JFactory::getDbo();
-
-		$query = $db->getQuery(true)
-			->select(array(
-				$db->qn('id'),
-			))->from($db->qn('#__ak_profiles'))
-			->order($db->qn('id')." ASC");
-		$db->setQuery($query);
-		$profiles = $db->loadColumn();
-
-		$session = JFactory::getSession();
-		$oldProfile = $session->get('profile', 1, 'akeeba');
-
-		foreach ($profiles as $profile_id)
-		{
-			AEFactory::nuke();
-			AEPlatform::getInstance()->load_configuration($profile_id);
-			$config = AEFactory::getConfiguration();
-			$config->set('akeeba.advanced.embedded_installer', 'angie');
-			AEPlatform::getInstance()->save_configuration($profile_id);
-		}
-
-		AEFactory::nuke();
-		AEPlatform::getInstance()->load_configuration($oldProfile);
 	}
 }

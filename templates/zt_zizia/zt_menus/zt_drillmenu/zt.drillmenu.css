@@ -1,0 +1,131 @@
+
+.drillmenu{ /* main DIV container of menu */
+	width: 100%; /*width of menu*/
+	height: 190px; /*Height of DIV for those with JavaScript disabled*/
+	overflow-y: scroll; /*Scrollable DIV for those with JavaScript disabled*/
+	background: 0; /*background of menu.*/
+}
+
+
+.drillmenu ul{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	background:0;
+}
+.drillmenu li {
+	padding: 0;
+	margin: 0;
+	background: none;
+	border-top: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	text-shadow: 0 1px 1px #F6F6F6;
+}
+.drillmenu li:hover {
+	background: #DADADA;
+	text-shadow: 0 1px 1px #FFFFFF;
+	border-top: 1px solid #BBBBBB;
+	border-left: 1px solid #BBBBBB;
+	border-right: 1px solid #BBBBBB;
+}
+.drillmenu li .next-link {
+	margin: 0;
+	padding: 0;
+	height: 39px;
+	width: 40px;
+	right: 0;
+	position: absolute;
+	background: none;
+	border: none;
+}
+.drillmenu li .next-link .next-title {
+	margin: 10px 0 0 10px;
+	padding: 0;
+	height: 18px;
+	width: 18px;
+	display: block;
+	float: left;
+	text-indent: -999em;
+	line-height: 20px;
+	-webkit-border-radius: 9px;
+	-moz-border-radius: 9px;
+	border-radius: 9px;
+	background: url(images/icons-white.png) no-repeat scroll -108px 50% #939393;
+}
+
+
+.drillmenu li a { /*menu links*/
+	padding: 0.7em 75px 0.7em 15px;
+	display: block;
+	color: #2F3E46;
+	font-size: 120%;
+	line-height: 120%;
+	font-weight: bold;
+	text-decoration: none;
+	border-top: 1px solid #FFF;
+	background-image:-moz-linear-gradient(top,#fefefe,#eee);
+	background-image:-webkit-gradient(linear,left top,left bottom,color-stop(0,#fdfdfd),color-stop(1,#eee));
+	-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorStr='#fdfdfd', EndColorStr='#eeeeee')";
+}
+.drillmenu li a:hover {
+	text-decoration:none;
+	background-image:-moz-linear-gradient(top,#ededed,#dadada);
+	background-image:-webkit-gradient(linear,left top,left bottom,color-stop(0,#ededed),color-stop(1,#dadada));
+	-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorStr='#ededed', EndColorStr='#dadada')";
+}
+.drillmenu li a:active {
+	color:#fff;
+	text-shadow:0 -1px 1px #145072;
+	border-top: 1px solid #A9CEEB;
+	background-image:-moz-linear-gradient(top,#85bae4,#5393c5);
+	background-image:-webkit-gradient(linear,left top,left bottom,color-stop(0,#85bae4),color-stop(1,#5393c5));
+	-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorStr='#85bae4', EndColorStr='#5393c5')";
+}
+.drillmenu li a.active {
+	color:#fff;
+	text-shadow:0 -1px 1px #000;
+	border-top: 1px solid #222;
+	background-image:-moz-linear-gradient(top,#555,#333);
+	background-image:-webkit-gradient(linear,left top,left bottom,color-stop(0,#555),color-stop(1,#333));
+	-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorStr='#555555', EndColorStr='#333333')";
+}
+.drillmenu li a img{
+	margin-top: 1px;
+	float: left;
+	display:none;
+}
+.drillmenu li a span.menusys_name{
+	padding: 0;
+}
+* html .drillmenu li{ /*IE6 CSS hack*/
+	display: inline-block;
+	border-bottom: 1px solid #a9a9a9;
+}
+
+
+li.backcontroltitle{ /*style of top level menu title*/
+	padding: 0.5em 0 0.5em 10px;
+}
+
+li.backcontrol{ /*style of back button control that gets added to the top of each sub UL*/
+	padding: 0.5em 0 0.5em 10px;
+}
+
+#drillcrumb{ /*custom, user defined DIV that contains breadcrumb trail*/
+	padding: 0;
+	margin: 0 0 0 10px;
+	float: left;
+	font-weight:bold;
+}
+#drillcrumb img{
+	margin: 0 5px;
+}
+#drillcrumb a { /*custom element*/
+	color: #FFF;
+	font-weight:bold;
+	text-decoration: none;
+}
+#drillcrumb a:hover{
+	text-decoration: underline;
+}

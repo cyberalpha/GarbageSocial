@@ -25,15 +25,6 @@ window.addEvent('domready', function(){
 			}
 			$('#adminForm').submit();
 		});
-		$('#akeeba-postsetup-acceptandapply').click(function(e){
-			$('#acceptlicense, #acceptsupport, #acceptbackuptest').attr('checked','checked');
-			var minstability = $('#minstability').val();
-			if(minstability != 'stable') {
-				var reply=confirm("$confirmText");
-				if(!reply) return false;
-			}
-			$('#adminForm').submit();
-		});
 	})(akeeba.jQuery);
 });
 
@@ -55,7 +46,7 @@ JFactory::getDocument()->addScriptDeclaration($script);
 	<input type="hidden" name="view" value="postsetup" />
 	<input type="hidden" name="task" id="task" value="save" />
 	<input type="hidden" name="<?php echo JFactory::getSession()->getFormToken()?>" value="1" />
-
+	
 	<p><?php echo JText::_('AKEEBA_POSTSETUP_LBL_WHATTHIS'); ?></p>
 
 	<?php if($this->showsrp): ?>
@@ -85,19 +76,7 @@ JFactory::getDocument()->addScriptDeclaration($script);
 	<div class="postsetup-desc"><?php echo JText::_('AKEEBA_POSTSETUP_NOTAVAILABLEINCORE');?></div>
 	<?php endif; ?>
 	<br/>
-
-	<label for="backuponupdate" class="postsetup-main">
-		<input type="checkbox" id="autoupdate" name="backuponupdate" <?php if($this->enablebackuponupdate): ?>checked="checked"<?php endif; ?> <?php echo $disabled?> />
-		<?php echo JText::_('AKEEBA_POSTSETUP_LBL_BACKUPONUPDATE')?>
-	</label>
-	</br>
-	<?php if(AKEEBA_PRO): ?>
-	<div class="postsetup-desc"><?php echo JText::_('AKEEBA_POSTSETUP_DESC_BACKUPONUPDATE');?></div>
-	<?php else: ?>
-	<div class="postsetup-desc"><?php echo JText::_('AKEEBA_POSTSETUP_NOTAVAILABLEINCORE');?></div>
-	<?php endif; ?>
-	<br/>
-
+	
 	<label for="confwiz" class="postsetup-main">
 		<input type="checkbox" id="confwiz" name="confwiz" <?php if($this->enableconfwiz): ?>checked="checked"<?php endif; ?> />
 		<?php echo JText::_('AKEEBA_POSTSETUP_LBL_confwiz')?>
@@ -105,17 +84,7 @@ JFactory::getDocument()->addScriptDeclaration($script);
 	</br>
 	<div class="postsetup-desc"><?php echo JText::_('AKEEBA_POSTSETUP_DESC_confwiz');?></div>
 	<br/>
-
-	<?php if($this->showangieupgrade): ?>
-	<label for="angieupgrade" class="postsetup-main">
-		<input type="checkbox" id="angieupgrade" name="angieupgrade" checked="checked" />
-		<?php echo JText::_('AKEEBA_POSTSETUP_LBL_ANGIEUPGRADE')?>
-	</label>
-	</br>
-	<div class="postsetup-desc"><?php echo JText::_('AKEEBA_POSTSETUP_DESC_ANGIEUPGRADE');?></div>
-	<br/>
-	<?php endif; ?>
-
+	
 	<?php if(AKEEBA_PRO): ?>
 	<label for="minstability" class="postsetup-main"><?php echo JText::_('AKEEBA_POSTSETUP_LBL_MINSTABILITY')?></label>
 	<select id="minstability" name="minstability">
@@ -131,9 +100,7 @@ JFactory::getDocument()->addScriptDeclaration($script);
 	<input type="hidden" id="minstability" name="minstability" value="stable" />
 	<?php endif; ?>
 	<br/>
-
-	<h3><?php echo JText::_('AKEEBA_POSTSETUP_LBL_MANDATORYINFO') ?></h3>
-
+	
 	<label for="acceptlicense" class="postsetup-main">
 		<input type="checkbox" id="acceptlicense" name="acceptlicense" <?php if($this->acceptlicense): ?>checked="checked"<?php endif; ?> />
 		<?php echo JText::_('AKEEBA_POSTSETUP_LBL_ACCEPTLICENSE')?>
@@ -141,7 +108,7 @@ JFactory::getDocument()->addScriptDeclaration($script);
 	</br>
 	<div class="postsetup-desc"><?php echo JText::_('AKEEBA_POSTSETUP_DESC_ACCEPTLICENSE');?></div>
 	<br/>
-
+	
 	<label for="acceptsupport" class="postsetup-main">
 		<input type="checkbox" id="acceptsupport" name="acceptsupport" <?php if($this->acceptsupport): ?>checked="checked"<?php endif; ?> />
 		<?php echo JText::_('AKEEBA_POSTSETUP_LBL_ACCEPTSUPPORT')?>
@@ -149,19 +116,15 @@ JFactory::getDocument()->addScriptDeclaration($script);
 	</br>
 	<div class="postsetup-desc"><?php echo JText::_('AKEEBA_POSTSETUP_DESC_ACCEPTSUPPORT');?></div>
 	<br/>
-
+	
 	<label for="acceptbackuptest" class="postsetup-main">
-		<input type="checkbox" id="acceptbackuptest" name="acceptbackuptest" <?php if($this->acceptbackuptest): ?>checked="checked"<?php endif; ?> />
+		<input type="checkbox" id="acceptsupport" name="acceptbackuptest" <?php if($this->acceptbackuptest): ?>checked="checked"<?php endif; ?> />
 		<?php echo JText::_('AKEEBA_POSTSETUP_LBL_ACCEPTBACKUPTEST')?>
 	</label>
 	</br>
 	<div class="postsetup-desc"><?php echo JText::_('AKEEBA_POSTSETUP_DESC_ACCEPTBACKUPTEST');?></div>
 	<br/>
-
-	<button id="akeeba-postsetup-apply" class="btn btn-primary btn-large" onclick="return false;"><?php echo JText::_('AKEEBA_POSTSETUP_LBL_APPLY');?></button>
-	<button id="akeeba-postsetup-acceptandapply" class="btn btn-warning" onclick="return false;">
-		<span class="icon icon-white icon-check"></span>
-		<?php echo JText::_('AKEEBA_POSTSETUP_LBL_ACCEPTANDAPPLY');?>
-	</button>
+	
+	<button id="akeeba-postsetup-apply" class="btn-primary btn-large" onclick="return false;"><?php echo JText::_('AKEEBA_POSTSETUP_LBL_APPLY');?></button>
 
 </form>

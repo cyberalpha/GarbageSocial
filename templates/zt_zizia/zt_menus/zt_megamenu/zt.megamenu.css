@@ -1,0 +1,89 @@
+div.menusys_mega {width: 100%;display:block; min-height:32px; }
+
+/* Level 0 */
+div.menusys_mega ul.level0 {width:100%;margin:0;padding:0;float: left;list-style: none;}
+div.menusys_mega ul.level0 > li {padding: 0;margin:0 1px 0 0;float: left;display: block;border-bottom: none;background: none;}
+div.menusys_mega ul.level0 > li.last-item{background:none;}
+div.menusys_mega ul.level0 li > a.item {padding: 5px 10px; margin-right: 5px;color:#414141;display: inline-block;position: relative;z-index: 21;}
+div.menusys_mega ul.level0 li span.menu-title {line-height: 30px;display: inline-block;color: #3f3f3f;font-size: 14px;}
+
+div.menusys_mega ul.level0 li .has-image {display: block;padding: 0 0 0 30px;background-repeat: no-repeat;background-position: 2px 3px;}
+div.menusys_mega ul.level0 li > a.item > span > span.menu-desc {display: block;color:#ddd;font-weight: normal;font-size: 92%;}
+div.menusys_mega ul.level0 li.active > a.item { background: #363636 ;color: #fff; -moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;}
+div.menusys_mega ul.level0 li.hover > a.item {  background: #363636;color: #fff; -moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;}
+div.menusys_mega ul.level0 li.active > a.item > span > span.menu-title { color:#fff; }
+div.menusys_mega ul.level0 li.hover > a.item > span > span.menu-title { color:#fff; }
+
+div.menusys_mega ul.level0 li.active { }
+div.menusys_mega ul.level0 li.hover { }
+div.menusys_mega ul.level0 li.active  span.menu-desc,
+div.menusys_mega ul.level0 li.hover  span.menu-desc{}
+div.menusys_mega ul.level0 > li.hasChild a.item > span.no-image{}
+div.menusys_mega ul.level0 > li.hasChild.hover > a.item > span.no-image,
+div.menusys_mega ul.level0 > li.hasChild.active > a.item > span.no-image{}
+
+/*  Boder Child Content  */
+div.menusys_mega .menusub_mega {position:absolute;padding-top:10px ;opacity:0;}
+div.menusys_mega .menusub_mega .menusub_mega{margin-top: -32px !important;padding-top:0; }
+div.menusub_mega > div.submenu-wrap{display:table;position:relative;background:#1f1f1f;border-radius:5px;}
+div.menusys_mega div.menusub_mega div.subarrowtop div.subarrowtop {display:none;}
+div.menusub_mega div.subarrowtop{height:9px;width:15px;background:url(../../images/mega/arrow-top.png) no-repeat 0 0;display:table;position:absolute;top:-9px;left:30px;}
+div.menusub_mega div.menusub_mega div.subarrowtop{display:none;}
+div.menusys_mega div.subwrapcenter{margin: 9px; width:95%;border:1px solid #2f2f2f;background:url(../../images/mega/subwrapcenter.png) repeat-x left top #1f1f1f; display: table; position: relative;}
+div.menusys_mega ul.mega-ul li.hasChild.hover .submenu-wrap {border-radius:5px;}
+
+/* Mega Grouped  */
+div.menusys_mega .mega-group {display:block;margin: 0  ;padding:  10px;}
+div.menusys_mega .mega-group span.no-image{background: none!important ;display: block;}
+div.menusys_mega .mega-group span.has-image{padding: 3px 0 3px 25px;display:block;  background-position: 2px 4px;}
+div.menusys_mega .mega-group span.no-image span.menu-title{color: #d44912;}
+div.menusys_mega .mega-group > a.item{padding: 0 ;}
+div.menusys_mega div.submenu-wrap .mega-group .menu-title{padding: 0;font-size: 120%;display:block;line-height: 20px;text-transform:uppercase;font-family: arial!important;}
+div.menusys_mega div.submenu-wrap .mega-group .menu-desc{color:#7e7e7e;font-size:95%;}
+
+/* Child Content  */
+#menusys_mega .menu-image {border: none;float: left;line-height: 44px;padding: 8px 0 0;margin-right: 3px;}
+div.menusys_mega .mega-module {}
+div.menusys_mega .mega-module .moduletable{}
+div.menusys_mega .mega-module .moduletable .modulecontent{color:#333;width:auto; padding: 10px 0;}
+
+/* Level2 MegaMenu   */
+div.menusys_mega div.subwrapcenter > .megacol {float: left;width: 200px;}
+div.menusys_mega div.subwrapcenter > .megacol.first-item,
+div.menusys_mega div.subwrapcenter > div:first-child{border-left:none;}
+div.menusys_mega div.megacol > div.submenu-wrap ul.mega-ul li.first-item{border-radius: 0;}
+div.megacol .submenu-wrap{float:left;}
+
+div.menusys_mega ul.mega-ul{ margin:0;overflow:hidden;display:block;padding-left: 10px;}
+div.menusys_mega ul.mega-ul li.hasChild {background: url(../../images/mega/arrowchild-ltr.png) no-repeat 95% 7px;}
+div.menusys_mega ul.mega-ul li {padding: 0;float: none !important;display: block;background: none;}
+div.menusys_mega ul.mega-ul li.last-item{border-bottom:none;border-radius: 0 0 5px 5px;overflow:hidden;}
+div.menusys_mega ul.mega-ul li.first-item{border-radius: 5px 5px 0 0;overflow:hidden;}
+
+div.menusys_mega ul.mega-ul li.hover{ }
+div.menusys_mega  ul.mega-ul li.mega-li a.item span.no-image{padding: 0 0 0 24px;display:block;background: url("../../images/arrow.png") no-repeat scroll 0 4px transparent;}
+#menusys_mega .megacol ul li a:hover span.no-image,
+#menusys_mega .megacol ul li a:focus span.no-image,
+#menusys_mega .megacol ul li a:active span.no-image,
+#menusys_mega .megacol ul  li a.active span.no-image,
+#menusys_mega .megacol ul  li a.active:hover span.no-image,
+#menusys_mega .megacol ul  li a.active:active span.no-image,
+#menusys_mega .megacol ul  li a.active:focus span.no-image,
+div.menusys_mega  ul.mega-ul li.hover a.item:hover span.no-image{display:block;background: url("../../images/arrow-hover.png") no-repeat scroll 0 4px transparent; }
+#menusys_mega .megacol ul li a:hover span.no-image span,
+#menusys_mega .megacol ul li a:focus span.no-image span,
+#menusys_mega .megacol ul li a:active span.no-image span,
+#menusys_mega .megacol ul  li a.active span.no-image span,
+#menusys_mega .megacol ul  li a.active:hover span.no-image span,
+#menusys_mega .megacol ul  li a.active:active span.no-image span,
+#menusys_mega .megacol ul  li a.active:focus span.no-image span,
+div.menusys_mega  ul.mega-ul li.hover a.item:hover span.no-image span {color:#EA5501!important;}
+
+div.menusys_mega  ul.mega-ul li.mega-li a.item{padding: 4px 0;display: block;background: url("../../images/separate2.png") no-repeat scroll 0 bottom transparent;;position: static;text-shadow: none;text-transform:none;}
+div.menusys_mega  ul.mega-ul li.mega-li.hover > a.item{text-decoration: none;}
+div.menusys_mega  ul.mega-ul li.mega-li a.item span.menu-title{font-family: arial!important;line-height: 23px;display: block;color: #e7e7e7 ;font-size: 12px ;font-weight:normal;}
+div.menusys_mega  ul.mega-ul li.mega-li.hover > a.item span.menu-title{color:#e7e7e7;}
+div.menusys_mega  ul.mega-ul li.mega-li a.item .has-image{padding-left:25px; background-position:2px 4px;}
+div.menusys_mega  ul.mega-ul li.mega-li a.item .has-image span.menu-title{padding:  0;}
+
+

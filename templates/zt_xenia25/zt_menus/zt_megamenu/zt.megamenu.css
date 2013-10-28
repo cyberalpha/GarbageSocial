@@ -1,0 +1,394 @@
+.menusys_mega {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+#menusys_mega {
+	margin:0px;
+	padding: 0;
+	float: left;
+	width: 100%;
+}
+#menusys_mega .menusub_mega {
+	padding: 5px;
+	margin: 59px 0 0 11px;
+	position: absolute;
+	z-index: 888;
+	background:#F0F1F0;
+	border:1px solid #E0E0E0;
+	border-top:0;
+	
+}
+#menusys_mega .submenu-wrap {
+	float: left;
+}
+#menusys_mega .megacolz.menusub_mega {
+	background:0;
+}
+
+#menusys_mega .menusub_mega .menusub_mega{
+	margin: -73px 0px 0px 25px !important;
+}
+
+#menusys_mega .megacol .submenu-wrap{
+	background:0;
+}
+#menusys_mega .megacol .megacol .megacol .menusub_mega {
+
+	background:0;
+}
+#menusys_mega li {
+	padding: 0; 
+	float: left;
+	display: block;
+	height:90px;
+	background:0;
+	margin:0px;
+}
+
+#menusys_mega li a {
+	padding:0px 0 0 17px;
+	display: block;
+	text-decoration: none;
+	z-index: 100;
+	cursor:pointer;
+}
+
+#menusys_mega .menu-title {
+    color: #595959;
+    display: block;
+    font-size: 195%;
+    line-height: 90px;
+	cursor:pointer;
+	padding:0px 17px 0 0;
+	font-family:Times New Roman;
+	text-transform:uppercase;
+}
+
+#menusys_mega .menu-desc {
+	padding: 0;
+	color: #000;
+	border: none;
+	display: block;
+	font-size: 90%;
+	line-height: 0;
+	font-weight: normal;
+	width: 100%;
+	line-height: 20px;
+}
+
+#menusys_mega .menu-image {
+	border: none;
+	float: left;
+	line-height: 40px;
+	padding: 8px 0 0;
+	margin-right: 3px;
+}
+#menusys_mega .menu-image img {
+}
+#menusys_mega li:hover,
+#menusys_mega li:active,
+#menusys_mega li:focus {
+}
+#menusys_mega .active {
+	
+	
+}
+
+#menusys_mega li:hover a,
+#menusys_mega li:active a,
+#menusys_mega li:focus a,
+#menusys_mega li a.active,
+#menusys_mega li a.active:hover,
+#menusys_mega li a.active:active,
+#menusys_mega li a.active:focus {
+	color: #118cbf;
+	background:url(../../images/megamenu/bg-fancy.png) 0 0 no-repeat;
+	padding:0 0 0 17px;
+}
+#menusys_mega li:hover a .menu-title,
+#menusys_mega li:active a .menu-title,
+#menusys_mega li:focus a .menu-title,
+#menusys_mega li a.active .menu-title,
+#menusys_mega li a.active:hover .menu-title,
+#menusys_mega li a.active:active .menu-title,
+#menusys_mega li a.active:focus .menu-title {
+	color: #118cbf;
+	background:url(../../images/megamenu/bg-fancy.png) 100% 100% no-repeat;
+	padding:0 17px 0 0;
+}
+#menusys_mega li:hover a .menu-desc,
+#menusys_mega li:active a .menu-desc,
+#menusys_mega li:focus a .menu-desc,
+#menusys_mega li a.active .menu-desc,
+#menusys_mega li a.active:hover .menu-desc,
+#menusys_mega li a.active:active .menu-desc,
+#menusys_mega li a.active:focus .menu-desc {
+	color: #118cbf;
+}
+
+span.has-image {
+	display: block;
+	background-repeat: no-repeat;
+	background-position: 0 4px;
+}
+span.no-image {
+	display: block;
+}
+
+#menusys_mega .mega-group span.has-image,
+#menusys_mega .mega-group span.no-image,
+#menusys_mega .menusub_mega h3 {
+	margin: 0 0 10px 0;
+	padding: 0 0 5px 0;
+	display: block;
+	border-bottom: 1px solid #E0E0E0;
+}
+#menusys_mega .mega-group a,
+#menusys_mega ul a {
+	padding: 0;
+	background: none !important;
+}
+#menusys_mega .mega-group .menu-title{
+	padding: 0;
+	display: inline;
+	text-transform: none;
+	line-height: auto;
+	font-size: 130%;
+	text-shadow: none;
+	line-height:20px;
+	color:#000;
+	background:0 !important;
+	font-family:arial   !important;
+	text-transform: uppercase;
+}
+
+#menusys_mega .mega-group .menu-desc {
+	color:#118cbf;
+	font-family:arial;
+}
+#menusys_mega .megacol {
+	float: left;
+	padding: 0;
+}
+#menusys_mega .megacol ul {
+	margin:0px;
+	float:none;
+}
+
+#menusys_mega .megacol ul.mega-ul {
+	padding: 0px;
+}
+#menusys_mega .megacol ul li {
+	float:none;
+	border:none;
+	line-height:0;
+	height:auto;
+	padding:0px;
+}
+#menusys_mega .megacol ul li a {
+	color: #ffffff;
+	text-decoration: none;
+	
+}
+#menusys_mega .megacol ul li a:hover,
+#menusys_mega .megacol ul  li a:active,
+#menusys_mega .megacol ul  li a:focus,
+#menusys_mega .megacol ul  li a.active,
+#menusys_mega .megacol ul  li a.active:hover,
+#menusys_mega .megacol ul  li a.active:active,
+#menusys_mega .megacol ul  li a.active:focus{
+	color: #595959;
+	padding:0;
+	margin:0 0 0 17px;
+}
+
+
+#menusys_mega .megacol ul li:hover a .menu-title,
+#menusys_mega .megacol ul  li:active a .menu-title,
+#menusys_mega .megacol ul  li:focus a .menu-title,
+#menusys_mega .megacol ul  li a.active .menu-title,
+#menusys_mega .megacol ul  li a.active:hover .menu-title,
+#menusys_mega .megacol ul  li a.active:active .menu-title,
+#menusys_mega .megacol ul  li a.active:focus .menu-title {
+	color: #595959  !important;
+	background:none !important;
+}
+#menusys_mega .megacol ul li:hover ul li a .menu-title,
+#menusys_mega .megacol ul  li:active ul li  a .menu-title,
+#menusys_mega .megacol ul  li:focus ul li  a .menu-title,
+#menusys_mega .megacol ul  li a.active ul li  .menu-title,
+#menusys_mega .megacol ul  li a.active:hover ul li  .menu-title,
+#menusys_mega .megacol ul  li a.active:active ul li  .menu-title,
+#menusys_mega .megacol ul  li a.active:focus ul li  .menu-title {
+	color: #595959  !important;
+}
+#menusys_mega .megacol ul li:hover ul li:hover ul li a .menu-title,
+#menusys_mega .megacol ul  li:active ul li:active ul li  a .menu-title,
+#menusys_mega .megacol ul  li:focus ul li:focus  ul li a .menu-title{
+	color: #595959  !important;
+}
+
+#menusys_mega .megacol ul li:hover ul li:hover a .menu-title,
+#menusys_mega .megacol ul  li:active ul li:active   a .menu-title,
+#menusys_mega .megacol ul  li:focus ul li:focus  a .menu-title{
+	color: #595959  !important;
+}
+
+#menusys_mega .megacol ul li:hover ul li:hover ul li:hover a .menu-title,
+#menusys_mega .megacol ul  li:active ul li:active   ul li:active   a .menu-title,
+#menusys_mega .megacol ul  li:focus ul li:focus  ul li:focus  a .menu-title{
+	color: #595959  !important;
+}
+
+
+#menusys_mega .megacol ul li a .menu-title {
+    font-family: "Arial";
+    font-size: 100%;
+    line-height: 30px;
+    padding: 0;
+	background:0;
+    text-transform: none;
+}
+#menusys_mega .megacol ul li a span.no-image {
+    padding: 0 0 0 20px;
+	background: url("../../images/icon-li-hover.png") no-repeat scroll 0 50% transparent;
+}
+#menusys_mega .megacol ul li a:hover span.no-image,
+#menusys_mega .megacol ul li a:focus span.no-image,
+#menusys_mega .megacol ul li a:active span.no-image ,
+#menusys_mega .megacol ul  li a.active span.no-image ,
+#menusys_mega .megacol ul  li a.active:hover span.no-image ,
+#menusys_mega .megacol ul  li a.active:active span.no-image ,
+#menusys_mega .megacol ul  li a.active:focus span.no-image {
+	background: url("../../images/icon-li.png") no-repeat scroll 0 50% transparent;
+}
+
+#menusys_mega .menusub_mega .mega-group {
+	padding: 0px;
+	clear: both;
+	height: auto;
+}
+#menusys_mega .menusub_mega .mega-module {
+	clear: both;
+	padding: 0;
+}
+
+#menusys_mega .menusub_mega h3 {
+	margin: 0 0 10px 0;
+	font-size: 10%;
+	line-height: 25px;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+.menusub_mega {
+	display: none;
+}
+#menusys_mega .megacol ul li.hasChild a .menu-title{
+    padding: 0 10px 0 0px;
+}
+#menusys_mega .megacol ul li.hasChild a .menu-title:hover{
+    padding: 0 10px 0 0px;
+}
+#menusys_mega .megacol ul li  .megacol ul li a .menu-title{
+    padding: 0 ;
+	background: 0;
+}
+
+#menusys_mega .megacol ul li  .megacol ul li a .menu-title:hover{
+    padding: 0 ;
+	background: 0;
+}
+#menusys_mega .megacol ul li  .megacol ul li.hasChild a .menu-title{
+    padding: 0 10px 0 0px;
+}
+#menusys_mega .megacol ul li  .megacol ul li.hasChild a .menu-title:hover{
+    padding: 0 10px 0 0px;
+}
+#menusys_mega .megacol ul li .megacol ul li .megacol ul li.hasChild a .menu-title{
+    padding: 0 10px 0 0px;
+}
+#menusys_mega .megacol ul li .megacol ul li .megacol ul li.hasChild a .menu-title:hover{
+    padding: 0 10px 0 0px;
+}
+#menusys_mega .megacol ul li .megacol ul li .megacol ul li .menu-title{
+    padding: 0  ;
+	background: 0 ;
+}
+
+#menusys_mega .megacol ul li .megacol ul li .megacol ul li .menu-title:hover{
+    padding: 0  ;
+	background: 0 ;
+}
+
+
+#menusys_mega li.hasChild.hover {
+	height: 30px;
+	/*background: url("../../images/zt-jorda-bg-submenu-arrow.png") bottom center no-repeat;*/
+}
+
+
+
+
+#menusys_mega .megacol .subarrowtop {
+  height: 30px;
+  left: -2px;
+  position: absolute;
+  top: 43px;
+  width: 31px;
+  z-index: 111;
+}
+/*
+#menusys_mega .megacol .megacol .subarrowtop{
+	display:none;
+}*/
+
+#menusys_mega ul li.hasChild.hover {
+	height: auto;
+}
+
+#menusys_mega ul li.hasChild.hover li a{
+	color:#ffffff !important;
+}
+#menusys_mega .megacol .moduletable {
+	color: #FFF;
+	line-height: 30px;
+	padding:0;
+}
+#menusys_mega .megacol img.caption {
+	margin: 0 10px 0px 0;
+	padding: 4px;
+	background: #608C05;
+	border: solid 1px #4E7105;
+}
+
+/*add new by jorda ZooTemplate*/
+
+
+
+
+/*#menusys_mega .megacol .subwraptop{
+	display:none;
+}
+
+#menusys_mega  .megacol  .subwrapcenter {
+	background:0;
+	float:none;
+	display:block;
+}
+#menusys_mega  .megacol  .subwrapcenter-left{
+	clear:both;
+	padding: 0;
+	background:0;
+	float:none;
+}
+	
+#menusys_mega   .megacol  .subwrapcenter-right{	
+	padding: 0;
+	background:0;
+	float:none;
+}
+
+#menusys_mega .megacol .subwrapbottom{
+	display:none;
+}*/

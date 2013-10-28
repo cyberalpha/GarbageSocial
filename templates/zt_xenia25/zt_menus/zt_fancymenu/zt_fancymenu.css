@@ -1,0 +1,113 @@
+/*
+	For megamenu
+*/
+#menusys_mega li:hover a,
+#menusys_mega li:active a,
+#menusys_mega li:focus a,
+#menusys_mega li a.active,
+#menusys_mega li a.active:hover,
+#menusys_mega li a.active:active,
+#menusys_mega li a.active:focus {
+	background: none;
+}
+#menusys_mega li:hover a .menu-title,
+#menusys_mega li:active a .menu-title,
+#menusys_mega li:focus a .menu-title,
+#menusys_mega li a.active .menu-title,
+#menusys_mega li a.active:hover .menu-title,
+#menusys_mega li a.active:active .menu-title,
+#menusys_mega li a.active:focus .menu-title {
+	background: none;
+}
+#menusys_mega .fancy{
+	margin: -21px 0 0 0;
+	position: absolute;
+	visibility: hidden;
+	z-index: 8;
+}
+#menusys_mega .fancy .fancy-left {
+    margin: 0;
+    padding: 0;
+	height: 1px;
+	width: 21px;
+	position: absolute;
+	left: -21px;
+	top: 0;
+	background: url(../../images/bg-fancy.png) no-repeat 0 0;
+}
+#menusys_mega .fancy .fancy-right{
+    margin: 0;
+    padding: 0;
+	height: 1px;
+	width: 21px;
+	position: absolute;
+	right: -21px;
+	top: 0;
+	background: url(../../images/bg-fancy.png) no-repeat scroll 100% 100%;
+}
+#menusys_mega .fancy .fancy-center{
+    margin: 0 21px;
+    padding: 0;
+	display: block;
+	height: 1px;
+	position: relative;
+	z-index: 8;
+	background: #DF0054;
+}
+/*
+	For Moomenu
+*/
+#menusys_moo li:hover a,
+#menusys_moo li:active a,
+#menusys_moo li:focus a,
+#menusys_moo li a.active,
+#menusys_moo li a.active:hover,
+#menusys_moo li a.active:active,
+#menusys_moo li a.active:focus {
+	background: none;
+}
+#menusys_moo li:hover a .menu-title,
+#menusys_moo li:active a .menu-title,
+#menusys_moo li:focus a .menu-title,
+#menusys_moo li a.active .menu-title,
+#menusys_moo li a.active:hover .menu-title,
+#menusys_moo li a.active:active .menu-title,
+#menusys_moo li a.active:focus .menu-title {
+	background: none;
+}
+
+#menusys_moo .fancy{
+	margin: -21px 0 0 0;
+	position: absolute;
+	visibility: hidden;
+	z-index: 8;
+}
+#menusys_moo .fancy .fancy-left{
+    margin: 0;
+    padding: 0;
+	height: 1px;
+	width: 21px;
+	position: absolute;
+	left: -21px;
+	top: 0;
+	background: url(../../images/bg-fancy.png) no-repeat 0 0;
+}
+#menusys_moo .fancy .fancy-right{
+    margin: 0;
+    padding: 0;
+	height: 1px;
+	width: 21px;
+	position: absolute;
+	right: -21px;
+	top: 0;
+	background: url(../../images/bg-fancy.png) no-repeat scroll 100% 100%;
+}
+#menusys_moo .fancy .fancy-center{
+    margin: 0 21px;
+    padding: 0;
+	display: block;
+	height: 1px;
+	position: relative;
+	z-index: 8;
+	background: #DF0054;
+}

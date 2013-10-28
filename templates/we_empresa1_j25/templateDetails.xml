@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 1.6//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
+<extension
+	version="2.5"
+	type="template"
+	client="site">
+	<name>we_empresa1_j25</name>
+	<creationDate>1/09/11</creationDate>
+	<author>Webempresa</author>
+	<authorEmail>soporte@webempresa.com</authorEmail>
+	<authorUrl>http://www.webempresa.com</authorUrl>
+	<copyright>Copyright (C) 20011 Open Source Matters, Inc. Todos los derechos reservados.</copyright>
+	<license>GNU General Public License</license>
+	<version>1.0</version>
+	<description>TPL_WE_EMPRESA1_J25_XML_DESCRIPCION</description>
+	<files>
+		<folder>html</folder>
+		<folder>css</folder>
+		<folder>images</folder>
+		<folder>language</folder>
+		<folder>js</folder>
+		<filename>index.php</filename>
+		<filename>index.html</filename>
+		<filename>favicon.ico</filename>
+		<filename>templateDetails.xml</filename>
+		<filename>template_preview.png</filename>
+		<filename>template_thumbnail.png</filename>
+		<filename>component.php</filename>
+		<filename>error.php</filename>
+	</files>
+
+	<positions>
+		<position>debug</position>	
+		<position>banner-0</position>
+		<position>banner-1</position>
+		<position>slider</position>
+		<position>breadcrumbs</position>
+		<position>search</position>
+		<position>left</position>
+		<position>right</position>		
+		<position>footer-nav</position>
+		<position>footer</position>
+		<position>position-0</position>
+		<position>position-1</position>		
+		<position>position-2</position>
+		<position>position-3</position>
+		<position>position-4</position>
+		<position>position-5</position>		
+		<position>position-6</position>
+		<position>position-7</position>		
+		<position>position-8</position>
+		<position>position-9</position>
+		<position>position-10</position>
+		<position>position-11</position>		
+	</positions>
+
+	<!-- 	For core templates, we also install/uninstall the language files in the core language folders.
+	-->
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.tpl_we_empresa1_j25.ini</language>
+		<language tag="en-GB">en-GB/en-GB.tpl_we_empresa1_j25.sys.ini</language>
+		<language tag="es-ES">es-ES/es-ES.tpl_we_empresa1_j25.ini</language>
+		<language tag="es-ES">es-ES/es-ES.tpl_we_empresa1_j25.sys.ini</language>
+	</languages>
+
+
+	<config>
+		<fields name="params">
+			<fieldset name="advanced">
+			
+					<field name="logo" type="media"
+					   label="TPL_WE_EMPRESA1_J25_LOGO" description="TPL_WE_EMPRESA1_J25_LOGO_DES" />
+
+					<field name="titulo"  type="text" default=""
+						label="TPL_WE_EMPRESA1_J25_TEXTOLOGO"
+						description="TPL_WE_EMPRESA1_J25_TEXTOLOGO_DES"
+						filter="string" />
+						
+					<field name="fondonegro" type="radio" default="1" 
+			            label="TPL_WE_EMPRESA1_J25_FONDONEGRO" description="TPL_WE_EMPRESA1_J25_MOSTRAR_FONDONEGRO_DES">
+				        <option value="1">TPL_WE_EMPRESA1_J25_SI</option>
+				        <option value="0">TPL_WE_EMPRESA1_J25_NO</option>
+				    </field>
+					
+					<field name="colorletra" type="list" default="rojo"
+						label="TPL_WE_EMPRESA1_J25_COLOR_LABEL"
+						description="TPL_WE_EMPRESA1_J25_COLOR_DESC"
+						filter="word"
+					>
+						<option value="rojo">TPL_WE_EMPRESA1_J25_ROJO</option>
+						<option value="azul">TPL_WE_EMPRESA1_J25_AZUL</option>
+						<option value="verde">TPL_WE_EMPRESA1_J25_VERDE</option>
+						<option value="naranja">TPL_WE_EMPRESA1_J25_NARANJA</option>
+					</field>
+    
+    				<field name="fondobanner"  type="text" default="#fff"
+						label="TPL_WE_EMPRESA1_J25_FONDOBANNER0"
+						description="TPL_WE_EMPRESA1_J25_FONDOBANNER0_DES"
+						filter="string" />
+						
+						
+    				<field name="mostrarredes" type="radio" default="1" 
+			            label="TPL_WE_EMPRESA1_J25_MOSTRAR_REDES" description="TPL_WE_EMPRESA1_J25_MOSTRAR_REDES_DES">
+				        <option value="0">TPL_WE_EMPRESA1_J25_OCULTAR</option>
+				        <option value="1">TPL_WE_EMPRESA1_J25_MOSTRAR</option>
+				    </field>
+    				
+    				<field name="facebook"  type="text" default=""
+						label="TPL_WE_EMPRESA1_J25_FACEBOOK"
+						description="TPL_WE_EMPRESA1_J25_FACEBOOK_DES"
+						filter="string" />
+    				
+    				<field name="twitter"  type="text" default=""
+						label="TPL_WE_EMPRESA1_J25_TWITTER"
+						description="TPL_WE_EMPRESA1_J25_TWITTER_DES"
+						filter="string" />
+					
+					<field name="youtube"  type="text" default=""
+						label="TPL_WE_EMPRESA1_J25_YOUTUBE"
+						description="TPL_WE_EMPRESA1_J25_YOUTUBE_DES"
+						filter="string" />						
+					
+					<field name="rss"  type="text" default=""
+						label="TPL_WE_EMPRESA1_J25_RSS"
+						description="TPL_WE_EMPRESA1_J25_RSS_DES"
+						filter="string" />
+							
+			</fieldset>
+		</fields>
+	</config>
+
+</extension>

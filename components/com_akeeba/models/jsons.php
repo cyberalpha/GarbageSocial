@@ -61,7 +61,7 @@ class AkeebaModelJsons extends FOFModel
 	private $password = null;
 	/** @var string The method called by the client */
 	private $method_name = null;
-
+	
 	public function execute($json)
 	{
 		// Check if we're activated
@@ -275,7 +275,7 @@ class AkeebaModelJsons extends FOFModel
 		}
 
 		$response['body']['data'] = $data;
-
+		
 		switch($this->method_name)
 		{
 			case 'Download':
@@ -303,9 +303,9 @@ class AkeebaModelJsons extends FOFModel
 	{
 		require_once JPATH_ROOT.'/administrator/components/com_akeeba/liveupdate/liveupdate.php';
 		$updateInformation = LiveUpdate::getUpdateInformation();
-
+		
 		$edition = AKEEBA_PRO ? 'pro' : 'core';
-
+		
 		return (object)array(
 			'api'			=> AKEEBA_JSON_API_VERSION,
 			'component'		=> AKEEBA_VERSION,
@@ -349,7 +349,7 @@ class AkeebaModelJsons extends FOFModel
 			if(!array_key_exists($key, $defConfig)) unset($config[$key]);
 		}
 		extract($config);
-
+		
 		// Nuke the factory
 		AEFactory::nuke();
 
@@ -359,11 +359,11 @@ class AkeebaModelJsons extends FOFModel
 		$session = JFactory::getSession();
 		$session->set('profile', $profile, 'akeeba');
 		AEPlatform::getInstance()->load_configuration($profile);
-
+		
 		// Use the default description if none specified
 		if(empty($description))
 		{
-			JLoader::import('joomla.utilities.date');
+			jimport('joomla.utilities.date');
 			$dateNow = new JDate();
 			/*
 			$user = JFactory::getUser();
@@ -378,7 +378,7 @@ class AkeebaModelJsons extends FOFModel
 			'maxrun'	=> 0
 		));
 		AEUtilTempvars::reset(AKEEBA_BACKUP_ORIGIN);
-
+		
 		$kettenrad = AECoreKettenrad::load(AKEEBA_BACKUP_ORIGIN);
 		$options = array(
 			'description'	=> $description,
@@ -405,7 +405,7 @@ class AkeebaModelJsons extends FOFModel
 			return $array;
 		}
 	}
-
+	
 	private function _apiStartSRPBackup($config)
 	{
 		// Get the passed configuration values
@@ -424,7 +424,7 @@ class AkeebaModelJsons extends FOFModel
 		foreach($config as $key => $value) {
 			if(!array_key_exists($key, $defConfig)) unset($config[$key]);
 		}
-
+		
 		// Fetch the extension's version information
 		require_once JPATH_ADMINISTRATOR.'/components/com_akeeba/liveupdate/classes/xmlslurp.php';
 		$slurp = new LiveUpdateXMLSlurp();
@@ -464,9 +464,9 @@ class AkeebaModelJsons extends FOFModel
 			'core.filters.srp.skiptables'			=> $config['skiptables'],
 			'core.filters.srp.langfiles'			=> $config['langfiles']
 		);
-
+		
 		// Parse a local file stored in (backend)/assets/srpdefs/$extname.xml
-		JLoader::import('joomla.filesystem.file');
+		jimport('joomla.filesystem.file');
 		$filename = JPATH_COMPONENT_ADMINISTRATOR.'/assets/srpdefs/'.$extname.'.xml';
 		if(JFile::exists($filename)) {
 			$xml = JFactory::getXMLParser('simple');
@@ -476,7 +476,7 @@ class AkeebaModelJsons extends FOFModel
 			}
 			unset($xml);
 		}
-
+		
 		// Parse the extension's manifest file and look for a <restorepoint> tag
 		if(!empty($info['xmlfile'])) {
 			$xml = JFactory::getXMLParser('simple');
@@ -504,11 +504,10 @@ class AkeebaModelJsons extends FOFModel
 		$description = "System Restore Point - ".JText::_($exttype).": $extname";
 		$comment = "---BEGIN SRP---\n".json_encode($srpdescriptor)."\n---END SRP---";
 		$jpskey = '';
-		$angiekey = '';
 
 		// Set a custom finalization action queue
 		$configOverrides['volatile.core.finalization.action_handlers'] = array(
-			new AEFinalizationSrpquotas()
+			new AEFinalizationSrpquotas()						
 		);
 		$configOverrides['volatile.core.finalization.action_queue'] = array(
 			'remove_temp_files',
@@ -520,7 +519,7 @@ class AkeebaModelJsons extends FOFModel
 		// Apply the configuration overrides, please
 		$platform = AEPlatform::getInstance();
 		$platform->configOverrides = $configOverrides;
-
+		
 		// Nuke the factory
 		AEFactory::nuke();
 
@@ -528,9 +527,9 @@ class AkeebaModelJsons extends FOFModel
 		$session = JFactory::getSession();
 		$session->set('profile', $profile, 'akeeba');
 		AEPlatform::getInstance()->load_configuration($profile);
-
+		
 		AEUtilTempvars::reset('restorepoint');
-
+		
 		$kettenrad = AECoreKettenrad::load('restorepoint');
 		$options = array(
 			'description'	=> $description,
@@ -578,13 +577,13 @@ class AkeebaModelJsons extends FOFModel
 			$session = JFactory::getSession();
 			$session->set('profile', $profile, 'akeeba');
 		}
-
+		
 		$kettenrad = AECoreKettenrad::load($tag);
 
 		$registry = AEFactory::getConfiguration();
 		$session = JFactory::getSession();
 		$session->set('profile', $registry->activeProfile, 'akeeba');
-
+		
 		$array = $kettenrad->tick();
 		$ret_array = $kettenrad->getStatusArray();
 		$array['Progress'] = $ret_array['Progress'];
@@ -600,7 +599,7 @@ class AkeebaModelJsons extends FOFModel
 			AEFactory::nuke();
 			AEUtilTempvars::reset();
 		}
-
+		
 		return $array;
 	}
 
@@ -706,7 +705,7 @@ class AkeebaModelJsons extends FOFModel
 		}
 
 		$file = $files[$part_id-1];
-
+		
 		$filesize = @filesize($file);
 		$seekPos = $chunk_size * 1048756 * ($segment - 1);
 
@@ -716,7 +715,7 @@ class AkeebaModelJsons extends FOFModel
 			$this->encapsulation = self::ENCAPSULATION_RAW;
 			return 'Invalid segment';
 		}
-
+		
 		$fp = fopen($file, 'rb');
 
 		if($fp === false)
@@ -855,7 +854,7 @@ class AkeebaModelJsons extends FOFModel
 		}
 
 	}
-
+	
 	private function _apiDownloadDirect($config)
 	{
 		$defConfig = array(
@@ -891,21 +890,21 @@ class AkeebaModelJsons extends FOFModel
 
 		$filename = $files[$part_id-1];
 		@clearstatcache();
-
+		
 		// For a certain unmentionable browser -- Thank you, Nooku, for the tip
 		if(function_exists('ini_get') && function_exists('ini_set')) {
 			if(ini_get('zlib.output_compression')) {
 				ini_set('zlib.output_compression', 'Off');
 			}
 		}
-
+		
 		// Remove php's time limit -- Thank you, Nooku, for the tip
 		if(function_exists('ini_get') && function_exists('set_time_limit')) {
 			if(!ini_get('safe_mode') ) {
 			    @set_time_limit(0);
 	        }
 		}
-
+		
 		$basename = @basename($filename);
 		$filesize = @filesize($filename);
 		$extension = strtolower(str_replace(".", "", strrchr($filename, ".")));
@@ -917,7 +916,7 @@ class AkeebaModelJsons extends FOFModel
 		header('Content-Disposition: attachment; filename="'.$basename.'"');
 		header('Content-Transfer-Encoding: binary');
 		header('Accept-Ranges: bytes');
-
+		
 		switch($extension)
 		{
 			case 'zip':
@@ -956,7 +955,7 @@ class AkeebaModelJsons extends FOFModel
 		flush();
 		JFactory::getApplication()->close();
 	}
-
+	
 	private function _apiUpdateGetInformation($config)
 	{
 		$defConfig = array(
@@ -964,19 +963,19 @@ class AkeebaModelJsons extends FOFModel
 		);
 		$config = array_merge($defConfig, $config);
 		extract($config);
-
+		
 		require_once JPATH_ROOT.'/administrator/components/com_akeeba/liveupdate/liveupdate.php';
-
+		
 		$updateInformation = LiveUpdate::getUpdateInformation($force);
-
+		
 		return (object)$updateInformation;
 	}
-
+	
 	private function _apiUpdateDownload($config)
 	{
 		require_once JPATH_ROOT.'/administrator/components/com_akeeba/liveupdate/liveupdate.php';
 		require_once JPATH_ROOT.'/administrator/components/com_akeeba/liveupdate/classes/model.php';
-
+		
 		// Do we need to update?
 		$updateInformation = LiveUpdate::getUpdateInformation();
 		if(!$updateInformation->hasUpdates) {
@@ -984,14 +983,14 @@ class AkeebaModelJsons extends FOFModel
 				'download'	=> 0
 			);
 		}
-
+		
 		$model = new LiveupdateModel();
 		$ret = $model->download();
-
+		
 		$session = JFactory::getSession();
 		$target		= $session->get('target', '', 'liveupdate');
 		$tempdir	= $session->get('tempdir', '', 'liveupdate');
-
+		
 		// Save the target and tempdir
 		$session = JFactory::getSession();
 		$session->set('profile', 1, 'akeeba');
@@ -1000,7 +999,7 @@ class AkeebaModelJsons extends FOFModel
 		$config->set('remoteupdate.target', $target);
 		$config->set('remoteupdate.tempdir', $tempdir);
 		AEPlatform::getInstance()->save_configuration(1);
-
+		
 		if(!$ret) {
 			// An error ocurred :(
 			$this->status = self::STATUS_ERROR;
@@ -1012,7 +1011,7 @@ class AkeebaModelJsons extends FOFModel
 			);
 		}
 	}
-
+	
 	private function _apiUpdateExtract($config)
 	{
 		$session = JFactory::getSession();
@@ -1021,20 +1020,20 @@ class AkeebaModelJsons extends FOFModel
 		$config = AEFactory::getConfiguration();
 		$target = $config->get('remoteupdate.target', '');
 		$tempdir = $config->get('remoteupdate.tempdir', '');
-
+		
 		$session = JFactory::getSession();
 		$session->set('target', $target, 'liveupdate');
 		$session->set('tempdir', $tempdir, 'liveupdate');
-
+		
 		require_once JPATH_ROOT.'/administrator/components/com_akeeba/liveupdate/liveupdate.php';
 		require_once JPATH_ROOT.'/administrator/components/com_akeeba/liveupdate/classes/model.php';
-
+		
 		$model = new LiveupdateModel();
 		$ret = $model->extract();
-
-		JLoader::import('joomla.filesystem.file');
+		
+		jimport('joomla.filesystem.file');
 		JFile::delete($target);
-
+		
 		if(!$ret) {
 			// An error ocurred :(
 			$this->status = self::STATUS_ERROR;
@@ -1046,7 +1045,7 @@ class AkeebaModelJsons extends FOFModel
 			);
 		}
 	}
-
+	
 	private function _apiUpdateInstall($config) {
 		$session = JFactory::getSession();
 		$session->set('profile', 1, 'akeeba');
@@ -1054,16 +1053,16 @@ class AkeebaModelJsons extends FOFModel
 		$config = AEFactory::getConfiguration();
 		$target = $config->get('remoteupdate.target', '');
 		$tempdir = $config->get('remoteupdate.tempdir', '');
-
+		
 		$session = JFactory::getSession();
 		$session->set('tempdir', $tempdir, 'liveupdate');
-
+		
 		require_once JPATH_ROOT.'/administrator/components/com_akeeba/liveupdate/liveupdate.php';
 		require_once JPATH_ROOT.'/administrator/components/com_akeeba/liveupdate/classes/model.php';
-
+		
 		$model = new LiveupdateModel();
 		$ret = $model->install();
-
+		
 		if(!$ret) {
 			// An error ocurred :(
 			$this->status = self::STATUS_ERROR;
@@ -1075,7 +1074,7 @@ class AkeebaModelJsons extends FOFModel
 			);
 		}
 	}
-
+	
 	private function _apiUpdateCleanup($config) {
 		$session = JFactory::getSession();
 		$session->set('profile', 1, 'akeeba');
@@ -1083,18 +1082,18 @@ class AkeebaModelJsons extends FOFModel
 		$config = AEFactory::getConfiguration();
 		$target = $config->get('remoteupdate.target', '');
 		$tempdir = $config->get('remoteupdate.tempdir', '');
-
+		
 		$session = JFactory::getSession();
 		$session->set('target', $target, 'liveupdate');
 		$session->set('tempdir', $tempdir, 'liveupdate');
-
+		
 		require_once JPATH_ROOT.'/administrator/components/com_akeeba/liveupdate/liveupdate.php';
 		require_once JPATH_ROOT.'/administrator/components/com_akeeba/liveupdate/classes/model.php';
-
+		
 		$model = new LiveupdateModel();
 		$ret = $model->cleanup();
-
-		JLoader::import('joomla.filesystem.file');
+		
+		jimport('joomla.filesystem.file');
 		JFile::delete($target);
 
 		$config->set('remoteupdate.target', null);
@@ -1105,7 +1104,7 @@ class AkeebaModelJsons extends FOFModel
 			'cleanup'	=> 1
 		);
 	}
-
+	
 	/**
 	 * Encodes a variable to JSON using PEAR's Services_JSON
 	 * @param mixed $value The value to encode
@@ -1118,7 +1117,7 @@ class AkeebaModelJsons extends FOFModel
 		$encoder = new Akeeba_Services_JSON($flags);
 		return $encoder->encode($value);
 	}
-
+	
 	/**
 	 * Decodes a JSON string to a variable using PEAR's Services_JSON
 	 * @param string $value The JSON-encoded string
@@ -1132,19 +1131,19 @@ class AkeebaModelJsons extends FOFModel
 		$decoder = new Akeeba_Services_JSON($flags);
 		return $decoder->decode($value);
 	}
-
+	
 	private function parseRestorePointXML($xml)
 	{
 		if(!count($xml->children())) return false;
-
+		
 		$ret = array();
-
+		
 		// 1. Group name -- core.filters.srp.group
 		$group = $xml->getElementByPath('group');
 		if($group) {
 			$ret['core.filters.srp.group'] = $group->data();
 		}
-
+		
 		// 2. Custom dirs -- core.filters.srp.customdirs
 		$customdirs = $xml->getElementByPath('customdirs');
 		if($customdirs) {
@@ -1159,7 +1158,7 @@ class AkeebaModelJsons extends FOFModel
 			}
 			if(!empty($stack)) $ret['core.filters.srp.customdirs'] = $stack;
 		}
-
+		
 		// 3. Extra prefixes -- core.filters.srp.extraprefixes
 		$extraprefixes = $xml->getElementByPath('extraprefixes');
 		if($extraprefixes) {
@@ -1174,7 +1173,7 @@ class AkeebaModelJsons extends FOFModel
 			}
 			if(!empty($stack)) $ret['core.filters.srp.extraprefixes'] = $stack;
 		}
-
+		
 		// 4. Custom tables -- core.filters.srp.customtables
 		$customtables = $xml->getElementByPath('customtables');
 		if($customtables) {
@@ -1189,7 +1188,7 @@ class AkeebaModelJsons extends FOFModel
 			}
 			if(!empty($stack)) $ret['core.filters.srp.customtables'] = $stack;
 		}
-
+		
 		// 5. Skip tables -- core.filters.srp.skiptables
 		$skiptables = $xml->getElementByPath('skiptables');
 		if($skiptables) {
@@ -1204,7 +1203,7 @@ class AkeebaModelJsons extends FOFModel
 			}
 			if(!empty($stack)) $ret['core.filters.srp.skiptables'] = $stack;
 		}
-
+		
 		// 6. Language files -- core.filters.srp.langfiles
 		$langfiles = $xml->getElementByPath('langfiles');
 		if($langfiles) {
@@ -1219,7 +1218,7 @@ class AkeebaModelJsons extends FOFModel
 			}
 			if(!empty($stack)) $ret['core.filters.srp.langfiles'] = $stack;
 		}
-
+		
 		// 7. Custom files -- core.filters.srp.customfiles
 		$customfiles = $xml->getElementByPath('customfiles');
 		if($customfiles) {
@@ -1234,12 +1233,12 @@ class AkeebaModelJsons extends FOFModel
 			}
 			if(!empty($stack)) $ret['core.filters.srp.customfiles'] = $stack;
 		}
-
+		
 		if(empty($ret)) return false;
-
+		
 		return $ret;
 	}
-
+	
 	private function mergeSRPConfig(&$config, $extraConfig)
 	{
 		foreach($config as $key => $value) {
@@ -1250,5 +1249,5 @@ class AkeebaModelJsons extends FOFModel
 			}
 		}
 	}
-
+	
 }

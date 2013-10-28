@@ -13,13 +13,24 @@ defined('_JEXEC') or die();
  * The Configuration Editor controller class
  *
  */
-class AkeebaControllerConfig extends AkeebaControllerDefault
+class AkeebaControllerConfig extends FOFController
 {
+	public function  __construct($config = array()) {
+		parent::__construct($config);
+		// Access check, Joomla! 1.6 style.
+		$user = JFactory::getUser();
+		if (!$user->authorise('akeeba.configure', 'com_akeeba')) {
+			$this->setRedirect('index.php?option=com_akeeba');
+			return JError::raiseWarning(403, JText::_('JERROR_ALERTNOAUTHOR'));
+			$this->redirect();
+		}
+	}
+
 	public function add()
 	{
 		$this->display(false);
 	}
-
+	
 	/**
 	 * Handle the apply task which saves settings and shows the editor again
 	 *
@@ -30,14 +41,18 @@ class AkeebaControllerConfig extends AkeebaControllerDefault
 		if($this->csrfProtection) {
 			$this->_csrfProtection();
 		}
-
+		
 		// Get the var array from the request
-		$data = $this->input->get('var', array(), 'array', 4);
-
+		if($this->input instanceof FOFInput) {
+			$data = $this->input->get('var', array(), 'array', 4);
+		} else {
+			$data = FOFInput::getArray('var', array(), $this->input, 4);
+		}
+		
 		$model = $this->getThisModel();
 		$model->setState('engineconfig', $data);
 		$model->saveEngineConfig();
-
+		
 		$this->setRedirect(JURI::base().'index.php?option=com_akeeba&view=config', JText::_('CONFIG_SAVE_OK'));
 	}
 
@@ -61,84 +76,88 @@ class AkeebaControllerConfig extends AkeebaControllerDefault
 		if($this->csrfProtection) {
 			$this->_csrfProtection();
 		}
-
+		
 		$this->setRedirect(JURI::base().'index.php?option=com_akeeba');
 	}
-
+	
 	/**
 	 * Tests the validity of the FTP connection details
 	 */
 	public function testftp()
 	{
 		$model = $this->getThisModel();
-		$model->setState('host',	$this->input->get('host', '', 'raw', 2));
-		$model->setState('port',	$this->input->get('port', 21, 'int'));
-		$model->setState('user',	$this->input->get('user', '', 'raw', 2));
-		$model->setState('pass',	$this->input->get('pass', '', 'raw', 2));
-		$model->setState('initdir', $this->input->get('initdir', '', 'raw', 2));
-		$model->setState('usessl',	$this->input->get('usessl', '', 'raw', 2) == 'true');
-		$model->setState('passive', $this->input->get('passive', '', 'raw', 2) == 'true');
-
+		$model->setState('host',	FOFInput::getVar('host', '', $this->input));
+		$model->setState('port',	FOFInput::getInt('port', 21, $this->input));
+		$model->setState('user',	FOFInput::getVar('user', '', $this->input));
+		$model->setState('pass',	FOFInput::getVar('pass', '', $this->input));
+		$model->setState('initdir', FOFInput::getVar('initdir', '', $this->input));
+		$model->setState('usessl',	FOFInput::getVar('usessl', '', $this->input) == 'true');
+		$model->setState('passive', FOFInput::getVar('passive', '', $this->input) == 'true');
+		
 		@ob_end_clean();
 		echo '###'.json_encode( $model->testFTP() ).'###';
 		flush();
 		JFactory::getApplication()->close();
 	}
-
+	
 	/**
 	 * Tests the validity of the SFTP connection details
 	 */
 	public function testsftp()
 	{
 		$model = $this->getThisModel();
-		$model->setState('host',	$this->input->get('host', '', 'raw', 2));
-		$model->setState('port',	$this->input->get('port', 21, 'int'));
-		$model->setState('user',	$this->input->get('user', '', 'raw', 2));
-		$model->setState('pass',	$this->input->get('pass', '', 'raw', 2));
-		$model->setState('initdir',	$this->input->get('initdir', '', 'raw', 2));
-
+		$model->setState('host',	FOFInput::getVar('host', '', $this->input));
+		$model->setState('port',	FOFInput::getInt('port', 21, $this->input));
+		$model->setState('user',	FOFInput::getVar('user', '', $this->input));
+		$model->setState('pass',	FOFInput::getVar('pass', '', $this->input));
+		$model->setState('initdir',	FOFInput::getVar('initdir', '', $this->input));
+		
 		@ob_end_clean();
 		echo '###'.json_encode( $model->testSFTP() ).'###';
 		flush();
 		JFactory::getApplication()->close();
 	}
-
+	
 	/**
-	 * Opens an OAuth window for the selected data processing engine
+	 * Opens an OAuth window for the selected data processing engine 
 	 */
 	public function dpeoauthopen()
 	{
 		$model = $this->getThisModel();
-		$model->setState('engine', $this->input->get('engine', '', 'raw'));
+		$model->setState('engine', FOFInput::getVar('engine', '', $this->input));
 		if($this->input instanceof FOFInput) {
 			$model->setState('params', $this->input->get('params', array(), 'array', 2));
 		} else {
-			$model->setState('params', $this->input->get('params', array(), 'array', 2));
+			$model->setState('params', FOFInput::getArray('params', array(), $this->input, 2));
 		}
-
+		
 		@ob_end_clean();
 		$model->dpeOuthOpen();
 		flush();
-
+		
 		jexit();
 	}
-
+	
 	/**
 	 * Runs a custom API call against the selected data processing engine
 	 */
 	public function dpecustomapi()
 	{
 		$model = $this->getThisModel();
-		$model->setState('engine', $this->input->get('engine', '', 'raw', 2));
-		$model->setState('method', $this->input->getVar('method', '', 'raw', 2));
-		$model->setState('params', $this->input->get('params', array(), 'array', 2));
-
+		$model->setState('engine', FOFInput::getVar('engine', '', $this->input));
+		$model->setState('method', FOFInput::getVar('method', '', $this->input));
+		if($this->input instanceof FOFInput) {
+			$model->setState('params', $this->input->get('params', array(), 'array', 2));
+		} else {
+			$model->setState('params', FOFInput::getArray('params', array(), $this->input, 2));
+		}
+		
 		@ob_end_clean();
 		echo '###'.json_encode( $model->dpeCustomAPICall() ).'###';
 		flush();
-
+		
 		jexit();
 	}
-
-
+	
+	
 }

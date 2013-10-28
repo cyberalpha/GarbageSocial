@@ -50,7 +50,7 @@ class AEFilterIncremental extends AEAbstractFilter
 				if(is_null($id)) $id = -1;
 
 				// Initialise
-				JLoader::import('joomla.utilities.date');
+				jimport('joomla.utilities.date');
 				$last_backup = time();
 				$now = $last_backup;
 

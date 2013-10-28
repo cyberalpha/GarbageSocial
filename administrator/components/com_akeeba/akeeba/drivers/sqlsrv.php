@@ -12,7 +12,7 @@ defined('AKEEBAENGINE') or die();
 
 /**
  * SQL Server database driver
- *
+ * 
  * Based on Joomla! Platform 11.2
  */
 class AEDriverSqlsrv extends AEAbstractDriver
@@ -43,78 +43,13 @@ class AEDriverSqlsrv extends AEAbstractDriver
 	protected $nullDate = '1900-01-01 00:00:00';
 
 	/**
-	 * @var    string  The minimum supported database version.
-	 * @since  12.1
-	 */
-	protected static $dbMinimum = '10.50.1600.1';
-
-	/**
-	 * Returns an array with the names of tables, views, procedures, functions and triggers
-	 * in the database. The table names are the keys of the tables, whereas the value is
-	 * the type of each element: table, view, merge, temp, procedure, function or trigger.
-	 * Note that merge are MRG_MYISAM tables and temp is non-permanent data table, usually
-	 * set up as temporary, black hole or federated tables. These two types should never,
-	 * ever, have their data dumped in the SQL dump file.
-	 *
-	 * @param bool $abstract Return abstract or normal names? Defaults to true (abstract names)
-	 *
-	 * @return array
-	 */
-	public function getTables($abstract = true)
-	{
-		static $tables = array();
-
-		if(!empty($tables)) return $tables;
-
-		$this->open();
-
-		// Add tables
-		$this->setQuery('SELECT name FROM ' . $this->getDatabase() . '.sys.Tables WHERE type = \'U\';');
-		$all_tables = $this->loadColumn();
-
-		if (!empty($all_tables))
-		{
-			foreach($all_tables as $table_name)
-			{
-				if ($abstract)
-				{
-					$table_name = $this->getAbstract($table_name);
-				}
-
-				$tables[$table_name] = 'table';
-			}
-		}
-
-		// Add VIEWs
-		$this->setQuery('SELECT name FROM ' . $this->getDatabase() . '.sys.Views WHERE type_desc = \'VIEW\';');
-		$all_tables = $this->loadColumn();
-
-		if (!empty($all_tables))
-		{
-			foreach($all_tables as $table_name)
-			{
-				if ($abstract)
-				{
-					$table_name = $this->getAbstract($table_name);
-				}
-
-				$tables[$table_name] = 'view';
-			}
-		}
-
-		ksort($tables);
-
-		return $tables;
-	}
-
-	/**
 	 * Test to see if the SQLSRV connector is available.
 	 *
 	 * @return  boolean  True on success, false otherwise.
 	 *
 	 * @since   11.1
 	 */
-	public static function isSupported()
+	public static function test()
 	{
 		return (function_exists('sqlsrv_connect'));
 	}
@@ -129,7 +64,7 @@ class AEDriverSqlsrv extends AEAbstractDriver
 	public function __construct($options)
 	{
 		$this->driverType = 'mssql';
-
+		
 		// Get some basic values from the options.
 		$host		= array_key_exists('host', $options)	? $options['host']		: 'localhost';
 		$port		= array_key_exists('port', $options)	? $options['port']		: '';
@@ -138,7 +73,7 @@ class AEDriverSqlsrv extends AEAbstractDriver
 		$database	= array_key_exists('database',$options)	? $options['database']	: '';
 		$prefix		= array_key_exists('prefix', $options)	? $options['prefix']	: '';
 		$select		= array_key_exists('select', $options)	? $options['select']	: true;
-
+		
 		// Build the connection configuration array.
 		$this->connectionConfig = array(
 			'Database' => $database,
@@ -149,22 +84,22 @@ class AEDriverSqlsrv extends AEAbstractDriver
 		);
 
 		parent::__construct($options);
-
+		
 		$this->host = $host;
 		$this->user = $user;
 		$this->password = $password;
 		$this->_database = $database;
 		$this->selectDatabase = $select;
-
+		
 		if(!is_resource($this->connection)) $this->open();
 	}
-
+	
 	public function open()
 	{
 		if(is_resource($this->connection)) return;
-
+		
 		$config = $this->connectionConfig;
-
+		
 		// Make sure the SQLSRV extension for PHP is installed and enabled.
 		if (!function_exists('sqlsrv_connect'))
 		{
@@ -253,10 +188,11 @@ class AEDriverSqlsrv extends AEAbstractDriver
 	 */
 	public function escape($text, $extra = false)
 	{
+		// TODO: MSSQL Compatible escaping
 		$result = addslashes($text);
 		$result = str_replace("\'", "''", $result);
 		$result = str_replace('\"', '"', $result);
-		$result = str_replace('\/', '/', $result);
+		//$result = str_replace("\\", "''", $result);
 
 		if ($extra)
 		{
@@ -293,7 +229,7 @@ class AEDriverSqlsrv extends AEAbstractDriver
 		if ($ifExists)
 		{
 			$this->setQuery(
-				'IF EXISTS(SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = ' . $query->quote($tableName) . ') DROP TABLE ' . $tableName
+				'IF EXISTS(SELECT TABLE_NAME FROM' . ' INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = ' . $query->quote($tableName) . ') DROP TABLE ' . $tableName
 			);
 		}
 		else
@@ -301,7 +237,7 @@ class AEDriverSqlsrv extends AEAbstractDriver
 			$this->setQuery('DROP TABLE ' . $tableName);
 		}
 
-		$this->execute();
+		$this->query();
 
 		return $this;
 	}
@@ -368,17 +304,16 @@ class AEDriverSqlsrv extends AEAbstractDriver
 	 */
 	public function getTableColumns($table, $typeOnly = true)
 	{
+		// Initialise variables.
 		$result = array();
 
 		$table_temp = $this->replacePrefix((string) $table);
-
 		// Set the query to get the table fields statement.
 		$this->setQuery(
 			'SELECT column_name as Field, data_type as Type, is_nullable as \'Null\', column_default as \'Default\'' .
-			' FROM information_schema.columns WHERE table_name = ' . $this->quote($table_temp)
+			' FROM information_schema.columns' . ' WHERE table_name = ' . $this->quote($table_temp)
 		);
 		$fields = $this->loadObjectList();
-
 		// If we only want the type as the value add just that to the list.
 		if ($typeOnly)
 		{
@@ -426,7 +361,20 @@ class AEDriverSqlsrv extends AEAbstractDriver
 		// TODO To implement.
 		return array();
 	}
-
+	
+	/**
+	* Method to quote and optionally escape a string to database requirements for insertion into the database.
+	*
+	* @param   string   $text    The string to quote.
+	* @param   boolean  $escape  True to escape the string, false to leave it unchanged.
+	*
+	* @return  string  The quoted input string.
+	*/
+	public function quote($text, $escape = true)
+	{
+		return 'N' . '\'' . ($escape ? $this->escape($text) : $text) . '\'';
+	}
+	
 	/**
 	 * Method to get an array of all tables in the database.
 	 *
@@ -448,8 +396,8 @@ class AEDriverSqlsrv extends AEAbstractDriver
 	 */
 	public function getVersion()
 	{
-		$version = sqlsrv_server_info($this->connection);
-		return $version['SQLServerVersion'];
+		//TODO: Don't hardcode this.
+		return '5.1.0';
 	}
 
 	/**
@@ -478,7 +426,7 @@ class AEDriverSqlsrv extends AEAbstractDriver
 		$statement = 'INSERT INTO ' . $this->quoteName($table) . ' (%s) VALUES (%s)';
 		foreach (get_object_vars($object) as $k => $v)
 		{
-			if (is_array($v) or is_object($v) or $v === null)
+			if (is_array($v) or is_object($v))
 			{
 				continue;
 			}
@@ -488,7 +436,7 @@ class AEDriverSqlsrv extends AEAbstractDriver
 			}
 			if ($k[0] == '_')
 			{
-				// Internal field
+				// internal field
 				continue;
 			}
 			if ($k == $key && $key == 0)
@@ -500,7 +448,7 @@ class AEDriverSqlsrv extends AEAbstractDriver
 		}
 		// Set the query and execute the insert.
 		$this->setQuery(sprintf($statement, implode(',', $fields), implode(',', $values)));
-		if (!$this->execute())
+		if (!$this->query())
 		{
 			return false;
 		}
@@ -530,10 +478,11 @@ class AEDriverSqlsrv extends AEAbstractDriver
 	 */
 	public function loadResult()
 	{
+		// Initialise variables.
 		$ret = null;
 
 		// Execute the query and get the result set cursor.
-		if (!($cursor = $this->execute()))
+		if (!($cursor = $this->query()))
 		{
 			return null;
 		}
@@ -545,8 +494,7 @@ class AEDriverSqlsrv extends AEAbstractDriver
 		}
 		// Free up system resources and return.
 		$this->freeResult($cursor);
-
-		// For SQLServer - we need to strip slashes
+		//For SQLServer - we need to strip slashes
 		$ret = stripslashes($ret);
 
 		return $ret;
@@ -562,36 +510,25 @@ class AEDriverSqlsrv extends AEAbstractDriver
 	 */
 	public function query()
 	{
-		$this->open();
-
 		if (!is_resource($this->connection))
 		{
-			throw new RuntimeException($this->errorMsg, $this->errorNum);
+
+			return false;
 		}
 
 		// Take a local copy so that we don't modify the original query and cause issues later
-		$query = $this->replacePrefix((string) $this->sql);
+		$sql = $this->replacePrefix((string) $this->sql);
 		if ($this->limit > 0 || $this->offset > 0)
 		{
-			$query = $this->limit($query, $this->limit, $this->offset);
-		}
-
-		// Increment the query counter.
-		$this->count++;
-
-		// If debugging is enabled then let's log the query.
-		if ($this->debug)
-		{
-			// Add the query to the object queue.
-			$this->log[] = $query;
+			$sql = $this->limit($sql, $this->limit, $this->offset);
 		}
 
 		// Reset the error values.
 		$this->errorNum = 0;
 		$this->errorMsg = '';
 
-		// SQLSrv_num_rows requires a static or keyset cursor.
-		if (strncmp(ltrim(strtoupper($query)), 'SELECT', strlen('SELECT')) == 0)
+		// sqlsrv_num_rows requires a static or keyset cursor.
+		if (strncmp(ltrim(strtoupper($sql)), 'SELECT', strlen('SELECT')) == 0)
 		{
 			$array = array('Scrollable' => SQLSRV_CURSOR_KEYSET);
 		}
@@ -600,47 +537,19 @@ class AEDriverSqlsrv extends AEAbstractDriver
 			$array = array();
 		}
 
-		// Execute the query. Error suppression is used here to prevent warnings/notices that the connection has been lost.
-		$this->cursor = @sqlsrv_query($this->connection, $query, array(), $array);
+		// Execute the query.
+		$this->cursor = sqlsrv_query($this->connection, $sql, array(), $array);
 
 		// If an error occurred handle it.
 		if (!$this->cursor)
 		{
-			// Check if the server was disconnected.
-			if (!$this->connected())
-			{
-				try
-				{
-					// Attempt to reconnect.
-					$this->connection = null;
-					$this->open();
-				}
-				// If connect fails, ignore that exception and throw the normal exception.
-				catch (RuntimeException $e)
-				{
-					// Get the error number and message.
-					$errors = sqlsrv_errors();
-					$this->errorNum = $errors[0]['SQLSTATE'];
-					$this->errorMsg = $errors[0]['message'] . 'SQL=' . $query;
 
-					// Throw the normal query exception.
-					throw new RuntimeException($this->errorMsg, $this->errorNum);
-				}
+			// Populate the errors.
+			$errors = sqlsrv_errors();
+			$this->errorNum = $errors[0]['SQLSTATE'];
+			$this->errorMsg = $errors[0]['message'] . 'SQL=' . $sql;
 
-				// Since we were able to reconnect, run the query again.
-				return $this->execute();
-			}
-			// The server was not disconnected.
-			else
-			{
-				// Get the error number and message.
-				$errors = sqlsrv_errors();
-				$this->errorNum = $errors[0]['SQLSTATE'];
-				$this->errorMsg = $errors[0]['message'] . 'SQL=' . $query;
-
-				// Throw the normal query exception.
-				throw new RuntimeException($this->errorMsg, $this->errorNum);
-			}
+			return false;
 		}
 
 		return $this->cursor;
@@ -656,26 +565,28 @@ class AEDriverSqlsrv extends AEAbstractDriver
 	 *
 	 * @since   11.1
 	 */
-	public function replacePrefix($query, $prefix = '#__')
+	public function replacePrefix($sql, $prefix = '#__')
 	{
+		$tablePrefix = 'jos_';
+		// Initialize variables.
 		$escaped = false;
 		$startPos = 0;
 		$quoteChar = '';
 		$literal = '';
 
-		$query = trim($query);
-		$n = strlen($query);
+		$sql = trim($sql);
+		$n = strlen($sql);
 
 		while ($startPos < $n)
 		{
-			$ip = strpos($query, $prefix, $startPos);
+			$ip = strpos($sql, $prefix, $startPos);
 			if ($ip === false)
 			{
 				break;
 			}
 
-			$j = strpos($query, "N'", $startPos);
-			$k = strpos($query, '"', $startPos);
+			$j = strpos($sql, "N'", $startPos);
+			$k = strpos($sql, '"', $startPos);
 			if (($k !== false) && (($k < $j) || ($j === false)))
 			{
 				$quoteChar = '"';
@@ -691,7 +602,7 @@ class AEDriverSqlsrv extends AEAbstractDriver
 				$j = $n;
 			}
 
-			$literal .= str_replace($prefix, $this->tablePrefix, substr($query, $startPos, $j - $startPos));
+			$literal .= str_replace($prefix, $this->tablePrefix, substr($sql, $startPos, $j - $startPos));
 			$startPos = $j;
 
 			$j = $startPos + 1;
@@ -701,17 +612,17 @@ class AEDriverSqlsrv extends AEAbstractDriver
 				break;
 			}
 
-			// Quote comes first, find end of quote
+			// quote comes first, find end of quote
 			while (true)
 			{
-				$k = strpos($query, $quoteChar, $j);
+				$k = strpos($sql, $quoteChar, $j);
 				$escaped = false;
 				if ($k === false)
 				{
 					break;
 				}
 				$l = $k - 1;
-				while ($l >= 0 && $query{$l} == '\\')
+				while ($l >= 0 && $sql{$l} == '\\')
 				{
 					$l--;
 					$escaped = !$escaped;
@@ -725,15 +636,15 @@ class AEDriverSqlsrv extends AEAbstractDriver
 			}
 			if ($k === false)
 			{
-				// Error in the query - no end quote; ignore it
+				// error in the query - no end quote; ignore it
 				break;
 			}
-			$literal .= substr($query, $startPos, $k - $startPos + 1);
+			$literal .= substr($sql, $startPos, $k - $startPos + 1);
 			$startPos = $k + 1;
 		}
 		if ($startPos < $n)
 		{
-			$literal .= substr($query, $startPos, $n - $startPos);
+			$literal .= substr($sql, $startPos, $n - $startPos);
 		}
 
 		return $literal;
@@ -758,7 +669,10 @@ class AEDriverSqlsrv extends AEAbstractDriver
 
 		if (!sqlsrv_query($this->connection, 'USE ' . $database, null, array('scrollable' => SQLSRV_CURSOR_STATIC)))
 		{
-			throw new RuntimeException('Could not connect to database');
+
+			$this->errorNum = 3;
+			$this->errorMsg = JText::_('Could not connect to database');
+			return false;
 		}
 
 		return true;
@@ -803,7 +717,7 @@ class AEDriverSqlsrv extends AEAbstractDriver
 	 */
 	public function transactionStart()
 	{
-		$this->setQuery('BEGIN TRANSACTION');
+		$this->setQuery('START TRANSACTION');
 		$this->query();
 	}
 
@@ -867,9 +781,9 @@ class AEDriverSqlsrv extends AEAbstractDriver
 	protected function checkFieldExists($table, $field)
 	{
 		$table = $this->replacePrefix((string) $table);
-		$query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS" . " WHERE TABLE_NAME = '$table' AND COLUMN_NAME = '$field'" .
+		$sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS" . " WHERE TABLE_NAME = '$table' AND COLUMN_NAME = '$field'" .
 			" ORDER BY ORDINAL_POSITION";
-		$this->setQuery($query);
+		$this->setQuery($sql);
 
 		if ($this->loadResult())
 		{
@@ -884,27 +798,27 @@ class AEDriverSqlsrv extends AEAbstractDriver
 	/**
 	 * Method to wrap an SQL statement to provide a LIMIT and OFFSET behavior for scrolling through a result set.
 	 *
-	 * @param   string   $query   The SQL statement to process.
+	 * @param   string   $sql     The SQL statement to process.
 	 * @param   integer  $limit   The maximum affected rows to set.
 	 * @param   integer  $offset  The affected row offset to set.
 	 *
 	 * @return  string   The processed SQL statement.
 	 */
-	protected function limit($query, $limit, $offset)
+	protected function limit($sql, $limit, $offset)
 	{
-		$orderBy = stristr($query, 'ORDER BY');
+		$orderBy = stristr($sql, 'ORDER BY');
 		if (is_null($orderBy) || empty($orderBy))
 		{
 			$orderBy = 'ORDER BY (select 0)';
 		}
-		$query = str_ireplace($orderBy, '', $query);
+		$sql = str_ireplace($orderBy, '', $sql);
 
 		$rowNumberText = ',ROW_NUMBER() OVER (' . $orderBy . ') AS RowNumber FROM ';
 
-		$query = preg_replace('/\\s+FROM/', '\\1 ' . $rowNumberText . ' ', $query, 1);
-		$query = 'SELECT TOP ' . $this->limit . ' * FROM (' . $query . ') _myResults WHERE RowNumber > ' . $this->offset;
+		$sql = preg_replace('/\\s+FROM/', '\\1 ' . $rowNumberText . ' ', $sql, 1);
+		$sql = 'SELECT TOP ' . $this->limit . ' * FROM (' . $sql . ') _myResults WHERE RowNumber > ' . $this->offset;
 
-		return $query;
+		return $sql;
 	}
 
 	/**
@@ -932,7 +846,7 @@ class AEDriverSqlsrv extends AEAbstractDriver
 
 		$this->setQuery("sp_rename '" . $oldTable . "', '" . $newTable . "'");
 
-		return $this->execute();
+		return $this->query();
 	}
 
 	/**

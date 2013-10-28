@@ -5,8 +5,8 @@
     <author>Nicholas K. Dionysopoulos</author>
     <authorEmail>nicholas@dionysopoulos.me</authorEmail>
     <authorUrl>https://www.akeebabackup.com</authorUrl>
-    <copyright>(C) 2012-2013 Akeeba Ltd.</copyright>
-    <license>GNU GPL v2 or later</license>
+    <copyright>(C) 2012 Akeeba Ltd.</copyright>
+    <license>GNU GPL v3 or later</license>
     <version>1.0.0</version>
     <creationDate>July 2012</creationDate>
     <description>Namespaced jQuery, jQuery UI and Bootstrap for Akeeba products.</description>
@@ -17,9 +17,6 @@
             <folder>css</folder>
             <folder>img</folder>
             <folder>js</folder>
-            <folder>less</folder>
-            <filename>index.html</filename>
-            <filename>strapper.ini</filename>
             <filename>strapper.php</filename>
         </files>
 		<files target="media/akeeba_strapper">

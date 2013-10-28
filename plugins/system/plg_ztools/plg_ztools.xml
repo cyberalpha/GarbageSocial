@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="system" method="upgrade">
+	
+	<name>ZT Tools</name>
+	<author>ZooTemplate.Com</author>
+	<creationDate>January 30, 2012</creationDate>
+	<copyright>Copyright (C) 2008 - 2012 http://www.ZooTemplate.Com. All rights reserved.</copyright>
+	<license>http://www.ZooTemplate.Com GNU/GPL</license>
+	<authorEmail>webmaster@ZooTemplate.com</authorEmail>
+	<authorUrl>www.ZooTemplate.com</authorUrl>
+	<version>2.5.0</version>
+	<description>Plugin ZooTools support for ZooTemplate.</description>
+	
+	<files>
+		<folder plugin="plg_ztools">plg_ztools</folder>
+		<filename plugin="plg_ztools">plg_ztools.php</filename>
+	</files>
+	
+	<config>
+		<fields name="params" addfieldpath="/plugins/system/plg_ztools/plg_ztools/4fontend/speedup">
+			<fieldset name="basic">
+				<field name="gzip_lazyload" type="radio" default="1" label="Lazy Load" description="Enable Lazy Load.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="gzip_browsercache" type="radio" default="1" label="Full Page Caching" description="Full-page caching is the simplest and most straightforward dynamic caching mechanism.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="gzip_lifetime" type="text" size="20" default="15" label="Cache Time" description="The time before the page is recached (minute)" />
+				
+				<field name="@spacer2" type="spacer" class="spacer" label="Excludes caching by components" description="" />
+				<field name="components" type="components" rows="5" cols="28" default="" label="Excludes components" description="Excludes caching by components" />
+			</fieldset>
+		</fields>
+	</config>
+	
+</extension>

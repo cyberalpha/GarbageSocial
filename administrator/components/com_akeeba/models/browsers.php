@@ -13,8 +13,8 @@ class AkeebaModelBrowsers extends FOFModel
 {
 	function makeListing()
 	{
-		JLoader::import('joomla.filesystem.folder');
-		JLoader::import('joomla.filesystem.path');
+		jimport('joomla.filesystem.folder');
+		jimport('joomla.filesystem.path');
 		
 		// Get the folder to browse
 		$folder = $this->getState('folder', '');

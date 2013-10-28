@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -60,7 +60,7 @@ abstract class MediaHelper
 
 		$allowable = explode(',', $params->get('upload_extensions'));
 		$ignored = explode(',', $params->get('ignore_extensions'));
-		if (!in_array($format, $allowable) && !in_array($format, $ignored))
+		if ($format == '' || $format == false || (!in_array($format, $allowable) && !in_array($format, $ignored)))
 		{
 			$err = 'COM_MEDIA_ERROR_WARNFILETYPE';
 			return false;

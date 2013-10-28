@@ -1,0 +1,50 @@
+/*------------------------------------------------------------------------
+* Copyright (c) 2008-2012 ZooTemplate. All Rights Reserved.
+* @license - Copyrighted Commercial Software
+* Author: ZooTemplate
+* Websites:  http://www.zootemplate.com
+-------------------------------------------------------------------------*/
+@font-face {
+    font-family: 'Maven Pro';
+    src: url('fonts/maven_pro_regular-webfont.eot');
+    src: url('fonts/maven_pro_regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/maven_pro_regular-webfont.woff') format('woff'),
+         url('fonts/maven_pro_regular-webfont.ttf') format('truetype'),
+         url('fonts/maven_pro_regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'MavenProMedium';
+    src: url('fonts/maven_pro_medium-webfont.eot');
+    src: url('fonts/maven_pro_medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/maven_pro_medium-webfont.woff') format('woff'),
+         url('fonts/maven_pro_medium-webfont.ttf') format('truetype'),
+         url('fonts/maven_pro_medium-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'DistrictThin';
+    src: url('fonts/distth___-webfont.eot');
+    src: url('fonts/distth___-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/distth___-webfont.woff') format('woff'),
+         url('fonts/distth___-webfont.ttf') format('truetype'),
+         url('fonts/distth___-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+#menusys_mega .menu-title {
+	font-family: 'Maven Pro', arial, serif;	
+	font-weight: bold;
+    font-style: normal;
+}
+.nivo-caption p,
+li.roundabout-moveable-item p.caption {
+	font-family: 'Maven Pro', arial, serif;	
+	font-weight: bold;
+    font-style: normal;
+}

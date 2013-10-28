@@ -975,12 +975,6 @@ function backup_start()
 		} catch(err) {
 			jpskey = '';
 		}
-		var angiekey = '';
-		try {
-			angiekey = $('#angiekey').val();
-		} catch(err) {
-			angiekey = '';
-		}
 		// Hide the backup setup
 		$('#backup-setup').hide("fast");
 		// Show the backup progress
@@ -997,8 +991,7 @@ function backup_start()
                     'ajax': 'start',
                     description: $('#backup-description').val(),
                     comment: $('#comment').val(),
-                    jpskey: jpskey,
-                    angiekey: angiekey
+                    jpskey: jpskey
                 };
                 
                 ajax_request = array_merge(ajax_request, akeeba_srp_info);

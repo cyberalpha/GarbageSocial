@@ -1,0 +1,574 @@
+/**
+ * ------------------------------------------------------------------------
+ * JA T3v2 System Plugin for J25 & J30
+ * ------------------------------------------------------------------------
+ * Copyright (C) 2004-2011 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+ * @license - GNU/GPL, http://www.gnu.org/licenses/gpl.html
+ * Author: J.O.O.M Solutions Co., Ltd
+ * Websites: http://www.joomlart.com - http://www.joomlancers.com
+ * ------------------------------------------------------------------------
+ */
+
+/* Contact for joomla 3.0 ---*/
+
+.contact .collapse {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  overflow: visible \9;
+  -webkit-transition: height 0.35s ease;
+  -moz-transition: height 0.35s ease;
+  -o-transition: height 0.35s ease;
+  transition: height 0.35s ease;
+}
+.contact .collapse.in {
+  height: auto;
+}
+
+.contact .accordion {
+  margin-bottom: 20px;
+}
+
+.contact .accordion-group {
+  border: 1px solid #e5e5e5;
+  margin-bottom: -1px;
+}
+
+.contact .accordion-heading {
+  border-bottom: 0;
+  background: #F5F5F5;
+}
+
+.contact .accordion-heading .accordion-toggle {
+  display: block;
+  padding: 8px 15px;
+}
+
+.contact .accordion-toggle {
+  cursor: pointer;
+}
+
+.contact .accordion-inner {
+  padding: 9px 15px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.contact .nav-tabs:after, .nav-pills:after {
+    clear: both;
+}
+
+.contact .nav-tabs:before, 
+.contact .nav-tabs:after, 
+.contact .nav-pills:before, 
+.contact .nav-pills:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+
+.contact .nav-tabs:before, 
+.contact .nav-tabs:after, 
+.contact .nav-pills:before, .nav-pills:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+
+.contact .nav-tabs {
+  border-bottom: 1px solid #ddd;
+  margin: 0px;
+  padding: 0px;
+}
+
+.contact .nav-tabs > li {
+	margin-bottom: -1px;
+	margin-right: 3px;
+	background: none;
+	line-height: normal;
+	padding: 0px;
+	float: left;
+}
+
+.contact .nav-tabs > li > a {
+	border: solid 1px #f5f5f5;
+	border-bottom: none;
+	padding: 8px 10px;
+	display: block;
+}
+
+.contact .nav-tabs > li > a:hover {
+	border-color: #eeeeee #eeeeee #dddddd;
+	background: #f3f3f3;
+}
+
+.contact .nav-tabs > .active > a,
+.contact .nav-tabs > .active > a:hover {
+	color: #555555;
+	background: #F9F9F9;
+	border: 1px solid #ddd;
+	border-bottom-color: transparent;
+	cursor: default;
+}
+.contact .contact-links .nav-tabs {
+  border: none;
+}
+
+.contact .contact-links .nav-tabs > li {
+	margin: 0px 3px;
+	padding: 0px;
+	float: none;
+	line-height: 160%;
+}
+
+
+/* Newsfeed Page ---*/
+ul li.cat-list-row1 {
+	border: solid 1px #ddd;
+		background: #f8f8f8;
+}
+
+ul li.cat-list-row0,
+ul li.cat-list-row1 {
+	background: none;
+	margin: 0px;
+	padding: 5px;
+	border: none;
+	border-bottom: solid 1px #ddd;
+}
+
+.cat-list-row2,
+.cat-list-row1,
+.cat-list-row0,
+tr.cat-list-row2 td,
+tr.cat-list-row1 td {
+	border-color: #ddd;
+}
+
+.cat-list-row0:hover,
+.cat-list-row1:hover,
+.cat-list-row2:hover,
+ul li.cat-list-row0:hover,
+ul li.cat-list-row1:hover {background-color: #ffffcc;}
+.contact .contact-links .nav-tabs > li > a {
+	background: none;
+	padding: 0px;
+	border: none;
+}
+
+.contact .contact-links .nav-tabs > li > a:hover {
+	background: none;
+	padding: 0px;
+	border: none;
+}
+
+.contact .contact-links .nav-tabs > .active > a,
+.contact .contact-links .nav-tabs > .active > a:hover {
+	background: none;
+	padding: 0px;
+	border: none;
+}
+
+.contact .tab-content {
+    overflow: visible;
+    padding: 15px;
+    border: 1px solid #CCCCCC;
+    border-top: none;
+}
+
+.contact .tab-content > .tab-pane { display: none; }
+.contact .tab-content > .active { display: block; }
+
+.contact .tabs-below > .nav-tabs { border-top: 1px solid #ddd; }
+
+.contact .tabs-below > .nav-tabs > li {
+	margin-top: -1px;
+	margin-bottom: 0;
+}
+
+.contact .contact-form .control-group {
+	margin: 3px 0px;
+	clear: both;
+	display: block;
+}
+
+.contact .contact-form .control-label {
+	clear: left;
+	display: inline-block;
+	min-width: 12em;
+	padding: 3px 0;
+}
+
+.contact .contact-form .controls { display: inline-block; max-width: 400px; }
+
+.contact .contact-form .form-actions button { margin-left: 11.2em; }
+
+/* Upagrade joomla 30---*/
+
+.newsfeed-category label.element-invisible,
+.weblink-category label.element-invisible {
+    border: 0 none;
+    height: 1px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.newsfeed-category #filter-search,
+.weblink-category #filter-search {
+	width: 150px;
+	margin-bottom: 10px;
+}
+
+#ja-mainbody #ja-main .inner #system-message {
+	margin-bottom: 0px !important;
+}
+
+ul.actions li a,
+ul.actions li a:hover,
+ul.actions li a:focus,
+ul.actions li a:active {
+	width: 16px;
+	height: 16px;
+	padding: 0px;
+	margin: 0px 2px;
+	display: inline-block;
+	background-repeat: no-repeat; 
+	background-position: left top;
+	display: inline-block;
+	font-size: 0px;
+	text-indent: -999em;
+	border: none;
+	text-decoration: none;
+}
+
+ul.actions li.print-icon a {
+	 background-image: url("../images/printButton.png") ;
+	 	 vertical-align: top;
+}
+
+ul.actions li.email-icon a {
+	 background-image: url("../images/emailButton.png") ;
+	 vertical-align: top;
+}
+
+ul.actions li.edit-icon a {
+    background-image: url("../images/edit.png");
+    vertical-align: top;
+}
+
+/* Editor Backend---*/
+.edit #adminForm .nav-tabs {
+	*zoom: 1;
+}
+.edit #adminForm .nav-tabs:before,
+.edit #adminForm .nav-tabs:after {
+	display: table;
+	content: "";
+	line-height: 0;
+}
+.edit #adminForm .nav-tabs:after {
+	clear: both;
+}
+.edit #adminForm .nav-tabs > li {
+	float: left;
+	background: none;
+	padding: 6px 0px;
+}
+.edit #adminForm .nav-tabs > li > a {
+	padding-right: 12px;
+	padding-left: 12px;
+	margin-right: 2px;
+	line-height: 14px;
+	text-decoration: none;
+}
+.edit #adminForm .nav-tabs {
+	border-bottom: 1px solid #ddd;
+}
+.edit #adminForm .nav-tabs> li {
+	margin-bottom: -1px;
+}
+.edit #adminForm .nav-tabs > li > a {
+	padding-top: 6px;
+	padding-bottom: 7px;
+	line-height: 18px;
+	border: 1px solid transparent;
+	-webkit-border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0;
+	text-decoration: none;
+}
+.edit #adminForm .nav-tabs > li > a:hover {
+	border-color: #eee #eee #ddd;
+}
+.edit #adminForm .nav-tabs > .active > a,
+.edit #adminForm .nav-tabs > .active > a:hover {
+	color: #555;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-bottom-color: transparent;
+	cursor: default;
+	text-decoration: none;
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-family: 'IcoMoon';
+    font-style: normal;
+}
+[class^="icon-"], [class*=" icon-"] {
+    display: inline-block;
+    height: 14px;
+    line-height: 14px;
+    width: 14px;
+}
+
+.edit #adminForm .icon-calendar:before {
+    content: "C";
+}
+
+.edit #adminForm .icon-file-add:before {
+    content: ")";
+}
+
+.edit #adminForm .icon-picture:before {
+    content: "/";
+}
+
+#editor .icon-save-copy:before, .icon-copy:before {
+    content: "\2d";
+}
+
+.edit #adminForm .icon-chevron-down:before, .edit #adminForm .icon-downarrow:before, .edit #adminForm .icon-arrow-down:before {
+    content: "\47";
+}
+
+.edit #adminForm .icon-eye-open:before, .edit #adminForm .icon-eye:before {
+    content: "<";
+}
+
+.edit #adminForm .icon-blank:before {
+    content: "\46";
+}
+
+.edit #adminForm .tab-content > .tab-pane, .edit #adminForm .pill-content > .pill-pane {
+    display: none;
+}
+
+.edit #adminForm .tab-content > .active, .edit #adminForm .pill-content > .active {
+    display: block;
+}
+
+#editor .control-group {
+	margin-bottom: 10px;
+}
+
+#editor .btn,
+#editor .btn:hover,
+#editor .btn:focus,
+#editor .btn:active,
+#editor-xtd-buttons .btn,
+#editor-xtd-buttons .btn:hover,
+#editor-xtd-buttons .btn:focus,
+#editor-xtd-buttons .btn:active,
+.toggle-editor .btn,
+.toggle-editor .btn:hover,
+.toggle-editor .btn:focus,
+.toggle-editor .btn:active  {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #F5F5F5;
+    background-image: linear-gradient(to bottom, #FFFFFF, #E6E6E6);
+    background-repeat: repeat-x;
+    border-color: #BBBBBB #BBBBBB #A2A2A2;
+    border-image: none;
+    border-radius: 4px 4px 4px 4px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 18px;
+    margin-bottom: 0;
+    padding: 4px 14px;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+#editor .pull-left,
+.edit .pull-left {
+    float: left;
+}
+#editor .pull-right,
+.edit .pull-right {
+    float: right;
+    margin-top: 5px;
+}
+
+.edit.item-page .btn-toolbar .btn-group,
+.edit .btn-toolbar .btn-group{
+	display: inline-block;
+	border: solid 1px transparent;
+}
+
+.edit.item-page .input-append .add-on, .edit.item-page .input-prepend .add-on,
+.edit .input-append .add-on, .edit .input-prepend .add-on {
+    background-color: #EEEEEE;
+    border: 1px solid #CCCCCC;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: normal;
+    height: 18px;
+    line-height: 18px;
+    min-width: 16px;
+    padding: 0px 5px;
+    text-align: center;
+    text-shadow: 0 1px 0 #FFFFFF;
+    width: auto;
+}
+
+.icon-delete:before, .icon-remove:before, .icon-cancel-2:before {
+    content: "I";
+}
+
+
+.edit #adminForm .icon-ok:before{
+    content: "G";
+}
+
+.edit #adminForm .icon-cancel:before {
+	content: "\4a";
+}
+
+.edit.item-page .tab-content .control-group,
+.edit .control-group {
+	margin-bottom: 10px;
+}
+
+.edit.item-page .tab-content .input-prepend a:hover,
+.edit.item-page .tab-content .input-prepend a:focus,
+.edit.item-page .tab-content .input-prepend a:active {
+	text-decoration: none;
+}
+
+body.com_media #imageForm .control-group {
+	float: left;
+}
+body.com_media #imageForm .pull-right {
+	float: right; 
+}
+
+
+body.com_media .thumbnails > li {
+    float: left;
+    margin-bottom: 18px;
+    margin-left: 20px;
+}
+
+body.com_media .thumbnails li a {
+	text-align: center;
+}
+body.com_media  .thumbnail {
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    display: block;
+    line-height: 18px;
+    padding: 4px;
+    transition: all 0.2s ease-in-out 0s;
+}
+body.com_media .thumbnails .height-50 {
+    height: 50px;
+}
+
+body.com_media .thumbnails .height-80 {
+    height: 80px;
+}
+body.com_media .thumbnails .width-80 {
+    width: 80px;
+}
+
+body.com_media .form-horizontal .control-label {
+    float: left;
+    padding-top: 5px;
+    text-align: right;
+    width: 140px;
+}
+
+.form-horizontal .control-group {
+    margin-bottom: 18px;
+}
+
+body.com_media .span6 {
+    width: 352px;
+}
+
+body.com_media #imageForm .row {
+    clear: both;
+    display: table;
+    width: 100%;
+}
+
+body.com_media .icon-upload {
+    width: 0px !important;
+    height: 0px !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    display: none;
+}
+
+body.com_media .form-horizontal .controls {
+    margin-left: 160px;
+}
+
+body.com_media .well {
+    background-color: #F5F5F5;
+    border: 1px solid #E3E3E3;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    margin-bottom: 20px;
+    min-height: 20px;
+    padding: 19px;
+}
+
+
+body.com_media .filters {
+	display: table;
+	clear: both;
+}
+
+#adminForm .filter input#filter_search {
+	float: none;
+}
+
+#adminForm .filter  input.btn {
+	float: none;
+}
+
+body.com_media btn-toolbar .icon-search:before {
+    content: "S";
+    font-family: 'IcoMoon';
+    font-style: normal;
+}
+
+body.com_media #imageForm input[disabled], 
+body.com_media #imageForm select[disabled], 
+body.com_media #imageForm textarea[disabled], 
+body.com_media #imageForm input[readonly], 
+body.com_media #imageForm select[readonly], 
+body.com_media #imageForm textarea[readonly] {
+    cursor: not-allowed;
+}
+
+body#bd.com_media,
+body#bd.contentpane {
+	background: #fff;
+}
+
+

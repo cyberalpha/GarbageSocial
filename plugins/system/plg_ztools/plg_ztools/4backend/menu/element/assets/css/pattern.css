@@ -1,0 +1,27 @@
+/* CSS Document */
+.pattern-popup {
+	padding: 5px 0 0 5px;
+	width: 130px;
+	display: block;
+	overflow: hidden;
+	background: #FFF;
+	position: absolute;
+	border: solid 5px #0F0F0F;
+}
+.lady_item {
+	margin: 0 5px 5px 0;
+	cursor: pointer;
+	float: left;
+	width: 25px;
+	height: 25px;
+	border: 1px solid #131313;
+	background-color: #333;
+}
+.pattern-active {
+    border: 1px solid #131313;
+    cursor: pointer;
+	display: block;
+	width: 80px;
+	height: 20px;
+	background-color: #333;
+}

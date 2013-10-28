@@ -1,0 +1,74 @@
+.contenedor{
+	background: #000;
+}
+
+.contenedor.posheader{
+	background: url(../../../images/degradetranslarge.png) repeat-x #000;
+}
+
+.pos8-11{
+	border-top: 8px solid #bdbdbd;
+	background: url(../../../images/degradetranslarge.png) repeat-x #000;
+}
+
+header .joomla-nav li ul{
+	background: #000;
+}
+
+header .joomla-nav a{
+	background: #000;
+}
+
+#search .button{
+	background: #000;
+}
+
+.posheader{
+	border-bottom: 4px solid #1d1d1d;
+	border-top: 4px solid #1d1d1d;
+}
+
+.nivo-caption p{
+	background: #000;
+}
+
+header .joomla-nav .selected  ul a, header .joomla-nav li ul a{
+	background: #363636;
+}
+
+header .joomla-nav .selected a, header .joomla-nav .selected ul #current a{
+	-webkit-box-shadow: inset 0px 0px 1px #000; 
+	-moz-box-shadow: inset 0px 0px 1px #000; 
+	box-shadow: inset 0px 0px 1px #000;
+}
+	
+header .joomla-nav a:hover{
+	-webkit-box-shadow: inset 0px 0px 1px #000; 
+	-moz-box-shadow: inset 0px 0px 1px #000; 
+	box-shadow: inset 0px 0px 1px #000;
+}
+
+header .joomla-nav a{
+	border: 1px solid #404040;	
+}
+
+.footer1, .footer2{
+	color: #6e6e6e;
+}
+
+#positions_8-11 .titulomodulo h3{
+	border-bottom: 1px solid #828282;
+}
+
+#main .items-leading{
+	background: #f4f4f4;
+}
+
+footer{
+	border-top: 1px solid #ccc;
+}
+
+.moduletable.fondo .contenidomodulo{
+	background: #000;
+	color: #fff;
+}

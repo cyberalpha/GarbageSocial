@@ -1,0 +1,88 @@
+
+#zt-search .search .inputbox{
+	width:160px;
+	height:22px;
+	float:left;
+}
+#zt-search .search .button{
+	float: right;
+    height: 25px;
+    margin: 3px 0 0;
+    width: 25px;
+	 border:0;
+}
+
+#menusys_mega .subwraptop {
+	direction: ltr;
+}
+body.rtl #menusys_mega li a{
+	position: static;
+}
+body.rtl #menusys_mega .menusub_mega {
+	float:right;
+}
+#menusys_mega .megacol ul li {
+  width:100%;	
+  float: right;
+  line-height:30px;
+}
+
+body.rtl #zt-breadcrumbs .breadcrumbs{
+	margin:0 0 0 5px;
+	float:right;
+}
+
+body.rtl #zt-breadcrumbs .breadcrums-icon {
+	float:right;	
+  background: url("../images/zt-jorda-bg-home-icon.png") no-repeat left 50%;
+  padding:0px 0px 0px 20px;
+  margin:0px 0px 0px 5px;
+}
+
+#menusys_mega .megacol ul li a{
+ 
+  padding:1px;
+  line-height:30px;
+}
+body.rtl #menusys_mega .mega-group span.has-image, 
+body.rtl #menusys_mega .mega-group span.no-image, 
+body.rtl #menusys_mega .menusub_mega h3{
+	float:right;
+	width:100%;
+}
+
+
+/*headline*/
+#zt-container-left #zt-component .zt-headline-inner,
+#zt-container-right #zt-component .zt-headline-inner{
+	 width:630px;
+}
+#zt-container-full #zt-component .zt-headline-inner{
+	 width:919px;
+}
+#zt-container #zt-component .zt-headline-inner{
+	 width:495px;
+}
+.zt-headline-inner{
+	 width:283px;
+}
+.zt-headline-new-bot{
+	 float:left;
+}
+
+#zt-slideshow .jdSlideshow a.right,
+#zt-slideshow .jdSlideshow a.left {
+  top: 325px;
+}
+
+body.rtl #zt-logo-outer{
+	float:right;
+}
+body.rtl #zt-slideshow .jdSlideshow a.right,
+body.rtl #zt-slideshow .jdSlideshow a.left {
+  top: 270px;
+}
+
+#zt-newdishes-inner{
+	margin:20px 0px 0px 0px;
+}

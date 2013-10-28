@@ -41,7 +41,7 @@ $tag = $this->tag;
 $logName = AEUtilLogger::logName($tag);
 
 // Load JFile class
-JLoader::import('joomla.filesystem.file');
+jimport('joomla.filesystem.file');
 
 @ob_end_clean();
 

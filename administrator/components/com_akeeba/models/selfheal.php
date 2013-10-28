@@ -73,7 +73,7 @@ ENDSQL;
 	public function healSchema()
 	{
 		// Only run when this component runs under the MySQL database engine
-		//if(!$this->isMySQL()) return true;
+		if(!$this->isMySQL()) return true;
 		
 		$db = JFactory::getDBO();
 		
@@ -158,7 +158,7 @@ ENDSQL;
 		$db = JFactory::getDBO();
 		$db->setQuery($sql);
 		try {
-			$db->execute();
+			$db->query();
 		} catch(DatabaseException $e) {
 			return false;
 		}

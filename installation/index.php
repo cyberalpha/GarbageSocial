@@ -1,81 +1,105 @@
 <?php
 /**
- * @package angi4j
+ * @package akeebainstaller
  * @copyright Copyright (C) 2009-2013 Nicholas K. Dionysopoulos. All rights reserved.
  * @author Nicholas K. Dionysopoulos - http://www.dionysopoulos.me
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL v3 or later
  *
- * Akeeba Next Generation Installer For Joomla! - Main file
+ * Akeeba Backup Installer main page
  */
 
-// Sanity check
-if(__DIR__ == '__DIR__')
+// Flag this as a parent file
+define('_ABI', '1.0');
+
+// Minimum script execution time: 2 seconds
+define('MINEXECTIME', 2000);
+
+// Remove error reporting
+@error_reporting(E_NONE);
+
+// Setup some useful constants
+$abspath = dirname(__FILE__);
+if(empty($abspath)) $abspath = '.';
+// Try to determine the absolute dir to the site
+$siteroot = @realpath($abspath.'/..');
+if(strlen($siteroot) == 0) $siteroot = '';
+define('JPATH_SITE', $siteroot );
+define('JPATH_BASE', $siteroot );
+define('JPATH_INSTALLATION', $abspath );
+
+// Output buffering begins before we start doing anything at all
+@ob_start();
+
+// Load base files
+define('_JEXEC',1);
+require_once(JPATH_INSTALLATION.'/version.php'); // Utilities
+require_once(JPATH_INSTALLATION.'/includes/utils.php'); // Utilities
+require_once(JPATH_INSTALLATION.'/includes/translate.php'); // Translation
+require_once(JPATH_INSTALLATION.'/includes/storage.php'); // Temporary Storage
+require_once(JPATH_INSTALLATION.'/includes/output.php'); // Output class
+require_once(JPATH_INSTALLATION.'/includes/automation.php'); // Automation class
+require_once(JPATH_INSTALLATION.'/includes/antidos.php'); // Protection from anti-DoS solutions (no more 403's!)
+
+// Initialize the global $view array
+global $view;
+unset($view); // Destroy any variable trickily passed to this script...
+$view = array(); // Initialize to an empty array
+
+// Enforce minimum script execution time (start-up)
+enforce_minexectime(true);
+
+// Run the logic depending on the task
+$task = getParam('task','index');
+switch($task)
 {
-	die('Akeeba Next Generation Installer For Joomla! requires PHP 5.3 or later');
+	case "index": // Requirements check
+		require_once(JPATH_INSTALLATION.'/includes/logic/index.php'); // Run the logic
+		require_once(JPATH_INSTALLATION.'/includes/output/index.php'); // Run the view
+		break;
+
+	case "dbnext": // Iterate to the next database
+	case "dbprev": // Iterate to the previous database
+		require_once(JPATH_INSTALLATION.'/includes/logic/dbsetup.php'); // Run the logic
+		require_once(JPATH_INSTALLATION.'/includes/output/dbsetup.php'); // Run the view
+		break;
+
+	case "restore": // Restores the current database (called by AJAX)
+		require_once(JPATH_INSTALLATION.'/includes/logic/restore.php'); // Run the logic
+		// There is no "view" for this page. The logic produces the AJAX output.
+		break;
+
+	case "setup": // Site setup
+		require_once(JPATH_INSTALLATION.'/includes/logic/setup.php'); // Run the logic
+		require_once(JPATH_INSTALLATION.'/includes/output/setup.php'); // Run the view
+		break;
+
+	case "ajax": // AJAX power for site setup, e.g. FTP check
+		require_once(JPATH_INSTALLATION.'/includes/logic/ajax.php'); // Run the logic
+		// There is no "view" for this page. The logic produces the AJAX output.
+		break;
+
+	case "finish": // We just finished!
+		require_once(JPATH_INSTALLATION.'/includes/logic/finish.php'); // Run the logic
+		require_once(JPATH_INSTALLATION.'/includes/output/finish.php'); // Run the view
+		break;
+
+	default:
+		// This is something not allowed. Die.
+		die('Invalid task');
+		break;
 }
 
-// Define ourselves as a parent file
-define('_AKEEBA', 1);
-define('_JEXEC', 1);
-define('_QQ_', '&quot;');
+// Get the page's output
+$content = ob_get_clean();
 
-// Debug
-// define('AKEEBA_DEBUG', 1);
-if (defined('AKEEBA_DEBUG'))
-{
-	error_reporting(E_ALL | E_NOTICE | E_DEPRECATED);
-	ini_set('display_errors', 1);
-}
+// Send the page data
+$output = ABIOutput::getInstance();
+$output->setContent($content);
+$output->output();
 
-// Load the framework autoloader
-require_once __DIR__ . '/framework/autoloader.php';
-require_once __DIR__ . '/defines.php';
+// Finally, save the Storage
+$storage = ABIStorage::getInstance();
+$storage->saveData();
 
-try
-{
-	// Create the application
-	$application = AApplication::getInstance('angie');
-
-	// Initialise the application
-	$application->initialise();
-
-	// Dispatch the application
-	$application->dispatch();
-
-	// Render
-	$application->render();
-
-	// Clean-up and shut down
-	$application->close();
-}
-catch (Exception $exc)
-{
-	$filename = null;
-	if (isset($application))
-	{
-		if ($application instanceof AApplication)
-		{
-			$template = $application->getTemplate();
-			if (file_exists(APATH_THEMES . '/' . $template . '/error.php'))
-			{
-				$filename = APATH_THEMES . '/' . $template . '/error.php';
-			}
-		}
-	}
-	if (!is_null($filename))
-	{
-		@ob_start();
-	}
-	// An uncaught application error occurred
-	echo "<h1>Application Error</h1>\n";
-	echo "<p>Please submit the following error message and trace in its entirety when requesting support</p>\n";
-	echo "<div class=\"alert alert-error\">" . get_class($exc) . ' &mdash; ' . $exc->getMessage() . "</div>\n";
-	echo "<pre class=\"well\">\n";
-	echo $exc->getTraceAsString();
-	echo "</pre>\n";
-	if (!is_null($filename))
-	{
-		$error_message = @ob_get_clean();
-		include $filename;
-	}
-}
+// Enforce minimum script execution time (finalization)
+enforce_minexectime(false);

@@ -21,10 +21,10 @@ class AkeebaControllerJson extends FOFController
 	public function execute($task)
 	{
 		$task = 'json';
-
+		
 		parent::execute($task);
 	}
-
+	
 	/**
 	 * Handles API calls
 	 */
@@ -36,21 +36,21 @@ class AkeebaControllerJson extends FOFController
 
 		// Use the model to parse the JSON message
 		if(function_exists('ob_start')) @ob_start();
-		$sourceJSON = $this->input->get('json', null, 'raw', 2);
-
+		$sourceJSON = FOFInput::getVar('json', null, $this->input, 'raw', 2);
+		
 		// On some !@#$%^& servers where magic_quotes_gpc is On we might get extra slashes added
 		if(function_exists('get_magic_quotes_gpc')) {
 			if(get_magic_quotes_gpc()) {
 				$sourceJSON = stripslashes($sourceJSON);
 			}
 		}
-
+		
 		$model = $this->getThisModel();
 		$json = $model->execute($sourceJSON);
 		if(function_exists('ob_clean')) @ob_clean();
-
+		
 		// Just dump the JSON and tear down the application, without plugins executing
-		echo $json;
+		echo $json;	
 		$app = JFactory::getApplication();
 		$app->close();
 	}

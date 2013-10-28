@@ -7,7 +7,7 @@
 
 defined('_JEXEC') or die();
 
-JLoader::import('joomla.application.component.controller');
+jimport('joomla.application.component.controller');
 
 if(!class_exists('JoomlaCompatController')) {
 	if(interface_exists('JController')) {
@@ -184,7 +184,7 @@ class LiveUpdateController extends JoomlaCompatController
 		$view->setModel($model, true);
 
 		// Assign the FTP credentials from the request, or return TRUE if they are required
-		JLoader::import('joomla.client.helper');
+		jimport('joomla.client.helper');
 		$ftp	= $this->setCredentialsFromRequest('ftp');
 		$view->assignRef('ftp', $ftp);
 
@@ -244,7 +244,7 @@ class LiveUpdateController extends JoomlaCompatController
 	private function setCredentialsFromRequest($client)
 	{
 		// Determine wether FTP credentials have been passed along with the current request
-		JLoader::import('joomla.client.helper');
+		jimport('joomla.client.helper');
 		$user = JRequest::getString('username', null, 'GET', JREQUEST_ALLOWRAW);
 		$pass = JRequest::getString('password', null, 'GET', JREQUEST_ALLOWRAW);
 		if ($user != '' && $pass != '')

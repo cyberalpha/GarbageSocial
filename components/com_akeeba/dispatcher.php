@@ -12,10 +12,10 @@ defined('_JEXEC') or die();
 class AkeebaDispatcher extends FOFDispatcher
 {
 	public $defaultView = 'backup';
-
+	
 	public function onBeforeDispatch() {
 		$result = parent::onBeforeDispatch();
-
+		
 		if($result) {
 			// Merge the language overrides
 			$paths = array(JPATH_ADMINISTRATOR, JPATH_ROOT);
@@ -24,12 +24,12 @@ class AkeebaDispatcher extends FOFDispatcher
 			$jlang->load($this->component, $paths[0], null, true);
 			$jlang->load($this->component, $paths[1], 'en-GB', true);
 			$jlang->load($this->component, $paths[1], null, true);
-
+			
 			$jlang->load($this->component.'.override', $paths[0], 'en-GB', true);
 			$jlang->load($this->component.'.override', $paths[0], null, true);
 			$jlang->load($this->component.'.override', $paths[1], 'en-GB', true);
 			$jlang->load($this->component.'.override', $paths[1], null, true);
-
+			
 			// Timezone fix; avoids errors printed out by PHP 5.3.3+ (thanks Yannick!)
 			if(function_exists('date_default_timezone_get') && function_exists('date_default_timezone_set')) {
 				if(function_exists('error_reporting')) {
@@ -42,7 +42,7 @@ class AkeebaDispatcher extends FOFDispatcher
 				}
 				@date_default_timezone_set( $serverTimezone);
 			}
-
+			
 			// Necessary defines for Akeeba Engine
 			if(!defined('AKEEBAENGINE')) {
 				define('AKEEBAENGINE', 1); // Required for accessing Akeeba Engine's factory class
@@ -66,7 +66,7 @@ class AkeebaDispatcher extends FOFDispatcher
 
 			// Load the factory
 			require_once JPATH_ADMINISTRATOR.'/components/com_akeeba/akeeba/factory.php';
-
+			
 			// Load the Akeeba Backup configuration and check user access permission
 			$aeconfig = AEFactory::getConfiguration();
 			AEPlatform::getInstance()->load_configuration();
@@ -75,37 +75,37 @@ class AkeebaDispatcher extends FOFDispatcher
 			// Preload helpers
 			require_once JPATH_ADMINISTRATOR.'/components/com_akeeba/helpers/includes.php';
 			require_once JPATH_ADMINISTRATOR.'/components/com_akeeba/helpers/escape.php';
-
+			
 			// If JSON functions don't exist, load our compatibility layer
 			if( (!function_exists('json_encode')) || (!function_exists('json_decode')) )
 			{
 				require_once JPATH_COMPONENT_ADMINISTRATOR.'/helpers/jsonlib.php';
 			}
-
+			
 			// Load Akeeba Strapper
 			include_once JPATH_ROOT.'/media/akeeba_strapper/strapper.php';
 			AkeebaStrapper::bootstrap();
 		}
-
+		
 		return $result;
 	}
-
+	
 	public function dispatch() {
 		// Look for controllers in the plugins folder
-		$option = $this->input->get('option','com_foobar', 'cmd');
-		$view = $this->input->get('view',$this->defaultView, 'cmd');
+		$option = FOFInput::getCmd('option','com_foobar',$this->input);
+		$view = FOFInput::getCmd('view',$this->defaultView, $this->input);
 		$c = FOFInflector::singularize($view);
 		$alt_path = JPATH_SITE.'/components/'.$option.'/plugins/controllers/'.$c.'.php';
-
-		JLoader::import('joomla.filesystem.file');
+		
+		jimport('joomla.filesystem.file');
 		if(JFile::exists($alt_path))
 		{
 			// The requested controller exists and there you load it...
 			require_once($alt_path);
 		}
-
-		$this->input->set('view', $this->view);
-
+		
+		FOFInput::setVar('view', $this->view, $this->input);
+		
 		parent::dispatch();
 	}
 }

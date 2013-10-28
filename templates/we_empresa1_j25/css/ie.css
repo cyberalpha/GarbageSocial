@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+.clearfix,.container_12 {
+  zoom: 1;
+}
+
+ul.pagenav li{
+	*display:inline;
+}
+
+.moduletable.titulo .titulomodulo{
+	*color: #717171;
+}
+
+.moduletable.menu li a{
+	*width: 95%;
+}
+
+#modlgn_passwd, #modlgn_username{
+	width: 150px;
+}
+
+.nivoSlider{ 
+	border: 1px solid #ccc;
+	*z-index:-1;
+}
+
+#slider{
+	*background: none;
+}
+
+#noie6{
+	padding: 20px 0;
+	background: red;
+	color: #fff;
+	text-align: center;
+}

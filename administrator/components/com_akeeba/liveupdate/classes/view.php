@@ -7,7 +7,7 @@
 
 defined('_JEXEC') or die();
 
-JLoader::import('joomla.application.component.view');
+jimport('joomla.application.component.view');
 
 if(!class_exists('JoomlaCompatView')) {
 	if(interface_exists('JView')) {

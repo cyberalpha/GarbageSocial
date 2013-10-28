@@ -80,7 +80,7 @@ abstract class AEAbstractPart extends AEAbstractObject
 
 	/** @var bool Should we log the step nesting? */
 	protected $nest_logging = false;
-
+	
 	/** @var object Embedded installer preferences */
 	protected $installerSettings;
 
@@ -91,15 +91,14 @@ abstract class AEAbstractPart extends AEAbstractObject
 	public function __construct()
 	{
 		parent::__construct();
-
+		
 		// Fetch the installer settings
 		$this->installerSettings = (object)array(
 			'installerroot' => 'installation',
 			'sqlroot'		=> 'installation/sql',
 			'databasesini'	=> 1,
 			'readme'		=> 1,
-			'extrainfo'		=> 1,
-			'password'		=> 0,
+			'extrainfo'		=> 1
 		);
 		$config = AEFactory::getConfiguration();
 		$installerKey = $config->get('akeeba.advanced.embedded_installer');
@@ -114,7 +113,7 @@ abstract class AEAbstractPart extends AEAbstractObject
 		// If no installer was found, we are using "safe defaults", which are
 		// pretty much what ABI is using, and hope for the best!
 	}
-
+	
 	/**
 	 * Runs the preparation for this part. Should set _isPrepared
 	 * to true
@@ -402,7 +401,7 @@ abstract class AEAbstractPart extends AEAbstractObject
 	{
 		return $this->active_substep;
 	}
-
+	
 	/**
 	 * Implement this if your Engine Part can return the percentage of its work already complete
 	 * @return float A number from 0 (nothing done) to 1 (all done)

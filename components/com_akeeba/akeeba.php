@@ -23,18 +23,15 @@ if(defined('PHP_VERSION')) {
 }
 
 // Old PHP version detected. EJECT! EJECT! EJECT!
-if(!version_compare($version, '5.3.0', '>='))
+if(!version_compare($version, '5.2.0', '>='))
 {
-	return JError::raise(E_ERROR, 500, 'This version of PHP is not compatible with Akeeba Backup');
+	return JError::raise(E_ERROR, 500, 'Unsupported PHP version');
 }
 
-JLoader::import('joomla.application.component.model');
+jimport('joomla.application.component.model');
 
 // Load FOF
 include_once JPATH_SITE.'/libraries/fof/include.php';
-if (!defined('FOF_INCLUDED') || !class_exists('FOFForm', true))
-{
-	JError::raiseError ('500', 'Your Akeeba Backup installation is broken; please re-install. Alternatively, extract the installation archive and copy the fof directory inside your site\'s libraries directory.');
-}
+if(!defined('FOF_INCLUDED')) JError::raiseError ('500', 'Your Akeeba Backup installation is broken; please re-install. Alternatively, extract the installation archive and copy the fof directory inside your site\'s libraries directory.');
 
 FOFDispatcher::getTmpInstance('com_akeeba')->dispatch();

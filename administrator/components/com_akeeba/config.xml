@@ -49,8 +49,6 @@
 			label="" />		
 		<field name="lastversion" type="hidden" default=""
 			label="" />
-		<field name="angieupgrade" type="hidden" default="0"
-			label="" />
 	</fieldset>
 
 	<fieldset name="liveupdate" label="CONFIG_LIVEUPDATE_HEADER_LABEL" description="CONFIG_LIVEUPDATE_HEADER_DESC">

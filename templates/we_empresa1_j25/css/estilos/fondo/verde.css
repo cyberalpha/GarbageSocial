@@ -1,0 +1,86 @@
+/*
+color = #35502c
+variación1 = #548f40
+variación2 = #ecf7de
+*/
+
+.contenedor{
+	background: #35502c;
+}
+
+.contenedor.posheader{
+	background: url(../../../images/degradetranslarge.png) repeat-x #35502c;
+}
+
+
+header .joomla-nav li ul{
+	background: #35502c;
+}
+
+header .joomla-nav a{
+	background: #35502c;
+}
+
+#search .button{
+	background: #35502c;
+}
+
+
+.nivo-caption p{
+	background: #35502c;
+}
+
+header .joomla-nav .selected a, header .joomla-nav .selected ul #current a{
+	-webkit-box-shadow: inset 0px 0px 1px #35502c; 
+	-moz-box-shadow: inset 0px 0px 1px #35502c; 
+	box-shadow: inset 0px 0px 1px #35502c;
+}
+
+.moduletable.fondo .contenidomodulo{
+	background: #35502c;
+	color: #fff;
+}
+
+/*variacion 1*/
+
+.pos8-11{
+	border-top: 8px solid #548f40;
+	background: url(../../../images/degradetranslarge.png) repeat-x #35502c;
+}
+
+.posheader{
+	border-bottom: 4px solid #548f40;
+	border-top: 4px solid #548f40;
+}
+
+header .joomla-nav .selected  ul a, header .joomla-nav li ul a{
+	background: #548f40;
+}
+
+header .joomla-nav a:hover{
+	-webkit-box-shadow: inset 0px 0px 1px #548f40; 
+	-moz-box-shadow: inset 0px 0px 1px #548f40; 
+	box-shadow: inset 0px 0px 1px #548f40;
+}
+
+header .joomla-nav a{
+	border: 1px solid #548f40;	
+}
+
+.footer1, .footer2{
+	color: #548f40;
+}
+
+#positions_8-11 .titulomodulo h3{
+	border-bottom: 1px solid #548f40;
+}
+
+footer{
+	border-top: 1px solid #548f40;
+}
+
+/*variacion 2*/
+#main .items-leading{
+	background: #ecf7de;
+}
+

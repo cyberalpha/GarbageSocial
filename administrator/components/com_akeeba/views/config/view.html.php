@@ -43,7 +43,7 @@ class AkeebaViewConfig extends FOFViewHtml
 		} elseif( !AEUtilSecuresettings::supportsEncryption() ) {
 			$this->assign('securesettings', 0);
 		} else {
-			JLoader::import('joomla.filesystem.file');
+			jimport('joomla.filesystem.file');
 			$filename = JPATH_COMPONENT_ADMINISTRATOR.'/akeeba/serverkey.php';
 			if(JFile::exists($filename)) {
 				$this->assign('securesettings', 1);

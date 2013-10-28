@@ -7,7 +7,7 @@
 
 defined('_JEXEC') or die();
 
-JLoader::import('joomla.application.component.model');
+jimport('joomla.application.component.model');
 
 if(!class_exists('JoomlaCompatModel')) {
 	if(interface_exists('JModel')) {
@@ -28,7 +28,7 @@ class LiveUpdateModel extends JoomlaCompatModel
 		$jreg = JFactory::getConfig();
 		$tmpdir = $jreg->get('tmp_path');
 
-		JLoader::import('joomla.filesystem.folder');
+		jimport('joomla.filesystem.folder');
 		// Make sure the user doesn't use the system-wide tmp directory. You know, the one that's
 		// being erased periodically and will cause a real mess while installing extensions (Grrr!)
 		if(realpath($tmpdir) == '/tmp') {
@@ -83,7 +83,7 @@ class LiveUpdateModel extends JoomlaCompatModel
 		$target = $session->get('target', '', 'liveupdate');
 		$tempdir = $session->get('tempdir', '', 'liveupdate');
 
-		JLoader::import('joomla.filesystem.archive');
+		jimport('joomla.filesystem.archive');
 		return JArchive::extract( $target, $tempdir);
 	}
 
@@ -92,8 +92,8 @@ class LiveUpdateModel extends JoomlaCompatModel
 		$session = JFactory::getSession();
 		$tempdir = $session->get('tempdir', '', 'liveupdate');
 
-		JLoader::import('joomla.installer.installer');
-		JLoader::import('joomla.installer.helper');
+		jimport('joomla.installer.installer');
+		jimport('joomla.installer.helper');
 		$installer = JInstaller::getInstance();
 		$packageType = JInstallerHelper::detectType($tempdir);
 
@@ -129,7 +129,7 @@ class LiveUpdateModel extends JoomlaCompatModel
 		$target = $session->get('target', '', 'liveupdate');
 		$tempdir = $session->get('tempdir', '', 'liveupdate');
 
-		JLoader::import('joomla.installer.helper');
+		jimport('joomla.installer.helper');
 		JInstallerHelper::cleanupInstall($target, $tempdir);
 
 		$session->clear('target','liveupdate');
@@ -141,9 +141,9 @@ class LiveUpdateModel extends JoomlaCompatModel
 		$session = JFactory::getSession();
 		$tempdir = $session->get('tempdir', '', 'liveupdate');
 
-		JLoader::import('joomla.installer.installer');
-		JLoader::import('joomla.installer.helper');
-		JLoader::import('joomla.filesystem.file');
+		jimport('joomla.installer.installer');
+		jimport('joomla.installer.helper');
+		jimport('joomla.filesystem.file');
 
 		$instModelFile = JPATH_ADMINISTRATOR.'/components/com_akeeba/models/installer.php';
 		if(!JFile::exists($instModelFile)) {

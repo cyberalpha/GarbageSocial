@@ -2,7 +2,7 @@
 /**
  * @package		Joomla.Administrator
  * @subpackage	Templates.bluestork
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -47,7 +47,6 @@ if ($this->params->get('highContrast')) {
 	</head>
 <body id="minwidth-body">
 	<div id="border-top" class="h_blue">
-		<span class="logo_webempresa"><a href="http://www.webempresa.com" target="_blank"><img src="templates/<?php echo  $this->template ?>/images/logo_webempresa.png" alt="Joomla!" /></a></span>
 		<span class="logo"><a href="http://www.joomla.org" target="_blank"><img src="templates/<?php echo  $this->template ?>/images/logo.png" alt="Joomla!" /></a></span>
 		<span class="title"><a href="index.php"><?php echo $this->params->get('showSiteName') ? $app->getCfg('sitename'). " " . JText::_('JADMINISTRATION') : JText::_('JADMINISTRATION') ; ?></a></span>
 	</div>

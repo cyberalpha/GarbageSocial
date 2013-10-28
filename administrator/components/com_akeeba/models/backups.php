@@ -16,13 +16,13 @@ class AkeebaModelBackups extends FOFModel
 {
 	/**
 	 * Starts or step a backup process
-	 *
-	 * @return array An Akeeba Engine return array
+	 * 
+	 * @return array An Akeeba Engine return array 
 	 */
 	public function runBackup()
 	{
 		$ret_array = array();
-
+		
 		$ajaxTask = $this->getState('ajax');
 
 		switch($ajaxTask)
@@ -33,7 +33,6 @@ class AkeebaModelBackups extends FOFModel
 				// The comment is passed through the Safe HTML filter (note: use 2 to force no filtering)
 				$comment = $this->getState('comment');
 				$jpskey = $this->getState('jpskey');
-				$angiekey = $this->getState('angiekey');
 
 				$tag = $this->getState('tag');
 
@@ -46,7 +45,7 @@ class AkeebaModelBackups extends FOFModel
 
 				if(empty($tag)) $tag = AEPlatform::getInstance()->get_backup_origin();
 				AEUtilTempvars::reset($tag);
-
+				
 				$kettenrad = AECoreKettenrad::load($tag);
 
 				// Take care of System Restore Point setup
@@ -71,10 +70,10 @@ class AkeebaModelBackups extends FOFModel
 					}
 					$extname .= $this->getState('name');
 					$info = $slurp->getInfo($extname, '');
-
+					
 					// Get the configOverrides for this extension
 					$configOverrides = $this->getConfigOverridesForSRP($extname, $info);
-
+					
 					// Create an SRP descriptor
 					$srpdescriptor = array(
 						'type'			=> $this->getState('type'),
@@ -88,11 +87,10 @@ class AkeebaModelBackups extends FOFModel
 					$description = "System Restore Point - ".JText::_($exttype).": $extname";
 					$comment = "---BEGIN SRP---\n".json_encode($srpdescriptor)."\n---END SRP---";
 					$jpskey = '';
-					$angiekey = '';
-
+					
 					// Set a custom finalization action queue
 					$configOverrides['volatile.core.finalization.action_handlers'] = array(
-						new AEFinalizationSrpquotas()
+						new AEFinalizationSrpquotas()						
 					);
 					$configOverrides['volatile.core.finalization.action_queue'] = array(
 						'remove_temp_files',
@@ -100,7 +98,7 @@ class AkeebaModelBackups extends FOFModel
 						'update_filesizes',
 						'apply_srp_quotas'
 					);
-
+					
 					// Apply the configuration overrides, please
 					$platform = AEPlatform::getInstance();
 					$platform->configOverrides = $configOverrides;
@@ -108,8 +106,7 @@ class AkeebaModelBackups extends FOFModel
 				$options = array(
 					'description'	=> $description,
 					'comment'		=> $comment,
-					'jpskey'		=> $jpskey,
-					'angiekey'		=> $angiekey,
+					'jpskey'		=> $jpskey
 				);
 				$kettenrad->setup($options);
 				$kettenrad->tick();
@@ -140,16 +137,16 @@ class AkeebaModelBackups extends FOFModel
 			default:
 				break;
 		}
-
+		
 		return $ret_array;
 	}
-
+	
 	/**
 	 * Gets the configuration overrides for a System Restore Point backup
-	 *
+	 * 
 	 * @param string $extname The extension shortname, e.g. com_foobar
 	 * @param array $info The structure returned by Live Update's XMLSlurp class
-	 *
+	 * 
 	 * @return array
 	 */
 	private function getConfigOverridesForSRP($extname, $info)
@@ -173,9 +170,9 @@ class AkeebaModelBackups extends FOFModel
 			'core.filters.srp.skiptables'			=> $this->getState('skiptables'),
 			'core.filters.srp.langfiles'			=> $this->getState('langfiles')
 		);
-
+		
 		// Parse a local file stored in (backend)/assets/srpdefs/$extname.xml
-		JLoader::import('joomla.filesystem.file');
+		jimport('joomla.filesystem.file');
 		$filename = JPATH_COMPONENT_ADMINISTRATOR.'/assets/srpdefs/'.$extname.'.xml';
 		if(JFile::exists($filename)) {
 			$xml = new SimpleXMLElement($filename, LIBXML_NONET, true);
@@ -185,7 +182,7 @@ class AkeebaModelBackups extends FOFModel
 			}
 			unset($xml);
 		}
-
+		
 		// Parse the extension's manifest file and look for a <restorepoint> tag
 		if(!empty($info['xmlfile'])) {
 			$xml = new SimpleXMLElement($info['xmlfile'], LIBXML_NONET, true);
@@ -199,10 +196,10 @@ class AkeebaModelBackups extends FOFModel
 			unset($restorepoint);
 			unset($xml);
 		}
-
+		
 		return $config;
 	}
-
+	
 	/**
 	 * Parses the Restore Point definition XML
 	 * @param SimpleXMLElement $xml
@@ -211,14 +208,14 @@ class AkeebaModelBackups extends FOFModel
 	private function parseRestorePointXML(SimpleXMLElement $xml)
 	{
 		if(!count($xml)) return false;
-
+		
 		$ret = array();
-
+		
 		// 1. Group name -- core.filters.srp.group
 		if(count($xml->group)) {
 			$ret['core.filters.srp.group'] = (string)($xml->group);
 		}
-
+		
 		// 2. Custom dirs -- core.filters.srp.customdirs
 		$customdirs = $xml->customdirs;
 		if(count($customdirs)) {
@@ -231,7 +228,7 @@ class AkeebaModelBackups extends FOFModel
 			}
 			if(!empty($stack)) $ret['core.filters.srp.customdirs'] = $stack;
 		}
-
+		
 		// 3. Extra prefixes -- core.filters.srp.extraprefixes
 		$extraprefixes = $xml->extraprefixes;
 		if(count($extraprefixes)) {
@@ -244,7 +241,7 @@ class AkeebaModelBackups extends FOFModel
 			}
 			if(!empty($stack)) $ret['core.filters.srp.extraprefixes'] = $stack;
 		}
-
+		
 		// 4. Custom tables -- core.filters.srp.customtables
 		$customtables = $xml->customtables;
 		if(count($customtables)) {
@@ -257,7 +254,7 @@ class AkeebaModelBackups extends FOFModel
 			}
 			if(!empty($stack)) $ret['core.filters.srp.customtables'] = $stack;
 		}
-
+		
 		// 5. Skip tables -- core.filters.srp.skiptables
 		$skiptables = $xml->skiptables;
 		if(count($skiptables)) {
@@ -270,7 +267,7 @@ class AkeebaModelBackups extends FOFModel
 			}
 			if(!empty($stack)) $ret['core.filters.srp.skiptables'] = $stack;
 		}
-
+		
 		// 6. Language files -- core.filters.srp.langfiles
 		$langfiles = $xml->langfiles;
 		if(count($langfiles)) {
@@ -283,7 +280,7 @@ class AkeebaModelBackups extends FOFModel
 			}
 			if(!empty($stack)) $ret['core.filters.srp.langfiles'] = $stack;
 		}
-
+		
 		// 7. Custom files -- core.filters.srp.customfiles
 		$customfiles = $xml->customfiles;
 		if(count($customfiles)) {
@@ -296,12 +293,12 @@ class AkeebaModelBackups extends FOFModel
 			}
 			if(!empty($stack)) $ret['core.filters.srp.customfiles'] = $stack;
 		}
-
+		
 		if(empty($ret)) return false;
-
+		
 		return $ret;
 	}
-
+	
 	private function mergeSRPConfig(&$config, $extraConfig)
 	{
 		foreach($config as $key => $value) {

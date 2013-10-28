@@ -27,7 +27,6 @@ if(empty($Akeeba_Class_Map))
 		'AEDriverPlatform'	=> 'drivers',
 		'AEArchiver'		=> 'engines'.DIRECTORY_SEPARATOR.'archiver',
 		'AEDumpNative'		=> 'engines'.DIRECTORY_SEPARATOR.'dump'.DIRECTORY_SEPARATOR.'native',
-		'AEDumpReverse'		=> 'engines'.DIRECTORY_SEPARATOR.'dump'.DIRECTORY_SEPARATOR.'reverse',
 		'AEDump'			=> 'engines'.DIRECTORY_SEPARATOR.'dump',
 		'AEFinalization'	=> 'engines'.DIRECTORY_SEPARATOR.'finalization',
 		'AEScan'			=> 'engines'.DIRECTORY_SEPARATOR.'scan',
@@ -63,7 +62,7 @@ function LoadIfPrefix($class, $prefix, $path)
 			$root = dirname(__FILE__);
 		}
 	}
-
+	
 	if(empty($platformDirs)) {
 		$platformDirs = AEPlatform::getInstance()->getPlatformDirectories();
 	}
